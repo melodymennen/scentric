@@ -1,0 +1,22 @@
+.landingpage{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.landingpage_title{
+    font-size: 5em;
+    color: $font_color;
+}
+
+.landingpage img {
+    transform: translateY(-30px);
+    transform: translateX(14px);
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+.enter {
+    font-size: 3em;
+    color: $font_color;
+}
