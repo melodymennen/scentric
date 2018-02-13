@@ -13,7 +13,7 @@ class ProductModule extends Component {
         return (
             <div>
                 <div className="home_all_products">
-                    <div><Link to={`/products/${this.props.id}`}><img src={this.props.pic} alt="product" width="300px"/></Link></div>
+                    <div><Link to={`/products/${this.props.id}`}><img src={this.props.pic} alt="product"/></Link></div>
                     <div>{this.props.name}</div>
                     <div>{this.props.price}</div>
                 </div>

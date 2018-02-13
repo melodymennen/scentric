@@ -10,6 +10,7 @@
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "lodash": "^4.17.5",
     "massive": "^4.6.4",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
