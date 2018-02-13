@@ -10,7 +10,7 @@ import Cart from './components/Cart'
 
 export default (
     <Switch>
-        <Route exact path="/" component = { LandingPage } />
+        <Route exact path="/header" component = { LandingPage } />
         <Route path="/Home" component = { Home } />
         <Route path="/display/:category" component = { DisplayProducts } />
         <Route path="/products/:product_id" component = { ProductPage } />
