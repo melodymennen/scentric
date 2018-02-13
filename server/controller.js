@@ -19,5 +19,11 @@ module.exports = {
         const db = req.app.get('db')
         db.get_all_products([]).then( products => res.status(200).send(products))
         .catch( () => res.status(500).send())
+    },
+
+    getCart: (req ,res) => {
+        const db = req.app.get('db')
+        db.get_cart([]).then(cart => res.status(200).send(cart))
+        .catch( () => res.status(500).send())
     }
 }

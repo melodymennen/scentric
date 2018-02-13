@@ -2,11 +2,13 @@ import axios from 'axios';
 
 const initialState = {
     user: null,
-    products: []
+    products: [],
+    cart: []
 }
  
 const ACTION = 'ACTION';
 const GETPRODUCTS = 'GETPRODUCTS';
+const GETCART = "GETCART";
  
 export function Action (Payload){
     return {
@@ -26,6 +28,18 @@ export const getProducts = () => {
         payload: request
     }
 }
+
+export const getCart = () => {
+    var request = axios.get('/api/cart').then( response => {
+        if(response.data) {
+            return response.data
+        }
+    })
+    return {
+        type: GETCART,
+        payload: request
+    }
+}
  
 export default (state = initialState, action) => {
     switch (action.type){
@@ -34,6 +48,9 @@ export default (state = initialState, action) => {
         
         case GETPRODUCTS + "_FULFILLED":
              return {...state, products: action.payload}
+
+        case GETCART + "_FULFILLED":
+            return {...state, cart: action.payload}
 
         default: 
             return state

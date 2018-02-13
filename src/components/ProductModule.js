@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-class ProductList extends Component {
+class ProductModule extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -22,4 +22,4 @@ class ProductList extends Component {
 }
 
 
-export default ProductList
+export default ProductModule
