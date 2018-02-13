@@ -1,9 +1,48 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
     render() {
         return (
-            <div></div>
+            <div>
+                <nav>
+                    <ul  className="header_show">
+                        <li><Link to="">Perfume</Link>
+                            <ul className="header_has-children">
+                                <li><Link to=""><h3>Shop All Perfume</h3></Link></li>
+                                <li><h3>Shop Scent Family</h3></li>
+                                <li><Link to="">Scent 1</Link></li>
+                                <li><Link to="">Scent 2</Link></li>
+                                <li><Link to="">Scent 3</Link></li>
+                                <li><Link to="">Scent 4</Link></li>
+                                <li><Link to="">Scent 5</Link></li>
+                                <li><Link to=""><h5>Sale</h5></Link></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul className="header_show">
+                        <li><Link to="">Cologne</Link>
+                            <ul className="header_has-children">
+                                <li><Link to=""><h3>Shop All Cologne</h3></Link></li>
+                                <li><h3>Shop Scent Family</h3></li>
+                                <li><Link to="">Scent 1</Link></li>
+                                <li><Link to="">Scent 2</Link></li>
+                                <li><Link to="">Scent 3</Link></li>
+                                <li><Link to="">Scent 4</Link></li>
+                                <li><Link to="">Scent 5</Link></li>
+                                <li><Link to=""><h5>Sale</h5></Link></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <img src="https://files.slack.com/files-pri/T039C2PUY-F97R1SPDW/scentriclogo.png" alt="logo" className="header_logo"/>
+                    <div className="header-right">
+                    <Link to="">About</Link>
+                    <Link to="">Login</Link>
+                    <Link to="">Cart</Link>
+                    </div>
+                </nav>
+            </div>
         );
     }
 }
