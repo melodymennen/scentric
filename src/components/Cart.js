@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {getCart} from '../ducks/reducer'
+import Header from './Header'
 
 
 class Cart extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-        }
-    }
 
     componentDidMount() {
         this.props.getCart()
@@ -19,12 +15,14 @@ class Cart extends Component {
     render() {
         return (
             <div>
-                <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
+                <Header />
                 {this.props.cart.map((e,i)=> {
                     return (
                         <div key={i}>
-                        <div>{e.name}</div>
-                        <div>{e.price}</div>
+                            <div><Link to={`/products/${e.id}`}><img src={e.image_url}/></Link></div>
+                            <div>{e.name}</div>
+                            <div>{e.price}</div>
+                            <div>qty</div>
                         </div>
                     )
                 })}
