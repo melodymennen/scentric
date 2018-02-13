@@ -21,8 +21,7 @@ massive(process.env.CONNECTION_STRING).then(db => {
     console.log('error', error)
 });
 
-app.get('/api/products', controller.getProducts)
- 
+app.get('/api/products', controller.getAllProducts)
 app.get('/api/display/:category', controller.getProductsByCategory)
 app.get('/api/products/:product_id', controller.getProduct)
 

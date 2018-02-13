@@ -14,11 +14,10 @@ module.exports = {
         db.get_product([product_id]).then(product => {
             res.status(200).json(product)
         }).catch(error => console.log('get product error', error))
-    },
-    
-    getProducts: (req,res) => {
+    },  
+    getAllProducts: (req,res) => {
         const db = req.app.get('db')
-        db.get_products([]).then( products => res.status(200).send(products))
+        db.get_all_products([]).then( products => res.status(200).send(products))
         .catch( () => res.status(500).send())
     }
 }
