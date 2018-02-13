@@ -5,6 +5,7 @@
   "main": "server/server.js",
   "proxy": "http://localhost:3035",
   "dependencies": {
+    "auth0-lock": "^11.2.3",
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.0",
