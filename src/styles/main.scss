@@ -5,3 +5,28 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+// home Page
+.home_hero{
+  width: 90%;
+  height: 90vh;
+  margin: auto;
+  background-image: url('https://s3-us-west-1.amazonaws.com/scentric/jaguar.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.home_flex{
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+.home_all_products{
+  width: 340px;
+}

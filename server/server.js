@@ -20,6 +20,8 @@ massive(process.env.CONNECTION_STRING).then(db => {
 }).catch(error => {
     console.log('error', error)
 });
+
+app.get('/api/products', controller.getProducts)
  
 const port = process.env.SERVER_PORT
 app.listen(port, () => console.log('listening on port ' + port));
