@@ -6,12 +6,11 @@ import DisplayProducts from './components/DisplayProducts'
 import ProductPage from './components/ProductPage'
 import Checkout from './components/Checkout'
 import Cart from './components/Cart'
-import Header from './components/Header'
 
 
 export default (
     <Switch>
-        <Route exact path="/" component = { Header } />
+        <Route exact path="/" component = { LandingPage } />
         <Route path="/Home" component = { Home } />
         <Route path="/display/:category" component = { DisplayProducts } />
         <Route path="/products/:product_id" component = { ProductPage } />
