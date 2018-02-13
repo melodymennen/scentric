@@ -1,3 +1,0 @@
-SELECT COUNT (qty)
-FROM CARTS
-WHERE product_id = $1

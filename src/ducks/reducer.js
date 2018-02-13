@@ -9,6 +9,7 @@ const initialState = {
 const ACTION = 'ACTION';
 const GETPRODUCTS = 'GETPRODUCTS';
 const GETCART = "GETCART";
+const LOGIN = 'LOGIN';
  
 export function Action (Payload){
     return {
@@ -40,6 +41,13 @@ export const getCart = () => {
         payload: request
     }
 }
+
+export const login = (user) => {
+    return {
+        type: LOGIN,
+        payload: user,
+    }
+}
  
 export default (state = initialState, action) => {
     switch (action.type){
@@ -51,6 +59,9 @@ export default (state = initialState, action) => {
 
         case GETCART + "_FULFILLED":
             return {...state, cart: action.payload}
+
+        case LOGIN:
+            return {...state, user: action.payload};
 
         default: 
             return state
