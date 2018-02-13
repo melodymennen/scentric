@@ -24,6 +24,7 @@ massive(process.env.CONNECTION_STRING).then(db => {
 app.get('/api/products', controller.getAllProducts)
 app.get('/api/display/:category', controller.getProductsByCategory)
 app.get('/api/products/:product_id', controller.getProduct)
+app.post('/api/cart', controller.addToCart)
 
 const port = process.env.SERVER_PORT
 app.listen(port, () => console.log('listening on port ' + port));

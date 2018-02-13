@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getProducts } from '../ducks/reducer'
+import Header from './Header'
 
 import ProductList from './ProductList'
 
@@ -20,7 +21,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <div style={tempNav}>nav</div>
+                <Header />
                 <div className="home_hero">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
                 <div className="home_flex">
                 {this.props.products.slice(0,6).map(e => {
@@ -31,6 +32,7 @@ class Home extends Component {
                         description={e.description}
                         price={e.price}
                         pic={e.image_url}
+                        id={e.id}
                         />
                     </div>
                     )
@@ -39,11 +41,6 @@ class Home extends Component {
             </div>
         )
     }
-}
-
-const tempNav = { 
-    backgroundColor: 'gray',
-    height: '50px'
 }
 
 

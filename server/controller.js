@@ -15,9 +15,19 @@ module.exports = {
             res.status(200).json(product)
         }).catch(error => console.log('get product error', error))
     },  
-    getAllProducts: (req,res) => {
+    getAllProducts: (req, res) => {
         const db = req.app.get('db')
+
         db.get_all_products([]).then( products => res.status(200).send(products))
         .catch( () => res.status(500).send())
+    }, 
+    addToCart: (req, res) => {
+        const db =  req.app.get('db')
+        const { user } = req.session
+        const { product_id } = req.body        
+        
+        db.add_to_cart([user, product_id, 1]).then(product => {
+            res.status(200).json(product)
+        }).catch(error => console.log('add to cart error', error))
     }
 }

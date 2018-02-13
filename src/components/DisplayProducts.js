@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class DisplayProducts extends Component {
@@ -20,7 +21,7 @@ class DisplayProducts extends Component {
         var products = this.state.products.map(item => {
             return (
                 <div key={item.id}>
-                    <img src={item.image_url} alt={item.name} />
+                    <Link to={`/products/${item.id}`}><img src={item.image_url} alt={item.name} /> </Link>
                 </div>
             )}
         )
