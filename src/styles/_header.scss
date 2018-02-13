@@ -4,7 +4,6 @@
     background: #c6c6c64b;
     transition: all .3s ease-out;
     color: black;
-    margin: 5px;
     padding: 5px;
 
 }
@@ -15,6 +14,7 @@ nav {
     transition: all .3 ease-out;
     list-style-type: none;
     position: fixed;
+    width: 100%;
 } 
 
 nav ul {
