@@ -41,7 +41,7 @@ class Home extends Component {
     }
 }
 
-const tempNav ={
+const tempNav = { 
     backgroundColor: 'gray',
     height: '50px'
 }
