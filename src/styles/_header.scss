@@ -14,7 +14,8 @@ nav {
     justify-content: space-around;
     transition: all .3 ease-out;
     list-style-type: none;
-}
+    position: fixed;
+} 
 
 nav ul {
     list-style-type: none;
@@ -41,8 +42,6 @@ a {
     margin-top: 20px;
 }
 
-
-
 nav > * > * {
     margin: 20px;
 }
@@ -51,6 +50,9 @@ nav > * > * {
     margin-top: 20px;
 }
 
+li > a:hover {
+    color: black;
+}
 
 
 
