@@ -53,9 +53,9 @@ nav > * > * {
     margin-top: 20px;
 }
 
-li > a:hover {
+li > ul > li a:hover {
     color: white;
-    transition: all 1s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 nav a {
