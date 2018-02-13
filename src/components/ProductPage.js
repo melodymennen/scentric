@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header'
 import axios from 'axios';
 
 class ProductPage extends Component {
@@ -31,6 +32,7 @@ class ProductPage extends Component {
     render() {
         return (
             <div>
+                <Header />
                 <img src={this.state.product.image_url} alt={this.state.product.name} />
                 <div>
                     {this.state.product.name}
