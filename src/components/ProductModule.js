@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 
-class ProductList extends Component {
+class ProductModule extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -12,7 +13,7 @@ class ProductList extends Component {
         return (
             <div>
                 <div className="home_all_products">
-                    <div><img src={this.props.pic} alt="product" width="300px"/></div>
+                    <div><Link to={`/products/${this.props.id}`}><img src={this.props.pic} alt="product" width="300px"/></Link></div>
                     <div>{this.props.name}</div>
                     <div>{this.props.price}</div>
                 </div>
@@ -22,4 +23,4 @@ class ProductList extends Component {
 }
 
 
-export default ProductList
+export default ProductModule

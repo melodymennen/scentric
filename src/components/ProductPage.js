@@ -8,6 +8,8 @@ class ProductPage extends Component {
         this.state = {
             product: {}
         }
+
+        this.addToCart = this.addToCart.bind(this)
     }
 
     componentDidMount(){
@@ -16,15 +18,26 @@ class ProductPage extends Component {
          })
     }
 
+    addToCart(){
+        const body = {
+            product_id: this.state.product.id
+        }
+
+        axios.post('/api/cart', body).then(response => {
+            console.log('item added to cart')
+        })
+    }
+
     render() {
         return (
             <div>
-                <img src={this.state.product.image_url} alt={this.state.product.name}/>
+                <img src={this.state.product.image_url} alt={this.state.product.name} />
                 <div>
                     {this.state.product.name}
                     ${this.state.product.price}
                     {this.state.product.description}
                 </div>
+                <button onClick={() => this.addToCart()} >Add To Cart</button>
             </div>
         )
     }
