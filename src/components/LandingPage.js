@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 class LandingPage extends Component {
     render() {
         return (
-            <div>
-                <div>SCENTRIC</div>
-                <Link to="/home">Enter Site</Link>
+            <div className="landingpage">
+                <div className="landingpage_title">SCENTRIC</div>
+                <div><img src="https://s3-us-west-1.amazonaws.com/scentric/cologneSampleImage.jpg" alt="hero" width="500px"/></div>
+                <Link className="noDecor" to="/home"><div className="enter">Enter Site</div></Link>
             </div>
         );
     }

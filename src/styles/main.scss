@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'header';
+@import 'landingpage';
 
 body {
   margin: 0;
@@ -31,6 +32,9 @@ body {
   width: 340px;
 }
 
-img {
-  height: 150px;
+.noDecor{
+  text-decoration: none;
 }
+// img {
+//   height: 150px;
+// }
