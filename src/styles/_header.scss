@@ -1,0 +1,58 @@
+.header_has-children {
+    display: none;
+    position: absolute;
+    background: #c6c6c64b;
+    transition: all .3s ease-out;
+    color: black;
+    margin: 5px;
+    padding: 5px;
+
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    transition: all .3 ease-out;
+    list-style-type: none;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li:hover ul {
+    display: flex;
+    flex-direction: column;
+    transition: all .3 ease-out;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header_show {
+    margin: 0px;
+    padding: 0px;
+}
+
+.header_logo {
+    height: 30px;
+    width: 30px;
+    margin-top: 20px;
+}
+
+
+
+nav > * > * {
+    margin: 20px;
+}
+
+.header-right {
+    margin-top: 20px;
+}
+
+
+
+
+
+
