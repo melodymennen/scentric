@@ -10,7 +10,7 @@ What the Fork Should I Make to Eat? is an online recipe organizer. You can add y
 * `Fork` and `clone` this repository.
 * `cd` into the project directory.
 * Run `yarn`.
-* Create a Postgres database. Use this project's `db/schema.sql` file to create the schema.
+* Create a Postgres database. Use this project's `db/init.sql` file to create the schema.
 * Copy the `env.example` file to a new file called `.env` and fill in the environmental variables.
 * Start the server with `nodemon`.
 * Start the web dev server with `yarn start`. In your browser, open `http://localhost:3000`.

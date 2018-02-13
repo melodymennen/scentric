@@ -25,6 +25,6 @@ qty INTEGER
 
 -- CREATE TABLE favorites (
 -- id SERIAL PRIMARY KEY, 
--- user_id INTEGER references users(id),
+-- user_id INTEGER references users(id) ON DELETE CASCADE,
 -- product_id INTEGER references products(id) ON DELETE CASCADE
 -- );
