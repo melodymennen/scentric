@@ -13,8 +13,6 @@ class DisplayProducts extends Component {
     componentDidMount(){
         axios.get(`/api/display/${this.props.match.params.category}`).then(response => {
             this.setState({ products: response.data })
-            console.log(response.data)
-            console.log(this.state.products)
         })
     }
 
