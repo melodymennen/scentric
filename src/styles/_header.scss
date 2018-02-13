@@ -2,7 +2,7 @@
     display: none;
     position: absolute;
     background: #c6c6c64b;
-    transition: all .3s ease-out;
+    transition: all .5s ease-in-out;
     color: black;
     padding: 5px;
 
@@ -11,10 +11,13 @@
 nav {
     display: flex;
     justify-content: space-around;
-    transition: all .3 ease-out;
+    transition: all .5 ease-in-out;
     list-style-type: none;
     position: fixed;
     width: 100%;
+    font-size: 20px;
+    color: black;
+    background-color: white;
 } 
 
 nav ul {
@@ -24,7 +27,7 @@ nav ul {
 nav ul li:hover ul {
     display: flex;
     flex-direction: column;
-    transition: all .3 ease-out;
+    transition: all .5 ease-in-out;
 }
 
 a {
@@ -43,7 +46,7 @@ a {
 }
 
 nav > * > * {
-    margin: 20px;
+    margin: 20px 20px 5px 20px;;
 }
 
 .header-right {
@@ -51,7 +54,22 @@ nav > * > * {
 }
 
 li > a:hover {
+    color: white;
+    transition: all 1s ease-in-out;
+}
+
+nav a {
     color: black;
+}
+
+.header-left {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px 5px 20px;
+}
+
+.header-left > * {
+    margin-left: 40px;
 }
 
 
