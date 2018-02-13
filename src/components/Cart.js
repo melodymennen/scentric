@@ -12,15 +12,18 @@ class Cart extends Component {
 
         this.state = {
             unique: [],
-            totals: {}
+            totals: {}, 
+            subtotal: 0
         }
 
         this.countDupes = this.countDupes.bind(this)
+        this.subtotal = this.subtotal.bind(this)
     }
 
     componentDidMount() {
         this.props.getCart().then(() => {
             this.countDupes()
+            this.subtotal()
         })
     }
 
@@ -38,6 +41,15 @@ class Cart extends Component {
         this.setState({unique: unique, totals: totals})
     }
 
+    subtotal (){
+        var prices = []
+        for( let i=0 ; i < this.props.cart.length ; i++) {
+            prices.push(+this.props.cart[i].price)
+        }
+        // var subtotal = _.sum(prices)
+        this.setState({subtotal: _.sum(prices)})
+    }
+
 
     render() {
         console.log(this.state.totals)
@@ -47,13 +59,19 @@ class Cart extends Component {
                 {(this.state.unique).map((e,i)=> {
                     return (
                         <div key={i}>
-                            <div><Link to={`/products/${e.id}`}><img src={e.image_url}/></Link></div>
-                            <div>{e.name}</div>
-                            <div>{e.price}</div>
-                            <div>qty: {this.state.totals[e.id]}</div>
+                            <div>
+                                <div><Link to={`/products/${e.id}`}><img src={e.image_url}/></Link></div>
+                                <div>{e.name}</div>
+                                <div>Product Price: ${e.price}</div>
+                            </div>
+                            <div>
+                                <div>qty: {this.state.totals[e.id]}</div>
+                                <div>Product Subtotal:  ${(e.price * this.state.totals[e.id]).toFixed(2)}</div>
+                            </div>
                         </div>
                     )
                 })}
+                <div>SubTotal: ${this.state.subtotal.toFixed(2)}</div>
             </div>
         )
     }
