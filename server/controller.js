@@ -29,5 +29,11 @@ module.exports = {
         db.add_to_cart([user, product_id, 1]).then(product => {
             res.status(200).json(product)
         }).catch(error => console.log('add to cart error', error))
+    },
+
+    getCart: (req ,res) => {
+        const db = req.app.get('db')
+        db.get_cart([]).then(cart => res.status(200).send(cart))
+        .catch( () => res.status(500).send())
     }
 }

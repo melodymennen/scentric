@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getProducts } from '../ducks/reducer'
 import Header from './Header'
 
-import ProductList from './ProductList'
+import ProductModule from './ProductModule'
 
 class Home extends Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class Home extends Component {
                 {this.props.products.slice(0,6).map(e => {
                     return (
                     <div key={e.id}>
-                        <ProductList 
+                        <ProductModule
                         name={e.name} 
                         description={e.description}
                         price={e.price}
