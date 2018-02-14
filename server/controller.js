@@ -28,7 +28,7 @@ module.exports = {
 
         db.check_carts([product_id]).then(response => {
             if(response.length){
-                db.update_cart([product_id]).then(() => {
+                db.increase_cart_qty([product_id]).then(() => {
                     res.status(200).send('success')
                 }).catch(error => console.log('update cart error',error))
             } else {
@@ -43,5 +43,21 @@ module.exports = {
         
         db.get_cart([]).then(cart => res.status(200).send(cart))
         .catch( () => res.status(500).send())
-    }
+    }, 
+    removeFromCart: (req, res) => {
+        const db = req.app.get('db')
+        const { product_id } = req.params                
+
+        db.remove_from_cart([product_id]).then(() => {
+            res.status(200).send('success')
+        }).catch(error => console.log('remove from cart error',error))        
+    },
+    decreaseCartQty: (req, res) => {
+        const db = req.app.get('db')
+        const { product_id } = req.body                
+
+        db.decrease_cart_qty([product_id]).then(() => {
+            res.status(200).send('success')
+        }).catch(error => console.log('decrease cart qty error',error))        
+    },
 }

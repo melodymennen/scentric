@@ -27,7 +27,8 @@ app.get('/api/display/:category', controller.getProductsByCategory)
 app.get('/api/products/:product_id', controller.getProduct)
 app.post('/api/cart', controller.addToCart)
 app.get('/api/cart', controller.getCart)
-
+app.delete('/api/cart/:product_id', controller.removeFromCart)
+app.patch('/api/cart', controller.decreaseCartQty)
 
 
 app.post('/login', (req, res) => {
