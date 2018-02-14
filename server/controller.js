@@ -30,7 +30,7 @@ module.exports = {
             if(response.length){
                 db.increase_cart_qty([product_id]).then(() => {
                     res.status(200).send('success')
-                }).catch(error => console.log('update cart error',error))
+                }).catch(error => console.log('update cart error', error))
             } else {
                  db.add_to_cart([user, product_id, 1]).then(() => {
                      res.status(200).send('success')
@@ -59,5 +59,5 @@ module.exports = {
         db.decrease_cart_qty([product_id]).then(() => {
             res.status(200).send('success')
         }).catch(error => console.log('decrease cart qty error',error))        
-    },
+    }
 }

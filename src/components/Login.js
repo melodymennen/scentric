@@ -7,7 +7,6 @@ import Header from './Header'
 
 
 
-
 class Login extends Component {
     constructor() {
         super()
@@ -35,7 +34,6 @@ class Login extends Component {
                 title: 'Scentric'
             }
           }
-
         this.lock = new Auth0Lock(process.env.REACT_APP_AUTH0_CLIENT_ID, process.env.REACT_APP_AUTH0_DOMAIN, options)
         this.lock.on('authenticated', authResult => {
             this.lock.getUserInfo(authResult.accessToken, (error, user) => {

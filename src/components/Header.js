@@ -37,7 +37,7 @@ export default class Header extends Component {
                             </li>
                         </ul>
                     </div>
-                    <Link to="/home" ><img src="https://files.slack.com/files-pri/T039C2PUY-F97R1SPDW/scentriclogo.png" alt="logo" className="header_logo" /></Link>
+                    <Link to="/home" ><img src="https://s3-us-west-1.amazonaws.com/scentric/favicon.ico" alt="logo" className="header_logo"/></Link>
                     <div className="header-right">
                         <Link to="">About</Link>
                         <Link to="/login">Login</Link>
