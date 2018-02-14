@@ -6,7 +6,7 @@ export default class Footer extends Component {
         return (
             <div className="footer-body">
                 <div>
-                    <Link to="">FAQ</Link>
+                    <Link to="/FAQ">FAQ</Link>
                     <Link to="">CONTACT</Link>
                 </div>
                 <div>
