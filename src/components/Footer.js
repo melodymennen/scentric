@@ -1,9 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Footer extends Component {
     render() {
         return (
-            <div></div>
-        );
+            <div className="footer-body">
+                <div>
+                    <Link to="">FAQ</Link>
+                    <Link to="">CONTACT</Link>
+                </div>
+                <div>
+                © 2018 Scentric, LLC. All rights reserved.
+                </div>
+            </div>
+        )
     }
 }

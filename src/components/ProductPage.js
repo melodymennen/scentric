@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Header from './Header'
+import Footer from './Footer'
 import axios from 'axios'
 
 class ProductPage extends Component {
@@ -42,6 +43,7 @@ class ProductPage extends Component {
                         <button onClick={() => this.addToCart()} >Add To Cart</button>
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }

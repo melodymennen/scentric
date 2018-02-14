@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import {getCart} from '../ducks/reducer'
 import axios from 'axios'
 import Header from './Header'
+import Footer from './Footer'
 import _ from 'lodash'
 
 
@@ -75,6 +76,28 @@ class Cart extends Component {
 
 
     render() {
+        const cart = this.props.cart.map((e)=> {
+            return (
+                <div key={e.id} className="cart-line-item-wrapper" >
+                    <div className="cart-line-item">
+                        <div className="cart-left" >
+                            <div><Link to={`/products/${e.id}`}><img src={e.image_url} alt={e.name}/></Link></div>
+                            <div className="cart-product-name"><Link to={`/products/${e.id}`}>{e.name}</Link></div>
+                            <button onClick={() => this.removeFromCart(e.id)}>remove</button>
+                            {/* <div>${e.price}</div> */}
+                        </div>
+                        <div className="cart-right" >
+                            <div className="cart-qty">
+                                <button onClick={() => this.decreaseQty(e.qty, e.id)} >-</button>
+                                {e.qty}
+                                <button onClick={() => this.increaseQty(e.id)}>+</button>
+                            </div>
+                            <div>${(e.price * e.qty).toFixed(2)}</div>
+                        </div>
+                    </div>
+                </div>
+            )
+        })
         return (
             <div>
                 <Header />
@@ -86,30 +109,13 @@ class Cart extends Component {
                             <div>Total</div>
                         </div>
                     </div>
-                    {this.props.cart.map((e)=> {
-                        return (
-                            <div key={e.id} className="cart-line-item-wrapper" >
-                                <div className="cart-line-item">
-                                    <div className="cart-left" >
-                                        <div><Link to={`/products/${e.id}`}><img src={e.image_url} alt={e.name}/></Link></div>
-                                        <div><Link to={`/products/${e.id}`}>{e.name}</Link></div>
-                                        <button onClick={() => this.removeFromCart(e.id)}>remove</button>
-                                        {/* <div>${e.price}</div> */}
-                                    </div>
-                                    <div className="cart-right" >
-                                        <div className="cart-qty">
-                                            <button onClick={() => this.decreaseQty(e.qty, e.id)} >-</button>
-                                            {e.qty}
-                                            <button onClick={() => this.increaseQty(e.id)}>+</button>
-                                        </div>
-                                        <div>${(e.price * e.qty).toFixed(2)}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })}
+                    {this.props.cart.length === 0 && 
+                        <div className="cart-no-items" >There are no items in your cart.</div>
+                    }
+                    {this.props.cart && cart}
                     <div className="cart-totals" >Order Subtotal: ${this.state.subtotal.toFixed(2)}</div>
                 </div>
+                <Footer />
             </div>
         )
     }
