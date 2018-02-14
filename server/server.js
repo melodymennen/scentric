@@ -64,10 +64,6 @@ app.get('/user-data', (req, res) => {
     res.json({ user: req.session.user })
 })
 
-const path = require('path')
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-})
 
 const port = process.env.SERVER_PORT
 app.listen(port, () => console.log('listening on port ' + port));
