@@ -34,7 +34,7 @@ class Login extends Component {
             <div>
                 <Header />
                 <h3>Click to Sign-In</h3>
-                <div><button onClick={this.login}>Log In</button></div>
+                <div className="login_button"><button onClick={this.login}>Log In</button></div>
             </div>
 
 

@@ -40,7 +40,7 @@ export default class Header extends Component {
                     <Link to="/home" ><img src="https://files.slack.com/files-pri/T039C2PUY-F97R1SPDW/scentriclogo.png" alt="logo" className="header_logo" /></Link>
                     <div className="header-right">
                         <Link to="">About</Link>
-                        <Link to="">Login</Link>
+                        <Link to="/login">Login</Link>
                         <Link to="/cart">Cart</Link>
                     </div>
                 </nav>

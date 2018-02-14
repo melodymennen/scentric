@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'header';
 @import 'landingpage';
+@import 'productmodule';
 
 body {
   margin: 0;
@@ -25,11 +26,9 @@ body {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: stretch;
-	align-content: stretch;
-}
-
-.home_all_products{
-  width: 340px;
+  align-content: stretch;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .noDecor{
@@ -38,3 +37,14 @@ body {
 // img {
 //   height: 150px;
 // }
+
+.login_button {
+  margin-top: 200px;
+  text-align: center;
+}
+
+.login_button > button {
+  height: 100px;
+  width: 150px;
+  border: none;
+}
