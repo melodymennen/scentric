@@ -18,10 +18,8 @@ class Login extends Component {
         var options = {
             additionalSignUpFields: [{
               name: "Name",
-              placeholder: "enter your name",
+              placeholder: "Enter Your Full-name",
               // The following properties are optional
-              prefill: "Please Enter Your Name",
-              icon: "https://s3-us-west-1.amazonaws.com/scentric/contact-1293388_960_720.png"
             }],
             
             allowAutocomplete: true,
