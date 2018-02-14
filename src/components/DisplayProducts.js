@@ -34,7 +34,9 @@ class DisplayProducts extends Component {
         return (
             <div>
                 <Header />
+                <div className="displayproducts_box-area">
                 {products}
+                </div>
             </div>
         )
     }
