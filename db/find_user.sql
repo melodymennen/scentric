@@ -1,1 +1,1 @@
-SELECT * FROM users WHERE auth0_id = $4 LIMIT 1
+SELECT * FROM users WHERE auth0_id = $1; 
