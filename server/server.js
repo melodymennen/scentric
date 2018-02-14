@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const massive = require('massive');
 const session = require('express-session');
 const controller = require('./controller');
+const axios = require('axios')
 
 require('dotenv').config();
 
@@ -41,8 +42,8 @@ app.post('/login', (req, res) => {
         req.session.user = {
             name: userData.name,
             email: userData.email,
-            auth0_id: userData.user_id,
-            pictureUrl: userData.picture
+            picture_Url: userData.picture,
+            auth0_id: userData.user_id
         }
         res.json({ user: req.session.user })
         app.get('db').find_user(userData.user_id).then(users => {
