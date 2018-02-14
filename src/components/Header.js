@@ -87,7 +87,7 @@ class Header extends Component {
                     <div className="header-right">
                         <Link to="">About</Link>
                         { !user && <a onClick={this.login}>Login</a>}
-                        { user && <Link to="/login">Account</Link>}
+                        { user && <Link to="/Account">Account</Link>}
                         <Link to="/cart">Cart</Link>
                     </div>
                 </nav>
