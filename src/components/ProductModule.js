@@ -16,14 +16,14 @@ class ProductModule extends Component {
                     <div className="productmodule_card">
                         <Link to={`/products/${this.props.id}`}>
                             <div className="productmodule_card-image">
-                                <img src={this.props.pic} alt="product" />
+                                <img src={this.props.pic} alt="product" width="200px" />
                             </div>
                             <div className="productmodules_card-body">
                                 <div className="productmodule_card-title">
                                     <h3>{this.props.name}</h3>
                                 </div>
                                 <div className="productmodule_card-excerpt">
-                                    <p>{this.props.price}</p>
+                                    <p>$ {this.props.price}</p>
                                 </div>
                             </div>
                         </Link>
