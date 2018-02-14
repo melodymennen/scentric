@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { login } from '../ducks/reducer'
 import axios from 'axios'
 import Header from './Header'
-import icon from '../styles/images/icons8-customer-26.png'
+
 
 
 
@@ -22,11 +22,13 @@ class Login extends Component {
               placeholder: "enter your name",
               // The following properties are optional
               prefill: "Please Enter Your Name",
-              icon: icon
+              icon: "https://s3-us-west-1.amazonaws.com/scentric/contact-1293388_960_720.png"
             }],
+            
             allowAutocomplete: true,
             // theme: {
             //     logo: '',
+
             //     primaryColor: '#2c3e50'
             //   },
             languageDictionary: {
