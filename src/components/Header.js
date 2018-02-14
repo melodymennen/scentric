@@ -1,8 +1,54 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import Auth0Lock from 'auth0-lock';
+import { connect } from 'react-redux';
+import { login } from '../ducks/reducer';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-export default class Header extends Component {
+class Header extends Component {
+    constructor() {
+        super()
+        this.lock = null
+        this.login = this.login.bind(this)
+    }
+
+    componentDidMount() {
+        var options = {
+            additionalSignUpFields: [{
+              name: "name",
+              placeholder: "Enter Your Full-name",
+            }],
+            auth: {
+                redirectUrl: 'http://localhost:3000/home',
+                responseType: 'token'
+            },
+            
+            allowAutocomplete: true,
+            // theme: {
+            //     logo: '',
+
+            //     primaryColor: '#2c3e50'
+            //   },
+            languageDictionary: {
+                title: 'Scentric'
+            }
+          }
+        this.lock = new Auth0Lock(process.env.REACT_APP_AUTH0_CLIENT_ID, process.env.REACT_APP_AUTH0_DOMAIN, options)
+        this.lock.on('authenticated', authResult => {
+            this.lock.getUserInfo(authResult.accessToken, (error, user) => {
+                axios.post('/login', {userId: user.sub}).then(response => {
+                    this.props.login(response.data.user)
+                    console.log(response.data.user)
+                })
+            })
+        })
+    }
+
+    login() {
+        this.lock.show()
+    }
     render() {
+        const { user } = this.props
         return (
             <div>
                 <nav>
@@ -40,7 +86,8 @@ export default class Header extends Component {
                     <Link to="/home" ><img src="https://s3-us-west-1.amazonaws.com/scentric/favicon.ico" alt="logo" className="header_logo"/></Link>
                     <div className="header-right">
                         <Link to="">About</Link>
-                        <Link to="/login">Login</Link>
+                        { !user && <a onClick={this.login}>Login</a>}
+                        { user && <Link to="/login">Account</Link>}
                         <Link to="/cart">Cart</Link>
                     </div>
                 </nav>
@@ -48,3 +95,12 @@ export default class Header extends Component {
         );
     }
 }
+
+
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, { login })(Header)
