@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ProductModule from './ProductModule'
 import Header from './Header'
+import Footer from './Footer'
 import axios from 'axios'
 
 class DisplayProducts extends Component {
@@ -14,6 +15,12 @@ class DisplayProducts extends Component {
 
     componentDidMount(){
         axios.get(`/api/display/${this.props.match.params.category}`).then(response => {
+            this.setState({ products: response.data })
+        })
+    }
+
+    componentWillReceiveProps(props){
+        axios.get(`/api/display/${props.match.params.category}`).then(response => {
             this.setState({ products: response.data })
         })
     }
@@ -37,6 +44,7 @@ class DisplayProducts extends Component {
                 <div className="displayproducts_box-area">
                 {products}
                 </div>
+                <Footer />
             </div>
         )
     }

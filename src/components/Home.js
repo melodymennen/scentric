@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getProducts } from '../ducks/reducer'
 import Header from './Header'
+import Footer from './Footer'
 
 import ProductModule from './ProductModule'
 
@@ -38,6 +39,7 @@ class Home extends Component {
                     )
                 })}
                 </div>
+                <Footer />
             </div>
         )
     }
