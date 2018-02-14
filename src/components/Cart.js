@@ -36,22 +36,33 @@ class Cart extends Component {
         return (
             <div>
                 <Header />
-                {this.props.cart.map((e,i)=> {
-                    return (
-                        <div key={i}>
-                            <div>
-                                <div><Link to={`/products/${e.id}`}><img src={e.image_url} alt={e.name}/></Link></div>
-                                <div>{e.name}</div>
-                                <div>Product Price: ${e.price}</div>
-                            </div>
-                            <div>
-                                <div>qty: {e.qty}</div>
-                                <div>Product Subtotal:  ${(e.price * e.qty).toFixed(2)}</div>
-                            </div>
+                <div className="cart-body">
+                    <div className="cart-column-names">
+                        <div className="cart-left"></div>
+                        <div className="cart-right">
+                            <div>Quantity</div>
+                            <div>Total</div>
                         </div>
-                    )
-                })}
-                <div>SubTotal: ${this.state.subtotal.toFixed(2)}</div>
+                    </div>
+                    {this.props.cart.map((e,i)=> {
+                        return (
+                            <div key={i} className="cart-line-item-wrapper" >
+                                <div className="cart-line-item">
+                                    <div className="cart-left" >
+                                        <div><Link to={`/products/${e.id}`}><img src={e.image_url} alt={e.name}/></Link></div>
+                                        <div><Link to={`/products/${e.id}`}>{e.name}</Link></div>
+                                        {/* <div>${e.price}</div> */}
+                                    </div>
+                                    <div className="cart-right" >
+                                        <div>{e.qty}</div>
+                                        <div>${(e.price * e.qty).toFixed(2)}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    <div className="cart-totals" >Order Subtotal: ${this.state.subtotal.toFixed(2)}</div>
+                </div>
             </div>
         )
     }
