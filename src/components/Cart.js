@@ -78,27 +78,12 @@ class Cart extends Component {
         return (
             <div>
                 <Header />
-<<<<<<< HEAD
                 <div className="cart-body">
                     <div className="cart-column-names">
                         <div className="cart-left"></div>
                         <div className="cart-right">
                             <div>Quantity</div>
                             <div>Total</div>
-=======
-                {this.props.cart.map((e,i)=> {
-                    return (
-                        <div key={i}>
-                            <div>
-                                <div><Link to={`/products/${e.id}`}><img src={e.image_url} alt={e.name}/></Link></div>
-                                <div>{e.name}</div>
-                                <div>Product Price: ${e.price}</div>
-                            </div>
-                            <div>
-                                <div>qty: {e.qty}</div>
-                                <div>Product Subtotal:  ${(e.price * e.qty).toFixed(2)}</div>
-                            </div>
->>>>>>> lisaBranch
                         </div>
                     </div>
                     {this.props.cart.map((e)=> {
