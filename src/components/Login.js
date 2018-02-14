@@ -6,6 +6,7 @@ import axios from 'axios'
 import Header from './Header'
 
 
+
 class Login extends Component {
     constructor() {
         super()
@@ -13,13 +14,23 @@ class Login extends Component {
         this.login = this.login.bind(this)
     }
 
-    componentDidMount() {
-        this.lock = new Auth0Lock(process.env.REACT_APP_AUTH0_CLIENT_ID, process.env.REACT_APP_AUTH0_DOMAIN)
+    componentWillMount() {
+        var options = {
+            allowAutocomplete: true,
+            // theme: {
+            //     logo: '',
+            //     primaryColor: '#2c3e50'
+            //   },
+            languageDictionary: {
+                title: 'Scentric'
+            }
+          }
+        this.lock = new Auth0Lock(process.env.REACT_APP_AUTH0_CLIENT_ID, process.env.REACT_APP_AUTH0_DOMAIN, options)
         this.lock.on('authenticated', authResult => {
             this.lock.getUserInfo(authResult.accessToken, (error, user) => {
-                axios.post('/login', { userId: user.sub }).then(response => {
+                axios.post('/login', {userId: user.sub}).then(response => {
                     this.props.login(response.data.user)
-                    this.props.history.push('/Home')
+                    this.props.history.push('/home')
                 })
             })
         })
@@ -31,10 +42,10 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div >
                 <Header />
                 <h3>Click to Sign-In</h3>
-                <div><button onClick={this.login}>Log In</button></div>
+                <div className="login-body"><button onClick={this.login}>Log In</button></div>
             </div>
 
 
