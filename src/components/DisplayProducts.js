@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Header from './Header';
-import axios from 'axios';
+import React, { Component } from 'react'
+import ProductModule from './ProductModule'
+import Header from './Header'
+import axios from 'axios'
 
 class DisplayProducts extends Component {
     constructor(){
@@ -21,9 +21,13 @@ class DisplayProducts extends Component {
     render() {
         var products = this.state.products.map(item => {
             return (
-                <div key={item.id}>
-                    <Link to={`/products/${item.id}`}><img src={item.image_url} alt={item.name} /> </Link>
-                </div>
+                 <ProductModule
+                 name={item.name} 
+                 description={item.description}
+                 price={item.price}
+                 pic={item.image_url}
+                 id={item.id}
+                 />
             )}
         )
 
@@ -36,4 +40,4 @@ class DisplayProducts extends Component {
     }
 }
 
-export default DisplayProducts;
+export default DisplayProducts
