@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from './Header'
+import MiniCart from './MiniCart'
 
 export default class Checkout extends Component {
     constructor(){
@@ -150,11 +151,8 @@ export default class Checkout extends Component {
                                 placeholder="Zip Code"/>
                             </div>
                         </div>
-                    <div className="checkout_summary">
-                        <div>Checkout Summary</div>
-                        <div>
-
-                        </div>
+                    <div> 
+                        <MiniCart/>
                     </div>
                 </div>
             </div>

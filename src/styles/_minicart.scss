@@ -1,0 +1,24 @@
+.minicart_flex{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+    align-items: stretch;
+    padding: 10px;
+}
+
+.minicart_wrapper{
+    padding: 0 20px;
+    padding-top: 10px;
+}
+
+.minicart_wrapper > div{
+    padding: 3px 0;
+    font-size: 10pt;
+}
+
+.minicart_summary{
+    font-size: 16pt;
+    padding: 20px;
+    padding-bottom: 30px;
+}
