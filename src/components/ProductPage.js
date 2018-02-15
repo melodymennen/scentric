@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Header from './Header'
-import axios from 'axios';
+import Footer from './Footer'
+import axios from 'axios'
 
 class ProductPage extends Component {
     constructor(){
@@ -33,13 +34,16 @@ class ProductPage extends Component {
         return (
             <div>
                 <Header />
-                <img src={this.state.product.image_url} alt={this.state.product.name} />
-                <div>
-                    {this.state.product.name}
-                    ${this.state.product.price}
-                    {this.state.product.description}
+                <div className="product-page-body">
+                    <img src={this.state.product.image_url} alt={this.state.product.name} />
+                    <div className="product-page-info">
+                        <div className="product-page-name">{this.state.product.name}</div>
+                        <div className="product-page-price">${this.state.product.price}</div>
+                        <div className="product-page-description">{this.state.product.description}</div>
+                        <button onClick={() => this.addToCart()} >Add To Cart</button>
+                    </div>
                 </div>
-                <button onClick={() => this.addToCart()} >Add To Cart</button>
+                <Footer />
             </div>
         )
     }

@@ -6,7 +6,8 @@ import DisplayProducts from './components/DisplayProducts'
 import ProductPage from './components/ProductPage'
 import Checkout from './components/Checkout'
 import Cart from './components/Cart'
-import Login from './components/Login'
+import Account from './components/Account'
+import FAQ from './components/FAQ'
 
 
 export default (
@@ -17,6 +18,7 @@ export default (
         <Route path="/products/:product_id" component = { ProductPage } />
         <Route path="/Checkout" component = { Checkout } />
         <Route path="/Cart" component = { Cart } />
-        <Route path="/Login" component = { Login } />
+        <Route path="/Account" component = { Account } />
+        <Route path="/FAQ" component = { FAQ } />
     </Switch>
 )

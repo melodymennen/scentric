@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 import Rxjs from 'rxjs';
 
@@ -23,7 +24,58 @@ export default class Header extends Component {
         })
       }
 
+=======
+import Auth0Lock from 'auth0-lock';
+import { connect } from 'react-redux';
+import { login } from '../ducks/reducer';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+class Header extends Component {
+    constructor() {
+        super()
+        this.lock = null
+        this.login = this.login.bind(this)
+    }
+
+    componentDidMount() {
+        var options = {
+            additionalSignUpFields: [{
+              name: "name",
+              placeholder: "Enter Your Full-name",
+            }],
+            auth: {
+                redirectUrl: 'http://localhost:3000/home',
+                responseType: 'token'
+            },
+            
+            allowAutocomplete: true,
+            // theme: {
+            //     logo: '',
+
+            //     primaryColor: '#2c3e50'
+            //   },
+            languageDictionary: {
+                title: 'Scentric'
+            }
+          }
+        this.lock = new Auth0Lock(process.env.REACT_APP_AUTH0_CLIENT_ID, process.env.REACT_APP_AUTH0_DOMAIN, options)
+        this.lock.on('authenticated', authResult => {
+            this.lock.getUserInfo(authResult.accessToken, (error, user) => {
+                axios.post('/login', {userId: user.sub}).then(response => {
+                    this.props.login(response.data.user)
+                    console.log(response.data.user)
+                })
+            })
+        })
+    }
+
+    login() {
+        this.lock.show()
+    }
+>>>>>>> 0d821d0d702931908ee3a3d2415edde673727a9d
     render() {
+        const { user } = this.props
         return (
             <div>
                 <nav className={`nav ${this.state.isMin ? 'header_nav-move' : ''}`}>
@@ -58,10 +110,11 @@ export default class Header extends Component {
                             </li>
                         </ul>
                     </div>
-                    <Link to="/home" ><img src="https://files.slack.com/files-pri/T039C2PUY-F97R1SPDW/scentriclogo.png" alt="logo" className="header_logo" /></Link>
+                    <Link to="/home" ><img src="https://s3-us-west-1.amazonaws.com/scentric/favicon.ico" alt="logo" className="header_logo"/></Link>
                     <div className="header-right">
                         <Link to="">About</Link>
-                        <Link to="/login">Login</Link>
+                        { !user && <a onClick={this.login}>Login</a>}
+                        { user && <Link to="/Account">Account</Link>}
                         <Link to="/cart">Cart</Link>
                     </div>
                 </nav>
@@ -69,3 +122,12 @@ export default class Header extends Component {
         );
     }
 }
+
+
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, { login })(Header)

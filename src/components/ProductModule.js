@@ -23,7 +23,7 @@ class ProductModule extends Component {
                                     <h3>{this.props.name}</h3>
                                 </div>
                                 <div className="productmodule_card-excerpt">
-                                    <p>{this.props.price}</p>
+                                    <p>$ {this.props.price}</p>
                                 </div>
                             </div>
                         </Link>

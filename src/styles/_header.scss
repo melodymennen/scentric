@@ -1,25 +1,30 @@
 .header_has-children {
     display: none;
     position: absolute;
-    background: #c6c6c64b;
+    background: white;
     transition: all .5s ease-in-out;
     color: black;
     padding: 5px;
-
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 nav {
     display: flex;
     justify-content: space-around;
-    transition: all .5 ease-in-out;
+    transition: all .3 ease-in-out;
     list-style-type: none;
     position: fixed;
     width: 100%;
     font-size: 20px;
     color: black;
     background-color: white;
+<<<<<<< HEAD
     z-index: 10;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+=======
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    z-index: 10;
+>>>>>>> 0d821d0d702931908ee3a3d2415edde673727a9d
 } 
 
 nav ul {
@@ -50,8 +55,19 @@ nav > * > * {
     margin: 20px 20px 5px 20px;;
 }
 
+<<<<<<< HEAD
+=======
+.header-right {
+    margin-top: 20px;
+
+    > a {
+        cursor: pointer;
+    }
+}
+
+>>>>>>> 0d821d0d702931908ee3a3d2415edde673727a9d
 li > ul > li a:hover {
-    color: white;
+    color: gray;
     transition: all .5s ease-in-out;
 }
 
@@ -66,9 +82,10 @@ nav a {
 }
 
 .header-left > * {
-    margin-left: 40px;
+    margin-left: 40px
 }
 
+<<<<<<< HEAD
 .header-right {
     margin-top: 20px;    
 
@@ -92,3 +109,8 @@ nav a {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     transition: all .2s ease-in-out;
 }
+=======
+.header_show > li:hover {
+    background-color: white;
+}
+>>>>>>> 0d821d0d702931908ee3a3d2415edde673727a9d

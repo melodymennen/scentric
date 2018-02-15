@@ -25,15 +25,39 @@ module.exports = {
         const db =  req.app.get('db')
         const { user } = req.session
         const { product_id } = req.body        
-        
-        db.add_to_cart([user, product_id, 1]).then(product => {
-            res.status(200).json(product)
-        }).catch(error => console.log('add to cart error', error))
-    },
 
+        db.check_carts([product_id]).then(response => {
+            if(response.length){
+                db.increase_cart_qty([product_id]).then(() => {
+                    res.status(200).send('success')
+                }).catch(error => console.log('update cart error', error))
+            } else {
+                 db.add_to_cart([user, product_id, 1]).then(() => {
+                     res.status(200).send('success')
+                 }).catch(error => console.log('add to cart error', error))
+            }
+        }).catch(error => console.log('check carts error', error)) 
+    },
     getCart: (req ,res) => {
         const db = req.app.get('db')
+        
         db.get_cart([]).then(cart => res.status(200).send(cart))
         .catch( () => res.status(500).send())
+    }, 
+    removeFromCart: (req, res) => {
+        const db = req.app.get('db')
+        const { product_id } = req.params                
+
+        db.remove_from_cart([product_id]).then(() => {
+            res.status(200).send('success')
+        }).catch(error => console.log('remove from cart error',error))        
+    },
+    decreaseCartQty: (req, res) => {
+        const db = req.app.get('db')
+        const { product_id } = req.body                
+
+        db.decrease_cart_qty([product_id]).then(() => {
+            res.status(200).send('success')
+        }).catch(error => console.log('decrease cart qty error',error))        
     }
 }

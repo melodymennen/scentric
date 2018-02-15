@@ -1,0 +1,20 @@
+.footer-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    div {
+        margin: 20px 0;
+        text-align: center;
+    }
+    a {
+        margin: 20px;
+        color: black;
+        &:visited {
+            color: black;
+        }
+        &:hover {
+            color: rgba(0,0,0,.5);
+        }
+    }
+}
