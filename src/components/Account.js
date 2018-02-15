@@ -13,7 +13,7 @@ class Account extends Component {
                     <div><strong>{user.name}</strong></div>
                     <div><strong>{user.email}</strong></div>
                     <div><strong>{user.auth0_id}</strong></div>
-                    <div><img alt="user picture" src={user.picture_Url}/></div>
+                    <div><img alt="user" src={user.picture_Url}/></div>
                 </div>}
             </div>
         );

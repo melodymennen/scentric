@@ -51,7 +51,7 @@ class Header extends Component {
         const { user } = this.props
         return (
             <div>
-                <nav className={`nav ${this.state.isMin ? 'header_nav-move' : ''}`}>
+                <nav>
                     <div className="header-left">
                         <ul className="header_show">
                             <li><Link to="/display/perfume">Perfume</Link>
