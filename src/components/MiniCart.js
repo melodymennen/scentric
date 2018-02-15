@@ -2,15 +2,19 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import { getCart } from '../ducks/reducer'
+import _ from 'lodash'
 
 
 class MiniCart extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            subtotals: 0,
+            subQty: 0
         }
 
         this.getCart = this.getCart.bind(this)
+        this.subtotal = this.subtotal.bind(this)
     }
 
     componentDidMount(){
@@ -18,8 +22,26 @@ class MiniCart extends Component {
     }
 
     getCart(){
-        this.props.getCart()
+        this.props.getCart().then(() => {
+            this.subtotal()
+        })
     }
+
+    subtotal (){
+        var prices = []
+        var qty = []
+        for( let i=0 ; i < this.props.cart.length ; i++) {
+            prices.push(+(this.props.cart[i].price*this.props.cart[i].qty))
+        }
+        for( let i=0; i < this.props.cart.length; i++){
+            qty.push(+(this.props.cart[i].qty))
+        }
+        this.setState({subtotals: _.sum(prices)})
+        this.setState({subQty: _.sum(qty)})
+
+    }
+
+    
 
 
     render() {
@@ -31,14 +53,19 @@ class MiniCart extends Component {
                     <div className="minicart_wrapper">
                         <div style={name}>{e.name}</div>
                         <div>Qty: {e.qty}</div>
-                        <div>Total Price: ${e.price * e.qty}</div>
                     </div>
+                        <div className="minicart_producttotal">${(e.price * e.qty).toFixed(2)}</div>
             </div>)
         })
         return (
-            <div>
+            <div >
                 <div className="minicart_summary">Cart Summary</div>
-                {cart}
+                    {cart}
+                    <div className="minicart_ordertotals">Subtotal ({this.state.subQty} Items): ${this.state.subtotals.toFixed(2)}
+                    <div>Shipping(Flat Rate): $5.00</div>
+                    <div>Tax: ${(this.state.subtotals * .06).toFixed(2)}</div>
+                    <div className="minicart_ordersubtotals"> Order Subtotal: ${((this.state.subtotals * .06) + this.state.subtotals + 5).toFixed(2)} </div>
+                </div>
             </div>
         )
     }

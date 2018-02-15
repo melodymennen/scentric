@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import Header from './Header'
 import MiniCart from './MiniCart'
@@ -151,8 +152,11 @@ export default class Checkout extends Component {
                                 placeholder="Zip Code"/>
                             </div>
                         </div>
-                    <div> 
+                    <div className="checkout_minicart"> 
                         <MiniCart/>
+                        <div className="checkout_button_tocart">
+                            <Link to="/cart"><button>Back to Cart</button></Link>
+                        </div>
                     </div>
                 </div>
             </div>

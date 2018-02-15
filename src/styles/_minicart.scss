@@ -2,14 +2,16 @@
     display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	justify-content: space-around;
+	justify-content: center;
     align-items: stretch;
     padding: 10px;
+    letter-spacing: .7pt;
 }
 
 .minicart_wrapper{
     padding: 0 20px;
     padding-top: 10px;
+    width: 200px;
 }
 
 .minicart_wrapper > div{
@@ -17,8 +19,28 @@
     font-size: 10pt;
 }
 
+.minicart_producttotal{
+    padding: 10px;
+}
+
 .minicart_summary{
     font-size: 16pt;
-    padding: 20px;
-    padding-bottom: 30px;
+    padding: 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(83, 83, 83, 0.267);
+}
+
+.minicart_ordertotals{
+    padding-top: 25px;
+    text-align: right;
+    border-top: 1px solid rgba(83, 83, 83, 0.267);
+}
+
+.minicart_ordertotals div{
+    padding: 3px 0;
+}
+
+.minicart_ordersubtotals{
+    margin-top: 10px;
+    font-weight: bold;
 }

@@ -110,10 +110,10 @@ class Cart extends Component {
                         </div>
                     </div>
                     {this.props.cart.length === 0 && 
-                        <div className="cart-no-items" >There are no items in your cart.</div>
+                        <div className="cart-no-items">There are no items in your cart.</div>
                     }
                     {this.props.cart && cart}
-                    <div className="cart-totals" >Order Subtotal: ${this.state.subtotal.toFixed(2)}</div>
+                    <div className="cart-totals">Order Subtotal: ${this.state.subtotal.toFixed(2)}</div>
                 <Link to="/checkout"><div className="cart_checkout_button"><button>Check Out</button></div></Link>
                 </div>
                 <Footer />
