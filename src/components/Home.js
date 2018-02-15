@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getProducts } from '../ducks/reducer'
+import functions from '../utilities/functions'
 import Header from './Header'
 import Footer from './Footer'
 
@@ -17,6 +18,7 @@ class Home extends Component {
     
     componentDidMount() {
         this.props.getProducts()
+        functions.generateId()
     }
 
     render() {

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {getCart} from '../ducks/reducer'
+import functions from '../utilities/functions'
 import axios from 'axios'
 import Header from './Header'
 import Footer from './Footer'
@@ -25,6 +26,7 @@ class Cart extends Component {
 
     componentDidMount() {
         this.getCart()
+        functions.generateId()
     }
 
     getCart(){
@@ -52,7 +54,7 @@ class Cart extends Component {
         if(qty === 1) {
             this.removeFromCart(product_id)
         } else {
-            axios.patch('/api/cart', body).then(() => {
+            axios.patch('/api/cart', body).then((response) => {
                 console.log('item removed from cart')
                 this.getCart()
             })
@@ -110,10 +112,13 @@ class Cart extends Component {
                         </div>
                     </div>
                     {this.props.cart.length === 0 && 
-                        <div className="cart-no-items" >There are no items in your cart.</div>
+                        <div className="cart-no-items">There are no items in your cart.</div>
                     }
                     {this.props.cart && cart}
-                    <div className="cart-totals" >Order Subtotal: ${this.state.subtotal.toFixed(2)}</div>
+                    <div className="cart-totals">
+                        Order Subtotal: ${this.state.subtotal.toFixed(2)}
+                        <Link to="/checkout"><div className="cart_checkout_button"><button>Check Out</button></div></Link>
+                    </div>
                 </div>
                 <Footer />
             </div>

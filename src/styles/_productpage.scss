@@ -15,13 +15,22 @@
     display: inherit;
     flex-direction: column;
     padding: 30px;
-    div {
+    div {        
         padding: 10px;
     }
     button {
         width: 150px;
         padding: 10px;
         margin: 10px;
+        outline: none;
+        cursor: pointer;
+        font-size: 14px;
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            color: rgba(0,0,0,.5);
+        }
     }
 }
 

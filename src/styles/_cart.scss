@@ -44,6 +44,7 @@
     width: 60%;
     justify-content: space-between;
     a {
+        color: black;
         &:visited {
             color: black;
         }
@@ -70,7 +71,7 @@
 
 .cart-totals {
     text-align: right;
-    padding: 10px 40px;
+    padding: 10px 50px;
 }
 
 .cart-qty {
@@ -95,4 +96,18 @@
 .cart-no-items {
     margin: 30px;
     text-align: center;
+}
+
+.cart_checkout_button button{
+    padding: 10px 20px;
+    outline: none;
+    cursor: pointer;
+    margin: 10px 0;
+    font-size: 14px;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        color: rgba(0,0,0,.5);
+    }
 }

@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
+import functions from '../utilities/functions'
 import Header from './Header'
 import Footer from './Footer'
 
 export default class  extends Component {
+
+    componentDidMount(){
+        functions.generateId()
+    }
+
     render() {
         return (
             <div>

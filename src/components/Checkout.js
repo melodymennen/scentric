@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
+import functions from '../utilities/functions'
 import Header from './Header'
+import MiniCart from './MiniCart'
 
 export default class Checkout extends Component {
     constructor(){
@@ -14,6 +16,10 @@ export default class Checkout extends Component {
                 inputState: '',
                 inputZipCode: '',
             }
+    }
+
+    componentDidMount(){
+        functions.generateId()
     }
 
     handleNameChange(value){
@@ -150,10 +156,10 @@ export default class Checkout extends Component {
                                 placeholder="Zip Code"/>
                             </div>
                         </div>
-                    <div className="checkout_summary">
-                        <div>Checkout Summary</div>
-                        <div>
-
+                    <div className="checkout_minicart"> 
+                        <MiniCart/>
+                        <div className="checkout_button_tocart">
+                            <Link to="/cart"><button>Back to Cart</button></Link>
                         </div>
                     </div>
                 </div>
