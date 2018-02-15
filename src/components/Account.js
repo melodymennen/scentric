@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import Header from './Header';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import Header from './Header'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
+import functions from '../utilities/functions'
 
 class Account extends Component {
     constructor() {
@@ -22,6 +23,7 @@ class Account extends Component {
         setTimeout(() => {
             this.setState({ menuShow: true })
         }, 1000)
+        functions.generateId()
     }
     openInfo = () => {
         this.setState({
@@ -135,7 +137,7 @@ class Account extends Component {
                     </div>}
                 </div>
             </div>
-        );
+        )
     }
 }
 

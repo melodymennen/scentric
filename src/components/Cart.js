@@ -88,7 +88,7 @@ class Cart extends Component {
                         <div className="cart-left"></div>
                         <div className="cart-right">
                             <div>Quantity</div>
-                         0   <div>Total</div>
+                            <div>Total</div>
                         </div>
                     </div>
                     {this.props.cart.length === 0 && 
@@ -115,4 +115,5 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     getCart: getCart
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
