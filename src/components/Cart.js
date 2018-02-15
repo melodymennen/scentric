@@ -114,7 +114,7 @@ class Cart extends Component {
                     }
                     {this.props.cart && cart}
                     <div className="cart-totals">Order Subtotal: ${this.state.subtotal.toFixed(2)}</div>
-                <Link to="/checkout"><div className="cart_checkout_button"><button>Check Out</button></div></Link>
+                    <Link to="/checkout"><div className="cart_checkout_button"><button>Check Out</button></div></Link>
                 </div>
                 <Footer />
             </div>

@@ -26,8 +26,6 @@ module.exports = {
         const { generatedId } = req.session
         const { product_id } = req.body   
         
-        console.log('controller', req.session)
-
         db.check_carts([product_id]).then(response => {
             if(response.length){
                 db.increase_cart_qty([product_id]).then(() => {
@@ -42,8 +40,9 @@ module.exports = {
     },
     getCart: (req ,res) => {
         const db = req.app.get('db')
-        
-        db.get_cart([]).then(cart => res.status(200).send(cart))
+        const { generatedId } = req.session 
+
+        db.get_cart([generatedId]).then(cart => res.status(200).send(cart))
         .catch( () => res.status(500).send())
     }, 
     removeFromCart: (req, res) => {
