@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import functions from '../utilities/functions'
+import { connect } from 'react-redux'
+import { getCart } from '../ducks/reducer'
 import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
@@ -34,6 +36,8 @@ class ProductPage extends Component {
 
         axios.post('/api/cart', body).then(response => {
             console.log('item added to cart')
+        }).then(() => {
+            this.props.getCart()
         })
     }
 
@@ -56,4 +60,13 @@ class ProductPage extends Component {
     }
 }
 
-export default ProductPage;
+function mapStateToProps(state){
+    return {
+        cart: state.cart
+    }
+}
+
+const mapDispatchToProps = {
+    getCart: getCart
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);
