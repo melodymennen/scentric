@@ -1,11 +1,32 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Rxjs from 'rxjs';
+
 
 export default class Header extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+          isMin: false
+        }
+      }
+    
+      componentDidMount(){
+        Rxjs.Observable.fromEvent(window, 'scroll')
+        .debounceTime(20)
+        .subscribe(e => {
+          if(window.scrollY > 15) {
+            this.setState({ isMin:true })
+          } else {
+            this.setState({ isMin: false })
+          }
+        })
+      }
+
     render() {
         return (
             <div>
-                <nav>
+                <nav className={`nav ${this.state.isMin ? 'header_nav-move' : ''}`}>
                     <div className="header-left">
                         <ul className="header_show">
                             <li><Link to="/display/perfume">Perfume</Link>

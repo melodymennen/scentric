@@ -18,8 +18,8 @@ nav {
     font-size: 20px;
     color: black;
     background-color: white;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     z-index: 10;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 } 
 
 nav ul {
@@ -29,7 +29,6 @@ nav ul {
 nav ul li:hover ul {
     display: flex;
     flex-direction: column;
-    transition: all .5 ease-in-out;
 }
 
 a {
@@ -87,4 +86,9 @@ nav a {
     border-top: 4px solid #000;
     border-bottom: 4px solid #000;
     padding: 6px 0;
+}
+
+.header_nav-move {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    transition: all .2s ease-in-out;
 }
