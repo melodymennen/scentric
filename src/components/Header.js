@@ -20,7 +20,7 @@ class Header extends Component {
             }],
             auth: {
                 redirectUrl: 'http://localhost:3000/home',
-                responseType: 'token'
+                responseType: 'token',
             },
             
             allowAutocomplete: true,
