@@ -28,7 +28,7 @@ class DisplayProducts extends Component {
     render() {
         var products = this.state.products.map(item => {
             return (
-                 <ProductModule
+                 <ProductModule key={item.id}
                  name={item.name} 
                  description={item.description}
                  price={item.price}
