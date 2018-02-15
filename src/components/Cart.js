@@ -52,7 +52,7 @@ class Cart extends Component {
         if(qty === 1) {
             this.removeFromCart(product_id)
         } else {
-            axios.patch('/api/cart', body).then(() => {
+            axios.patch('/api/cart', body).then((response) => {
                 console.log('item removed from cart')
                 this.getCart()
             })
