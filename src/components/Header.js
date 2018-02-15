@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
-import Auth0Lock from 'auth0-lock';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { getCart } from '../ducks/reducer'
+import { login } from '../ducks/reducer'
+import { connect } from 'react-redux'
+import Auth0Lock from 'auth0-lock'
+import axios from 'axios'
 import _ from 'lodash'
-import { connect } from 'react-redux';
-import { getCart } from '../ducks/reducer';
-import { login } from '../ducks/reducer';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 class Header extends Component {
     constructor() {
         super()
-        this.state = {
-            subQty: 0
-        }
+    
         this.lock = null
         this.login = this.login.bind(this)
         this.getCart = this.getCart.bind(this)
@@ -56,13 +54,7 @@ class Header extends Component {
     }
 
     getCart(){
-        this.props.getCart().then(() => {
-            var qty = []
-            for( let i=0; i < this.props.cart.length; i++){
-            qty.push(+(this.props.cart[i].qty))
-                }
-            this.setState({subQty: _.sum(qty)})
-        })
+        this.props.getCart()
     }
 
     render() {
@@ -106,7 +98,7 @@ class Header extends Component {
                         <Link to="">About</Link>
                         { !user && <a onClick={this.login}>Login</a>}
                         { user && <Link to="/Account">Account</Link>}
-                        <Link to="/cart">Cart</Link>( {this.state.subQty} )
+                        <Link to="/cart">Cart</Link>( {this.props.cart.qty} )
                     </div>
                 </nav>
             </div>
