@@ -41,7 +41,7 @@ module.exports = {
     getCart: (req ,res) => {
         const db = req.app.get('db')
         const { generatedId } = req.session 
-
+        console.log(generatedId);
         db.get_cart([generatedId]).then(cart => res.status(200).send(cart))
         .catch( () => res.status(500).send())
     }, 

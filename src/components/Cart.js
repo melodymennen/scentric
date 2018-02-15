@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {getCart} from '../ducks/reducer'
+import { getCart } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import axios from 'axios'
 import Header from './Header'
@@ -10,29 +10,17 @@ import _ from 'lodash'
 
 
 class Cart extends Component {
-    constructor (){
-        super()
 
-        this.state = {
-            subtotal: 0
-        }
-
-        this.subtotal = this.subtotal.bind(this)
-        this.increaseQty = this.increaseQty.bind(this)
-        this.decreaseQty = this.decreaseQty.bind(this)
-        this.getCart = this.getCart.bind(this)
-        this.removeFromCart = this.removeFromCart.bind(this)
+    componentWillMount(){
+        functions.generateId()        
     }
 
     componentDidMount() {
         this.getCart()
-        functions.generateId()
     }
 
     getCart(){
-        this.props.getCart().then(() => {
-            this.subtotal()
-        })
+        this.props.getCart()
     }
 
     increaseQty(product_id){
@@ -68,17 +56,9 @@ class Cart extends Component {
         })
     }
 
-    subtotal (){
-        var prices = []
-        for( let i=0 ; i < this.props.cart.length ; i++) {
-            prices.push(+(this.props.cart[i].price*this.props.cart[i].qty))
-        }
-        this.setState({subtotal: _.sum(prices)})
-    }
-
 
     render() {
-        const cart = this.props.cart.map((e)=> {
+        const cart = this.props.cart.cart.map((e)=> {
             return (
                 <div key={e.id} className="cart-line-item-wrapper" >
                     <div className="cart-line-item">
@@ -116,7 +96,7 @@ class Cart extends Component {
                     }
                     {this.props.cart && cart}
                     <div className="cart-totals">
-                        Order Subtotal: ${this.state.subtotal.toFixed(2)}
+                        Order Subtotal: ${this.props.cart.subtotal.toFixed(2)}
                         <Link to="/checkout"><div className="cart_checkout_button"><button>Check Out</button></div></Link>
                     </div>
                 </div>
