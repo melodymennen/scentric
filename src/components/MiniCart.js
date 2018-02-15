@@ -73,7 +73,8 @@ class MiniCart extends Component {
 
 const name = {
     fontSize: '12pt',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textTransform: 'capitalize'
 }
 
 function mapStateToProps(state){

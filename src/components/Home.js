@@ -20,6 +20,7 @@ class Home extends Component {
     }
 
     render() {
+        console.log(navigator.userAgent)
         return (
             <div>
                 <Header />
