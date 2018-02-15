@@ -26,9 +26,9 @@ module.exports = {
         const { generatedId } = req.session
         const { product_id } = req.body   
         
-        db.check_carts([product_id]).then(response => {
+        db.check_carts([product_id, generatedId]).then(response => {
             if(response.length){
-                db.increase_cart_qty([product_id]).then(() => {
+                db.increase_cart_qty([product_id, generatedId]).then(() => {
                     res.status(200).send('success')
                 }).catch(error => console.log('update cart error', error))
             } else {
@@ -55,9 +55,10 @@ module.exports = {
     },
     decreaseCartQty: (req, res) => {
         const db = req.app.get('db')
-        const { product_id } = req.body                
+        const { product_id } = req.body  
+        const { generatedId } = req.session                      
 
-        db.decrease_cart_qty([product_id]).then(() => {
+        db.decrease_cart_qty([product_id, generatedId]).then(() => {
             res.status(200).send('success')
         }).catch(error => console.log('decrease cart qty error',error))        
     }
