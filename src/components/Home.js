@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getProducts } from '../ducks/reducer'
+import functions from '../utilities/functions'
 import Header from './Header'
 import Footer from './Footer'
-import axios from 'axios'
 
 import ProductModule from './ProductModule'
 
@@ -18,25 +18,10 @@ class Home extends Component {
     
     componentDidMount() {
         this.props.getProducts()
-        this.generateId()
-    }
-
-    generateId(){
-        var generatedId = Math.floor((Math.random() * 100000000) + 1) 
-        console.log(generatedId)
-        // localStorage.removeItem("generatedId")
-        if(localStorage.getItem("generatedId")){
-            axios.post('/api/generatedId', {generatedId: localStorage.getItem("generatedId")})
-            console.log(localStorage.getItem("generatedId"))
-        } else {
-            localStorage.setItem('generatedId', generatedId)
-            axios.post('/api/generatedId', {generateId: localStorage.getItem("generatedId")})
-            console.log(localStorage.getItem("generatedId"))  
-        }
+        functions.generateId()
     }
 
     render() {
-        console.log(navigator.userAgent)
         return (
             <div>
                 <Header />

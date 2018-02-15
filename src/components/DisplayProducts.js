@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ProductModule from './ProductModule'
+import functions from '../utilities/functions'
 import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
@@ -17,6 +18,7 @@ class DisplayProducts extends Component {
         axios.get(`/api/display/${this.props.match.params.category}`).then(response => {
             this.setState({ products: response.data })
         })
+        functions.generateId()
     }
 
     componentWillReceiveProps(props){
@@ -24,6 +26,7 @@ class DisplayProducts extends Component {
             this.setState({ products: response.data })
         })
     }
+
 
     render() {
         var products = this.state.products.map(item => {

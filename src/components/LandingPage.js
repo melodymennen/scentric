@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import functions from '../utilities/functions'
 
 class LandingPage extends Component {
+
+    componentDidMount(){
+        functions.generateId()
+    }
+
     render() {
         return (
             <div className="landingpage">

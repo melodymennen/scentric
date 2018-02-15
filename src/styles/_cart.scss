@@ -5,16 +5,12 @@
     padding: 100px 50px;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    
     img {
         height: 150px;
     }
 }
 
 .cart-column-names {
-    border: 1px solid black;
-    
     display: inherit;
     flex-direction: row;
     padding: 10px 20px;
@@ -74,7 +70,6 @@
 }
 
 .cart-totals {
-    border: 1px solid black;
     text-align: right;
     padding: 10px 50px;
 }
@@ -103,14 +98,16 @@
     text-align: center;
 }
 
-.cart_checkout_button{
-    margin-left: 65vw;
-    padding: 10px 20px;
-}
-
 .cart_checkout_button button{
     padding: 10px 20px;
     outline: none;
     cursor: pointer;
-    
+    margin: 10px 0;
+    font-size: 14px;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        color: rgba(0,0,0,.5);
+    }
 }

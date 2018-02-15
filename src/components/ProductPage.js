@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import functions from '../utilities/functions'
 import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
@@ -11,14 +12,19 @@ class ProductPage extends Component {
             product: {}
         }
 
+        this.getProduct = this.getProduct.bind(this)
         this.addToCart = this.addToCart.bind(this)
     }
 
     componentDidMount(){
+        this.getProduct()
+        functions.generateId()         
+    }
+
+    getProduct(){
         axios.get(`/api/products/${this.props.match.params.product_id}`).then(response => {
             this.setState({product: response.data[0]})
          })
-        this.generateId()         
     }
 
     addToCart(){
@@ -29,20 +35,6 @@ class ProductPage extends Component {
         axios.post('/api/cart', body).then(response => {
             console.log('item added to cart')
         })
-    }
-
-    generateId(){
-        var generatedId = Math.floor((Math.random() * 100000000) + 1)
-        console.log(generatedId)
-        // localStorage.removeItem("generatedId")
-        if(localStorage.getItem("generatedId")){
-            axios.post('/api/generatedId', {generatedId: localStorage.getItem("generatedId")})
-            console.log(localStorage.getItem("generatedId"))
-        } else {
-            localStorage.setItem('generatedId', generatedId)
-            axios.post('/api/generatedId', {generateId: localStorage.getItem("generatedId")})
-            console.log(localStorage.getItem("generatedId"))  
-        }
     }
 
     render() {
