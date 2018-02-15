@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import functions from '../utilities/functions'
-import Header from './Header'
 import MiniCart from './MiniCart'
+import Header from './Header'
 
 export default class Checkout extends Component {
     constructor(){
@@ -164,6 +164,6 @@ export default class Checkout extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }

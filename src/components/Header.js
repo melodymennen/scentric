@@ -98,11 +98,11 @@ class Header extends Component {
                         <Link to="">About</Link>
                         { !user && <a onClick={this.login}>Login</a>}
                         { user && <Link to="/Account">Account</Link>}
-                        <Link to="/cart">Cart</Link>( {this.props.cart.qty} )
+                        <Link to="/cart">Cart ( {this.props.cart.qty} )</Link>
                     </div>
                 </nav>
             </div>
-        );
+        )
     }
 }
 

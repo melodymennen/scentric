@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import functions from '../utilities/functions'
-import { connect } from 'react-redux'
 import { getCart } from '../ducks/reducer'
+import { connect } from 'react-redux'
 import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
