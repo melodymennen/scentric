@@ -18,7 +18,7 @@ image_url TEXT
 
 CREATE TABLE carts (
 id SERIAL PRIMARY KEY,
-user_id INTEGER references users(id) ON DELETE CASCADE,
+user_id INTEGER,
 product_id INTEGER references products(id) ON DELETE CASCADE,
 qty INTEGER
 );

@@ -30,6 +30,10 @@ app.get('/api/cart', controller.getCart)
 app.delete('/api/cart/:product_id', controller.removeFromCart)
 app.patch('/api/cart', controller.decreaseCartQty)
 
+app.post('/api/generatedId', (req, res) => {
+    req.session.generatedId = req.body.generatedId
+    res.send('nothing')
+})
 
 app.post('/login', (req, res) => {
     const { userId } = req.body
@@ -40,22 +44,17 @@ app.post('/login', (req, res) => {
         }
     }).then(response => {
         const userData = response.data
-        req.session.user = {
-            name: userData.name,
-            email: userData.email,
-            picture_Url: userData.picture,
-            auth0_id: userData.user_id
-        }
-        res.json({ user: req.session.user })
         app.get('db').find_user(userData.user_id).then(users => {
-            if (!users.length) {
-                app.get('db').create_user([userData.user_id, userData.email, userData.picture, userData.name]).then(() => {
-
-                }).catch(error => {
-                    console.log('error', error)
-                })
+            if(users.length){
+                req.session.user = users[0]
+                res.json({user: req.session.user})
+            } else {
+                app.get('db').create_user([userData.name, userData.email, userData.picture, userData.user_id]).then(user => {
+                    req.session.user = user[0]
+                    res.json({user: req.session.user})
+                }).catch(error => console.log('create user error',error))
             }
-        })
+        }).catch(error => console.log('find user error',error))
     }).catch(error => {
         console.log('eror', error)
         res.status(500).json({ message: 'problemo' })

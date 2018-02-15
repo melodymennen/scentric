@@ -23,8 +23,10 @@ module.exports = {
     }, 
     addToCart: (req, res) => {
         const db =  req.app.get('db')
-        const { user } = req.session
-        const { product_id } = req.body        
+        const { generatedId } = req.session
+        const { product_id } = req.body   
+        
+        console.log('controller', req.session)
 
         db.check_carts([product_id]).then(response => {
             if(response.length){
@@ -32,7 +34,7 @@ module.exports = {
                     res.status(200).send('success')
                 }).catch(error => console.log('update cart error', error))
             } else {
-                 db.add_to_cart([user, product_id, 1]).then(() => {
+                 db.add_to_cart([generatedId, product_id, 1]).then(() => {
                      res.status(200).send('success')
                  }).catch(error => console.log('add to cart error', error))
             }
