@@ -1,30 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-import Rxjs from 'rxjs';
-
-
-export default class Header extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-          isMin: false
-        }
-      }
-    
-      componentDidMount(){
-        Rxjs.Observable.fromEvent(window, 'scroll')
-        .debounceTime(20)
-        .subscribe(e => {
-          if(window.scrollY > 15) {
-            this.setState({ isMin:true })
-          } else {
-            this.setState({ isMin: false })
-          }
-        })
-      }
-
-=======
 import Auth0Lock from 'auth0-lock';
 import { connect } from 'react-redux';
 import { login } from '../ducks/reducer';
@@ -73,7 +47,6 @@ class Header extends Component {
     login() {
         this.lock.show()
     }
->>>>>>> 0d821d0d702931908ee3a3d2415edde673727a9d
     render() {
         const { user } = this.props
         return (
