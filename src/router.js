@@ -9,6 +9,7 @@ import Account from './components/Account'
 import Home from './components/Home'
 import Cart from './components/Cart'
 import FAQ from './components/FAQ'
+import Hero from './components/Hero'
 
 
 export default (

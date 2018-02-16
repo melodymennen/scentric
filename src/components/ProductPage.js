@@ -59,10 +59,12 @@ class ProductPage extends Component {
             <div>
                 <Header />
                 {this.state.show ? 
-                    <div className="product-page-minicart">
+                    <div className="product-page-minicart"> 
                         <MiniCart/>
-                        <Link to="/checkout"><button>Checkout</button></Link>
-                        <Link to="/cart"><button>Go To Cart</button></Link>
+                    <div style={buttonLayout}>
+                        <Link to="/checkout"><button className="button">Checkout</button></Link>
+                        <Link to="/cart"><button className="button">Go To Cart</button></Link>
+                    </div>
                     </div> : null}
                 <div className="product-page-body">
                     <img src={this.state.product.image_url} alt={this.state.product.name} />
@@ -70,7 +72,7 @@ class ProductPage extends Component {
                         <div className="product-page-name">{this.state.product.name}</div>
                         <div className="product-page-price">${this.state.product.price}</div>
                         <div className="product-page-description">{this.state.product.description}.</div>
-                        <button onClick={() => this.addToCart()}>Add To Cart</button>
+                        <button className="button" onClick={() => this.addToCart()}>Add To Cart</button>
                     </div>
                 </div>
                 <Footer/>
@@ -79,6 +81,9 @@ class ProductPage extends Component {
     }
 }
 
+const buttonLayout = {
+    textAlign: 'right'
+}
 
 
 function mapStateToProps(state){

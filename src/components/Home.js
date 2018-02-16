@@ -5,6 +5,9 @@ import functions from '../utilities/functions'
 import ProductModule from './ProductModule'
 import Header from './Header'
 import Footer from './Footer'
+import Slider from 'react-slick'
+import Hero from './Hero'
+
 
 class Home extends Component {
     constructor(props) {
@@ -23,11 +26,10 @@ class Home extends Component {
         return (
             <div>
                 <Header />
-                    <div className="home_hero">
-                        <div className="home_gradientbox_women">Scentric</div>
-                        <div className="home_gradient_box">Fragrances for Women</div>
-                        <div className="home_grey_box">i</div>
-                    </div>
+                <div className="home_hero">
+                    <Hero/>
+                </div>
+                <div className="home_featured_products">Featured Products</div>
                 <div className="home_flex">
                 {this.props.products.slice(0,6).map(e => {
                     return (
