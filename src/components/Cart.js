@@ -4,12 +4,19 @@ import { connect } from 'react-redux'
 import { getCart } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import axios from 'axios'
+import MiniCart from './MiniCart'
 import Header from './Header'
 import Footer from './Footer'
 
 
 
 class Cart extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            show: false
+        }
+    }
 
     componentWillMount(){
         functions.generateId()        
@@ -31,6 +38,8 @@ class Cart extends Component {
         axios.post('/api/cart', body).then(response => {
             console.log('item added to cart')
             this.getCart()
+        }).then(()=> {
+            this.showCartSummary()
         })
     }
 
@@ -45,6 +54,8 @@ class Cart extends Component {
             axios.patch('/api/cart', body).then((response) => {
                 console.log('item removed from cart')
                 this.getCart()
+            }).then(()=> {
+                this.showCartSummary()
             })
         }
     }
@@ -56,6 +67,14 @@ class Cart extends Component {
         })
     }
 
+    showCartSummary(){
+        this.setState({
+            show: true
+        })
+        setTimeout(() => {this.setState({
+            show: false
+        })},4000)
+    }
 
     render() {
         const cart = this.props.cart.cart.map((e)=> {
@@ -83,6 +102,12 @@ class Cart extends Component {
         return (
             <div>
                 <Header />
+                {this.state.show ? 
+                    <div className="product-page-minicart">
+                        <MiniCart/>
+                        <Link to="/checkout"><button>Checkout</button></Link>
+                        <Link to="/cart"><button>Go To Cart</button></Link>
+                    </div> : null}
                 <div className="cart-body">
                     <div className="cart-column-names">
                         <div className="cart-left"></div>
