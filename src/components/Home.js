@@ -22,7 +22,11 @@ class Home extends Component {
         return (
             <div>
                 <Header />
-                <div className="home_hero">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
+                    <div className="home_hero">
+                        <div className="home_gradientbox_women">Scentric</div>
+                        <div className="home_gradient_box">Fragrances for Women</div>
+                        <div className="home_grey_box">i</div>
+                    </div>
                 <div className="home_flex">
                 {this.props.products.slice(0,6).map(e => {
                     return (
