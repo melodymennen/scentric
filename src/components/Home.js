@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { getProducts } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import ProductModule from './ProductModule'
+import Slider from 'react-slick'
 import Header from './Header'
 import Footer from './Footer'
-import Slider from 'react-slick'
 import Hero from './Hero'
 
 

@@ -1,26 +1,28 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const massive = require('massive');
-const session = require('express-session');
-const controller = require('./controller');
-const axios = require('axios');
+const express = require('express')
+const bodyParser = require('body-parser')
+const session = require('express-session')
+const controller = require('./controller')
+const stripe_ctrl = require('./stripe_controller.js')
+const stripe = require('stripe')(process.env.STRIPE_CLIENT_SECRET)
+const massive = require('massive')
+const axios = require('axios')
 
-require('dotenv').config();
+require('dotenv').config()
 
-const app = express();
+const app = express()
 
-app.use(bodyParser.json());
+app.use(bodyParser.json())
 app.use(session({
     secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
     resave: false
-}));
+}))
 
 massive(process.env.CONNECTION_STRING).then(db => {
     app.set('db', db)
 }).catch(error => {
     console.log('error', error)
-});
+})
 
 app.get('/api/products', controller.getAllProducts)
 app.get('/api/display/:category', controller.getProductsByCategory)
@@ -31,6 +33,11 @@ app.get('/api/cart', controller.getCart)
 app.delete('/api/cart/:product_id', controller.removeFromCart)
 app.patch('/api/cart', controller.decreaseCartQty)
 app.post('/api/updateuser', controller.updateUser)
+
+app.get('/api/stripeConnect', stripe_ctrl.connect)
+app.post('/api/finalize', stripe_ctrl.finalize)
+app.post('/api/storeStripeAcct', stripe_ctrl.storeAcct)
+app.post('/api/save-stripe-token', stripe_ctrl.paymentAPI)
 
 
 app.post('/api/generatedId', (req, res) => {
@@ -70,4 +77,4 @@ app.get('/user-data', (req, res) => {
 
 
 const port = process.env.SERVER_PORT
-app.listen(port, () => console.log('listening on port ' + port));
+app.listen(port, () => console.log('listening on port ' + port))
