@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const massive = require('massive');
 const session = require('express-session');
 const controller = require('./controller');
-const axios = require('axios')
+const axios = require('axios');
 
 require('dotenv').config();
 
@@ -29,6 +29,7 @@ app.post('/api/cart', controller.addToCart)
 app.get('/api/cart', controller.getCart)
 app.delete('/api/cart/:product_id', controller.removeFromCart)
 app.patch('/api/cart', controller.decreaseCartQty)
+app.post('/api/updateuser', controller.updateUser)
 
 
 app.post('/api/generatedId', (req, res) => {

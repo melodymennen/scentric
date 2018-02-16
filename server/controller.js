@@ -61,5 +61,15 @@ module.exports = {
         db.decrease_cart_qty([product_id, generatedId]).then(() => {
             res.status(200).send('success')
         }).catch(error => console.log('decrease cart qty error',error))        
+    },
+
+    updateUser: (req, res) => {
+        const db = req.app.get('db')
+        const { user } = req.session
+        const { newName, newEmail, newPicture } = req.body
+        console.log(user.id, newName, newEmail, newPicture)
+        db.update_user([user.id, newName, newEmail, newPicture]).then(() => {
+            res.status(200).send('success')
+        }).catch(error => console.log('update user error', error))
     }
 }

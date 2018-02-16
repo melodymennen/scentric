@@ -1,5 +1,6 @@
 .account_base {
     height: 13vh;
+    width: 100%;
 
 }
 
@@ -7,20 +8,13 @@
     display:none;
     margin: 10px;
     padding: 10px;
+    width: 100%;
 
 }
 
 
 .account_show-info {
     display: inline;
-    
-    > div {
-
-        > img {
-            height: 100px;
-            width: 100px;
-        }
-        }
 }
 
 .account_info-excerpt {
@@ -39,7 +33,7 @@
 }
 
 .account_no-user {
-    text-align: center;
+    margin-left: 30px;
     width: 100%;
     position: absolute; 
     font-size: 1.7em;
@@ -51,6 +45,7 @@
     cursor: pointer;
     position: absolute;
     z-index: 1;
+    padding-top: 100px;
 }
 .bar1, .bar2, .bar3 {
     width: 35px;
@@ -71,7 +66,8 @@
   
 .account_menu {
     position: relative;
-    height:330px;
+    padding-top: 100px;
+    height:100vh;
     width:250px;
     background-color: white; 
     transition: all .5s;
@@ -124,7 +120,6 @@
 
 .account_flex {
     display:flex;
-    height: 80vh;
 }
 
 .account_link-open {
@@ -135,9 +130,48 @@
     background-color: white;
     width: 100%;
     margin-top: 30px;
-    height: 80vh;
 }
 
 .account_indexes-position {
     position: absolute;
+}
+
+.account_settings-excerpt {
+    opacity: 0;
+}
+
+.account_settings-excerpt-show {
+    opacity: 1;
+}
+
+.account_flex_profile {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.account_space {
+    justify-content: space-around;
+}
+
+.account_picture {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.account_width {
+    width: 100%;
+}
+
+.account_greeting {
+    display: flex;
+    margin: 0 auto;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+
+    > div {
+        padding-top: 10px;
+        margin-left: 10px;
+    }
 }

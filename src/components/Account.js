@@ -16,7 +16,8 @@ class Account extends Component {
             position: '',
             nameInput: '',
             emailInput: '',
-            pictureInput: ''
+            pictureInput: '',
+            accountSettings: false,
         }
     }
 
@@ -69,18 +70,24 @@ class Account extends Component {
         this.setState({ pictureInput: value })
     }
 
+    accountSettings = () => {
+        this.setState({
+            accountSettings: !this.state.accountSettings,
+            nameInput: this.props.user.name,
+            emailInput: this.props.user.email,
+            pictureInput: this.props.user.picture_url,
+        })
+    }
+
     updateUser = () => {
         let myobj = {
             newName: this.state.nameInput,
             newEmail: this.state.emailInput,
             newPicture: this.state.pictureInput
         }
-        axios.put(`/api/updateuser/${this.props.user.id}`, myobj).then((res) => {
-            console.log(res)
-        }).then(() => {
-            axios.get('/getuser').then((res) => {
-                console.log(res)
-            })
+        console.log(myobj)
+        axios.post(`/api/updateuser`, myobj).then((res) => {
+            console.log("works", res)
         })
     }
 
@@ -89,11 +96,7 @@ class Account extends Component {
         return (
             <div>
                 <Header />
-                <div className="account_base">
-                </div>
                 <div className="account_flex">
-
-
                     <div>
                         <a className="bars" onClick={this.changeBars}>
                             <div className={`bar1 ${this.state.menuShow ? 'bar1x' : ''}`}></div>
@@ -112,34 +115,55 @@ class Account extends Component {
                         </div>
 
                     </div>
-                    {user &&
-                        <div className={`account_indexes ${this.state.menuShow ? '' : this.state.position}`}>
-                            <div className={`account_container ${this.state.showInfo ? 'account_show-info' : ''}`}>
-                                <div className="account_info-excerpt">
-                                    <div>Name: {user.name}</div>
-                                    <div>Email: {user.email}</div>
-                                    <div>Auth0_id: {user.auth0_id}</div>
+                    <div className="account_width">
+                        <div className="account_base">
+                        </div>
+                        {user &&
+                            <div className={`account_indexes ${this.state.menuShow ? '' : this.state.position}`}>
+                                <div className={`account_container ${this.state.showInfo ? 'account_show-info' : ''}`}>
+                                    <div className="account_info-excerpt">
+                                        <div className="account_flex_profile">
+                                            <div className="account_greeting">
+                                                <img className="account_picture" alt="user" src={user.picture_url} />
+                                                <div>Welcome {user.name}!</div>
+                                            </div>
+                                        </div>
+                                        <div className="account_flex account_space">
+                                        <div className="account_flex_profile">
+                                            <div>Account Name: {user.name}</div>
+                                            <div>Account id: {this.props.user.id}</div>
+                                        </div>
+                                        <div className="account_flex_profile">
+                                            <div>Email: {user.email}</div>
+                                            <div>Auth0_id: {user.auth0_id}</div>
+                                        </div>
+                                        </div>
+                                        <div>You have been a user since 2018!</div>
+                                        <div>You have {this.props.cart.qty} Items in you cart. Click <a>Here</a> to checkout</div>
+                                    </div>
                                 </div>
-                                <div><img alt="user" src={user.picture_url} /></div>
-                            </div>
-                            <div className={`account_container ${this.state.showFavorites ? 'account_show-favorites' : ''}`}>
-                                <div className="account_favorites-excerpt">
-                                    This is where the favorites go
+                                <div className={`account_container ${this.state.showFavorites ? 'account_show-favorites' : ''}`}>
+                                    <div className="account_favorites-excerpt">
+                                        This is where the favorites go
                                 </div>
-                            </div>
-                            <div className={`account_container ${this.state.showAccountSettings ? 'account_show-account-settings' : ''}`}>
-                                <div className="account_settings-excerpt">
-                                    <div>Change Name: <input defaultValue={user.name} onChange={event => this.handleNameChange(event.target.value)} /></div>
-                                    <div>Change Email: <input defaultValue={user.email} onChange={event => this.handleEmailChange(event.target.value)} /></div>
-                                    <div>Change Profile Picture:  <input defaultValue={user.picture_url} onChange={event => this.handlePictureChange(event.target.value)} /></div>
-                                    <div> Auth0_id: {user.auth0_id}</div>
-                                    <button onClick={this.updateUser}>submit</button>
                                 </div>
-                            </div>
-                        </div>}
-                    {!user &&
-                        <div className="account_no-user">Please login to see your account page
+                                <div className={`account_container ${this.state.showAccountSettings ? 'account_show-account-settings' : ''}`}>
+                                    <div>
+                                        <button onClick={this.accountSettings}>Change Account Settings</button>
+                                    </div>
+                                    <div className={`account_settings-excerpt ${this.state.accountSettings ? "account_settings-excerpt-show" : ""}`}>
+                                        <div>Change Name: <input defaultValue={user.name} onChange={event => this.handleNameChange(event.target.value)} /></div>
+                                        <div>Change Email: <input defaultValue={user.email} onChange={event => this.handleEmailChange(event.target.value)} /></div>
+                                        <div>Change Profile Picture:  <input defaultValue={user.picture_url} onChange={event => this.handlePictureChange(event.target.value)} /></div>
+                                        <div> Auth0_id: {user.auth0_id}</div>
+                                        <button onClick={this.updateUser}>submit</button>
+                                    </div>
+                                </div>
+                            </div>}
+                        {!user &&
+                            <div className="account_no-user">Please login to see your account page
                     </div>}
+                    </div>
                 </div>
             </div>
         )
@@ -148,7 +172,8 @@ class Account extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user,
+        cart: state.cart
     }
 }
 
