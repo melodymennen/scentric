@@ -113,6 +113,21 @@ li > ul > li a:hover {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     opacity: 1;
+    text-align: end;
+    button {
+        width: 150px;
+        padding: 10px;
+        margin: 10px 0 10px 10px;
+        outline: none;
+        cursor: pointer;
+        font-size: 14px;
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            color: rgba(0,0,0,.5);
+        }
+    }
 }
 
 @keyframes header-minicart {

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import Header from './Header'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import functions from '../utilities/functions'
+import Header from './Header'
+import Footer from './Footer'
+import axios from 'axios'
 
 class Account extends Component {
     constructor() {
@@ -136,6 +137,7 @@ class Account extends Component {
                         <div className="account_no-user">Please login to see your account page
                     </div>}
                 </div>
+                <Footer/>
             </div>
         )
     }
