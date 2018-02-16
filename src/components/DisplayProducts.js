@@ -18,6 +18,9 @@ class DisplayProducts extends Component {
         axios.get(`/api/display/${this.props.match.params.category}`).then(response => {
             this.setState({ products: response.data })
         })
+        // axios.get(`/api/products/${this.props.match.params.scent}`).then(response => {
+        //     this.setState({ products: response.data })
+        // })
         functions.generateId()
     }
 
@@ -25,6 +28,9 @@ class DisplayProducts extends Component {
         axios.get(`/api/display/${props.match.params.category}`).then(response => {
             this.setState({ products: response.data })
         })
+        // axios.get(`/api/products/${props.match.params.scent}`).then(response => {
+        //     this.setState({ products: response.data })
+        // })
     }
 
 
@@ -44,9 +50,18 @@ class DisplayProducts extends Component {
         return (
             <div>
                 <Header />
-                <div className="displayproducts_box-area">
-                {products}
-                </div>
+                {this.state.products && 
+                    <div className="displayproducts_box-area">
+                        {products}
+                    </div>
+                }
+                {this.state.products.length === 0 &&
+                    <div className="displayproducts_box-area">
+                        <div className="cart-no-items">
+                            There are no products to display. 
+                        </div>
+                    </div>
+                }
                 <Footer />
             </div>
         )

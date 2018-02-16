@@ -62,4 +62,13 @@ module.exports = {
             res.status(200).send('success')
         }).catch(error => console.log('decrease cart qty error',error))        
     }
+    // getProductsByScent: (req, res) => {
+    //     const db =  req.app.get('db')
+    //     const { scent } = req.params
+
+    //     console.log(scent)
+    //     db.get_products_by_scent([scent]).then(products => {
+    //         res.status(200).json(products)
+    //     }).catch(error => console.log('get products by scent error', error))
+    // }
 }

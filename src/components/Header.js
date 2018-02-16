@@ -5,7 +5,6 @@ import { login } from '../ducks/reducer'
 import { connect } from 'react-redux'
 import Auth0Lock from 'auth0-lock'
 import axios from 'axios'
-import _ from 'lodash'
 
 class Header extends Component {
     constructor() {
@@ -68,11 +67,11 @@ class Header extends Component {
                                 <ul className="header_has-children">
                                     <li><Link to="/display/perfume"><h3>Shop All Perfume</h3></Link></li>
                                     <li><h3>Shop Scent Family</h3></li>
-                                    <li><Link to="">Scent 1</Link></li>
-                                    <li><Link to="">Scent 2</Link></li>
-                                    <li><Link to="">Scent 3</Link></li>
-                                    <li><Link to="">Scent 4</Link></li>
-                                    <li><Link to="">Scent 5</Link></li>
+                                    <li><Link to="">Fresh</Link></li>
+                                    <li><Link to="">Floral</Link></li>
+                                    <li><Link to="">Earthy</Link></li>
+                                    <li><Link to="">Woody</Link></li>
+                                    <li><Link to="">Warm and Spicy</Link></li>
                                     <li><Link to=""><h3>Sale</h3></Link></li>
                                 </ul>
                             </li>
@@ -83,11 +82,11 @@ class Header extends Component {
                                 <ul className="header_has-children">
                                     <li><Link to="/display/cologne"><h3>Shop All Cologne</h3></Link></li>
                                     <li><h3>Shop Scent Family</h3></li>
-                                    <li><Link to="">Scent 1</Link></li>
-                                    <li><Link to="">Scent 2</Link></li>
-                                    <li><Link to="">Scent 3</Link></li>
-                                    <li><Link to="">Scent 4</Link></li>
-                                    <li><Link to="">Scent 5</Link></li>
+                                    <li><Link to="">Fresh</Link></li>
+                                    <li><Link to="">Earthy</Link></li>
+                                    <li><Link to="">Woody</Link></li>
+                                    <li><Link to="">Musk</Link></li>
+                                    <li><Link to="">Warm and Spicy</Link></li>
                                     <li><Link to=""><h3>Sale</h3></Link></li>
                                 </ul>
                             </li>
