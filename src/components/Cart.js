@@ -4,12 +4,17 @@ import { connect } from 'react-redux'
 import { getCart } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import axios from 'axios'
+import MiniCart from './MiniCart'
 import Header from './Header'
 import Footer from './Footer'
-import _ from 'lodash'
+
 
 
 class Cart extends Component {
+    constructor(props) {
+        super(props)
+
+    }
 
     componentWillMount(){
         functions.generateId()        
@@ -31,6 +36,8 @@ class Cart extends Component {
         axios.post('/api/cart', body).then(response => {
             console.log('item added to cart')
             this.getCart()
+        }).then(()=> {
+            this.showCartSummary()
         })
     }
 
@@ -45,6 +52,8 @@ class Cart extends Component {
             axios.patch('/api/cart', body).then((response) => {
                 console.log('item removed from cart')
                 this.getCart()
+            }).then(()=> {
+                this.showCartSummary()
             })
         }
     }
@@ -55,7 +64,6 @@ class Cart extends Component {
             this.getCart()
         })
     }
-
 
     render() {
         const cart = this.props.cart.cart.map((e)=> {
@@ -88,7 +96,7 @@ class Cart extends Component {
                         <div className="cart-left"></div>
                         <div className="cart-right">
                             <div>Quantity</div>
-                         0   <div>Total</div>
+                            <div>Total</div>
                         </div>
                     </div>
                     {this.props.cart.length === 0 && 
@@ -115,4 +123,5 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     getCart: getCart
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

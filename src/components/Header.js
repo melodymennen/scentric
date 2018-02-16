@@ -5,11 +5,15 @@ import { login } from '../ducks/reducer'
 import { connect } from 'react-redux'
 import Auth0Lock from 'auth0-lock'
 import axios from 'axios'
-import _ from 'lodash'
+import MiniCart from './MiniCart'
+
 
 class Header extends Component {
     constructor() {
         super()
+        this.state = {
+            show: false
+        }
     
         this.lock = null
         this.login = this.login.bind(this)
@@ -57,6 +61,18 @@ class Header extends Component {
         this.props.getCart()
     }
 
+    showMiniCart(){
+        this.setState({
+            show: true
+        })
+    }
+
+    hideMiniCart(){
+        this.setState({
+            show: false
+        })
+    }
+
     render() {
         const { user } = this.props
         return (
@@ -98,11 +114,17 @@ class Header extends Component {
                         <Link to="">About</Link>
                         { !user && <a onClick={this.login}>Login</a>}
                         { user && <Link to="/Account">Account</Link>}
-                        <Link to="/cart">Cart</Link>( {this.props.cart.qty} )
+                        <Link to="/cart"><span onMouseEnter={()=>{this.showMiniCart()}}>Cart ( {this.props.cart.qty} )</span></Link>
+                        {this.state.show ? 
+                    <div className="header-minicart" onMouseLeave={() => {this.hideMiniCart()}}>
+                        <MiniCart/>
+                        <Link to="/checkout"><button>Checkout</button></Link>
+                        <Link to="/cart"><button>Go To Cart</button></Link>
+                    </div> : null}
                     </div>
                 </nav>
             </div>
-        );
+        )
     }
 }
 

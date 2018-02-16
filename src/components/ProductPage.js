@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import functions from '../utilities/functions'
-import { connect } from 'react-redux'
 import { getCart } from '../ducks/reducer'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Header from './Header'
+import MiniCart from './MiniCart'
 import Footer from './Footer'
 import axios from 'axios'
 
@@ -11,11 +13,13 @@ class ProductPage extends Component {
         super()
 
         this.state = {
-            product: {}
+            product: {},
+            show: false
         }
 
         this.getProduct = this.getProduct.bind(this)
         this.addToCart = this.addToCart.bind(this)
+        this.showCartSummary = this.showCartSummary.bind(this)
     }
 
     componentDidMount(){
@@ -38,27 +42,44 @@ class ProductPage extends Component {
             console.log('item added to cart')
         }).then(() => {
             this.props.getCart()
+        }).then(this.showCartSummary())
+    }
+
+    showCartSummary(){
+        this.setState({
+            show: true
         })
+        setTimeout(() => {this.setState({
+            show: false
+        })},4000)
     }
 
     render() {
         return (
             <div>
                 <Header />
+                {this.state.show ? 
+                    <div className="product-page-minicart">
+                        <MiniCart/>
+                        <Link to="/checkout"><button>Checkout</button></Link>
+                        <Link to="/cart"><button>Go To Cart</button></Link>
+                    </div> : null}
                 <div className="product-page-body">
                     <img src={this.state.product.image_url} alt={this.state.product.name} />
                     <div className="product-page-info">
                         <div className="product-page-name">{this.state.product.name}</div>
                         <div className="product-page-price">${this.state.product.price}</div>
-                        <div className="product-page-description">{this.state.product.description}</div>
-                        <button onClick={() => this.addToCart()} >Add To Cart</button>
+                        <div className="product-page-description">{this.state.product.description}.</div>
+                        <button onClick={() => this.addToCart()}>Add To Cart</button>
                     </div>
                 </div>
-                <Footer />
+                <Footer/>
             </div>
         )
     }
 }
+
+
 
 function mapStateToProps(state){
     return {
