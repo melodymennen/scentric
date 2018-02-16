@@ -12,6 +12,7 @@ class Account extends Component {
             showFavorites: false,
             showAccountSettings: false,
             menuShow: false,
+            position: '',
             nameInput: '',
             emailInput: '',
             pictureInput: ''
@@ -48,6 +49,10 @@ class Account extends Component {
 
     changeBars = () => {
         this.setState({ menuShow: !this.state.menuShow })
+        this.setState({ position: '' })
+        setTimeout(() => {
+            this.setState({ position: 'account_indexes-position' })
+        }, 500)
     }
 
     handleEmailChange = (value) => {
@@ -68,7 +73,7 @@ class Account extends Component {
             newEmail: this.state.emailInput,
             newPicture: this.state.pictureInput
         }
-        axios.put(`/updateuser/${this.props.user.id}`, myobj).then((res) => {
+        axios.put(`/api/updateuser/${this.props.user.id}`, myobj).then((res) => {
             console.log(res)
         }).then(() => {
             axios.get('/getuser').then((res) => {
@@ -106,14 +111,14 @@ class Account extends Component {
 
                     </div>
                     {user &&
-                        <div className={`account_indexes ${this.state.menuShow ? '' : 'account_indexes-position'}`}>
+                        <div className={`account_indexes ${this.state.menuShow ? '' : this.state.position}`}>
                             <div className={`account_container ${this.state.showInfo ? 'account_show-info' : ''}`}>
                                 <div className="account_info-excerpt">
                                     <div>Name: {user.name}</div>
                                     <div>Email: {user.email}</div>
                                     <div>Auth0_id: {user.auth0_id}</div>
                                 </div>
-                                <div><img alt="user" src={user.picture_Url} /></div>
+                                <div><img alt="user" src={user.picture_url} /></div>
                             </div>
                             <div className={`account_container ${this.state.showFavorites ? 'account_show-favorites' : ''}`}>
                                 <div className="account_favorites-excerpt">
@@ -122,11 +127,11 @@ class Account extends Component {
                             </div>
                             <div className={`account_container ${this.state.showAccountSettings ? 'account_show-account-settings' : ''}`}>
                                 <div className="account_settings-excerpt">
-                                <div>Change Name: <input defaultValue={user.name} onChange={ event => this.handleNameChange(event.target.value) }/></div>
-                                <div>Change Email: <input defaultValue={user.email} onChange={ event => this.handleEmailChange(event.target.value) }/></div>
-                                <div>Change Profile Picture:  <input defaultValue={user.picture_Url} onChange={ event => this.handlePictureChange(event.target.value) }/></div>
-                                <div> Auth0_id: {user.auth0_id}</div>
-                                <button onClick={this.updateUser}>submit</button>
+                                    <div>Change Name: <input defaultValue={user.name} onChange={event => this.handleNameChange(event.target.value)} /></div>
+                                    <div>Change Email: <input defaultValue={user.email} onChange={event => this.handleEmailChange(event.target.value)} /></div>
+                                    <div>Change Profile Picture:  <input defaultValue={user.picture_url} onChange={event => this.handlePictureChange(event.target.value)} /></div>
+                                    <div> Auth0_id: {user.auth0_id}</div>
+                                    <button onClick={this.updateUser}>submit</button>
                                 </div>
                             </div>
                         </div>}

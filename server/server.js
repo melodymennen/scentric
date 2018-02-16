@@ -30,6 +30,7 @@ app.get('/api/cart', controller.getCart)
 app.delete('/api/cart/:product_id', controller.removeFromCart)
 app.patch('/api/cart', controller.decreaseCartQty)
 
+
 app.post('/api/generatedId', (req, res) => {
     req.session.generatedId = req.body.generatedId
     res.send('nothing')

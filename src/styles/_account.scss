@@ -13,11 +13,13 @@
 
 .account_show-info {
     display: inline;
-    > div {      
-            > img {
-                height: 100px;
-                width: 100px;
-            }
+    
+    > div {
+
+        > img {
+            height: 100px;
+            width: 100px;
+        }
         }
 }
 
@@ -86,7 +88,7 @@
      border-top: 1px solid #333;  
     }
 }
-  
+    
 .account_sidebar a {
     text-decoration:none;
 }
