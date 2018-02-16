@@ -29,7 +29,6 @@ class Header extends Component {
             allowAutocomplete: true,
             // theme: {
             //     logo: '',
-
             //     primaryColor: '#2c3e50'
             //   },
             languageDictionary: {
