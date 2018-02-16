@@ -6,7 +6,7 @@ import functions from '../utilities/functions'
 import axios from 'axios'
 import Header from './Header'
 import Footer from './Footer'
-import _ from 'lodash'
+
 
 
 class Cart extends Component {

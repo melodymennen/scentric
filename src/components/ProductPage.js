@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import functions from '../utilities/functions'
 import { connect } from 'react-redux'
 import { getCart } from '../ducks/reducer'
+import { Link } from 'react-router-dom'
 import Header from './Header'
 import MiniCart from './MiniCart'
 import Footer from './Footer'
@@ -60,6 +61,8 @@ class ProductPage extends Component {
                 {this.state.show ? 
                     <div className="product-page-minicart">
                         <MiniCart/>
+                        <Link to="/checkout"><button>Checkout</button></Link>
+                        <Link to="/cart"><button>Go To Cart</button></Link>
                     </div> : null}
                 <div className="product-page-body">
                     <img src={this.state.product.image_url} alt={this.state.product.name} />

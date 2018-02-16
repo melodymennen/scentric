@@ -19,13 +19,42 @@ body {
 
 // home Page
 .home_hero{
-  width: 90%;
-  height: 90vh;
-  margin: auto;
-  background-image: url('https://s3-us-west-1.amazonaws.com/scentric/jaguar.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding-top: 100px;
+  margin-left: 180px;
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+}
+
+.home_gradientbox_women{
+  padding: 200px 250px;
+  background : -moz-linear-gradient(-4.56% -1.6% -38.42deg,rgba(255, 210, 225, 1) 0%,rgba(255, 180, 139, 1) 100%);
+  background : -webkit-linear-gradient(-38.42deg, rgba(255, 210, 225, 1) 0%, rgba(255, 180, 139, 1) 100%);
+  background : -webkit-gradient(linear,-4.56% -1.6% ,101.86% 99.04% ,color-stop(0,rgba(255, 210, 225, 1) ),color-stop(1,rgba(255, 180, 139, 1) ));
+  background : -o-linear-gradient(-38.42deg, rgba(255, 210, 225, 1) 0%, rgba(255, 180, 139, 1) 100%);
+  background : -ms-linear-gradient(-38.42deg, rgba(255, 210, 225, 1) 0%, rgba(255, 180, 139, 1) 100%);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD2E1', endColorstr='#FFB48B' ,GradientType=0)";
+  background : linear-gradient(128.42deg, rgba(255, 210, 225, 1) 0%, rgba(255, 180, 139, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD2E1',endColorstr='#FFB48B' , GradientType=1);
+}
+
+.home_gradient_box{
+  transform: translateY(60px);
+  margin: 10px;
+  padding: 100px 90px;
+  border-style: Solid;
+  border-color: #F9C2BB;
+  border-width: 4px;
+  z-index: 1;
+}
+
+.home_grey_box{
+  transform: translate(-300px, 40px);
+  padding: 200px 120px;
+  color: #ebeef3;
+  background-color: #EBEEF3;
 }
 
 .home_flex{

@@ -5,7 +5,7 @@ import { login } from '../ducks/reducer'
 import { connect } from 'react-redux'
 import Auth0Lock from 'auth0-lock'
 import axios from 'axios'
-import _ from 'lodash'
+
 
 class Header extends Component {
     constructor() {
@@ -98,7 +98,7 @@ class Header extends Component {
                         <Link to="">About</Link>
                         { !user && <a onClick={this.login}>Login</a>}
                         { user && <Link to="/Account">Account</Link>}
-                        <Link to="/cart">Cart</Link>( {this.props.cart.qty} )
+                        <Link to="/cart">Cart ( {this.props.cart.qty} )</Link>
                     </div>
                 </nav>
             </div>
