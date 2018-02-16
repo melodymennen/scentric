@@ -15,22 +15,28 @@ class DisplayProducts extends Component {
     }
 
     componentDidMount(){
-        axios.get(`/api/display/${this.props.match.params.category}`).then(response => {
-            this.setState({ products: response.data })
-        })
-        // axios.get(`/api/products/${this.props.match.params.scent}`).then(response => {
-        //     this.setState({ products: response.data })
-        // })
+        if(this.props.match.params.category === 'perfume' || this.props.match.params.category === 'cologne'){
+            axios.get(`/api/display/${this.props.match.params.category}`).then(response => {
+                this.setState({ products: response.data })
+            })
+        } else {
+            axios.get(`/api/scentfam/${this.props.match.params.category}`).then(response => {
+                this.setState({ products: response.data })
+            })
+        }
         functions.generateId()
     }
 
     componentWillReceiveProps(props){
-        axios.get(`/api/display/${props.match.params.category}`).then(response => {
-            this.setState({ products: response.data })
-        })
-        // axios.get(`/api/products/${props.match.params.scent}`).then(response => {
-        //     this.setState({ products: response.data })
-        // })
+        if(props.match.params.category === 'perfume' || props.match.params.category === 'cologne'){
+            axios.get(`/api/display/${props.match.params.category}`).then(response => {
+                this.setState({ products: response.data })
+            })
+        } else {
+            axios.get(`/api/scentfam/${props.match.params.category}`).then(response => {
+                this.setState({ products: response.data })
+            })
+        }
     }
 
 

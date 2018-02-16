@@ -16,7 +16,6 @@ export default (
         <Route exact path="/" component = { LandingPage } />
         <Route path="/Home" component = { Home } />
         <Route path="/display/:category" component = { DisplayProducts } />
-        {/* <Route path="/display/:scent" component = { DisplayProducts } /> */}
         <Route path="/products/:product_id" component = { ProductPage } />
         <Route path="/Checkout" component = { Checkout } />
         <Route path="/Cart" component = { Cart } />

@@ -66,11 +66,11 @@ class Header extends Component {
                                 <ul className="header_has-children">
                                     <li><Link to="/display/perfume"><h3>Shop All Perfume</h3></Link></li>
                                     <li><h3>Shop Scent Family</h3></li>
-                                    <li><Link to="">Fresh</Link></li>
-                                    <li><Link to="">Floral</Link></li>
-                                    <li><Link to="">Earthy</Link></li>
-                                    <li><Link to="">Woody</Link></li>
-                                    <li><Link to="">Warm and Spicy</Link></li>
+                                    <li><Link to="/display/fresh">Fresh</Link></li>
+                                    <li><Link to="/display/floral">Floral</Link></li>
+                                    <li><Link to="/display/earthy">Earthy</Link></li>
+                                    <li><Link to="/display/woody">Woody</Link></li>
+                                    <li><Link to="/display/warm-spicy">Warm and Spicy</Link></li>
                                     <li><Link to=""><h3>Sale</h3></Link></li>
                                 </ul>
                             </li>
@@ -81,11 +81,11 @@ class Header extends Component {
                                 <ul className="header_has-children">
                                     <li><Link to="/display/cologne"><h3>Shop All Cologne</h3></Link></li>
                                     <li><h3>Shop Scent Family</h3></li>
-                                    <li><Link to="">Fresh</Link></li>
-                                    <li><Link to="">Earthy</Link></li>
-                                    <li><Link to="">Woody</Link></li>
-                                    <li><Link to="">Musk</Link></li>
-                                    <li><Link to="">Warm and Spicy</Link></li>
+                                    <li><Link to="/display/fresh">Fresh</Link></li>
+                                    <li><Link to="/display/earthy">Earthy</Link></li>
+                                    <li><Link to="/display/woody">Woody</Link></li>
+                                    <li><Link to="/display/musk">Musk</Link></li>
+                                    <li><Link to="/display/warm-spicy">Warm and Spicy</Link></li>
                                     <li><Link to=""><h3>Sale</h3></Link></li>
                                 </ul>
                             </li>

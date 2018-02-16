@@ -41,7 +41,7 @@ module.exports = {
     getCart: (req ,res) => {
         const db = req.app.get('db')
         const { generatedId } = req.session 
-        console.log(generatedId);
+
         db.get_cart([generatedId]).then(cart => res.status(200).send(cart))
         .catch( () => res.status(500).send())
     }, 
@@ -61,14 +61,13 @@ module.exports = {
         db.decrease_cart_qty([product_id, generatedId]).then(() => {
             res.status(200).send('success')
         }).catch(error => console.log('decrease cart qty error',error))        
-    }
-    // getProductsByScent: (req, res) => {
-    //     const db =  req.app.get('db')
-    //     const { scent } = req.params
+    },
+    getProductsByScent: (req, res) => {
+        const db =  req.app.get('db')
+        const { category } = req.params
 
-    //     console.log(scent)
-    //     db.get_products_by_scent([scent]).then(products => {
-    //         res.status(200).json(products)
-    //     }).catch(error => console.log('get products by scent error', error))
-    // }
+        db.get_products_by_scent([category]).then(products => {
+            res.status(200).json(products)
+        }).catch(error => console.log('get products by scent error', error))
+    }
 }
