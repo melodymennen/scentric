@@ -23,8 +23,13 @@ product_id INTEGER references products(id) ON DELETE CASCADE,
 qty INTEGER
 );
 
--- PRODUCTS
+CREATE TABLE favorites (
+id SERIAL PRIMARY KEY, 
+user_id INTEGER references users(id) ON DELETE CASCADE,
+product_id INTEGER references products(id) ON DELETE CASCADE
+);
 
+-- PRODUCTS
 INSERT INTO products( name, price, description, category, scent_family, image_url)
 VALUES ('buttery popcorn', '89.98', 'Don''t wait to be at the movies to enjoy this aroma, butter yourself up with this scent and you will be the feature presentation', 'perfume','fresh', 'https://s3-us-west-1.amazonaws.com/scentric/perfumes/butterypopcorn.png');
 

@@ -1,0 +1,70 @@
+.contact-us-body {
+    min-height: 60vh;
+    width: 80%;
+    margin: auto;
+    padding: 100px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .title {
+        font-size: 2em;
+        margin: 20px;
+        text-transform: uppercase;
+    }
+    div {
+        margin: 10px;
+        width: 50%;
+        display: inherit;
+        justify-content: center;
+    }
+    input {
+        margin: 10px;
+        width: 40%;
+        font-size: 14px;
+        padding: 5px;
+        outline: none;
+    }
+    textarea {
+        width: 87%;
+        height: 150px;
+        font-size: 14px;
+        padding: 5px;
+        outline: none;
+        resize: none;
+        overflow: auto;
+    }
+    .button-house {
+        justify-content: flex-start;
+    }
+    button {
+        width: 150px;
+        padding: 10px;
+        margin: 10px 25px;
+        outline: none;
+        cursor: pointer;
+        font-size: 14px;
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            color: rgba(0,0,0,.5);
+        }
+    }
+}
+
+.contact-us-email-sent {
+    align-items: center;
+    animation-name: fadeInOut;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    opacity: 1;
+}
+
+@keyframes fadeInOut {
+    0%   {opacity: 0;}
+    25% {opacity: 1}
+    50%   {opacity: 1;}
+    75% {opacity: 1;}
+    100%   {opacity: 0;}
+}

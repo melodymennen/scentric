@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getCart } from '../ducks/reducer'
 import functions from '../utilities/functions'
-import axios from 'axios'
 import MiniCart from './MiniCart'
 import Header from './Header'
 import Footer from './Footer'
-
+import axios from 'axios'
 
 
 class Cart extends Component {
