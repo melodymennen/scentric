@@ -9,7 +9,8 @@ import Footer from './Footer'
 class Home extends Component {
     constructor(props) {
         super(props)
- 
+        
+        this.state ={}
     }
 
     

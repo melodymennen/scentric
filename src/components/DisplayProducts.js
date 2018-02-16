@@ -15,16 +15,28 @@ class DisplayProducts extends Component {
     }
 
     componentDidMount(){
-        axios.get(`/api/display/${this.props.match.params.category}`).then(response => {
-            this.setState({ products: response.data })
-        })
+        if(this.props.match.params.category === 'perfume' || this.props.match.params.category === 'cologne'){
+            axios.get(`/api/display/${this.props.match.params.category}`).then(response => {
+                this.setState({ products: response.data })
+            })
+        } else {
+            axios.get(`/api/scentfam/${this.props.match.params.category}`).then(response => {
+                this.setState({ products: response.data })
+            })
+        }
         functions.generateId()
     }
 
     componentWillReceiveProps(props){
-        axios.get(`/api/display/${props.match.params.category}`).then(response => {
-            this.setState({ products: response.data })
-        })
+        if(props.match.params.category === 'perfume' || props.match.params.category === 'cologne'){
+            axios.get(`/api/display/${props.match.params.category}`).then(response => {
+                this.setState({ products: response.data })
+            })
+        } else {
+            axios.get(`/api/scentfam/${props.match.params.category}`).then(response => {
+                this.setState({ products: response.data })
+            })
+        }
     }
 
 
@@ -44,9 +56,18 @@ class DisplayProducts extends Component {
         return (
             <div>
                 <Header />
-                <div className="displayproducts_box-area">
-                {products}
-                </div>
+                {this.state.products && 
+                    <div className="displayproducts_box-area">
+                        {products}
+                    </div>
+                }
+                {this.state.products.length === 0 &&
+                    <div className="displayproducts_box-area">
+                        <div className="cart-no-items">
+                            There are no products to display. 
+                        </div>
+                    </div>
+                }
                 <Footer />
             </div>
         )

@@ -7,7 +7,7 @@ export default class Footer extends Component {
             <div className="footer-body">
                 <div>
                     <Link to="/FAQ">FAQ</Link>
-                    <Link to="">CONTACT</Link>
+                    <Link to="/ContactUs">CONTACT</Link>
                 </div>
                 <div>
                 © 2018 Scentric, LLC. All rights reserved.

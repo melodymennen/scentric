@@ -41,7 +41,7 @@ module.exports = {
     getCart: (req ,res) => {
         const db = req.app.get('db')
         const { generatedId } = req.session 
-        console.log(generatedId);
+
         db.get_cart([generatedId]).then(cart => res.status(200).send(cart))
         .catch( () => res.status(500).send())
     }, 
@@ -71,5 +71,14 @@ module.exports = {
         db.update_user([user.id, newName, newEmail, newPicture]).then(() => {
             res.status(200).send('success')
         }).catch(error => console.log('update user error', error))
+    },
+    
+    getProductsByScent: (req, res) => {
+        const db =  req.app.get('db')
+        const { category } = req.params
+
+        db.get_products_by_scent([category]).then(products => {
+            res.status(200).json(products)
+        }).catch(error => console.log('get products by scent error', error))
     }
 }
