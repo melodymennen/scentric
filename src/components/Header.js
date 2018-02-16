@@ -117,8 +117,10 @@ class Header extends Component {
                         {this.state.show ? 
                     <div className="header-minicart" onMouseLeave={() => {this.hideMiniCart()}}>
                         <MiniCart/>
-                        <Link to="/cart"><button>Go To Cart</button></Link>
-                        <Link to="/checkout"><button>Checkout</button></Link>
+                        <div style={buttonLayout}>
+                        <Link to="/checkout"><button className="button">Checkout</button></Link>
+                        <Link to="/cart"><button className="button">Go To Cart</button></Link>
+                        </div>
                     </div> : null}
                     </div>
                 </nav>
@@ -127,6 +129,10 @@ class Header extends Component {
     }
 }
 
+
+const buttonLayout = {
+    textAlign: 'right'
+}
 
 const mapStateToProps = state => {
     return {
