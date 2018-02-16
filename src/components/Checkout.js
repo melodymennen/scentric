@@ -23,49 +23,42 @@ export default class Checkout extends Component {
     }
 
     handleNameChange(value){
-        console.log(value)
         this.setState({
             inputName: value
         })
     }
 
     handleEmailChange(value){
-        console.log(value)
         this.setState({
             inputEmail: value
         })
     }
 
     handleAddressChange(value){
-        console.log(value)
         this.setState({
             inputAddress: value
         })
     }
 
     handleSecAddressChange(value){
-        console.log(value)
         this.setState({
             inputSecAddress: value
         })
     }
 
     handleCityChange(value){
-        console.log(value)
         this.setState({
             inputCity: value
         })
     }
 
     handleStateChange(value){
-        console.log(value)
         this.setState({
             inputState: value
         })
     }
 
     handleZipCodeChange(value){
-        console.log(value)
         this.setState({
             inputZipCode: value
         })
@@ -159,11 +152,15 @@ export default class Checkout extends Component {
                     <div className="checkout_minicart"> 
                         <MiniCart/>
                         <div className="checkout_button_tocart">
-                            <Link to="/cart"><button>Back to Cart</button></Link>
+                            <Link to="/cart"><button className="button" style={button}>Back to Cart</button></Link>
                         </div>
                     </div>
                 </div>
             </div>
         )
     }
+}
+
+const button = {
+    padding:' 5px 10px'
 }

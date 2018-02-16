@@ -36,8 +36,6 @@ class Cart extends Component {
         axios.post('/api/cart', body).then(response => {
             console.log('item added to cart')
             this.getCart()
-        }).then(()=> {
-            this.showCartSummary()
         })
     }
 
@@ -52,8 +50,6 @@ class Cart extends Component {
             axios.patch('/api/cart', body).then((response) => {
                 console.log('item removed from cart')
                 this.getCart()
-            }).then(()=> {
-                this.showCartSummary()
             })
         }
     }
@@ -105,7 +101,7 @@ class Cart extends Component {
                     {this.props.cart && cart}
                     <div className="cart-totals">
                         Order Subtotal: ${this.props.cart.subtotal.toFixed(2)}
-                        <Link to="/checkout"><div className="cart_checkout_button"><button>Check Out</button></div></Link>
+                        <Link to="/checkout"><div><button className="button" >Check Out</button></div></Link>
                     </div>
                 </div>
                 <Footer />
@@ -113,6 +109,8 @@ class Cart extends Component {
         )
     }
 }
+
+
 
 function mapStateToProps(state) {
     return {
