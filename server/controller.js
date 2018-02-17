@@ -62,7 +62,6 @@ module.exports = {
             res.status(200).send('success')
         }).catch(error => console.log('decrease cart qty error',error))        
     },
-
     updateUser: (req, res) => {
         const db = req.app.get('db')
         const { user } = req.session
@@ -72,7 +71,6 @@ module.exports = {
             res.status(200).send('success')
         }).catch(error => console.log('update user error', error))
     },
-    
     getProductsByScent: (req, res) => {
         const db =  req.app.get('db')
         const { category } = req.params

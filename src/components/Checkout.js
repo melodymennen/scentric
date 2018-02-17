@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import functions from '../utilities/functions'
+import StripeCheckout from './StripeCheckout'
 import MiniCart from './MiniCart'
 import Header from './Header'
 
@@ -23,49 +24,42 @@ export default class Checkout extends Component {
     }
 
     handleNameChange(value){
-        console.log(value)
         this.setState({
             inputName: value
         })
     }
 
     handleEmailChange(value){
-        console.log(value)
         this.setState({
             inputEmail: value
         })
     }
 
     handleAddressChange(value){
-        console.log(value)
         this.setState({
             inputAddress: value
         })
     }
 
     handleSecAddressChange(value){
-        console.log(value)
         this.setState({
             inputSecAddress: value
         })
     }
 
     handleCityChange(value){
-        console.log(value)
         this.setState({
             inputCity: value
         })
     }
 
     handleStateChange(value){
-        console.log(value)
         this.setState({
             inputState: value
         })
     }
 
     handleZipCodeChange(value){
-        console.log(value)
         this.setState({
             inputZipCode: value
         })
@@ -159,11 +153,34 @@ export default class Checkout extends Component {
                     <div className="checkout_minicart"> 
                         <MiniCart/>
                         <div className="checkout_button_tocart">
-                            <Link to="/cart"><button>Back to Cart</button></Link>
+                            <Link to="/cart"><button className="button" style={button}>Back to Cart</button></Link>
                         </div>
+                        <StripeCheckout
+                        name={'Scentric'} // the pop-in header title
+                        ComponentClass="div"
+                        panelLabel="Give Money" // prepended to the amount in the bottom pay button
+                        amount={1000000} // cents
+                        currency="USD"
+                        stripeKey="pk_test_x3uy8zu7J2CsiyP9ptzmMu4N"
+                        shippingAddress={true}
+                        billingAddress={true}
+                        zipCode={true}
+                        allowRememberMe // "Remember Me" option (default true)
+                        token={this.onToken} // submit callback
+                        opened={this.onOpened} // called when the checkout popin is opened (no IE6/7)
+                        closed={this.onClosed} // called when the checkout popin is closed (no IE6/7)
+                        reconfigureOnUpdate={false}
+                        triggerEvent="onTouchTap"
+                        >
+                        <button className="btn btn-primary"></button>
+                    </StripeCheckout>
                     </div>
                 </div>
             </div>
         )
     }
+}
+
+const button = {
+    padding:' 5px 10px'
 }
