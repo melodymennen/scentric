@@ -121,35 +121,30 @@ class Account extends Component {
 
 
     handleAddressChange = (value) => {
-        console.log(value)
         this.setState({
             inputAddress: value
         })
     }
 
     handleSecAddressChange = (value) => {
-        console.log(value)
         this.setState({
             inputSecAddress: value
         })
     }
 
     handleCityChange = (value) => {
-        console.log(value)
         this.setState({
             inputCity: value
         })
     }
 
     handleStateChange = (value) => {
-        console.log(value)
         this.setState({
             inputState: value
         })
     }
 
     handleZipCodeChange = (value) => {
-        console.log(value)
         this.setState({
             inputZipCode: value
         })
@@ -212,8 +207,8 @@ class Account extends Component {
                                         </div>
                                         <div className="account_date">
                                             <div>You have been a user since 2018!</div>
-                                            <div>You have {this.props.cart.qty} Items in you cart. Click <Link to="/Cart">Here</Link> to checkout</div>
-                                            <div>If you wish to change your account settings click <a onClick={this.openAccountSettings}>Here</a></div>
+                                            <div>You have {this.props.cart.qty} Items in you cart. Click <Link to="/Cart">Here</Link> to checkout.</div>
+                                            <div>If you wish to change your account settings click <a onClick={this.openAccountSettings}>Here</a>.</div>
                                         </div>
                                     </div>
                                 </div>
