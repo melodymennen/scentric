@@ -36,3 +36,14 @@ VALUES ('buttery popcorn', '89.98', 'Don''t wait to be at the movies to enjoy th
 
 INSERT INTO products( name, price, description, category, scent_family, image_url)
 VALUES ('bigg dogg danny luv', '299.98', 'Fans everywhere will mistake you for the real thing. Be careful of swooning, knee-buckling, and infatuating glances', 'cologne','warm and spicy', 'https://s3-us-west-1.amazonaws.com/scentric/colognes/biggdogg.png');
+
+
+INSERT INTO products( name, price, description, category, scent_family, image_url)
+VALUES ('pickle rick', '54.98', 'The reason anyone would buy this is, if they could, which they can''t, would be because they could, which they can''t', 'perfume','green', 'https://s3-us-west-1.amazonaws.com/scentric/perfumes/picklerick.png');
+
+
+INSERT INTO products( name, price, description, category, scent_family, image_url)
+VALUES ('jake''s tears', '4.98', 'Bitter and sweet ', 'perfume','green', 'https://s3-us-west-1.amazonaws.com/scentric/perfumes/jaketears.png');
+
+INSERT INTO products( name, price, description, category, scent_family, image_url)
+VALUES ('mo money mo problems', '84.99', 'You can never have too much money', 'perfume','green', 'https://s3-us-west-1.amazonaws.com/scentric/perfumes/momoneymoproblems.png');

@@ -31,7 +31,7 @@ class Home extends Component {
                 </div>
                 <div className="home_featured_products">Featured Products</div>
                 <div className="home_flex">
-                {this.props.products.slice(0,6).map(e => {
+                {this.props.products.map(e => {
                     return (
                     <div key={e.id}>
                         <ProductModule
