@@ -66,9 +66,9 @@ module.exports = {
     updateUser: (req, res) => {
         const db = req.app.get('db')
         const { user } = req.session
-        const { newName, newEmail, newPicture } = req.body
-        console.log(user.id, newName, newEmail, newPicture)
-        db.update_user([user.id, newName, newEmail, newPicture]).then(() => {
+        const { newName, newEmail, newPicture, address } = req.body
+        console.log(user.id, newName, newEmail, newPicture, address)
+        db.update_user([user.id, newName, newEmail, newPicture, address]).then(() => {
             res.status(200).send('success')
         }).catch(error => console.log('update user error', error))
     },

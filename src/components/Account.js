@@ -19,6 +19,12 @@ class Account extends Component {
             emailInput: '',
             pictureInput: '',
             accountSettings: false,
+
+            inputAddress: '',
+            inputCity: '',
+            inputState: '',
+            inputZipCode:    '',
+
         }
     }
 
@@ -81,14 +87,71 @@ class Account extends Component {
     }
 
     updateUser = () => {
+        let address = {
+            address: this.state.inputAddress,
+            city: this.state.inputCity,
+            state: this.state.inputState,
+            zipcode: this.state.inputZipCode
+        }
+
+        let addressString = JSON.stringify(address)
+        console.log(addressString)
+        
         let myobj = {
             newName: this.state.nameInput,
             newEmail: this.state.emailInput,
-            newPicture: this.state.pictureInput
+            newPicture: this.state.pictureInput,
+
+            address: addressString
         }
         console.log(myobj)
         axios.post(`/api/updateuser`, myobj).then((res) => {
             console.log("works", res)
+        })
+    }
+
+    address = () => {
+        let parsedAddress = JSON.parse(this.props.user.address)
+        if (this.props.user.address === null) {
+            return (<div className="account_address">It looks like you don't have and address set up click <a onClick={this.openAccountSettings}>Here</a> to set one up</div>)
+        } else {
+            return (<div>Address: {parsedAddress.address} {parsedAddress.city}, {parsedAddress.state}, {parsedAddress.zipcode}</div>)
+        }
+    }
+
+
+    handleAddressChange = (value) => {
+        console.log(value)
+        this.setState({
+            inputAddress: value
+        })
+    }
+
+    handleSecAddressChange = (value) => {
+        console.log(value)
+        this.setState({
+            inputSecAddress: value
+        })
+    }
+
+    handleCityChange = (value) => {
+        console.log(value)
+        this.setState({
+            inputCity: value
+        })
+    }
+
+    handleStateChange = (value) => {
+        console.log(value)
+        this.setState({
+            inputState: value
+        })
+    }
+
+    handleZipCodeChange = (value) => {
+        console.log(value)
+        this.setState({
+            inputZipCode: value
         })
     }
 
@@ -121,6 +184,11 @@ class Account extends Component {
                         </div>
                         {user &&
                             <div className={`account_indexes ${this.state.menuShow ? '' : this.state.position}`}>
+
+
+ {/* ////////////////////////////// account section //////////////////////////////// */}
+
+
                                 <div className={`account_container ${this.state.showInfo ? 'account_show-info' : ''}`}>
                                     <div className="account_info-excerpt">
                                         <div className="account_flex_profile">
@@ -130,24 +198,41 @@ class Account extends Component {
                                             </div>
                                         </div>
                                         <div className="account_flex account_space">
-                                        <div className="account_flex_profile">
-                                            <div>Account Name: {user.name}</div>
-                                            <div>Account id: {this.props.user.id}</div>
+                                            <div className="account_flex_profile">
+                                                <div>Account Name: {user.name}</div>
+                                                <div>Account id: {this.props.user.id}</div>
+                                            </div>
+                                            <div className="account_flex_profile">
+                                                <div>Email: {user.email}</div>
+                                                <div>Auth0_id: {user.auth0_id}</div>
+                                            </div>
                                         </div>
-                                        <div className="account_flex_profile">
-                                            <div>Email: {user.email}</div>
-                                            <div>Auth0_id: {user.auth0_id}</div>
+                                        <div className="account_space">
+                                            {this.address()}
                                         </div>
+                                        <div className="account_date">
+                                            <div>You have been a user since 2018!</div>
+                                            <div>You have {this.props.cart.qty} Items in you cart. Click <Link to="/Cart">Here</Link> to checkout</div>
+                                            <div>If you wish to change your account settings click <a onClick={this.openAccountSettings}>Here</a></div>
                                         </div>
-                                        <div>You have been a user since 2018!</div>
-                                        <div>You have {this.props.cart.qty} Items in you cart. Click <a>Here</a> to checkout</div>
                                     </div>
                                 </div>
+
+
+{/* ////////////////////////////// Favorites section //////////////////////////////// */}
+
+
                                 <div className={`account_container ${this.state.showFavorites ? 'account_show-favorites' : ''}`}>
                                     <div className="account_favorites-excerpt">
                                         This is where the favorites go
+                                    </div>
                                 </div>
-                                </div>
+                               
+                               
+                               
+{/* ////////////////////////////// account settings section //////////////////////////////// */}
+
+
                                 <div className={`account_container ${this.state.showAccountSettings ? 'account_show-account-settings' : ''}`}>
                                     <div>
                                         <button onClick={this.accountSettings}>Change Account Settings</button>
@@ -156,9 +241,76 @@ class Account extends Component {
                                         <div>Change Name: <input defaultValue={user.name} onChange={event => this.handleNameChange(event.target.value)} /></div>
                                         <div>Change Email: <input defaultValue={user.email} onChange={event => this.handleEmailChange(event.target.value)} /></div>
                                         <div>Change Profile Picture:  <input defaultValue={user.picture_url} onChange={event => this.handlePictureChange(event.target.value)} /></div>
-                                        <div> Auth0_id: {user.auth0_id}</div>
-                                        <button onClick={this.updateUser}>submit</button>
+                                        <div>Auth0_id: {user.auth0_id}</div>
                                     </div>
+                                    <div className="checkout_sec_wrapper">
+                                        <div><input value={this.state.inputAddress}
+                                            onChange={(e) => this.handleAddressChange(e.target.value)}
+                                            placeholder="Street Address" /></div>
+                                        </div>
+                                    <div className="checkout_third_wrapper">
+                                        <input 
+                                        onChange={(e) => this.handleCityChange(e.target.value)}
+                                        placeholder="City" />
+                                        <select onChange={(e) => this.handleStateChange(e.target.value)}>
+                                            <option value="State">State</option>
+                                            <option value="AL">Alabama</option>
+                                            <option value="AK">Alaska</option>
+                                            <option value="AZ">Arizona</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="CA">California</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="DC">District Of Columbia</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="HI">Hawaii</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="ND">North Dakota</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="UT">Utah</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WA">Washington</option>
+                                            <option value="WV">West Virginia</option>
+                                            <option value="WI">Wisconsin</option>
+                                            <option value="WY">Wyoming</option>
+                                        </select>
+                                        <input value={this.state.inputZipCode}
+                                            onChange={(e) => this.handleZipCodeChange(e.target.value)}
+                                            placeholder="Zip Code" />
+                                    </div>
+                            <button onClick={this.updateUser}>submit</button>
                                 </div>
                             </div>}
                         {!user &&
@@ -166,7 +318,7 @@ class Account extends Component {
                     </div>}
                     </div>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         )
     }

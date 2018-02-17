@@ -18,6 +18,10 @@
 }
 
 .account_info-excerpt {
+    padding: 30px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-color: #f5f5f5;
+
     > div {
         margin: 10px;
     }
@@ -129,7 +133,6 @@
 .account_indexes {
     background-color: white;
     width: 100%;
-    margin-top: 30px;
 }
 
 .account_indexes-position {
@@ -148,10 +151,35 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    font-size: 1.2em;
+    font-weight: bold;
+    > div {
+        margin-top: 10px;
+    }
+}
+
+.account_date {
+    font-size: 1.2em;
+    margin-top: 20px;
+
+    > div {
+        margin-top: 20px;
+
+        > a {
+            text-decoration: underline;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
 }
 
 .account_space {
     justify-content: space-around;
+    border: .5px solid #f5f5f5;
+    padding: 0px 10px 10px 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.09);
+    background-color: white;
 }
 
 .account_picture {
@@ -173,5 +201,16 @@
     > div {
         padding-top: 10px;
         margin-left: 10px;
+    }
+}
+
+.account_address {
+    padding-top: 5px;
+
+    > a {
+        text-decoration: underline;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
     }
 }

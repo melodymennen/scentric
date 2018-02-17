@@ -3,7 +3,8 @@ id SERIAL PRIMARY KEY,
 name TEXT, 
 email TEXT, 
 picture_url TEXT,
-auth0_id TEXT
+auth0_id TEXT,
+Address TEXT
 );
 
 CREATE TABLE products (
