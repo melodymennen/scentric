@@ -21,7 +21,7 @@ class MiniCart extends Component {
             console.log(this.props.cart)
             return (
                 <div className="minicart_flex" key={e.id}>
-                        <div><img src={e.image_url} alt="product" width="60px"/></div>
+                        <div><img src={e.image_url} alt="product" width="70px"/></div>
                     <div className="minicart_wrapper">
                         <div style={name}>{e.name}</div>
                         <div>Qty: {e.qty}</div>
@@ -33,18 +33,31 @@ class MiniCart extends Component {
             <div >
                 <div className="minicart_summary">Cart Summary</div>
                     {cart}
-                    <div className="minicart_ordertotals">Subtotal ({this.props.cart.qty} Items): ${this.props.cart.subtotal.toFixed(2)}
-                    <div>Shipping(Flat Rate): $5.00</div>
-                    <div>Tax: ${(this.props.cart.subtotal * .06).toFixed(2)}</div>
-                    <div className="minicart_ordersubtotals"> Order Subtotal: ${((this.props.cart.subtotal * .06) + this.props.cart.subtotal + 5).toFixed(2)} </div>
+                    <div className="minicart_ordertotals">
+                        <div>
+                            <span>Subtotal ({this.props.cart.qty} Items):</span>
+                            <div> ${this.props.cart.subtotal.toFixed(2)}</div>
+                        </div>
+                        <div>
+                            <span>Shipping(Flat Rate):</span>
+                            <div>$5.00</div>
+                        </div>
+                        <div>
+                            <span>Tax:</span>
+                            <div>${(this.props.cart.subtotal * .06).toFixed(2)}</div>
+                        </div>
+                        <div className="minicart_ordersubtotals"> 
+                            <span>Order Subtotal:</span>
+                            <div>${((this.props.cart.subtotal * .06) + this.props.cart.subtotal + 5).toFixed(2)} </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
         )
     }
 }
 
 const name = {
-    fontSize: '12pt',
+    fontSize: '10pt',
     fontWeight: 'bold',
     textTransform: 'capitalize'
 }
