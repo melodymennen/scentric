@@ -53,7 +53,7 @@ class Admin extends Component {
                 <div className="admin_flex">
                     <div className="admin_menu">
                         <div onClick={this.showViewInventory}>View Inventory</div>
-                        <div onClick={this.showAddInventory}>+ Inventory</div>
+                        <div onClick={this.showAddInventory}>Add Inventory</div>
                         <div onClick={this.showCustomers}>Customers</div>
                         <div onClick={this.showOrders}>Orders</div>
                     </div>
