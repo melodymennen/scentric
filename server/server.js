@@ -37,6 +37,7 @@ app.post('/api/updateuser', controller.updateUser)
 app.post('/api/new-order', controller.addOrder)
 app.get('/api/orders', controller.getOrdersByUser)
 app.get('/api/orders/:order_id', controller.getOrder)
+app.post('/api/product', controller.addProduct)
 
 app.get('/api/stripeConnect', stripe_ctrl.connect)
 app.post('/api/finalize', stripe_ctrl.finalize)

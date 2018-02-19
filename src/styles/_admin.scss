@@ -1,0 +1,124 @@
+.admin_header_wrapper{
+    padding: 10px;
+    box-shadow: 1px 5px 11px -2px rgba(0,0,0,0.28);
+    .admin_header_logo{
+        padding: 20px;
+        font-size: 28pt;
+        color: $font-color;
+    }
+}
+
+.admin_menu{
+    padding: 50px 0;
+    box-shadow: 1px 5px 11px -2px rgba(0,0,0,0.28);
+    display: inline-block;
+    height: 100vh;
+    width: 240px;
+    div{
+        padding: 15px 30px;
+        font-size: 14pt;
+        color: $font-color;
+        border: 1px solid rgb(110, 110, 110);
+        cursor: pointer;
+    }
+}
+
+.admin_flex{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+}
+
+//Inventory
+
+.inventory_admin_panel{
+    div{
+        padding: 10px;
+        input{
+            width: 500px;
+            padding: 10px;
+            font-size: 12pt;
+        }
+        textarea{
+            width: 500px;
+            height: 100px;
+            padding: 10px;
+            font-size: 12pt;
+        }
+        select{
+            width: 200px;
+            height: 30px;
+            font-size: 10pt;
+        }
+    }
+}
+
+.inventory_admin_panel_title{
+    text-align: center;
+    font-size: 16pt;
+    color: $font_color;
+    padding-bottom: 20px;
+}
+
+// viewInventory 
+
+.viewinventory_flex_wrapper{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+    align-items: stretch;
+    div{
+        border: 1px solid rgba(102, 102, 102, 0.473);
+        padding: 10px;
+    }
+    .name{
+        width: 160px;
+        text-transform: capitalize;
+        padding-top: 25pt;
+    }
+    .price{
+        width: 70px;
+        padding-top: 25pt;
+    }
+    .description{
+        width: 400px;
+        font-size: 11pt;
+    }
+    .category{
+        width: 80px;
+        text-transform: capitalize;
+        padding-top: 25pt;
+    }
+    .scent_family{
+        width: 110px;
+        text-transform: capitalize;
+        padding-top: 25pt;
+    }
+}
+
+.viewinventory_flex_wrapper_title{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+    align-items: stretch;
+    div{
+        padding: 10px 15px;
+        font-weight: bold;
+    }
+        .title_name{
+            width: 160px;
+        }
+        .title_price{
+            width: 60px;
+        }
+        .title_description{
+            width: 380px;
+        }
+        .title_category{
+            width: 80px;
+        }
+}
