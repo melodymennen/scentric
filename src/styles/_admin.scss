@@ -13,9 +13,9 @@
     box-shadow: 1px 5px 11px -2px rgba(0,0,0,0.28);
     display: inline-block;
     height: 100vh;
-    width: 260px;
+    width: 240px;
     div{
-        padding: 15px 50px;
+        padding: 15px 30px;
         font-size: 14pt;
         color: $font-color;
         border: 1px solid rgb(110, 110, 110);
@@ -60,4 +60,65 @@
     font-size: 16pt;
     color: $font_color;
     padding-bottom: 20px;
+}
+
+// viewInventory 
+
+.viewinventory_flex_wrapper{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+    align-items: stretch;
+    div{
+        border: 1px solid rgba(102, 102, 102, 0.473);
+        padding: 10px;
+    }
+    .name{
+        width: 160px;
+        text-transform: capitalize;
+        padding-top: 25pt;
+    }
+    .price{
+        width: 70px;
+        padding-top: 25pt;
+    }
+    .description{
+        width: 400px;
+        font-size: 11pt;
+    }
+    .category{
+        width: 80px;
+        text-transform: capitalize;
+        padding-top: 25pt;
+    }
+    .scent_family{
+        width: 110px;
+        text-transform: capitalize;
+        padding-top: 25pt;
+    }
+}
+
+.viewinventory_flex_wrapper_title{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+    align-items: stretch;
+    div{
+        padding: 10px 15px;
+        font-weight: bold;
+    }
+        .title_name{
+            width: 160px;
+        }
+        .title_price{
+            width: 60px;
+        }
+        .title_description{
+            width: 380px;
+        }
+        .title_category{
+            width: 80px;
+        }
 }
