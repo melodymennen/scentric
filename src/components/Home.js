@@ -5,43 +5,59 @@ import functions from '../utilities/functions'
 import ProductModule from './ProductModule'
 import Header from './Header'
 import Footer from './Footer'
+import Slider from 'react-slick'
+
 
 
 
 class Home extends Component {
     constructor(props) {
         super(props)
-        
-        this.state ={}
+
+        this.state = {}
     }
 
-    
+
     componentDidMount() {
         this.props.getProducts()
         functions.generateId()
     }
 
     render() {
+        var settings = {
+            dots: true,
+            speed: 1000,
+            autoplay: true,
+            arrows: true,
+            pauseOnHover: false,
+            autoplaySpeed: 8000,
+
+            
+        };
         return (
             <div>
                 <Header />
                 <div className="home_hero">
+                    <Slider {...settings}>
+                        <div><img alt="mens cologne" className="home_pictures" src='https://s3-us-west-1.amazonaws.com/scentric/colognehero.png' /></div>
+                        <div><img alt="wemens perfume" className="home_pictures" src='https://s3-us-west-1.amazonaws.com/scentric/womensperfume.png' /></div>
+                    </Slider>
                 </div>
                 <div className="home_featured_products">Featured Products</div>
                 <div className="home_flex">
-                {this.props.products.map(e => {
-                    return (
-                    <div key={e.id}>
-                        <ProductModule
-                        name={e.name} 
-                        description={e.description}
-                        price={e.price}
-                        pic={e.image_url}
-                        id={e.id}
-                        />
-                    </div>
-                    )
-                })}
+                    {this.props.products.map(e => {
+                        return (
+                            <div key={e.id}>
+                                <ProductModule
+                                    name={e.name}
+                                    description={e.description}
+                                    price={e.price}
+                                    pic={e.image_url}
+                                    id={e.id}
+                                />
+                            </div>
+                        )
+                    })}
                 </div>
                 <Footer />
             </div>

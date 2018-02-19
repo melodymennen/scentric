@@ -33,7 +33,7 @@ class Account extends Component {
     componentWillMount() {
         setTimeout(() => {
             this.setState({ menuShow: true })
-        }, 1000)
+        }, 500)
         functions.generateId()
 
         if (this.props.user) {
@@ -255,7 +255,7 @@ class Account extends Component {
 
 
                                             <div className=""> Address:
-                                            <div>
+                                            <div className="account_selector">
                                                     <input className="account_input_address" defaultValue={this.state.address.address}
                                                         onChange={(e) => this.handleAddressChange(e.target.value)}
                                                         placeholder="Street Address" />

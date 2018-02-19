@@ -21,11 +21,18 @@ body {
 
 // home Page
 .home_hero{
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
     padding-top: 100px;
+    padding-bottom: 50px;
+    margin: 0 auto;
+    text-align: center;
+    width: 70%;
+    
     // background-image: url("https://s3-us-west-1.amazonaws.com/scentric/PerfumeHero.png");
+}
+
+.home_pictures {
+  width: 100%;
+  height: 100%;
 }
 
 

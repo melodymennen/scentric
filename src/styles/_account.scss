@@ -162,10 +162,18 @@
 
 .account_input_address {
     width: 140px;
+    height: 20px;
+    margin-right: 5px;
 }
 
 .account_input_short {
     width: 90px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.account_selector > select {
+    height: 26px;
 }
 
 .account_flex_profile {
@@ -242,6 +250,10 @@
     font-size: 1em;
     border-bottom: .5px solid gray;
     margin: 20px;
+    padding: 10px;
+}
+
+.account_before-excerpt {
     padding: 10px;
 }
 
