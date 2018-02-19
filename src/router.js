@@ -11,7 +11,7 @@ import Home from './components/Home'
 import Cart from './components/Cart'
 import FAQ from './components/FAQ'
 import Admin from './components/Admin'
-// import Inventory from './components/Inventory'
+
 
 
 
