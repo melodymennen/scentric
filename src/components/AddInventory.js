@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import FileUpload from './FileUpload'
+import request from 'superagent'
 import axios from 'axios'
 
 
@@ -14,6 +16,7 @@ class Inventory extends Component {
             selectScentFamily: '',
         }
         this.addProduct=this.addProduct.bind(this)
+        this.onDrop = this.onDrop.bind(this)
     }
 
     handleTitleChange(value){
@@ -28,12 +31,7 @@ class Inventory extends Component {
             description: value
         })
     }
-    handleImageChange(value){
-        console.log(value)
-        this.setState({
-            image_url: value
-        })
-    }
+ 
     handlePriceChange(value){
         console.log(value)
         this.setState({
@@ -74,6 +72,23 @@ class Inventory extends Component {
         })
     }
 
+    onDrop = (files) => {
+        request
+        .post('/upload')
+        .attach('image_url', files[0])
+        .end((error, response) => {
+            if (error) {
+                console.log('on drop error',error)
+                alert('File Not Uploaded')
+            } else {
+                alert('File Uploaded Succesfully')
+                console.log('File Uploaded Succesfully')
+                console.log(response.text)
+                this.setState({ image_url: response.text})
+            }
+        })
+    }
+
     render() {
         return (
             <div>
@@ -81,8 +96,8 @@ class Inventory extends Component {
                 <div className="inventory_admin_panel">
                     <div><input value={this.state.name} placeholder="Title" onChange={(e)=>this.handleTitleChange(e.target.value)}/></div>
                     <div><textarea value={this.state.description} placeholder="Description" onChange={(e)=>this.handleDescriptionChange(e.target.value)}/></div>
+                    <FileUpload onDrop={this.onDrop} />
                     <div><input value={this.state.price} placeholder="Price" onChange={(e)=>this.handlePriceChange(e.target.value)}/></div>
-                    <div><input value={this.state.image_url} placeholder="Image" onChange={(e)=>this.handleImageChange(e.target.value)}/></div>
                     <div><select value={this.state.category} onChange={(e)=>this.handleCategoryChange(e.target.value)}>
                         <option>Category</option>
                         <option value="perfume">Perfume</option>

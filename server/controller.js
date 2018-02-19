@@ -126,5 +126,28 @@ module.exports = {
         db.add_product([name, price, description, category, scent_family, image_url]).then(product => {
             res.status(200).json(product)
         }).catch(error => console.log('add product', error))
+    }, 
+    addFavorite: (req, res) => {
+        const db =  req.app.get('db')
+        const { user } = req.session
+        const { product_id } = req.body
+
+        db.check_favorites([user.id, product_id]).then(response => {
+            if(response.length){
+                res.send('already a favorite')
+            } else {
+                db.add_favorite([user.id, product_id]).then(() => {
+                    res.status(200).send('success')
+                }).catch(error => console.log('add favorite error',error))
+            }
+        }).catch(error => console.log('check favorites error', error))    
+    }, 
+    getFavorites: (req, res, next) => {
+        const db =  req.app.get('db')
+        const { user } = req.session
+
+        db.get_favorites([user.id]).then(favorites => {
+            res.status(200).json(favorites)
+        }).catch(error => console.log('get favorites error',error))
     }
 }

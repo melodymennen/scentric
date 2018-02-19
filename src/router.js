@@ -11,14 +11,13 @@ import Home from './components/Home'
 import Cart from './components/Cart'
 import FAQ from './components/FAQ'
 import Admin from './components/Admin'
-// import Inventory from './components/Inventory'
-
 
 
 export default (
     <Switch>
         <Route exact path="/" component = { LandingPage } />
         <Route path="/Home" component = { Home } />
+        <Route path="/OrderConfirmation/:order_id" component = { OrderConfirmation } />
         <Route path="/display/:category" component = { DisplayProducts } />
         <Route path="/products/:product_id" component = { ProductPage } />
         <Route path="/ContactUs" component = { ContactUs } />
