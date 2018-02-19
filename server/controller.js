@@ -78,5 +78,13 @@ module.exports = {
         db.get_products_by_scent([category]).then(products => {
             res.status(200).json(products)
         }).catch(error => console.log('get products by scent error', error))
+    },
+    addProduct: (req,res) => {
+        const db = req.app.get('db')
+        const {name, price, description, category, scent_family, image_url} = req.body
+
+        db.add_product([name, price, description, category, scent_family, image_url]).then(product => {
+            res.status(200).json(product)
+        }).catch(error => console.log('add product', error))
     }
 }

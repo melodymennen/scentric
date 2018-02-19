@@ -33,6 +33,7 @@ app.get('/api/cart', controller.getCart)
 app.delete('/api/cart/:product_id', controller.removeFromCart)
 app.patch('/api/cart', controller.decreaseCartQty)
 app.post('/api/updateuser', controller.updateUser)
+app.post('/api/product', controller.addProduct)
 
 app.get('/api/stripeConnect', stripe_ctrl.connect)
 app.post('/api/finalize', stripe_ctrl.finalize)
