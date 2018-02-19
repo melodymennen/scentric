@@ -1,5 +1,5 @@
 .productmodule_card {
-    margin: 20px 30px 20px 30px;
+    margin: 10px 20px 10px 20px;
     width: 300px;
     background-color: #f8f9fa;
     box-shadow: 0px 5px 20px rgba(85, 85, 85, 0.514);
@@ -11,7 +11,7 @@
 }
 
 .productmodule_card:hover .productmodule_card-image img {
-    width: 80%;
+    width: 65%;
     filter: grayscale(0);
 }
 

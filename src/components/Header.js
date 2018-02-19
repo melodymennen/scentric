@@ -113,7 +113,7 @@ class Header extends Component {
                         <Link to="">About</Link>
                         { !user && <a onClick={this.login}>Login</a>}
                         { user && <Link to="/Account">Account</Link>}
-                        <Link to="/cart"><span onMouseEnter={()=>{this.showMiniCart()}}>Cart ( {this.props.cart.qty} )</span></Link>
+                        <Link to="/cart"><span onMouseEnter={()=>{this.showMiniCart()}}>Cart<span className={this.props.cart.qty < 10 ? "qty" : "qty10"}>{this.props.cart.qty}</span></span></Link>
                         {this.state.show ? 
                     <div className="header-minicart" onMouseLeave={() => {this.hideMiniCart()}}>
                         <MiniCart/>
