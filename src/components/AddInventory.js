@@ -96,8 +96,8 @@ class Inventory extends Component {
                 <div className="inventory_admin_panel">
                     <div><input value={this.state.name} placeholder="Title" onChange={(e)=>this.handleTitleChange(e.target.value)}/></div>
                     <div><textarea value={this.state.description} placeholder="Description" onChange={(e)=>this.handleDescriptionChange(e.target.value)}/></div>
-                    <div><input value={this.state.price} placeholder="Price" onChange={(e)=>this.handlePriceChange(e.target.value)}/></div>
                     <FileUpload onDrop={this.onDrop} />
+                    <div><input value={this.state.price} placeholder="Price" onChange={(e)=>this.handlePriceChange(e.target.value)}/></div>
                     <div><select value={this.state.category} onChange={(e)=>this.handleCategoryChange(e.target.value)}>
                         <option>Category</option>
                         <option value="perfume">Perfume</option>
