@@ -1,21 +1,26 @@
 import React, { Component } from 'react'
 
 
-class Inventory extends Component {
+class ViewInventory extends Component {
     constructor(props) {
         super(props)
         this.state = {
         }
     }
 
+    componentDidMount() {
+        this.props.getCart()
+    }
+
     render() {
         return (
             <div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
+               
             </div>
         )
     }
 }
 
 
-export default Inventory
+
+export default ViewInventory

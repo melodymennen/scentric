@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Inventory from './Inventory'
+import ViewInventory from './ViewInventory'
+import AddInventory from './AddInventory'
 import Customers from './Customers'
 import Orders from './Orders'
 
@@ -10,14 +11,21 @@ class Admin extends Component {
         this.state = {
             route: ''
         }
-        this.showInventory = this.showInventory.bind(this)
+        this.showAddInventory = this.showAddInventory.bind(this)
+        this.showViewInventory = this.showViewInventory.bind(this)
         this.showCustomers = this.showCustomers.bind(this)
         this.showOrders = this.showOrders.bind(this)
     }
 
-    showInventory(){
+    showViewInventory(){
         this.setState ({
-            route: 'inventory'
+            route: 'viewinventory'
+        })
+    }
+
+    showAddInventory(){
+        this.setState ({
+            route: 'addinventory'
         })
     }
 
@@ -44,12 +52,14 @@ class Admin extends Component {
                 </div>
                 <div className="admin_flex">
                     <div className="admin_menu">
-                        <div onClick={this.showInventory}>Inventory</div>
+                        <div onClick={this.showViewInventory}>View Inventory</div>
+                        <div onClick={this.showAddInventory}>+ Inventory</div>
                         <div onClick={this.showCustomers}>Customers</div>
                         <div onClick={this.showOrders}>Orders</div>
                     </div>
-                    <div>
-                        {this.state.route === 'inventory' ? <Inventory/> : null}
+                    <div style={margin}>
+                        {this.state.route === 'viewinventory' ? <ViewInventory/> : null}
+                        {this.state.route === 'addinventory' ? <AddInventory/> : null}
                         {this.state.route === 'customers' ? <Customers/> : null}
                         {this.state.route === 'orders' ? <Orders/> : null}
                     </div>
@@ -57,6 +67,10 @@ class Admin extends Component {
             </div>
         )
     }
+}
+
+const margin = {
+    margin: '70px auto'
 }
 
 
