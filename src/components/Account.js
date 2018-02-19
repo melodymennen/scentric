@@ -23,7 +23,9 @@ class Account extends Component {
             inputAddress: '',
             inputCity: '',
             inputState: '',
-            inputZipCode:    '',
+            inputZipCode: '',
+
+            address: {},
 
         }
     }
@@ -33,6 +35,11 @@ class Account extends Component {
             this.setState({ menuShow: true })
         }, 1000)
         functions.generateId()
+
+        if (this.props.user) {
+            this.setState({ address: JSON.parse(this.props.user.address) })
+        }
+        console.log(this.state.address)
     }
     openInfo = () => {
         this.setState({
@@ -96,7 +103,7 @@ class Account extends Component {
 
         let addressString = JSON.stringify(address)
         console.log(addressString)
-        
+
         let myobj = {
             newName: this.state.nameInput,
             newEmail: this.state.emailInput,
@@ -115,7 +122,7 @@ class Account extends Component {
         if (this.props.user.address === null) {
             return (<div className="account_address">It looks like you don't have and address set up click <a onClick={this.openAccountSettings}>Here</a> to set one up</div>)
         } else {
-            return (<div>Address: {parsedAddress.address} {parsedAddress.city}, {parsedAddress.state}, {parsedAddress.zipcode}</div>)
+            return (<div className="account_address">Address: <div>{parsedAddress.address} {parsedAddress.city}, {parsedAddress.state}, {parsedAddress.zipcode}</div></div>)
         }
     }
 
@@ -181,7 +188,7 @@ class Account extends Component {
                             <div className={`account_indexes ${this.state.menuShow ? '' : this.state.position}`}>
 
 
- {/* ////////////////////////////// account section //////////////////////////////// */}
+                                {/* ////////////////////////////// account section //////////////////////////////// */}
 
 
                                 <div className={`account_container ${this.state.showInfo ? 'account_show-info' : ''}`}>
@@ -214,7 +221,7 @@ class Account extends Component {
                                 </div>
 
 
-{/* ////////////////////////////// Favorites section //////////////////////////////// */}
+                                {/* ////////////////////////////// Favorites section //////////////////////////////// */}
 
 
                                 <div className={`account_container ${this.state.showFavorites ? 'account_show-favorites' : ''}`}>
@@ -222,90 +229,104 @@ class Account extends Component {
                                         This is where the favorites go
                                     </div>
                                 </div>
-                               
-                               
-                               
-{/* ////////////////////////////// account settings section //////////////////////////////// */}
+
+
+
+                                {/* ////////////////////////////// account settings section //////////////////////////////// */}
 
 
                                 <div className={`account_container ${this.state.showAccountSettings ? 'account_show-account-settings' : ''}`}>
-                                    <div>
-                                        <button onClick={this.accountSettings}>Change Account Settings</button>
-                                    </div>
-                                    <div className={`account_settings-excerpt ${this.state.accountSettings ? "account_settings-excerpt-show" : ""}`}>
-                                        <div>Change Name: <input defaultValue={user.name} onChange={event => this.handleNameChange(event.target.value)} /></div>
-                                        <div>Change Email: <input defaultValue={user.email} onChange={event => this.handleEmailChange(event.target.value)} /></div>
-                                        <div>Change Profile Picture:  <input defaultValue={user.picture_url} onChange={event => this.handlePictureChange(event.target.value)} /></div>
-                                        <div>Auth0_id: {user.auth0_id}</div>
-                                    </div>
-                                    <div className="checkout_sec_wrapper">
-                                        <div><input value={this.state.inputAddress}
-                                            onChange={(e) => this.handleAddressChange(e.target.value)}
-                                            placeholder="Street Address" /></div>
+                                    <div className="account_shadow">
+                                        <div>
+                                            <button className="button" onClick={this.accountSettings}>Edit Account Settings</button>
                                         </div>
-                                    <div className="checkout_third_wrapper">
-                                        <input 
-                                        onChange={(e) => this.handleCityChange(e.target.value)}
-                                        placeholder="City" />
-                                        <select onChange={(e) => this.handleStateChange(e.target.value)}>
-                                            <option value="State">State</option>
-                                            <option value="AL">Alabama</option>
-                                            <option value="AK">Alaska</option>
-                                            <option value="AZ">Arizona</option>
-                                            <option value="AR">Arkansas</option>
-                                            <option value="CA">California</option>
-                                            <option value="CO">Colorado</option>
-                                            <option value="CT">Connecticut</option>
-                                            <option value="DE">Delaware</option>
-                                            <option value="DC">District Of Columbia</option>
-                                            <option value="FL">Florida</option>
-                                            <option value="GA">Georgia</option>
-                                            <option value="HI">Hawaii</option>
-                                            <option value="ID">Idaho</option>
-                                            <option value="IL">Illinois</option>
-                                            <option value="IN">Indiana</option>
-                                            <option value="IA">Iowa</option>
-                                            <option value="KS">Kansas</option>
-                                            <option value="KY">Kentucky</option>
-                                            <option value="LA">Louisiana</option>
-                                            <option value="ME">Maine</option>
-                                            <option value="MD">Maryland</option>
-                                            <option value="MA">Massachusetts</option>
-                                            <option value="MI">Michigan</option>
-                                            <option value="MN">Minnesota</option>
-                                            <option value="MS">Mississippi</option>
-                                            <option value="MO">Missouri</option>
-                                            <option value="MT">Montana</option>
-                                            <option value="NE">Nebraska</option>
-                                            <option value="NV">Nevada</option>
-                                            <option value="NH">New Hampshire</option>
-                                            <option value="NJ">New Jersey</option>
-                                            <option value="NM">New Mexico</option>
-                                            <option value="NY">New York</option>
-                                            <option value="NC">North Carolina</option>
-                                            <option value="ND">North Dakota</option>
-                                            <option value="OH">Ohio</option>
-                                            <option value="OK">Oklahoma</option>
-                                            <option value="OR">Oregon</option>
-                                            <option value="PA">Pennsylvania</option>
-                                            <option value="RI">Rhode Island</option>
-                                            <option value="SC">South Carolina</option>
-                                            <option value="SD">South Dakota</option>
-                                            <option value="TN">Tennessee</option>
-                                            <option value="TX">Texas</option>
-                                            <option value="UT">Utah</option>
-                                            <option value="VT">Vermont</option>
-                                            <option value="VA">Virginia</option>
-                                            <option value="WA">Washington</option>
-                                            <option value="WV">West Virginia</option>
-                                            <option value="WI">Wisconsin</option>
-                                            <option value="WY">Wyoming</option>
-                                        </select>
-                                        <input value={this.state.inputZipCode}
-                                            onChange={(e) => this.handleZipCodeChange(e.target.value)}
-                                            placeholder="Zip Code" />
+
+                                        <div className={`account_before-excerpt ${this.state.accountSettings ? "account_settings-excerpt-hide" : ""}`}>
+                                            <div>Name: <div>{user.name}</div></div>
+                                            <div>Email: <div>{user.email}</div></div>
+                                            <div>Profile Picture: <div>{user.picture_url}</div></div>
+                                            {this.address()}
+
+                                        </div>
+                                        <div className={`account_settings-excerpt ${this.state.accountSettings ? "account_settings-excerpt-show" : ""}`}>
+                                            <div>Name: <input defaultValue={user.name} onChange={event => this.handleNameChange(event.target.value)} /></div>
+                                            <div>Email: <input defaultValue={user.email} onChange={event => this.handleEmailChange(event.target.value)} /></div>
+                                            <div>Profile Picture:  <input defaultValue={user.picture_url} onChange={event => this.handlePictureChange(event.target.value)} /></div>
+
+
+                                            <div className=""> Address:
+                                            <div>
+                                                    <input className="account_input_address" defaultValue={this.state.address.address}
+                                                        onChange={(e) => this.handleAddressChange(e.target.value)}
+                                                        placeholder="Street Address" />
+                                                    <input className="account_input_short"
+                                                        onChange={(e) => this.handleCityChange(e.target.value)}
+                                                        placeholder="City"
+                                                        defaultValue={this.state.address.city} />
+                                                    <select className="account_input_short" onChange={(e) => this.handleStateChange(e.target.value)}>
+                                                        <option value="State">State</option>
+                                                        <option value="AL">Alabama</option>
+                                                        <option value="AK">Alaska</option>
+                                                        <option value="AZ">Arizona</option>
+                                                        <option value="AR">Arkansas</option>
+                                                        <option value="CA">California</option>
+                                                        <option value="CO">Colorado</option>
+                                                        <option value="CT">Connecticut</option>
+                                                        <option value="DE">Delaware</option>
+                                                        <option value="DC">District Of Columbia</option>
+                                                        <option value="FL">Florida</option>
+                                                        <option value="GA">Georgia</option>
+                                                        <option value="HI">Hawaii</option>
+                                                        <option value="ID">Idaho</option>
+                                                        <option value="IL">Illinois</option>
+                                                        <option value="IN">Indiana</option>
+                                                        <option value="IA">Iowa</option>
+                                                        <option value="KS">Kansas</option>
+                                                        <option value="KY">Kentucky</option>
+                                                        <option value="LA">Louisiana</option>
+                                                        <option value="ME">Maine</option>
+                                                        <option value="MD">Maryland</option>
+                                                        <option value="MA">Massachusetts</option>
+                                                        <option value="MI">Michigan</option>
+                                                        <option value="MN">Minnesota</option>
+                                                        <option value="MS">Mississippi</option>
+                                                        <option value="MO">Missouri</option>
+                                                        <option value="MT">Montana</option>
+                                                        <option value="NE">Nebraska</option>
+                                                        <option value="NV">Nevada</option>
+                                                        <option value="NH">New Hampshire</option>
+                                                        <option value="NJ">New Jersey</option>
+                                                        <option value="NM">New Mexico</option>
+                                                        <option value="NY">New York</option>
+                                                        <option value="NC">North Carolina</option>
+                                                        <option value="ND">North Dakota</option>
+                                                        <option value="OH">Ohio</option>
+                                                        <option value="OK">Oklahoma</option>
+                                                        <option value="OR">Oregon</option>
+                                                        <option value="PA">Pennsylvania</option>
+                                                        <option value="RI">Rhode Island</option>
+                                                        <option value="SC">South Carolina</option>
+                                                        <option value="SD">South Dakota</option>
+                                                        <option value="TN">Tennessee</option>
+                                                        <option value="TX">Texas</option>
+                                                        <option value="UT">Utah</option>
+                                                        <option value="VT">Vermont</option>
+                                                        <option value="VA">Virginia</option>
+                                                        <option value="WA">Washington</option>
+                                                        <option value="WV">West Virginia</option>
+                                                        <option value="WI">Wisconsin</option>
+                                                        <option value="WY">Wyoming</option>
+                                                    </select>
+                                                    <input className="account_input_short" defaultValue={this.state.address.zipcode}
+                                                        onChange={(e) => this.handleZipCodeChange(e.target.value)}
+                                                        placeholder="Zip Code" />
+                                                </div>
+                                            </div>
+                                            <div className="account_button">
+                                            <button  className="button account_button" onClick={this.updateUser}>submit</button>
+                                            </div>
+                                        </div>
                                     </div>
-                            <button onClick={this.updateUser}>submit</button>
                                 </div>
                             </div>}
                         {!user &&
