@@ -7,6 +7,22 @@
     align-items: center;
 }
 
+.orderconfirmation_ {
+    &thank-you {
+        font-size: 1.5em;
+    }
+    &thank-you, &order-number {
+        margin: 20px;
+        span {
+            font-weight: 600;
+        }
+    }
+    &summary {
+        margin: 20px;
+        font-weight: 600;        
+    }
+}
+
 .orderconfirmation_line-item {
     width: 100%;
     display: flex;
@@ -15,11 +31,25 @@
         height: 100px;
     }
     div {
+        border-bottom: 1px solid rgba(0,0,0,.5);
+        padding: 15px 0;
         display: inherit;
-        border: 1px solid black;
         width: 20%;
-        justify-content: center;
         align-items: center;
         text-transform: capitalize;
+        margin: 5px 0;
+        a {
+            color: black;
+            &:visited {
+                color: black;
+            }
+            &:hover {
+                color: rgba(0,0,0,.5);
+            }
+        }
+    }
+    &-price, &-qty, &-subtotal {
+        justify-content: center;
     }
 }
+
