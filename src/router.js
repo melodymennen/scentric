@@ -9,7 +9,9 @@ import Account from './components/Account'
 import Home from './components/Home'
 import Cart from './components/Cart'
 import FAQ from './components/FAQ'
-import Hero from './components/Hero'
+import Admin from './components/Admin'
+// import Inventory from './components/Inventory'
+
 
 
 export default (
@@ -23,6 +25,7 @@ export default (
         <Route path="/Account" component = { Account } />
         <Route path="/FAQ" component = { FAQ } />
         <Route path="/ContactUs" component = { ContactUs } />
-        <Route path="/Hero" component = { Hero } />
+        <Route path="/Admin" component = {Admin} />
+        {/* <Route path="/Admin/Inventory" component = { Inventory } /> */}
     </Switch>
 )
