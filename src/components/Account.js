@@ -13,6 +13,7 @@ class Account extends Component {
             showInfo: true,
             showFavorites: false,
             showAccountSettings: false,
+            showHistory: false,
             menuShow: false,
             position: '',
             nameInput: '',
@@ -26,6 +27,7 @@ class Account extends Component {
             inputZipCode: '',
 
             address: {},
+            history: [],
 
         }
     }
@@ -37,7 +39,15 @@ class Account extends Component {
         functions.generateId()
 
         if (this.props.user) {
-            this.setState({ address: JSON.parse(this.props.user.address) })
+            if (this.props.user.address) {
+                let parsedAddress = JSON.parse(this.props.user.address)
+                this.setState({
+                    inputAddress: parsedAddress.address,
+                    inputCity: parsedAddress.city,
+                    inputState: parsedAddress.state,
+                    inputZipcode: parsedAddress.zipcode,
+                })
+            }
         }
         console.log(this.state.address)
     }
@@ -45,14 +55,16 @@ class Account extends Component {
         this.setState({
             showInfo: true,
             showFavorites: false,
-            showAccountSettings: false
+            showAccountSettings: false,
+            showHistory: false
         })
     }
     openFavorites = () => {
         this.setState({
             showFavorites: true,
             showInfo: false,
-            showAccountSettings: false
+            showAccountSettings: false,
+            showHistory: false
         })
     }
 
@@ -60,8 +72,19 @@ class Account extends Component {
         this.setState({
             showAccountSettings: true,
             showInfo: false,
-            showFavorites: false
+            showFavorites: false,
+            showHistory: false
         })
+    }
+
+    openHistory = () => {
+        this.setState({
+            showHistory: true,
+            showInfo: false,
+            showFavorites: false,
+            showAccountSettings: false
+        })
+
     }
 
     changeBars = () => {
@@ -85,11 +108,13 @@ class Account extends Component {
     }
 
     accountSettings = () => {
+        const { user } = this.props
         this.setState({
             accountSettings: !this.state.accountSettings,
-            nameInput: this.props.user.name,
-            emailInput: this.props.user.email,
-            pictureInput: this.props.user.picture_url,
+            nameInput: user.name,
+            emailInput: user.email,
+            pictureInput: user.picture_url,
+
         })
     }
 
@@ -98,7 +123,7 @@ class Account extends Component {
             address: this.state.inputAddress,
             city: this.state.inputCity,
             state: this.state.inputState,
-            zipcode: this.state.inputZipCode
+            zipcode: this.state.inputZipCode,
         }
 
         let addressString = JSON.stringify(address)
@@ -115,12 +140,13 @@ class Account extends Component {
         axios.post(`/api/updateuser`, myobj).then((res) => {
             console.log("works", res)
         })
+        this.setState({ accountSettings: !this.state.accountSettings })
     }
 
     address = () => {
         let parsedAddress = JSON.parse(this.props.user.address)
         if (this.props.user.address === null) {
-            return (<div className="account_address">It looks like you don't have and address set up click <a onClick={this.openAccountSettings}>Here</a> to set one up</div>)
+            return (<div className="account_address">It looks like you don't have and address set up. Edit your account settings to add one!</div>)
         } else {
             return (<div className="account_address">Address: <div>{parsedAddress.address} {parsedAddress.city}, {parsedAddress.state}, {parsedAddress.zipcode}</div></div>)
         }
@@ -157,6 +183,18 @@ class Account extends Component {
         })
     }
 
+    userIdCheck = (id) => {
+        if (id.length > 17) {
+            return (
+                id.substring(0, 17) + "..."
+            )
+        } else return (
+            id
+        )
+    }
+
+
+
     render() {
         const { user } = this.props
         return (
@@ -176,6 +214,7 @@ class Account extends Component {
                                 <button className="account_link"><Link to="/home">Home</Link></button>
                                 {user && <button className={`account_link ${this.state.showInfo ? 'account_link-open' : ''}`} onClick={this.openInfo}>Account Info</button>}
                                 {user && <button className={`account_link ${this.state.showFavorites ? 'account_link-open' : ''}`} onClick={this.openFavorites}>Favorites</button>}
+                                {user && <button className={`account_link ${this.state.showHistory ? 'account_link-open' : ''}`} onClick={this.openHistory}>Purchase History</button>}
                                 {user && <button className={`account_link ${this.state.showAccountSettings ? 'account_link-open' : ''}`} onClick={this.openAccountSettings}>Change Account Settings</button>}
                             </div>
                         </div>
@@ -202,11 +241,11 @@ class Account extends Component {
                                         <div className="account_flex account_space">
                                             <div className="account_flex_profile">
                                                 <div>Account Name: {user.name}</div>
-                                                <div>Account id: {this.props.user.id}</div>
+                                                <div>Account id: {user.id}</div>
                                             </div>
                                             <div className="account_flex_profile">
                                                 <div>Email: {user.email}</div>
-                                                <div>Auth0_id: {user.auth0_id}</div>
+                                                <div>Auth0_id: {this.userIdCheck(user.auth0_id)}</div>
                                             </div>
                                         </div>
                                         <div className="account_space">
@@ -230,7 +269,13 @@ class Account extends Component {
                                     </div>
                                 </div>
 
+                                {/* ////////////////////////////// Account history section  //////////////////////////////// */}
 
+                                <div className={`account_container ${this.state.showHistory ? 'account_show-favorites' : ''}`}>
+                                    <div className="account_history-excerpt">
+                                        This is where account history goes
+                                    </div>
+                                </div>
 
                                 {/* ////////////////////////////// account settings section //////////////////////////////// */}
 
@@ -246,7 +291,6 @@ class Account extends Component {
                                             <div>Email: <div>{user.email}</div></div>
                                             <div>Profile Picture: <div>{user.picture_url}</div></div>
                                             {this.address()}
-
                                         </div>
                                         <div className={`account_settings-excerpt ${this.state.accountSettings ? "account_settings-excerpt-show" : ""}`}>
                                             <div>Name: <input defaultValue={user.name} onChange={event => this.handleNameChange(event.target.value)} /></div>
@@ -254,16 +298,16 @@ class Account extends Component {
                                             <div>Profile Picture:  <input defaultValue={user.picture_url} onChange={event => this.handlePictureChange(event.target.value)} /></div>
 
 
-                                            <div className=""> Address:
+                                            <div> Address:
                                             <div className="account_selector">
-                                                    <input className="account_input_address" defaultValue={this.state.address.address}
+                                                    <input className="account_input_address" defaultValue={this.state.inputAddress}
                                                         onChange={(e) => this.handleAddressChange(e.target.value)}
                                                         placeholder="Street Address" />
                                                     <input className="account_input_short"
                                                         onChange={(e) => this.handleCityChange(e.target.value)}
                                                         placeholder="City"
-                                                        defaultValue={this.state.address.city} />
-                                                    <select className="account_input_short" onChange={(e) => this.handleStateChange(e.target.value)}>
+                                                        defaultValue={this.state.inputCity} />
+                                                    <select className="account_input_short" value={this.state.inputState} onChange={(e) => this.handleStateChange(e.target.value)}>
                                                         <option value="State">State</option>
                                                         <option value="AL">Alabama</option>
                                                         <option value="AK">Alaska</option>
@@ -317,13 +361,13 @@ class Account extends Component {
                                                         <option value="WI">Wisconsin</option>
                                                         <option value="WY">Wyoming</option>
                                                     </select>
-                                                    <input className="account_input_short" defaultValue={this.state.address.zipcode}
+                                                    <input className="account_input_short" defaultValue={this.state.inputZipcode}
                                                         onChange={(e) => this.handleZipCodeChange(e.target.value)}
                                                         placeholder="Zip Code" />
                                                 </div>
                                             </div>
                                             <div className="account_button">
-                                            <button  className="button account_button" onClick={this.updateUser}>submit</button>
+                                                <button className="button account_button" onClick={this.updateUser}>submit</button>
                                             </div>
                                         </div>
                                     </div>
