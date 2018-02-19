@@ -23,5 +23,6 @@ export default (
         <Route path="/Account" component = { Account } />
         <Route path="/FAQ" component = { FAQ } />
         <Route path="/ContactUs" component = { ContactUs } />
+        <Route path="/Hero" component = { Hero } />
     </Switch>
 )

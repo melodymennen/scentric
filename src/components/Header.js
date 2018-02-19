@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import Auth0Lock from 'auth0-lock'
 import MiniCart from './MiniCart'
 import axios from 'axios'
-import cartIcon from '../assets/cart-icon.png'
+
 
 class Header extends Component {
     constructor() {

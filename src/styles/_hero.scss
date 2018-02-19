@@ -1,11 +1,25 @@
 .hero_main_body{
     text-align: center;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+    align-items: stretch;
 }
 
 .hero_first_slider{
-    
+    transform: translateX(28%);
+    animation-name: firstSlider; 
+    animation-duration: 4s;
+    animation-iteration-count: 2;
+    animation-fill-mode: both;
+    animation-delay: 5s;
 }
 
-.hero_second_slider{
-    display: none;
+
+@keyframes firstSlider {
+    0%   {transform: translateX(28%)}
+    100% {transform: translateX(-28%)}
 }
+
+
