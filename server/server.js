@@ -32,7 +32,11 @@ app.post('/api/cart', controller.addToCart)
 app.get('/api/cart', controller.getCart)
 app.delete('/api/cart/:product_id', controller.removeFromCart)
 app.patch('/api/cart', controller.decreaseCartQty)
+app.delete('/api/cart', controller.deleteCart)
 app.post('/api/updateuser', controller.updateUser)
+app.post('/api/new-order', controller.addOrder)
+app.get('/api/orders', controller.getOrdersByUser)
+app.get('/api/orders/:order_id', controller.getOrder)
 
 app.get('/api/stripeConnect', stripe_ctrl.connect)
 app.post('/api/finalize', stripe_ctrl.finalize)
@@ -59,7 +63,7 @@ app.post('/login', (req, res) => {
                 req.session.user = users[0]
                 res.json({user: req.session.user})
             } else {
-                app.get('db').create_user([userData.name, userData.email, userData.picture, userData.user_id]).then(user => {
+                app.get('db').create_user([userData.name, userData.email, userData.picture, userData.user_id, req.session.generatedId]).then(user => {
                     req.session.user = user[0]
                     res.json({user: req.session.user})
                 }).catch(error => console.log('create user error',error))

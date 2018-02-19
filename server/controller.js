@@ -78,5 +78,45 @@ module.exports = {
         db.get_products_by_scent([category]).then(products => {
             res.status(200).json(products)
         }).catch(error => console.log('get products by scent error', error))
+    }, 
+    deleteCart: (req, res) => {
+        const db = req.app.get('db')
+        const { generatedId } = req.session                      
+
+        db.delete_cart([generatedId]).then(() => {
+            res.status(200).send('success')
+        }).catch(error => console.log('delete cart error',error)) 
+    }, 
+    addOrder: (req,res) => {
+        const db = req.app.get('db')
+        const { generatedId } = req.session 
+        const { cart, subtotal } = req.body 
+
+        db.new_order([generatedId, subtotal]).then(order => {
+            const order_id = order[0].id
+            res.status(200).json(order_id)
+            
+            cart.forEach(product => {
+                db.add_order_items([order_id, product.product_id, product.price, product.qty]).then(() => {
+                    res.status(200).send('success')
+                }).catch(error => console.log('add order items error',error)) 
+            })
+        }).catch(error => console.log('new order error',error)) 
+    }, 
+    getOrder: (req, res) => {
+        const db =  req.app.get('db')
+        const { order_id } = req.params
+        
+        db.get_order([order_id]).then(order => {
+            res.status(200).json(order)
+        }).catch(error => console.log('get order error',error))
+    }, 
+    getOrdersByUser: (req, res) => {
+        const db =  req.app.get('db')
+        const { generatedId } = req.session 
+        
+        db.get_order([generatedId]).then(orders => {
+            res.status(200).json(orders)
+        }).catch(error => console.log('get order error',error))
     }
 }

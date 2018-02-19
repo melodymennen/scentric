@@ -70,7 +70,6 @@ class Cart extends Component {
                             <div><Link to={`/products/${e.id}`}><img src={e.image_url} alt={e.name}/></Link></div>
                             <div className="cart-product-name"><Link to={`/products/${e.id}`}>{e.name}</Link></div>
                             <button onClick={() => this.removeFromCart(e.id)}>remove</button>
-                            {/* <div>${e.price}</div> */}
                         </div>
                         <div className="cart-right" >
                             <div className="cart-qty">

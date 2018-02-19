@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import functions from '../utilities/functions'
 import StripeCheckout from './StripeCheckout'
 import MiniCart from './MiniCart'
 import Header from './Header'
 
-export default class Checkout extends Component {
+class Checkout extends Component {
     constructor(){
         super()
             this.state = {
@@ -15,7 +16,7 @@ export default class Checkout extends Component {
                 inputSecAddress: '',
                 inputCity: '',
                 inputState: '',
-                inputZipCode: '',
+                inputZipCode: ''
             }
     }
 
@@ -159,11 +160,11 @@ export default class Checkout extends Component {
                         name={'Scentric'} // the pop-in header title
                         ComponentClass="div"
                         panelLabel="Give Money" // prepended to the amount in the bottom pay button
-                        amount={1000000} // cents
+                        amount={(((this.props.cart.subtotal * .06) + this.props.cart.subtotal + 5).toFixed(2)) * 100} // cents
                         currency="USD"
                         stripeKey="pk_test_x3uy8zu7J2CsiyP9ptzmMu4N"
-                        shippingAddress={true}
-                        billingAddress={true}
+                        // shippingAddress={true}
+                        // billingAddress={true}
                         zipCode={true}
                         allowRememberMe // "Remember Me" option (default true)
                         token={this.onToken} // submit callback
@@ -173,7 +174,7 @@ export default class Checkout extends Component {
                         triggerEvent="onTouchTap"
                         >
                         <button className="btn btn-primary"></button>
-                    </StripeCheckout>
+                        </StripeCheckout>
                     </div>
                 </div>
             </div>
@@ -184,3 +185,11 @@ export default class Checkout extends Component {
 const button = {
     padding:' 5px 10px'
 }
+
+function mapStateToProps(state) {
+    return {
+        cart: state.cart
+    }
+}
+
+export default connect(mapStateToProps)(Checkout)
