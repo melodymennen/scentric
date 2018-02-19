@@ -101,12 +101,12 @@ li > ul > li a:hover {
 
 .header-minicart{
     position: fixed;
-    background-color: white;
-    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 25px;
     z-index: 1;
     box-shadow: 2px 2px 24px -6px rgba(0,0,0,0.49);
     box-sizing: border-box;
-    top: 10%;
+    top: 7%;
     left: 60%;
     animation-name: header-minicart;
     animation-duration: 1s;
@@ -115,12 +115,12 @@ li > ul > li a:hover {
     opacity: 1;
     text-align: end;
     button {
-        width: 150px;
-        padding: 10px;
+        width: 100px;
+        padding: 5px 10px;
         margin: 10px 0 10px 10px;
         outline: none;
         cursor: pointer;
-        font-size: 14px;
+        // font-size: 14px;
         &:focus {
             outline: none;
         }
@@ -133,4 +133,26 @@ li > ul > li a:hover {
 @keyframes header-minicart {
     0%   {opacity: 0;}
     100%   {opacity: 1;}
+}
+
+.qty{
+    position: relative;
+    color: white;
+    top: -10px;
+    font-size: 9pt;
+    background-color: $blush;
+    border-radius : 50%;
+    padding: 5px 10px;
+    z-index: 0;
+}
+
+.qty10{
+    position: relative;
+    color: white;
+    top: -10px;
+    font-size: 9pt;
+    background-color: $blush;
+    border-radius : 50%;
+    padding: 5px 8px;
+    z-index: 0;
 }
