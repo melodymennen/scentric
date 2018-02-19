@@ -23,7 +23,8 @@ class ViewInventory extends Component {
     render() {
             const p = this.props.products.map(e => {
                 return(
-                <div className="viewinventory_flex_wrapper">
+                <div key={e.id}
+                className="viewinventory_flex_wrapper">
                     <div><img src={e.image_url} alt="product" width="60px"/></div>
                     <div className="name">{e.name}</div>
                     <div className="price">${e.price}</div>

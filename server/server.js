@@ -6,6 +6,8 @@ const stripe_ctrl = require('./stripe_controller.js')
 const stripe = require('stripe')(process.env.STRIPE_CLIENT_SECRET)
 const massive = require('massive')
 const axios = require('axios')
+const AWS = require('aws-sdk')
+const multer = require('multer')
 
 require('dotenv').config()
 
@@ -78,6 +80,35 @@ app.post('/login', (req, res) => {
 
 app.get('/user-data', (req, res) => {
     res.json({ user: req.session.user })
+})
+
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.REGION
+  })
+
+  const s3 = new AWS.S3()
+  const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: {
+      fileSize: 52428800
+    }
+  })
+
+  app.post('/upload', upload.single('image_url'), (req, res) => {
+    const fileName = req.file.originalname.split(' ').join('+')
+  s3.putObject({
+      Bucket: process.env.BUCKET,
+      Key: req.file.originalname,
+      Body: req.file.buffer,
+      ContentType: "image/png",
+      ACL: 'public-read'
+      }, (err) => {
+      console.log('upload error', err)
+      if (err) return res.status(400).send(err)
+      res.send(`https://s3-${process.env.REGION}.amazonaws.com/${process.env.BUCKET}/${fileName}`)
+  })
 })
 
 
