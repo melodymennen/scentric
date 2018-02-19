@@ -29,14 +29,17 @@ class Account extends Component {
             address: {},
             history: [],
 
+            favorites: []
         }
+
+        this.getFavorites = this.getFavorites.bind(this)
     }
 
     componentWillMount() {
+        functions.generateId()
         setTimeout(() => {
             this.setState({ menuShow: true })
         }, 500)
-        functions.generateId()
 
         if (this.props.user) {
             if (this.props.user.address) {
@@ -51,6 +54,18 @@ class Account extends Component {
         }
         console.log(this.state.address)
     }
+
+    componentDidMount(){
+        this.getFavorites()
+    }
+
+    getFavorites(){
+        axios.get("/api/favorites").then(response => {
+            this.setState({favorites: response.data})
+            console.log(this.state.favorites)
+        })
+    }
+
     openInfo = () => {
         this.setState({
             showInfo: true,
@@ -59,6 +74,7 @@ class Account extends Component {
             showHistory: false
         })
     }
+
     openFavorites = () => {
         this.setState({
             showFavorites: true,
@@ -197,6 +213,15 @@ class Account extends Component {
 
     render() {
         const { user } = this.props
+        const favorites = this.state.favorites.map( item => {
+            return (
+                <div key={item.id}>
+                    <div><img src={item.image_url}/></div>
+                    <div>{item.name}</div>
+                    <div>{item.price}</div>
+                </div>
+            )
+        })
         return (
             <div>
                 <Header />
@@ -265,7 +290,8 @@ class Account extends Component {
 
                                 <div className={`account_container ${this.state.showFavorites ? 'account_show-favorites' : ''}`}>
                                     <div className="account_favorites-excerpt">
-                                        This is where the favorites go
+                                        Favorites
+                                        {favorites}
                                     </div>
                                 </div>
 

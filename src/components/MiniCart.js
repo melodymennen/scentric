@@ -47,7 +47,7 @@ class MiniCart extends Component {
                         </div>
                         <div className="minicart_ordersubtotals"> 
                             <span>Order Total:</span>
-                            <div>${((this.props.cart.subtotal * .06) + this.props.cart.subtotal + 5).toFixed(2)} </div>
+                            <div>${((this.props.cart.subtotal * 1.06) + 5).toFixed(2)} </div>
                         </div>
                     </div>
                 </div>
