@@ -26,7 +26,6 @@ export default (
         <Route path="/Account" component = { Account } />
         <Route path="/Cart" component = { Cart } />
         <Route path="/FAQ" component = { FAQ } />
-        <Route path="/Hero" component = { Hero } />
         <Route path="/OrderConfirmation/:order_id" component = { OrderConfirmation } />
         <Route path="/ContactUs" component = { ContactUs } />
         <Route path="/Admin" component = {Admin} />
