@@ -21,6 +21,17 @@
         margin: 20px;
         font-weight: 600;        
     }
+    &totals {
+        width: 100%;
+        padding: 10px;
+        text-align: end;
+        div {
+            margin: 5px;
+        }
+    }
+    &order-total {
+        font-weight: 600;
+    }
 }
 
 .orderconfirmation_line-item {

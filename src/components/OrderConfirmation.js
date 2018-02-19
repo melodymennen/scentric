@@ -10,7 +10,7 @@ class OrderConfirmation extends Component {
         super()
 
         this.state = {
-            order:[]
+            order:[{order_subtotal: 0}]
         }
 
         this.getOrder = this.getOrder.bind(this)
@@ -74,6 +74,20 @@ class OrderConfirmation extends Component {
                         </div>
                     </div>
                     {orderItems}
+                    <div className="orderconfirmation_totals">
+                        <div>
+                            Order Subtotal: ${this.state.order[0].order_subtotal}
+                        </div>
+                        <div>
+                            Shipping(Flat Rate): $5.00
+                        </div>
+                        <div>
+                            Tax: ${(this.state.order[0].order_subtotal * .06).toFixed(2)}
+                        </div>
+                        <div className="orderconfirmation_order-total">
+                            Order Total: ${((this.state.order[0].order_subtotal * 1.06) + 5).toFixed(2)}
+                        </div>
+                    </div>
                 </div>
                 <Footer />
             </div>
