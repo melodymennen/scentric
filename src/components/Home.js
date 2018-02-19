@@ -5,7 +5,7 @@ import functions from '../utilities/functions'
 import ProductModule from './ProductModule'
 import Header from './Header'
 import Footer from './Footer'
-// import Hero from './Hero'
+
 
 
 class Home extends Component {
@@ -26,7 +26,6 @@ class Home extends Component {
             <div>
                 <Header />
                 <div className="home_hero">
-                    {/* <Hero/> */}
                 </div>
                 <div className="home_featured_products">Featured Products</div>
                 <div className="home_flex">
