@@ -64,38 +64,43 @@
 
 // viewInventory 
 
+.admin_product_table{
+    padding: 20px;
+}
+
 .viewinventory_flex_wrapper{
     display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
     align-items: stretch;
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.27);
     div{
-        border: 1px solid rgba(102, 102, 102, 0.473);
-        padding: 10px;
+        border-left: 1px solid rgba(126, 126, 126, 0.568);
+        padding: 10px 10px 0 10px;
     }
     .name{
-        width: 160px;
+        width: 130px;
         text-transform: capitalize;
-        padding-top: 25pt;
+        font-size: 11pt;
     }
     .price{
-        width: 70px;
-        padding-top: 25pt;
+        width: 50px;
+        font-size: 10pt;
     }
     .description{
         width: 400px;
-        font-size: 11pt;
+        font-size: 10pt;
     }
     .category{
-        width: 80px;
+        width: 60px;
         text-transform: capitalize;
-        padding-top: 25pt;
+        font-size: 10pt;
     }
     .scent_family{
-        width: 110px;
+        // width: 50px;
         text-transform: capitalize;
-        padding-top: 25pt;
+        font-size: 10pt;
     }
 }
 
@@ -105,20 +110,21 @@
 	flex-wrap: nowrap;
 	justify-content: flex-start;
     align-items: stretch;
-    div{
-        padding: 10px 15px;
-        font-weight: bold;
+    .title_image{
+        width: 140px;
+        padding-left: 20px;
     }
-        .title_name{
-            width: 160px;
+    .title_name{
+        width: 140px;
+        padding-left: 20px;
         }
         .title_price{
-            width: 60px;
+            width: 50px;
         }
         .title_description{
-            width: 380px;
+            width: 390px;
         }
         .title_category{
-            width: 80px;
+            width: 60px;
         }
 }

@@ -36,14 +36,14 @@ class ViewInventory extends Component {
         return (
             <div>
                 <div className="viewinventory_flex_wrapper_title">
-                    <div>Image</div>
+                    <div className="title_image">Image</div>
                     <div className="title_name">Product Name</div>
                     <div className="title_price">Price</div>
                     <div className="title_description">Description</div>
                     <div className="title_category">Category</div>
                     <div className="title_scentfamily">Scent Family</div>
                 </div>
-               {p}
+                <div className="admin_product_table">{p}</div>
             </div>
         )
     }
