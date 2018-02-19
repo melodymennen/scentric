@@ -5,6 +5,15 @@
     width: 80%;
     margin: auto;
     align-items: center;
+    a {
+        color: black;
+        &:visited {
+            color: black;
+        }
+        &:hover {
+            color: rgba(0,0,0,.5);
+        }
+    }
 }
 
 .orderconfirmation_ {
@@ -32,6 +41,25 @@
     &order-total {
         font-weight: 600;
     }
+    &links {
+        display: inherit;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        margin: 20px;
+        padding: 40px 20px;
+        div {
+            display: inherit;
+            width: 100%;
+            justify-content: center;
+            margin: 10px;
+            text-align: center;
+            a {
+                margin: 10px 20px;
+                text-decoration: underline;
+            }
+        }
+    }
 }
 
 .orderconfirmation_line-item {
@@ -49,15 +77,6 @@
         align-items: center;
         text-transform: capitalize;
         margin: 5px 0;
-        a {
-            color: black;
-            &:visited {
-                color: black;
-            }
-            &:hover {
-                color: rgba(0,0,0,.5);
-            }
-        }
     }
     &-price, &-qty, &-subtotal {
         justify-content: center;

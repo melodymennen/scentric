@@ -30,7 +30,7 @@ class OrderConfirmation extends Component {
 
     render() {
         const d = new Date()
-        const date = `${d.getMonth()} ${d.getDate()}`
+        const date = `${d.getMonth()}${d.getDate()}`
         const orderItems = this.state.order.map(item => {
             return (
                 <div key={item.id} className="orderconfirmation_line-item">
@@ -86,6 +86,16 @@ class OrderConfirmation extends Component {
                         </div>
                         <div className="orderconfirmation_order-total">
                             Order Total: ${((this.state.order[0].order_subtotal * 1.06) + 5).toFixed(2)}
+                        </div>
+                    </div>
+                    <div className="orderconfirmation_links">
+                        <div>What's next?</div>
+                        <div>
+                            You'll receive an email with you order confirmation and another with tracking information once your order ships. 
+                        </div>
+                        <div>
+                            <Link to="/home">Continue Shopping</Link>
+                            <Link to="/account">Go to My Account</Link>
                         </div>
                     </div>
                 </div>

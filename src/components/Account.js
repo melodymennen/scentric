@@ -27,20 +27,35 @@ class Account extends Component {
 
             address: {},
 
+            favorites: []
         }
+
+        this.getFavorites = this.getFavorites.bind(this)
     }
 
     componentWillMount() {
+        functions.generateId()
         setTimeout(() => {
             this.setState({ menuShow: true })
         }, 500)
-        functions.generateId()
 
         if (this.props.user) {
             this.setState({ address: JSON.parse(this.props.user.address) })
         }
         console.log(this.state.address)
     }
+
+    componentDidMount(){
+        this.getFavorites()
+    }
+
+    getFavorites(){
+        axios.get("/api/favorites").then(response => {
+            this.setState({favorites: response.data})
+            console.log(this.state.favorites)
+        })
+    }
+
     openInfo = () => {
         this.setState({
             showInfo: true,
@@ -48,6 +63,7 @@ class Account extends Component {
             showAccountSettings: false
         })
     }
+
     openFavorites = () => {
         this.setState({
             showFavorites: true,
@@ -120,7 +136,7 @@ class Account extends Component {
     address = () => {
         let parsedAddress = JSON.parse(this.props.user.address)
         if (this.props.user.address === null) {
-            return (<div className="account_address">It looks like you don't have and address set up click <a onClick={this.openAccountSettings}>Here</a> to set one up</div>)
+            return (<div className="account_address">It looks like you don't have an address saved, click <a onClick={this.openAccountSettings}>here</a> to enter one.</div>)
         } else {
             return (<div className="account_address">Address: <div>{parsedAddress.address} {parsedAddress.city}, {parsedAddress.state}, {parsedAddress.zipcode}</div></div>)
         }
@@ -159,6 +175,15 @@ class Account extends Component {
 
     render() {
         const { user } = this.props
+        const favorites = this.state.favorites.map( item => {
+            return (
+                <div key={item.id}>
+                    <div><img src={item.image_url}/></div>
+                    <div>{item.name}</div>
+                    <div>{item.price}</div>
+                </div>
+            )
+        })
         return (
             <div>
                 <Header />
@@ -226,7 +251,8 @@ class Account extends Component {
 
                                 <div className={`account_container ${this.state.showFavorites ? 'account_show-favorites' : ''}`}>
                                     <div className="account_favorites-excerpt">
-                                        This is where the favorites go
+                                        Favorites
+                                        {favorites}
                                     </div>
                                 </div>
 

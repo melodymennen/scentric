@@ -45,6 +45,16 @@ class ProductPage extends Component {
         }).then(this.showCartSummary())
     }
 
+    addToFavorites(){
+        const body = {
+            product_id: this.state.product.id
+        }
+
+        axios.post('/api/favorites', body).then(() => {
+            console.log('item added to favorites')
+        })
+    }
+
     showCartSummary(){
         this.setState({
             show: true
@@ -73,6 +83,7 @@ class ProductPage extends Component {
                         <div className="product-page-price">${this.state.product.price}</div>
                         <div className="product-page-description">{this.state.product.description}.</div>
                         <button className="button" onClick={() => this.addToCart()}>Add To Cart</button>
+                        <button className="button" onClick={() => this.addToFavorites()}>Add To Favorites</button>
                     </div>
                 </div>
                 <Footer/>

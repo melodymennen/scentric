@@ -10,13 +10,13 @@ import Account from './components/Account'
 import Home from './components/Home'
 import Cart from './components/Cart'
 import FAQ from './components/FAQ'
-import Hero from './components/Hero'
 
 
 export default (
     <Switch>
         <Route exact path="/" component = { LandingPage } />
         <Route path="/Home" component = { Home } />
+        <Route path="/OrderConfirmation/:order_id" component = { OrderConfirmation } />
         <Route path="/display/:category" component = { DisplayProducts } />
         <Route path="/products/:product_id" component = { ProductPage } />
         <Route path="/ContactUs" component = { ContactUs } />
@@ -24,7 +24,5 @@ export default (
         <Route path="/Account" component = { Account } />
         <Route path="/Cart" component = { Cart } />
         <Route path="/FAQ" component = { FAQ } />
-        <Route path="/Hero" component = { Hero } />
-        <Route path="/OrderConfirmation/:order_id" component = { OrderConfirmation } />
     </Switch>
 )
