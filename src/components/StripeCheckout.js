@@ -1,12 +1,45 @@
 import React, { Component } from 'react'
 import StripeCheckout from 'react-stripe-checkout'
-// import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 import axios from 'axios'
 
 class TakeMoney extends Component {
+    constructor(){
+        super()
+
+        this.state = {
+            orderComplete: false, 
+            orderNumber: 0
+        }
+    }
+
+    successPayment = data => {
+        console.log('Payment Successful')
+        // const body = {cart: this.props.cart.cart, subtotal: this.props.cart.subtotal}
+
+        // axios.post('/api/new-order', body).then( response => {
+        //     this.setState({orderNumber: response.data})
+        //     axios.delete('/api/cart').then(() => {
+        //         this.setState({orderComplete: true})
+        //     })
+        // }).catch(error => console.log('Error adding order to database:', error))
+    }
+
+    errorPayment = data => {
+      console.log('Payment Error', data)
+      const body = {cart: this.props.cart.cart, subtotal: this.props.cart.subtotal}
+
+      axios.post('/api/new-order', body).then( response => {
+        this.setState({orderNumber: response.data})
+        axios.delete('/api/cart').then(() => {
+            this.setState({orderComplete: true})
+        })
+    }).catch(error => console.log('Error adding order to database:', error))
+    }
 
     onToken = (amount, acct) => (token, addresses) => {
-        console.log(amount);
+        console.log(amount)
       axios.post('/api/save-stripe-token', {
             acct,
             source: token.id,
@@ -17,18 +50,24 @@ class TakeMoney extends Component {
             application_fee: amount * .03
         })
         .then(this.successPayment)
-        .catch(this.errorPayment);
+        .catch(this.errorPayment)
     }
 
     render() {
-        const {name, amount, stripeKey, shippingAddress, billingAddress, label, acct} = this.props;
+        if(this.state.orderComplete){
+            return <Redirect to={`/OrderConfirmation/${this.state.orderNumber}`} />
+        }
+
+        const {name, amount, stripeKey, 
+            // shippingAddress, billingAddress, 
+            label, acct} = this.props
         return (
             <div>
                 <StripeCheckout
                     acct={acct}
                     name={name}
-                    shippingAddress={shippingAddress}
-                    billingAddress={billingAddress}
+                    // shippingAddress={shippingAddress}
+                    // billingAddress={billingAddress}
                     amount={amount}
                     token={this.onToken(amount, acct)}
                     currency="USD"
@@ -40,4 +79,10 @@ class TakeMoney extends Component {
     }
 }
 
-export default TakeMoney
+const mapStateToProps = state => {
+    return {
+        cart: state.cart
+    }
+}
+
+export default connect(mapStateToProps)(TakeMoney)

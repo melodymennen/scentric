@@ -11,9 +11,9 @@ const initialState = {
     }
 }
  
-const GETPRODUCTS = 'GETPRODUCTS';
-const GETCART = "GETCART";
-const LOGIN = 'LOGIN';
+const GETPRODUCTS = 'GETPRODUCTS'
+const GETCART = "GETCART"
+const LOGIN = 'LOGIN'
  
 
 export const getProducts = () => {
@@ -68,7 +68,7 @@ export default (state = initialState, action) => {
             return {...state, cart: action.payload}
 
         case LOGIN:
-            return {...state, user: action.payload};
+            return {...state, user: action.payload}
 
         default: 
             return state

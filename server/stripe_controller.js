@@ -24,11 +24,11 @@ module.exports = {
         })
     },
     storeAcct(req,res){
-        const {stripeId} = req.body
-        const userId = req.session.user.userid
+        const { stripeId } = req.body
+        const { user } = req.session
         const db = req.app.get('db')
 
-        db.updateStripeAcct([stripeId, userId])
+        db.updateStripeAcct([stripeId, user.id])
         .then( () => {
             res.status(200).send()
         }).catch(() => res.status(500).send())

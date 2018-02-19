@@ -18,7 +18,6 @@ class MiniCart extends Component {
 
     render() {
         const cart = this.props.cart.cart.map((e) => {
-            console.log(this.props.cart)
             return (
                 <div className="minicart_flex" key={e.id}>
                         <div><img src={e.image_url} alt="product" width="70px"/></div>
@@ -47,7 +46,7 @@ class MiniCart extends Component {
                             <div>${(this.props.cart.subtotal * .06).toFixed(2)}</div>
                         </div>
                         <div className="minicart_ordersubtotals"> 
-                            <span>Order Subtotal:</span>
+                            <span>Order Total:</span>
                             <div>${((this.props.cart.subtotal * .06) + this.props.cart.subtotal + 5).toFixed(2)} </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import LandingPage from './components/LandingPage'
 import DisplayProducts from './components/DisplayProducts'
+import OrderConfirmation from './components/OrderConfirmation'
 import ProductPage from './components/ProductPage'
 import ContactUs from './components/ContactUs'
 import Checkout from './components/Checkout'
@@ -18,11 +19,12 @@ export default (
         <Route path="/Home" component = { Home } />
         <Route path="/display/:category" component = { DisplayProducts } />
         <Route path="/products/:product_id" component = { ProductPage } />
-        <Route path="/Checkout" component = { Checkout } />
-        <Route path="/Cart" component = { Cart } />
-        <Route path="/Account" component = { Account } />
-        <Route path="/FAQ" component = { FAQ } />
         <Route path="/ContactUs" component = { ContactUs } />
+        <Route path="/Checkout" component = { Checkout } />
+        <Route path="/Account" component = { Account } />
+        <Route path="/Cart" component = { Cart } />
+        <Route path="/FAQ" component = { FAQ } />
         <Route path="/Hero" component = { Hero } />
+        <Route path="/OrderConfirmation/:order_id" component = { OrderConfirmation } />
     </Switch>
 )
