@@ -49,6 +49,8 @@ class Account extends Component {
                 })
             }
         }
+
+        
         console.log(this.state.address)
     }
     openInfo = () => {
