@@ -118,5 +118,13 @@ module.exports = {
         db.get_order([generatedId]).then(orders => {
             res.status(200).json(orders)
         }).catch(error => console.log('get order error',error))
+    },
+    addProduct: (req,res) => {
+        const db = req.app.get('db')
+        const {name, price, description, category, scent_family, image_url} = req.body
+
+        db.add_product([name, price, description, category, scent_family, image_url]).then(product => {
+            res.status(200).json(product)
+        }).catch(error => console.log('add product', error))
     }
 }
