@@ -42,7 +42,8 @@ class AdminHomePortal extends Component {
     render() {
         console.log(this.state.ordersSubtotal)
         return (
-            <div>
+            <div className="admin_wrapper_portal_overview">
+                <div className="admin_overview">Website Overview</div>
                 <div className="admin_home_first_body">
                     <div>
                         <div>Total Sales</div>

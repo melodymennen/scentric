@@ -14,7 +14,7 @@ class Admin extends Component {
         super(props)
 
         this.state = {
-            route: 'adminhome'
+            route: 'adminhome',
         }
         this.goBack = this.goBack.bind(this)
         this.showAddInventory = this.showAddInventory.bind(this)
@@ -63,11 +63,8 @@ class Admin extends Component {
     
 
     render() {
-        const { user } = this.props
-        console.log(user)
         return (
             <div>
-                {user && user.is_admin === true && 
                 <div>
                     <div className="admin_header_wrapper">
                         <img src="https://s3-us-west-1.amazonaws.com/scentric/favicon.ico" alt="logo" width="28px"/>
@@ -76,6 +73,7 @@ class Admin extends Component {
                     </div>
                     <div className="admin_flex">
                         <div className="admin_menu">
+                            <div className="admin_dashboard">Menu</div>
                             <div onClick={this.goBack}>Admin Home</div>
                             <div onClick={this.showViewInventory}>View Inventory</div>
                             <div onClick={this.showAddInventory}>Add Inventory</div>
@@ -92,13 +90,6 @@ class Admin extends Component {
                         </div>
                     </div>
                 </div>
-                }
-                {user && user.is_admin === false && 
-                    <Redirect to="/home"/>
-                }
-                {/* {!user && 
-                    <Redirect to="/home"/>
-                } */}
             </div>
         )
     }

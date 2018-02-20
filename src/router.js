@@ -11,6 +11,7 @@ import Admin from './components/Admin'
 import Home from './components/Home'
 import Cart from './components/Cart'
 import FAQ from './components/FAQ'
+import EditProduct from './components/EditProduct'
 
 
 export default (
@@ -23,8 +24,9 @@ export default (
         <Route path="/ContactUs" component = { ContactUs } />
         <Route path="/Checkout" component = { Checkout } />
         <Route path="/Account" component = { Account } />
-        <Route path="/Admin" component = { Admin } />
+        <Route exact path="/Admin" component = { Admin } />
         <Route path="/Cart" component = { Cart } />
         <Route path="/FAQ" component = { FAQ } />
+        <Route path="/Admin/:id" component = { EditProduct } />
     </Switch>
 )

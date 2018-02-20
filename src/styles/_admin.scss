@@ -9,17 +9,24 @@
 }
 
 .admin_menu{
-    padding: 50px 0;
+    padding: 30px 0;
     box-shadow: 1px 5px 11px -2px rgba(0,0,0,0.28);
     display: inline-block;
     height: 100vh;
     width: 240px;
     div{
         padding: 15px 30px;
-        font-size: 14pt;
+        font-size: 12pt;
         color: $font-color;
         border: 1px solid rgb(110, 110, 110);
         cursor: pointer;
+    }
+    .admin_dashboard {
+        font-size: 16pt;
+        text-align: center;
+        color: white;
+        background-color: $dark_blue;
+        padding: 5px;
     }
 }
 
@@ -31,7 +38,19 @@
 	align-items: stretch;
 }
 
-// admin home 
+// admin home portal
+
+.admin_wrapper_portal_overview{
+    box-shadow: 0px 1px 19px -1px rgba(0,0,0,0.24);
+}
+
+.admin_overview{
+    background-color: $dark_blue;
+    padding: 5px;
+    text-align: center;
+    font-size: 14pt;
+    color: white;
+}
 
 .admin_home_first_body{
     display: flex;
@@ -39,15 +58,20 @@
 	flex-wrap: nowrap;
 	justify-content: flex-start;
     align-items: stretch;
-    padding: 20px;
     > div{
-        border: 1px solid rgb(73, 73, 73);
-        padding: 15px 30px;
-        width: 180px;
+        background-color: rgba(241, 241, 241, 0.685);
+        box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.418);
+        // padding: 15px 30px;
+        width: 20vw;
         margin: 10px;
         text-align: center;
         > div{
-            padding: 20px;
+            font-size: 16pt;
+            padding-top: 15pt;
+        }
+        > div:nth-child(2){
+            font-size: 20pt;
+            padding-bottom: 20px;
         }
     }
 }
@@ -150,6 +174,7 @@
 	flex-wrap: nowrap;
 	justify-content: flex-start;
     align-items: stretch;
+    background-color: rgba(241, 241, 241, 0.685);
     box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.27);
     div{
         border-left: 1px solid rgba(126, 126, 126, 0.568);
@@ -180,12 +205,19 @@
     }
 }
 
+.viewinventory_wrapper_body{
+    box-shadow: 0px 1px 19px -1px rgba(0,0,0,0.24);
+}
+
 .viewinventory_flex_wrapper_title{
     display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
     align-items: stretch;
+    background-color: $dark_blue;
+    color: white;
+    padding: 10px 0;
     .title_image{
         width: 75px;
         padding-left: 20px;

@@ -28,7 +28,7 @@ class Orders extends Component {
                 return (
                     <div className="admin_orders_flex"key={i}>
                         <div>{e.name}</div>
-                        <div>{e.order_subtotal}</div>
+                        <div>$ {e.order_subtotal}</div>
                         <div>{e.order_date}</div>
                     </div>
                 )

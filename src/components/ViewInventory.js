@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getProducts } from '../ducks/reducer'
+
 
 
 class ViewInventory extends Component {
@@ -20,14 +22,14 @@ class ViewInventory extends Component {
         this.props.getProducts()
     }
 
-
+    
     render() {
             const p = this.props.products.map(e => {
                 return(
                 <div key={e.id}
                 className="viewinventory_flex_wrapper">
                     <div><img src={e.image_url} alt="product" width="60px"/></div>
-                    <div className="name">{e.name}</div>
+                    <Link to={`/Admin/${e.id}`}><div className="name">{e.name}</div></Link>
                     <div className="price">${e.price}</div>
                     <div className="description">{e.description}</div>
                     <div className="category">{e.category}</div>
@@ -35,7 +37,7 @@ class ViewInventory extends Component {
                 </div>)
             })
         return (
-            <div>
+            <div className="viewinventory_wrapper_body">
                 <div className="viewinventory_flex_wrapper_title">
                     <div className="title_image">Image</div>
                     <div className="title_name">Product Name</div>
