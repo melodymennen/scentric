@@ -36,25 +36,8 @@ CREATE TABLE orders (
 id SERIAL PRIMARY KEY,
 user_id INTEGER, --refer to users(generated_user_id)
 order_subtotal DECIMAL(10,2),
-order_date TIMESTAMP DEFAULT now()
+order_date TEXT
 );
--- PRODUCTS
-
-INSERT INTO products( name, price, description, category, scent_family, image_url)
-VALUES ($1, $2, $3, $4, $5, $6);
-
-
-INSERT INTO products( name, price, description, category, scent_family, image_url)
-VALUES ('buttery popcorn', '89.98', 'Don''t wait to be at the movies to enjoy this aroma, butter yourself up with this scent and you will be the feature presentation', 'perfume','fresh', 'https://s3-us-west-1.amazonaws.com/scentric/perfumes/butterypopcorn.png');
-
-
-INSERT INTO products( name, price, description, category, scent_family, image_url)
-VALUES ('bigg dogg danny luv', '299.98', 'Fans everywhere will mistake you for the real thing. Be careful of swooning, knee-buckling, and infatuating glances', 'cologne','warm and spicy', 'https://s3-us-west-1.amazonaws.com/scentric/colognes/biggdogg.png');
-
-
-INSERT INTO products( name, price, description, category, scent_family, image_url)
-VALUES ('pickle rick', '54.98', 'The reason anyone would buy this is, if they could, which they can''t, would be because they could, which they can''t', 'perfume','green', 'https://s3-us-west-1.amazonaws.com/scentric/perfumes/picklerick.png');
-
 
 CREATE TABLE order_items (
 id SERIAL PRIMARY KEY,

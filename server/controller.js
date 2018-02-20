@@ -79,6 +79,13 @@ module.exports = {
             res.status(200).send(users)
         }).catch(error => console.log('get all users error', error))
     },
+    getCustomers: (req,res) => {
+        const db = req.app.get('db')
+
+        db.get_customers_admin([]).then((customers) => {
+            res.status(200).send( customers )
+        }).catch(error => console.log('get customers error', error))
+    },
     getProductsByScent: (req, res) => {
         const db =  req.app.get('db') 
         const { category } = req.params
@@ -99,15 +106,16 @@ module.exports = {
         const db = req.app.get('db')
         const { generatedId } = req.session 
         const { cart, subtotal } = req.body 
+        const date = new Date().toDateString()
 
-        db.new_order([generatedId, subtotal]).then(order => {
+        db.new_order([generatedId, subtotal, date]).then(order => {
             const order_id = order[0].id
             res.status(200).json(order_id)
             
             cart.forEach(product => {
                 db.add_order_items([order_id, product.product_id, product.price, product.qty]).then(() => {
                     res.status(200).send('success')
-                }).catch(error => console.log('add order items error',error)) 
+                }).catch(error => console.log('add order items error', error)) 
             })
         }).catch(error => console.log('new order error', error)) 
     }, 
@@ -124,7 +132,7 @@ module.exports = {
         
         db.get_all_orders([]).then(orders => {
             res.status(200).json(orders)
-        }).catch( error => console.log('get all orders error' , error))
+        }).catch( error => console.log('get all orders error', error))
     },
     getOrdersByUser: (req, res) => {
         const db =  req.app.get('db')

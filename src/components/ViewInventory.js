@@ -20,6 +20,7 @@ class ViewInventory extends Component {
         this.props.getProducts()
     }
 
+
     render() {
             const p = this.props.products.map(e => {
                 return(
