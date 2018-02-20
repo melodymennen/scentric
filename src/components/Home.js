@@ -34,7 +34,7 @@ class Home extends Component {
             autoplaySpeed: 8000,
 
             
-        };
+        }
         return (
             <div>
                 <Header />
