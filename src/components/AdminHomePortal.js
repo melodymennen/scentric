@@ -23,11 +23,11 @@ class AdminHomePortal extends Component {
             var ordersArray = []
             for( let i=0; i < response.data.length; i++){
                 ordersArray.push(+(response.data[i].order_subtotal))
-                this.setState({
-                    ordersSubtotal: _.sum(ordersArray),
-                    ordersTotals: response.data.length
-                })
-            }
+                }
+            this.setState({
+                ordersSubtotal: _.sum(ordersArray),
+                ordersTotals: response.data.length
+            })
         })
     }
 

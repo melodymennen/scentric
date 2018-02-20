@@ -11,7 +11,7 @@ class Admin extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            route: ''
+            route: 'adminhome'
         }
         this.goBack = this.goBack.bind(this)
         this.showAddInventory = this.showAddInventory.bind(this)
@@ -22,7 +22,7 @@ class Admin extends Component {
 
     goBack(){
         this.setState({
-            route: ''
+            route: 'adminhome'
         })
     }
 
@@ -68,8 +68,8 @@ class Admin extends Component {
                         <div onClick={this.showOrders}>Orders</div>
                         <Link to="/home"><div>Store HomePage</div></Link>
                     </div>
-                    <AdminHomePortal/>
                     <div style={margin}>
+                        {this.state.route === 'adminhome' ? <AdminHomePortal/> : null}
                         {this.state.route === 'viewinventory' ? <ViewInventory/> : null}
                         {this.state.route === 'addinventory' ? <AddInventory/> : null}
                         {this.state.route === 'customers' ? <Customers/> : null}
