@@ -31,6 +31,27 @@
 	align-items: stretch;
 }
 
+// admin home 
+
+.admin_home_first_body{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+    align-items: stretch;
+    padding: 20px;
+    > div{
+        border: 1px solid rgb(73, 73, 73);
+        padding: 15px 30px;
+        width: 180px;
+        margin: 10px;
+        text-align: center;
+        > div{
+            padding: 20px;
+        }
+    }
+}
+
 //Add Inventory
 
 .inventory_admin_panel{
