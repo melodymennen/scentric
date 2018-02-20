@@ -4,14 +4,16 @@ const session = require('express-session')
 const controller = require('./controller')
 const stripe_ctrl = require('./stripe_controller.js')
 const stripe = require('stripe')(process.env.STRIPE_CLIENT_SECRET)
+const socket = require('socket.io')
 const massive = require('massive')
+const multer = require('multer')
 const axios = require('axios')
 const AWS = require('aws-sdk')
-const multer = require('multer')
 
 require('dotenv').config()
 
 const app = express()
+const messages = []
 
 app.use(bodyParser.json())
 app.use(session({
@@ -51,12 +53,12 @@ app.post('/api/finalize', stripe_ctrl.finalize)
 app.post('/api/storeStripeAcct', stripe_ctrl.storeAcct)
 app.post('/api/save-stripe-token', stripe_ctrl.paymentAPI)
 
-
 app.post('/api/generatedId', (req, res) => {
     req.session.generatedId = req.body.generatedId
     res.send('nothing')
 })
 
+// Auth0 Login
 app.post('/login', (req, res) => {
     const { userId } = req.body
     const auth0Url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users/${userId}`
@@ -91,7 +93,7 @@ app.get('/user-data', (req, res) => {
     }
 })
 
-
+// Amazon S3 upload
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -121,6 +123,46 @@ AWS.config.update({
   })
 })
 
+// Sockets
+const io = socket(app.listen(process.env.SERVER_PORT, () => console.log(`We be listnin on port ${process.env.SERVER_PORT} mon.`)))
+
+io.on('connection', onConnect)
+
+function onConnect(socket){
+    socket.join('chat room')
+    console.log('A user joined the chatroom')
+    
+    // Everyone including the sender
+    
+    socket.on('sendMessage', message => {
+      // console.log('new message ', message)
+      messages.push(message)
+      // console.log('new array of messages', messages)
+      io.in('chat room').emit('getMessage', messages)
+    })
+    
+    // Gets the messages on connection
+    
+    socket.on('join', () => {
+      socket.emit('getMessage', messages)
+    })
+    
+    // Everyone but the sender
+    
+    socket.on('typing', name => {
+      // console.log(name)
+      socket.broadcast.emit('newTyper', name)
+    })
+    
+    socket.on('stopTyping', name => {
+      // console.log(name + ' stopped typing')
+      socket.broadcast.emit('oldTyper', name)
+    })
+    
+    socket.on('disconnect', () => {
+      console.log('A user disconnected')
+    })
+}
 
 const port = process.env.SERVER_PORT
 app.listen(port, () => console.log('listening on port ' + port))

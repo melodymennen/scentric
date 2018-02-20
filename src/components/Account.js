@@ -214,6 +214,7 @@ class Account extends Component {
                                 {user && <button className={`account_link ${this.state.showFavorites ? 'account_link-open' : ''}`} onClick={this.openFavorites}>Favorites</button>}
                                 {user && <button className={`account_link ${this.state.showHistory ? 'account_link-open' : ''}`} onClick={this.openHistory}>Purchase History</button>}
                                 {user && <button className={`account_link ${this.state.showAccountSettings ? 'account_link-open' : ''}`} onClick={this.openAccountSettings}>Change Account Settings</button>}
+                                {/* {user && user.is_admin && <Link to="/admin" className='account_link account_link-open'>Admin Portal</Link>} */}
                             </div>
                         </div>
 
@@ -250,7 +251,7 @@ class Account extends Component {
                                         </div>
                                         <div className="account_date">
                                             <div>You have been a user since 2018!</div>
-                                            <div>You have {this.props.cart.qty} items in you cart. Click <Link to="/Cart">Here</Link> to checkout.</div>
+                                            <div>You have {this.props.cart.qty} items in your cart. Click <Link to="/Cart">Here</Link> to checkout.</div>
                                             <div>If you wish to change your account settings click <a onClick={this.openAccountSettings}>Here</a>.</div>
                                         </div>
                                     </div>

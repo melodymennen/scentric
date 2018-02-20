@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { getUser } from '../ducks/reducer'
-import { Link } from 'react-router-dom'
 import ViewInventory from './ViewInventory'
 import AddInventory from './AddInventory'
 import Customers from './Customers'
@@ -28,14 +27,14 @@ class Admin extends Component {
         this.props.getUser()
     }
     
+    componentDidMount(){
+        window.scrollTo(0,0)
+    }
+
     goBack(){
         this.setState({
             route: 'adminhome'
         })
-    }
-
-    componentDidMount(){
-        window.scrollTo(0,0)
     }
 
     showViewInventory(){
@@ -68,28 +67,38 @@ class Admin extends Component {
         console.log(user)
         return (
             <div>
-                <div className="admin_header_wrapper">
-                    <img src="https://s3-us-west-1.amazonaws.com/scentric/favicon.ico" alt="logo" width="28px"/>
-                    <span className="admin_header_logo">SCENTRIC</span>
-                    <span>Admin Portal</span>
-                </div>
-                <div className="admin_flex">
-                    <div className="admin_menu">
-                        <div onClick={this.goBack}>Admin Home</div>
-                        <div onClick={this.showViewInventory}>View Inventory</div>
-                        <div onClick={this.showAddInventory}>Add Inventory</div>
-                        <div onClick={this.showCustomers}>Customers</div>
-                        <div onClick={this.showOrders}>Orders</div>
-                        <Link to="/home"><div>Store HomePage</div></Link>
+                {user && user.is_admin === true && 
+                <div>
+                    <div className="admin_header_wrapper">
+                        <img src="https://s3-us-west-1.amazonaws.com/scentric/favicon.ico" alt="logo" width="28px"/>
+                        <span className="admin_header_logo">SCENTRIC</span>
+                        <span>Admin Portal</span>
                     </div>
-                    <div style={margin}>
-                        {this.state.route === 'adminhome' ? <AdminHomePortal/> : null}
-                        {this.state.route === 'viewinventory' ? <ViewInventory/> : null}
-                        {this.state.route === 'addinventory' ? <AddInventory/> : null}
-                        {this.state.route === 'customers' ? <Customers/> : null}
-                        {this.state.route === 'orders' ? <Orders/> : null}
+                    <div className="admin_flex">
+                        <div className="admin_menu">
+                            <div onClick={this.goBack}>Admin Home</div>
+                            <div onClick={this.showViewInventory}>View Inventory</div>
+                            <div onClick={this.showAddInventory}>Add Inventory</div>
+                            <div onClick={this.showCustomers}>Customers</div>
+                            <div onClick={this.showOrders}>Orders</div>
+                            <Link to="/home"><div>Store HomePage</div></Link>
+                        </div>
+                        <div style={margin}>
+                            {this.state.route === 'adminhome' ? <AdminHomePortal/> : null}
+                            {this.state.route === 'viewinventory' ? <ViewInventory/> : null}
+                            {this.state.route === 'addinventory' ? <AddInventory/> : null}
+                            {this.state.route === 'customers' ? <Customers/> : null}
+                            {this.state.route === 'orders' ? <Orders/> : null}
+                        </div>
                     </div>
                 </div>
+                }
+                {user && user.is_admin === false && 
+                    <Redirect to="/home"/>
+                }
+                {/* {!user && 
+                    <Redirect to="/home"/>
+                } */}
             </div>
         )
     }
