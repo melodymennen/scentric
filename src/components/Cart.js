@@ -23,6 +23,7 @@ class Cart extends Component {
     componentDidMount() {
         this.getCart()
         this.props.getUser()
+        window.scrollTo(0,0)
     }
 
     getCart(){

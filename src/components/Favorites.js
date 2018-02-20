@@ -15,13 +15,18 @@ class Favorites extends Component {
 
     componentDidMount(){
         this.getFavorites()
-        console.log(this.state.favorites)
     }
 
     getFavorites(){
         axios.get("/api/favorites").then(response => {
             this.setState({favorites: response.data})
-            console.log(this.state.favorites)
+        })
+    }
+
+    removeFavorite(value){
+        axios.delete(`/api/favorites/${value}`).then( () => {
+            console.log('item removed from favorites')
+            this.getFavorites()
         })
     }
 
@@ -32,6 +37,7 @@ class Favorites extends Component {
                     <div className="favorites_image"><Link to={`/products/${item.product_id}`}><img src={item.image_url} alt={item.name}/></Link></div>
                     <div className="favorites_name"><Link to={`/products/${item.product_id}`}> {item.name} </Link></div>
                     <div className="favorites_price">${item.price}</div>
+                    <div className="favorites_remove"><button onClick={() => this.removeFavorite(item.product_id)}>remove</button> </div>
                 </div>
             )
         })

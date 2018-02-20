@@ -22,6 +22,7 @@ class OrderConfirmation extends Component {
         this.getOrder()
         functions.generateId()
         this.props.getUser()
+        window.scrollTo(0,0)
     }
 
     getOrder(){

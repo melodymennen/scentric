@@ -25,6 +25,7 @@ class ContactUs extends Component {
     componentDidMount(){
         functions.generateId()
         this.props.getUser()
+        window.scrollTo(0,0)
     }
 
     handleNameInput(value){

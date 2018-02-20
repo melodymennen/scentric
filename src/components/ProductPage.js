@@ -14,7 +14,8 @@ class ProductPage extends Component {
 
         this.state = {
             product: {},
-            show: false
+            show: false, 
+            showAlert: false
         }
 
         this.getProduct = this.getProduct.bind(this)
@@ -47,13 +48,21 @@ class ProductPage extends Component {
     }
 
     addToFavorites(){
-        const body = {
-            product_id: this.state.product.id
+        if (this.props.user){
+            const body = {
+                product_id: this.state.product.id
+            }
+            return(
+                axios.post('/api/favorites', body).then(() => {
+                    console.log('item added to favorites')
+                })
+            )
+        } else {
+            this.setState({showAlert: true})
+            setTimeout(() => {this.setState({
+                showAlert: false
+            })}, 4000)
         }
-
-        axios.post('/api/favorites', body).then(() => {
-            console.log('item added to favorites')
-        })
     }
 
     showCartSummary(){
@@ -62,7 +71,7 @@ class ProductPage extends Component {
         })
         setTimeout(() => {this.setState({
             show: false
-        })},4000)
+        })}, 4000)
     }
 
     render() {
@@ -83,8 +92,15 @@ class ProductPage extends Component {
                         <div className="product-page-name">{this.state.product.name}</div>
                         <div className="product-page-price">${this.state.product.price}</div>
                         <div className="product-page-description">{this.state.product.description}.</div>
-                        <button className="button" onClick={() => this.addToCart()}>Add To Cart</button>
-                        <button className="button" onClick={() => this.addToFavorites()}>Add To Favorites</button>
+                        <div>
+                            <button className="button" onClick={() => this.addToCart()}>Add To Cart</button>
+                            <button className="button" onClick={() => this.addToFavorites()}>Add To Favorites</button>
+                            {this.state.showAlert ? 
+                                <div className="contact-us-email-sent">
+                                    You must log in first! 
+                                </div> : null
+                            }
+                        </div>
                     </div>
                 </div>
                 <Footer/>
@@ -100,7 +116,8 @@ const buttonLayout = {
 
 function mapStateToProps(state){
     return {
-        cart: state.cart
+        cart: state.cart, 
+        user: state.user
     }
 }
 

@@ -31,6 +31,16 @@
         text-transform: capitalize;
         margin: 5px 0;
     }
+    button {
+        border: none;
+        font-size: 14px;
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            color: rgba(0,0,0,.5);
+        }
+    }
 }
 
 .favorites_title {

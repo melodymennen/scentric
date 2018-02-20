@@ -28,6 +28,7 @@ class DisplayProducts extends Component {
         }
         functions.generateId()
         this.props.getUser()
+        window.scrollTo(0,0)
     }
 
     componentWillReceiveProps(props){

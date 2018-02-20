@@ -55,6 +55,7 @@ class Account extends Component {
 
     componentDidMount(){
         this.props.getUser()
+        window.scrollTo(0,0)
     }
 
     openInfo = () => {

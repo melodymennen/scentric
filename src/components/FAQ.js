@@ -10,6 +10,7 @@ class FAQ extends Component {
     componentDidMount(){
         functions.generateId()
         this.props.getUser()
+        window.scrollTo(0,0)
     }
 
     render() {

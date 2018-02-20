@@ -16,14 +16,13 @@
 .product-page-info {
     display: inherit;
     flex-direction: column;     
-    padding: 30px;
+    padding: 30px 10px;
     div {        
         padding: 10px;
     }
     button {
-        width: 150px;
         padding: 10px;
-        margin: 10px;
+        margin-left: 0px;
         outline: none;
         cursor: pointer;
         font-size: 14px;
