@@ -8,15 +8,17 @@ class Inventory extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // name: '',
-            // description: '',
-            // image_url: '',
-            // price: '',
-            // selectCategory: '',
-            // selectScentFamily: '',
+            on_sale: false,
+            name: '',
+            description: '',
+            image_url: '',
+            price: '',
+            selectCategory: '',
+            selectScentFamily: '',
         }
         this.addProduct=this.addProduct.bind(this)
         this.onDrop = this.onDrop.bind(this)
+        this.onSale = this.onSale.bind(this)
     }
 
     handleTitleChange(value){
@@ -39,7 +41,7 @@ class Inventory extends Component {
         })
     }
 
-    handleSaleChange(){
+    onSale(){
         this.setState({
             on_sale: !this.state.on_sale
         })
@@ -65,7 +67,8 @@ class Inventory extends Component {
             image_url: this.state.image_url,
             price: this.state.price,
             category: this.state.category,
-            scent_family: this.state.scent_family
+            scent_family: this.state.scent_family,
+            on_sale: this.state.on_sale
         }
         axios.post('/api/product', body).then(() => {
             this.setState({
@@ -74,7 +77,8 @@ class Inventory extends Component {
                 image_url: '',
                 price: '',
                 category: '',
-                scent_family: ''
+                scent_family: '',
+                on_sale: ''
             })
         })
     }
@@ -100,27 +104,37 @@ class Inventory extends Component {
         return (
             <div>
                 <div className="inventory_admin_panel_title">Add Inventory</div>
-                <div className="inventory_admin_panel">
-                    <div><input value={this.state.name} placeholder="Title" onChange={(e)=>this.handleTitleChange(e.target.value)}/></div>
-                    <div><textarea value={this.state.description} placeholder="Description" onChange={(e)=>this.handleDescriptionChange(e.target.value)}/></div>
-                    {this.state.image_url ? <div className="drop_zone_wrapper"><img src={this.state.image_url} alt="image" width="100px"/></div> : <FileUpload onDrop={this.onDrop} />}
-                    <div><input value={this.state.price} placeholder="Price" onChange={(e)=>this.handlePriceChange(e.target.value)}/></div>
-                    <div><select value={this.state.category} onChange={(e)=>this.handleCategoryChange(e.target.value)}>
-                        <option>Category</option>
-                        <option value="perfume">Perfume</option>
-                        <option value="cologne">Cologne</option>
-                    </select>
-                    </div>
-                    <div>
-                    {this.state.category === 'perfume' &&
-                        <select value={this.state.scent_family} onChange={(e)=>this.handleScentFamilyChange(e.target.value)}>
-                            <option>Scent Family</option>
-                            <option value="floral">Floral</option>
-                            <option value="oceanic">Oceanic</option>
-                            <option value="citrus">Citrus</option>
-                            <option value="green">Green</option>
-                            <option value="gourmand">Gourmand</option>
-                        </select>}
+                    <div className="inventory_admin_panel">
+                        <div>
+                            <input value={this.state.name} placeholder="Title" onChange={(e)=>this.handleTitleChange(e.target.value)}/>
+                        </div>
+                        <div>
+                            <textarea value={this.state.description} placeholder="Description" onChange={(e)=>this.handleDescriptionChange(e.target.value)}/>
+                        </div>
+                        {this.state.image_url ? 
+                            <div className="drop_zone_wrapper"><img src={this.state.image_url} alt="product" width="100px"/></div> 
+                            : <FileUpload onDrop={this.onDrop} />}
+                        <div>
+                            <input value={this.state.price} placeholder="Price" onChange={(e)=>this.handlePriceChange(e.target.value)}/>
+                            <div onClick={this.onSale} className={this.state.on_sale === true ? "onSale" : "notOnSale"}>Sale</div>
+                        </div>
+                        <div>
+                            <select value={this.state.category} onChange={(e)=>this.handleCategoryChange(e.target.value)}>
+                                <option>Category</option>
+                                <option value="perfume">Perfume</option>
+                                <option value="cologne">Cologne</option>
+                            </select>
+                        </div>
+                        <div>
+                            {this.state.category === 'perfume' &&
+                                <select value={this.state.scent_family} onChange={(e)=>this.handleScentFamilyChange(e.target.value)}>
+                                    <option>Scent Family</option>
+                                    <option value="floral">Floral</option>
+                                    <option value="oceanic">Oceanic</option>
+                                    <option value="citrus">Citrus</option>
+                                    <option value="green">Green</option>
+                                    <option value="gourmand">Gourmand</option>
+                                </select>}
                     {this.state.category === 'cologne' &&
                         <select value={this.state.scent_family}  onChange={(e)=>this.handleScentFamilyChange(e.target.value)}>
                             <option>Scent Family</option>

@@ -135,9 +135,9 @@ module.exports = {
     },
     addProduct: (req,res) => {
         const db = req.app.get('db')
-        const {name, price, description, category, scent_family, image_url} = req.body
+        const {name, price, description, category, scent_family, image_url, on_sale} = req.body
 
-        db.add_product([name, price, description, category, scent_family, image_url]).then(product => {
+        db.add_product([name, price, description, category, scent_family, image_url, on_sale]).then(product => {
             res.status(200).json(product)
         }).catch(error => console.log('add product', error))
     }, 
