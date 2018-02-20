@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getUser } from '../ducks/reducer'
 import ProductModule from './ProductModule'
 import functions from '../utilities/functions'
 import Header from './Header'
@@ -25,6 +27,7 @@ class DisplayProducts extends Component {
             })
         }
         functions.generateId()
+        this.props.getUser()
     }
 
     componentWillReceiveProps(props){
@@ -74,4 +77,8 @@ class DisplayProducts extends Component {
     }
 }
 
-export default DisplayProducts
+const mapDispatchToProps = {
+    getUser: getUser
+}
+
+export default connect(null, mapDispatchToProps)(DisplayProducts)

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getUser } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import Header from './Header'
 import Footer from './Footer'
@@ -19,6 +21,7 @@ class OrderConfirmation extends Component {
     componentDidMount(){
         this.getOrder()
         functions.generateId()
+        this.props.getUser()
     }
 
     getOrder(){
@@ -105,4 +108,8 @@ class OrderConfirmation extends Component {
     }
 }
 
-export default OrderConfirmation
+const mapDispatchToProps = {
+    getUser: getUser
+}
+
+export default connect(null, mapDispatchToProps)(OrderConfirmation)

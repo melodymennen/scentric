@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { getUser } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import Favorites from './Favorites'
 import Header from './Header'
@@ -37,7 +38,7 @@ class Account extends Component {
         setTimeout(() => {
             this.setState({ menuShow: true })
         }, 500)
-
+        
         if (this.props.user) {
             if (this.props.user.address) {
                 let parsedAddress = JSON.parse(this.props.user.address)
@@ -52,6 +53,10 @@ class Account extends Component {
 
         
         console.log(this.state.address)
+    }
+
+    componentDidMount(){
+        this.props.getUser()
     }
 
     openInfo = () => {
@@ -185,21 +190,10 @@ class Account extends Component {
         })
     }
 
-    userIdCheck = (id) => {
-        if (id.length > 17) {
-            return (
-                id.substring(0, 17) + "..."
-            )
-        } else return (
-            id
-        )
-    }
-
-
 
     render() {
         const { user } = this.props
-
+        console.log(user)
         return (
             <div>
                 <Header />
@@ -254,7 +248,7 @@ class Account extends Component {
                                         </div>
                                         <div className="account_date">
                                             <div>You have been a user since 2018!</div>
-                                            <div>You have {this.props.cart.qty} Items in you cart. Click <Link to="/Cart">Here</Link> to checkout.</div>
+                                            <div>You have {this.props.cart.qty} items in you cart. Click <Link to="/Cart">Here</Link> to checkout.</div>
                                             <div>If you wish to change your account settings click <a onClick={this.openAccountSettings}>Here</a>.</div>
                                         </div>
                                     </div>
@@ -375,8 +369,8 @@ class Account extends Component {
                                 </div>
                             </div>}
                         {!user &&
-                            <div className="account_no-user">Please login to see your account page
-                    </div>}
+                            <div className="account_no-user">Please login to see your account page. </div>
+                        }
                     </div>
                 </div>
                 <Footer />
@@ -392,4 +386,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Account)
+const mapDispatchToProps = {
+    getUser: getUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Account)

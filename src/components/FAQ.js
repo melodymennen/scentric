@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getUser } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import Header from './Header'
 import Footer from './Footer'
 
-export default class  extends Component {
+class FAQ extends Component {
 
     componentDidMount(){
         functions.generateId()
+        this.props.getUser()
     }
 
     render() {
@@ -56,3 +59,9 @@ export default class  extends Component {
         )
     }
 }
+
+const mapDispatchToProps = {
+    getUser: getUser
+}
+
+export default connect(null, mapDispatchToProps)(FAQ)

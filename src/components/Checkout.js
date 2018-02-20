@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { getUser } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import StripeCheckout from './StripeCheckout'
 import MiniCart from './MiniCart'
@@ -22,6 +23,7 @@ class Checkout extends Component {
 
     componentDidMount(){
         functions.generateId()
+        this.props.getUser()
     }
 
     handleNameChange(value){
@@ -192,4 +194,8 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Checkout)
+const mapDispatchToProps = {
+    getUser: getUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout)

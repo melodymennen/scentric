@@ -68,7 +68,7 @@ app.post('/login', (req, res) => {
                 req.session.user = users[0]
                 res.json({user: req.session.user})
             } else {
-                app.get('db').create_user([userData.name, userData.email, userData.picture, userData.user_id, req.session.generatedId]).then(user => {
+                app.get('db').create_user([userData.name, userData.email, userData.picture, userData.user_id, req.session.generatedId, false]).then(user => {
                     req.session.user = user[0]
                     res.json({user: req.session.user})
                 }).catch(error => console.log('create user error',error))
@@ -81,8 +81,13 @@ app.post('/login', (req, res) => {
 })
 
 app.get('/user-data', (req, res) => {
-    res.json({ user: req.session.user })
+    if (req.session.user){
+        res.status(200).send(req.session.user)
+    } else {
+        res.status(403)
+    }
 })
+
 
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,

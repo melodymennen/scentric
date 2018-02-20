@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getCart } from '../ducks/reducer'
+import { getCart, getUser } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import Header from './Header'
 import Footer from './Footer'
@@ -12,7 +12,7 @@ class Cart extends Component {
     constructor(props) {
         super(props)
 
-        this.state ={}
+        this.state = {}
 
     }
 
@@ -22,6 +22,7 @@ class Cart extends Component {
 
     componentDidMount() {
         this.getCart()
+        this.props.getUser()
     }
 
     getCart(){
@@ -118,7 +119,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    getCart: getCart
+    getCart: getCart, 
+    getUser: getUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import functions from '../utilities/functions'
-import { getCart } from '../ducks/reducer'
+import { getCart, getUser } from '../ducks/reducer'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Header from './Header'
@@ -24,7 +24,8 @@ class ProductPage extends Component {
 
     componentDidMount(){
         this.getProduct()
-        functions.generateId()         
+        functions.generateId()
+        this.props.getUser()
     }
 
     getProduct(){
@@ -104,6 +105,7 @@ function mapStateToProps(state){
 }
 
 const mapDispatchToProps = {
-    getCart: getCart
+    getCart: getCart, 
+    getUser: getUser
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

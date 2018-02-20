@@ -13,6 +13,7 @@ const initialState = {
  
 const GETPRODUCTS = 'GETPRODUCTS'
 const GETCART = "GETCART"
+const GETUSER = 'GETUSER'
 const LOGIN = 'LOGIN'
  
 
@@ -24,6 +25,18 @@ export const getProducts = () => {
     })
     return {
         type: GETPRODUCTS,
+        payload: request
+    }
+}
+
+export const getUser = () => {
+    var request = axios.get('/user-data').then(response => {
+        if(response.data){
+            return(response.data)
+        } 
+    })
+    return {
+        type: GETUSER,
         payload: request
     }
 }
@@ -63,6 +76,9 @@ export default (state = initialState, action) => {
     switch (action.type){
         case GETPRODUCTS + "_FULFILLED":
              return {...state, products: action.payload}
+       
+        case GETUSER + "_FULFILLED":
+             return {...state, user: action.payload}
 
         case GETCART + "_FULFILLED":
             return {...state, cart: action.payload}
