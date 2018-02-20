@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getProducts } from '../ducks/reducer'
+import { getProducts, getUser } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import ProductModule from './ProductModule'
+import Slider from 'react-slick'
 import Header from './Header'
 import Footer from './Footer'
-import Slider from 'react-slick'
 
 
 
@@ -20,6 +20,7 @@ class Home extends Component {
 
     componentDidMount() {
         this.props.getProducts()
+        this.props.getUser()
         functions.generateId()
     }
 
@@ -73,7 +74,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    getProducts: getProducts
+    getProducts: getProducts,
+    getUser: getUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

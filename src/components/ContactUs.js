@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getUser } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import Header from './Header'
 import Footer from './Footer'
@@ -22,6 +24,7 @@ class ContactUs extends Component {
 
     componentDidMount(){
         functions.generateId()
+        this.props.getUser()
     }
 
     handleNameInput(value){
@@ -76,4 +79,8 @@ class ContactUs extends Component {
     }
 }
 
-export default ContactUs
+const mapDispatchToProps = {
+    getUser: getUser
+}
+
+export default connect(null, mapDispatchToProps)(ContactUs)

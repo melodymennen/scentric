@@ -84,6 +84,14 @@ app.get('/user-data', (req, res) => {
     res.json({ user: req.session.user })
 })
 
+// app.get('/user-data', (req, res) => {
+//     if (req.session.user){
+//         res.status(200).send(req.session.user)
+//     } else {
+//         res.status(403)
+//     }
+// })
+
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,

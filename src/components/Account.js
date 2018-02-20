@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { getUser } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import Favorites from './Favorites'
 import Header from './Header'
@@ -34,6 +35,7 @@ class Account extends Component {
 
     componentWillMount() {
         functions.generateId()
+        this.props.getUser()
         setTimeout(() => {
             this.setState({ menuShow: true })
         }, 500)
@@ -256,7 +258,7 @@ class Account extends Component {
                                         </div>
                                         <div className="account_date">
                                             <div>You have been a user since 2018!</div>
-                                            <div>You have {this.props.cart.qty} Items in you cart. Click <Link to="/Cart">Here</Link> to checkout.</div>
+                                            <div>You have {this.props.cart.qty} items in you cart. Click <Link to="/Cart">Here</Link> to checkout.</div>
                                             <div>If you wish to change your account settings click <a onClick={this.openAccountSettings}>Here</a>.</div>
                                         </div>
                                     </div>
@@ -394,4 +396,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Account)
+const mapDispatchToProps = {
+    getUser: getUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Account)
