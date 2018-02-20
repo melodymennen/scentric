@@ -137,7 +137,6 @@ class Account extends Component {
             newName: this.state.nameInput,
             newEmail: this.state.emailInput,
             newPicture: this.state.pictureInput,
-
             address: addressString
         }
         console.log(myobj)
@@ -148,11 +147,10 @@ class Account extends Component {
     }
 
     address = () => {
-        let parsedAddress = JSON.parse(this.props.user.address)
-        if (this.props.user.address === null) {
+        if (this.props.user.address) {
             return (<div className="account_address">It looks like you don't have and address set up. Edit your account settings to add one!</div>)
         } else {
-            return (<div className="account_address">Address: <div>{parsedAddress.address} {parsedAddress.city}, {parsedAddress.state}, {parsedAddress.zipcode}</div></div>)
+            return (<div className="account_address">Address: <div>{this.state.inputAddress} {this.state.inputCity}, {this.state.inputState}, {this.state.inputZipCode}</div></div>)
         }
     }
 
@@ -246,11 +244,9 @@ class Account extends Component {
                                         <div className="account_flex account_space">
                                             <div className="account_flex_profile">
                                                 <div>Account Name: {user.name}</div>
-                                                <div>Account id: {user.id}</div>
                                             </div>
                                             <div className="account_flex_profile">
                                                 <div>Email: {user.email}</div>
-                                                <div>Auth0_id: {this.userIdCheck(user.auth0_id)}</div>
                                             </div>
                                         </div>
                                         <div className="account_space">
