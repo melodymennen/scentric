@@ -8,8 +8,8 @@ class AdminHomePortal extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            ordersSubtotal: [],
-            ordersTotal: []
+            ordersSubtotal: 0,
+            ordersTotal: 0
         }
     }
 
@@ -40,12 +40,13 @@ class AdminHomePortal extends Component {
     }
 
     render() {
+        console.log(this.state.ordersSubtotal)
         return (
             <div>
                 <div className="admin_home_first_body">
                     <div>
                         <div>Total Sales</div>
-                        <div>$ {this.state.ordersSubtotal}</div>
+                        <div>$ {this.state.ordersSubtotal.toFixed(2)}</div>
                     </div>
                     <div>
                         <div>Total Orders</div>
