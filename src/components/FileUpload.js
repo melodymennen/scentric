@@ -9,7 +9,7 @@ class FileUpload extends Component {
         return(
             <div>
                 <Dropzone onDrop={ this.props.onDrop } multiple={ false } 
-                className="drop_zone_wrapper">
+                    className="drop_zone_wrapper">
                     <div className="image_icon"><FaFileImage/></div>
                     <div>Drop File Here</div>
                     <div>or</div>

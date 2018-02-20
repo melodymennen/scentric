@@ -8,12 +8,12 @@ class Inventory extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: '',
-            description: '',
-            image_url: '',
-            price: '',
-            selectCategory: '',
-            selectScentFamily: '',
+            // name: '',
+            // description: '',
+            // image_url: '',
+            // price: '',
+            // selectCategory: '',
+            // selectScentFamily: '',
         }
         this.addProduct=this.addProduct.bind(this)
         this.onDrop = this.onDrop.bind(this)
@@ -38,6 +38,13 @@ class Inventory extends Component {
             price: value
         })
     }
+
+    handleSaleChange(){
+        this.setState({
+            on_sale: !this.state.on_sale
+        })
+    }
+
     handleCategoryChange(value){
         console.log(value)
         this.setState({
@@ -96,7 +103,7 @@ class Inventory extends Component {
                 <div className="inventory_admin_panel">
                     <div><input value={this.state.name} placeholder="Title" onChange={(e)=>this.handleTitleChange(e.target.value)}/></div>
                     <div><textarea value={this.state.description} placeholder="Description" onChange={(e)=>this.handleDescriptionChange(e.target.value)}/></div>
-                    <FileUpload onDrop={this.onDrop} />
+                    {this.state.image_url ? <div className="drop_zone_wrapper"><img src={this.state.image_url} alt="image" width="100px"/></div> : <FileUpload onDrop={this.onDrop} />}
                     <div><input value={this.state.price} placeholder="Price" onChange={(e)=>this.handlePriceChange(e.target.value)}/></div>
                     <div><select value={this.state.category} onChange={(e)=>this.handleCategoryChange(e.target.value)}>
                         <option>Category</option>
