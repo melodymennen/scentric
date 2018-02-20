@@ -35,11 +35,10 @@ class Account extends Component {
 
     componentWillMount() {
         functions.generateId()
-        this.props.getUser()
         setTimeout(() => {
             this.setState({ menuShow: true })
         }, 500)
-
+        
         if (this.props.user) {
             if (this.props.user.address) {
                 let parsedAddress = JSON.parse(this.props.user.address)
@@ -52,6 +51,10 @@ class Account extends Component {
             }
         }
         console.log(this.state.address)
+    }
+
+    componentDidMount(){
+        this.props.getUser()
     }
 
     openInfo = () => {
@@ -187,21 +190,10 @@ class Account extends Component {
         })
     }
 
-    userIdCheck = (id) => {
-        if (id.length > 17) {
-            return (
-                id.substring(0, 17) + "..."
-            )
-        } else return (
-            id
-        )
-    }
-
-
 
     render() {
         const { user } = this.props
-
+        console.log(user)
         return (
             <div>
                 <Header />
@@ -250,7 +242,6 @@ class Account extends Component {
                                             </div>
                                             <div className="account_flex_profile">
                                                 <div>Email: {user.email}</div>
-                                                <div>Auth0_id: {this.userIdCheck(user.auth0_id)}</div>
                                             </div>
                                         </div>
                                         <div className="account_space">
@@ -379,8 +370,8 @@ class Account extends Component {
                                 </div>
                             </div>}
                         {!user &&
-                            <div className="account_no-user">Please login to see your account page
-                    </div>}
+                            <div className="account_no-user">Please login to see your account page. </div>
+                        }
                     </div>
                 </div>
                 <Footer />

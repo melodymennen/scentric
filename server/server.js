@@ -81,7 +81,11 @@ app.post('/login', (req, res) => {
 })
 
 app.get('/user-data', (req, res) => {
-    res.json({ user: req.session.user })
+    if (req.session.user){
+        res.status(200).send(req.session.user)
+    } else {
+        res.status(403)
+    }
 })
 
 
