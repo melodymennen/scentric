@@ -44,6 +44,7 @@ app.post('/api/favorites', controller.addFavorite)
 app.get('/api/favorites', controller.getFavorites)
 app.get('/api/ordersall', controller.getAllOrders)
 app.get('/api/allusers', controller.getAllUsers)
+app.get('/api/customers/admin', controller.getCustomers)
 
 app.get('/api/stripeConnect', stripe_ctrl.connect)
 app.post('/api/finalize', stripe_ctrl.finalize)

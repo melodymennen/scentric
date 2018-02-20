@@ -78,6 +78,13 @@ module.exports = {
             res.status(200).send(users)
         }).catch(error => console.log('get all users error', error))
     },
+    getCustomers: (req,res) => {
+        const db = req.app.get('db')
+
+        db.get_customers_admin([]).then((customers) => {
+            res.status(200).send( customers )
+        }).catch(error => console.log('get customers error', error))
+    },
     getProductsByScent: (req, res) => {
         const db =  req.app.get('db')
         const { category } = req.params
