@@ -67,7 +67,8 @@ module.exports = {
         const { user } = req.session
         const { newName, newEmail, newPicture, address } = req.body
         console.log(user.id, newName, newEmail, newPicture, address)
-        db.update_user([user.id, newName, newEmail, newPicture, address]).then(() => {
+        db.update_user([user.id, newName, newEmail, newPicture, address]).then((user) => {
+            req.session.user = user[0]
             res.status(200).send('success')
         }).catch(error => console.log('update user error', error))
     },
@@ -79,7 +80,7 @@ module.exports = {
         }).catch(error => console.log('get all users error', error))
     },
     getProductsByScent: (req, res) => {
-        const db =  req.app.get('db')
+        const db =  req.app.get('db') 
         const { category } = req.params
 
         db.get_products_by_scent([category]).then(products => {

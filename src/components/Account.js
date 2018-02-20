@@ -46,11 +46,15 @@ class Account extends Component {
                     inputAddress: parsedAddress.address,
                     inputCity: parsedAddress.city,
                     inputState: parsedAddress.state,
-                    inputZipcode: parsedAddress.zipcode,
+                    inputZipCode: parsedAddress.zipcode,
                 })
             }
+            this.setState({
+                nameInput: this.props.user.name,
+                emailInput: this.props.user.email,
+                pictureInput: this.props.user.picture_url
+            })
         }
-        console.log(this.state.address)
     }
 
     componentDidMount(){
@@ -141,22 +145,21 @@ class Account extends Component {
             newName: this.state.nameInput,
             newEmail: this.state.emailInput,
             newPicture: this.state.pictureInput,
-
             address: addressString
         }
         console.log(myobj)
         axios.post(`/api/updateuser`, myobj).then((res) => {
-            console.log("works", res)
+            this.props.getUser()
+            console.log("works", res, this.props.user)
         })
         this.setState({ accountSettings: !this.state.accountSettings })
     }
 
     address = () => {
-        let parsedAddress = JSON.parse(this.props.user.address)
-        if (this.props.user.address === null) {
-            return (<div className="account_address">It looks like you don't have and address set up. Edit your account settings to add one!</div>)
+        if (this.props.user.address) {
+            return (<div className="account_address">Address: <div>{this.state.inputAddress} {this.state.inputCity}, {this.state.inputState}, {this.state.inputZipCode}</div></div>)
         } else {
-            return (<div className="account_address">Address: <div>{parsedAddress.address} {parsedAddress.city}, {parsedAddress.state}, {parsedAddress.zipcode}</div></div>)
+            return (<div className="account_address">It looks like you don't have and address set up. Edit your account settings to add one!</div>)
         }
     }
 
@@ -164,12 +167,6 @@ class Account extends Component {
     handleAddressChange = (value) => {
         this.setState({
             inputAddress: value
-        })
-    }
-
-    handleSecAddressChange = (value) => {
-        this.setState({
-            inputSecAddress: value
         })
     }
 
@@ -232,17 +229,16 @@ class Account extends Component {
                                     <div className="account_info-excerpt">
                                         <div className="account_flex_profile">
                                             <div className="account_greeting">
-                                                <img className="account_picture" alt="user" src={user.picture_url} />
-                                                <div>Welcome {user.name}!</div>
+                                                <img className="account_picture" alt="user" src={this.state.pictureInput} />
+                                                <div>Welcome {this.state.nameInput}!</div>
                                             </div>
                                         </div>
                                         <div className="account_flex account_space">
                                             <div className="account_flex_profile">
-                                                <div>Account Name: {user.name}</div>
-                                                <div>Account id: {user.id}</div>
+                                                <div>Account Name: {this.state.nameInput}</div>
                                             </div>
                                             <div className="account_flex_profile">
-                                                <div>Email: {user.email}</div>
+                                                <div>Email: {this.state.emailInput}</div>
                                             </div>
                                         </div>
                                         <div className="account_space">
@@ -284,15 +280,15 @@ class Account extends Component {
                                         </div>
 
                                         <div className={`account_before-excerpt ${this.state.accountSettings ? "account_settings-excerpt-hide" : ""}`}>
-                                            <div>Name: <div>{user.name}</div></div>
-                                            <div>Email: <div>{user.email}</div></div>
-                                            <div>Profile Picture: <div>{user.picture_url}</div></div>
+                                            <div>Name: <div>{this.state.nameInput}</div></div>
+                                            <div>Email: <div>{this.state.emailInput}</div></div>
+                                            <div>Profile Picture: <div>{this.state.pictureInput}</div></div>
                                             {this.address()}
                                         </div>
                                         <div className={`account_settings-excerpt ${this.state.accountSettings ? "account_settings-excerpt-show" : ""}`}>
-                                            <div>Name: <input defaultValue={user.name} onChange={event => this.handleNameChange(event.target.value)} /></div>
-                                            <div>Email: <input defaultValue={user.email} onChange={event => this.handleEmailChange(event.target.value)} /></div>
-                                            <div>Profile Picture:  <input defaultValue={user.picture_url} onChange={event => this.handlePictureChange(event.target.value)} /></div>
+                                            <div>Name: <input defaultValue={this.state.nameInput} onChange={event => this.handleNameChange(event.target.value)} /></div>
+                                            <div>Email: <input defaultValue={this.state.emailInput} onChange={event => this.handleEmailChange(event.target.value)} /></div>
+                                            <div>Profile Picture:  <input defaultValue={this.state.pictureInput} onChange={event => this.handlePictureChange(event.target.value)} /></div>
 
 
                                             <div> Address:
@@ -358,7 +354,7 @@ class Account extends Component {
                                                         <option value="WI">Wisconsin</option>
                                                         <option value="WY">Wyoming</option>
                                                     </select>
-                                                    <input className="account_input_short" defaultValue={this.state.inputZipcode}
+                                                    <input className="account_input_short" defaultValue={this.state.inputZipCode}
                                                         onChange={(e) => this.handleZipCodeChange(e.target.value)}
                                                         placeholder="Zip Code" />
                                                 </div>
