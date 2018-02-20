@@ -22,6 +22,7 @@ class Home extends Component {
         this.props.getProducts()
         this.props.getUser()
         functions.generateId()
+        window.scrollTo(0,0)
     }
 
     render() {

@@ -26,6 +26,10 @@ class Admin extends Component {
         this.props.getUser()
     }
 
+    componentDidMount(){
+        window.scrollTo(0,0)
+    }
+
     showViewInventory(){
         this.setState ({
             route: 'viewinventory'

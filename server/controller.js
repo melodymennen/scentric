@@ -51,7 +51,7 @@ module.exports = {
 
         db.remove_from_cart([product_id]).then(() => {
             res.status(200).send('success')
-        }).catch(error => console.log('remove from cart error',error))        
+        }).catch(error => console.log('remove from cart error', error))        
     },
     decreaseCartQty: (req, res) => {
         const db = req.app.get('db')
@@ -60,7 +60,7 @@ module.exports = {
 
         db.decrease_cart_qty([product_id, generatedId]).then(() => {
             res.status(200).send('success')
-        }).catch(error => console.log('decrease cart qty error',error))        
+        }).catch(error => console.log('decrease cart qty error', error))        
     },
     updateUser: (req, res) => {
         const db = req.app.get('db')
@@ -85,7 +85,7 @@ module.exports = {
 
         db.delete_cart([generatedId]).then(() => {
             res.status(200).send('success')
-        }).catch(error => console.log('delete cart error',error)) 
+        }).catch(error => console.log('delete cart error', error)) 
     }, 
     addOrder: (req,res) => {
         const db = req.app.get('db')
@@ -101,7 +101,7 @@ module.exports = {
                     res.status(200).send('success')
                 }).catch(error => console.log('add order items error',error)) 
             })
-        }).catch(error => console.log('new order error',error)) 
+        }).catch(error => console.log('new order error', error)) 
     }, 
     getOrder: (req, res) => {
         const db =  req.app.get('db')
@@ -109,7 +109,7 @@ module.exports = {
         
         db.get_order([order_id]).then(order => {
             res.status(200).json(order)
-        }).catch(error => console.log('get order error',error))
+        }).catch(error => console.log('get order error', error))
     }, 
     getOrdersByUser: (req, res) => {
         const db =  req.app.get('db')
@@ -117,7 +117,7 @@ module.exports = {
         
         db.get_order([generatedId]).then(orders => {
             res.status(200).json(orders)
-        }).catch(error => console.log('get order error',error))
+        }).catch(error => console.log('get order error', error))
     },
     addProduct: (req,res) => {
         const db = req.app.get('db')
@@ -138,7 +138,7 @@ module.exports = {
             } else {
                 db.add_favorite([user.id, product_id]).then(() => {
                     res.status(200).send('success')
-                }).catch(error => console.log('add favorite error',error))
+                }).catch(error => console.log('add favorite error', error))
             }
         }).catch(error => console.log('check favorites error', error))    
     }, 
@@ -148,6 +148,15 @@ module.exports = {
 
         db.get_favorites([user.id]).then(favorites => {
             res.status(200).json(favorites)
-        }).catch(error => console.log('get favorites error',error))
+        }).catch(error => console.log('get favorites error', error))
+    }, 
+    removeFavorite: (req, res) => {
+        const db =  req.app.get('db')
+        const { user } = req.session
+        const { product_id } = req.params 
+
+        db.remove_favorite([user.id, product_id]).then(() => {
+            res.status(200).send('success')
+        }).catch(error => console.log('remove favorite error', error))
     }
 }
