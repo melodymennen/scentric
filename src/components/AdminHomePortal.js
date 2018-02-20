@@ -1,0 +1,67 @@
+import React, { Component } from 'react'
+import axios from 'axios'
+import _ from 'lodash'
+
+
+
+class AdminHomePortal extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            ordersSubtotal: 0,
+            ordersTotal: 0
+        }
+    }
+
+    componentDidMount() {
+        this.getAllOrders()
+        this.getAllUsers()
+    }
+
+    getAllOrders(){
+        axios.get('/api/ordersall').then( response => {
+            var ordersArray = []
+            for( let i=0; i < response.data.length; i++){
+                ordersArray.push(+(response.data[i].order_subtotal))
+                }
+            this.setState({
+                ordersSubtotal: _.sum(ordersArray),
+                ordersTotals: response.data.length
+            })
+        })
+    }
+
+    getAllUsers(){
+        axios.get('/api/allusers').then( response => {
+            this.setState({
+                customerTotal: response.data.length
+            })
+        })
+    }
+
+    render() {
+        console.log(this.state.ordersSubtotal)
+        return (
+            <div>
+                <div className="admin_home_first_body">
+                    <div>
+                        <div>Total Sales</div>
+                        <div>$ {this.state.ordersSubtotal.toFixed(2)}</div>
+                    </div>
+                    <div>
+                        <div>Total Orders</div>
+                        <div>{this.state.ordersTotals}</div>
+                    </div>
+                    <div>
+                        <div>Total Customers</div>
+                        <div>{this.state.customerTotal}</div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+
+
+export default AdminHomePortal

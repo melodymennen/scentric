@@ -31,11 +31,32 @@
 	align-items: stretch;
 }
 
+// admin home 
+
+.admin_home_first_body{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+    align-items: stretch;
+    padding: 20px;
+    > div{
+        border: 1px solid rgb(73, 73, 73);
+        padding: 15px 30px;
+        width: 180px;
+        margin: 10px;
+        text-align: center;
+        > div{
+            padding: 20px;
+        }
+    }
+}
+
 //Add Inventory
 
 .inventory_admin_panel{
     div{
-        padding: 7px;
+        padding: 6px;
         input{
             width: 500px;
             padding: 10px;
@@ -59,12 +80,35 @@
     }
 }
 
+.onSale{
+    text-align: center;
+    background-color: $blush;
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius : 22px;
+    width: 60px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.notOnSale{
+    text-align: center;
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius : 22px;
+    width: 60px;
+    height: 20px;
+    cursor: pointer;
+}
+
 
 //drop zone
 
 .drop_zone_wrapper{
     border: 1px solid rgba(110, 110, 110, 0.61);
     text-align: center;
+    width: 500px;
+    margin: auto;
     div{
         font-size: 12pt;
         padding: 0px;

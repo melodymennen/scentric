@@ -71,6 +71,13 @@ module.exports = {
             res.status(200).send('success')
         }).catch(error => console.log('update user error', error))
     },
+    getAllUsers: (req, res ) => {
+        const db = req.app.get('db')
+
+        db.get_users_all([]).then(users => {
+            res.status(200).send(users)
+        }).catch(error => console.log('get all users error', error))
+    },
     getProductsByScent: (req, res) => {
         const db =  req.app.get('db')
         const { category } = req.params
@@ -111,6 +118,13 @@ module.exports = {
             res.status(200).json(order)
         }).catch(error => console.log('get order error',error))
     }, 
+    getAllOrders: (req, res) => {
+        const db = req.app.get('db')
+        
+        db.get_all_orders([]).then(orders => {
+            res.status(200).json(orders)
+        }).catch( error => console.log('get all orders error' , error))
+    },
     getOrdersByUser: (req, res) => {
         const db =  req.app.get('db')
         const { generatedId } = req.session 
@@ -121,9 +135,9 @@ module.exports = {
     },
     addProduct: (req,res) => {
         const db = req.app.get('db')
-        const {name, price, description, category, scent_family, image_url} = req.body
+        const {name, price, description, category, scent_family, image_url, on_sale} = req.body
 
-        db.add_product([name, price, description, category, scent_family, image_url]).then(product => {
+        db.add_product([name, price, description, category, scent_family, image_url, on_sale]).then(product => {
             res.status(200).json(product)
         }).catch(error => console.log('add product', error))
     }, 
