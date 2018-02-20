@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import functions from '../utilities/functions'
+import Favorites from './Favorites'
 import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
@@ -27,12 +28,8 @@ class Account extends Component {
             inputZipCode: '',
 
             address: {},
-            history: [],
-
-            favorites: []
+            history: []
         }
-
-        this.getFavorites = this.getFavorites.bind(this)
     }
 
     componentWillMount() {
@@ -55,17 +52,6 @@ class Account extends Component {
 
         
         console.log(this.state.address)
-    }
-
-    componentDidMount(){
-        this.getFavorites()
-    }
-
-    getFavorites(){
-        axios.get("/api/favorites").then(response => {
-            this.setState({favorites: response.data})
-            console.log(this.state.favorites)
-        })
     }
 
     openInfo = () => {
@@ -215,15 +201,7 @@ class Account extends Component {
 
     render() {
         const { user } = this.props
-        const favorites = this.state.favorites.map( item => {
-            return (
-                <div key={item.id}>
-                    <div><img src={item.image_url}/></div>
-                    <div>{item.name}</div>
-                    <div>{item.price}</div>
-                </div>
-            )
-        })
+
         return (
             <div>
                 <Header />
@@ -292,8 +270,7 @@ class Account extends Component {
 
                                 <div className={`account_container ${this.state.showFavorites ? 'account_show-favorites' : ''}`}>
                                     <div className="account_favorites-excerpt">
-                                        Favorites
-                                        {favorites}
+                                        <Favorites />
                                     </div>
                                 </div>
 

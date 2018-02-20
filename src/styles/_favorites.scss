@@ -1,0 +1,38 @@
+.favorites_body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    a {
+        color: black;
+        &:visited {
+            color: black;
+        }
+        &:hover {
+            color: rgba(0,0,0,.5);
+        }
+    }
+}
+
+.favorites_line-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    img {
+        height: 200px;
+    }
+    div {
+        padding: 15px 0;
+        display: inherit;
+        width: 33%;
+        align-items: center;
+        justify-content: center;
+        text-transform: capitalize;
+        margin: 5px 0;
+    }
+}
+
+.favorites_title {
+    font-size: 1.5em;
+}
