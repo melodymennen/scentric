@@ -10,6 +10,7 @@ class AccountHistory extends Component {
         }
     }
     componentDidMount() {
+        window.scrollTo(0,0)
         axios.get('/api/orders').then((res) => {
             this.setState({ orders: res.data })         
             console.log("orders state", this.state.orders)

@@ -32,11 +32,6 @@ nav {
 
 nav ul {
     list-style-type: none;
-
-    li:hover ul {
-        display: flex;
-        flex-direction: column;
-    }
 }
 
 a {
@@ -49,6 +44,38 @@ a {
 
     > li:hover {
         background-color: white;
+
+        > ul {
+            display: flex;
+            flex-direction: column;
+            perspective: 1000px;
+
+            > li {
+                opacity: 0;
+                
+                @for $i from 1 through 8 {         
+                    &:nth-child(#{$i}) {
+                        animation-name: "menu";
+                        animation-duration: 200ms * $i;
+                        animation-timing-function: ease-in-out;
+                        animation-fill-mode: forwards;
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes menu {
+    0% {
+        opacity: 0;
+        transform: rotateY(-90deg) translateY(30px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg) translateY(0px)
     }
 }
 
@@ -61,7 +88,7 @@ a {
 
 li > ul > li a:hover {
     color: gray;
-    transition: all .5s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 .header-left {

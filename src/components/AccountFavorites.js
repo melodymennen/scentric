@@ -15,6 +15,7 @@ class Favorites extends Component {
 
     componentDidMount() {
         this.getFavorites()
+        window.scrollTo(0,0)
     }
 
     getFavorites() {
