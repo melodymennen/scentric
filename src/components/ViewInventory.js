@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { getProducts } from '../ducks/reducer'
 import EditProduct from './EditProduct'
 
@@ -20,6 +19,7 @@ class ViewInventory extends Component {
             editId: 0
         }
         this.showEdit = this.showEdit.bind(this)
+        this.closeModal = this.closeModal.bind(this)
     }
 
     componentDidMount() {
@@ -32,6 +32,11 @@ class ViewInventory extends Component {
             editId: id
         })
     }
+
+    closeModal = () => {
+        console.log('ismodalclosed?')
+        this.setState({show: false});
+      }
 
     
     render() {
@@ -62,7 +67,7 @@ class ViewInventory extends Component {
                         </div>
                     <div className="admin_product_table">{p}</div>
                 </div>
-                {this.state.show ? <EditProduct id={this.state.editId}/> : null}
+                {this.state.show ? <EditProduct closed={this.closeModal} id={this.state.editId}/> : null}
             </div>
         )
     }

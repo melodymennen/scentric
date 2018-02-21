@@ -11,15 +11,14 @@ class EditProduct extends Component {
         }
     }
 
-    componentWillReceiveProps(props){
-        console.log(this.props.id)
-        this.getProduct(props.id)
-    }
-
-    // componentWillMount(props){
-    //     console.log(this.props.id)
+    // componentWillReceiveProps(props){
     //     this.getProduct(props.id)
     // }
+
+    componentDidMount(props) {
+        this.getProduct(this.props.id)
+    }
+
 
     getProduct(id){
         axios.get(`/api/admin/${id}`).then(response => {
@@ -34,12 +33,8 @@ class EditProduct extends Component {
         const e = this.state.product
         console.log('df', e)
         return (
-            <div 
-            // className="edit_products_modal_backdrop"
-            >
-                <div 
-                // className="edit_products_modal"
-                >
+            <div className="edit_products_modal_backdrop">
+                <div className="edit_products_modal">
                     <div>{e.name}</div>
                     <div>{e.description}</div>
                     <div><img src={e.image_url} alt="product" width="300px"/></div>
@@ -47,7 +42,7 @@ class EditProduct extends Component {
                     <div>{e.sale ? <div>On Sale</div> : <div>Not on Sale</div>}</div>
                     <div>{e.category}</div>
                     <div>{e.scent_family}</div>
-                    <button>Close</button>
+                    <button onClick={this.props.closed}>Close</button>
                 </div>
             </div>
         )
