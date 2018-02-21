@@ -1,10 +1,10 @@
 .chat_body {
-    height: 300px;
-    width: 250px;
+    height: 350px;
+    width: 280px;
     padding: 10px;
     position: fixed;
-    bottom: 100px;
-    right: 50px;
+    bottom: 30px;
+    right: 100px;
     display: flex;
     flex-direction: column;
     background-color: #f8f9fa;
@@ -29,31 +29,51 @@
 }
 
 .papa {
-    overflow: scroll;
-    max-height: 75%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    overflow-y: scroll;
+    max-height: 80%;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-end;
 }
 
 .messageholder {
     display: flex;
-    flex-direction: row;
-    overflow: auto;
+    flex-direction: column;
+    overflow-y: auto;
     div {
         padding: 1px 5px;
     }
 }
 
-.typer {
+.message-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    overflow: auto;
+    text-align: right;
+    div {
+        padding: 1px 5px;
+    }
+}
+
+.messagename {
     font-size: .8em;
 }
 
+.typer {
+    font-size: .8em;
+    position: absolute;
+    bottom: 40px;
+}
+
 .inputsholder {
+    width: 98%;
     position: absolute;
     bottom: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     text-align: center;
-
 }
 
 .chat-bubble {
