@@ -39,7 +39,7 @@ class EditProduct extends Component {
                     <div>{e.description}</div>
                     <div><img src={e.image_url} alt="product" width="250px"/></div>
                     <div>{e.price}</div>
-                    <div>{e.sale ? <div>On Sale</div> : <div>Not on Sale</div>}</div>
+                    <div>{e.sale ? <span>On Sale</span> : <span>Not on Sale</span>}</div>
                     <div>{e.category}</div>
                     <div>{e.scent_family}</div>
                     <button onClick={this.props.closed}>Close</button>
