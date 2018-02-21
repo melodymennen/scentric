@@ -44,9 +44,10 @@ class ViewInventory extends Component {
             const p = this.props.products.map(e => {
                 return(
                     <div key={e.id}
+                        onClick={() => this.showEdit(e.id)}
                         className="viewinventory_flex_wrapper">
                         <div><img src={e.image_url} alt="product" width="60px"/></div>
-                        <div onClick={() => this.showEdit(e.id)} className="name">{e.name}</div>
+                        <div className="name">{e.name}</div>
                         <div className="price">${e.price}</div>
                         <div className="description">{e.description}</div>
                         <div className="category">{e.category}</div>

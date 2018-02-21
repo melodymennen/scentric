@@ -37,7 +37,7 @@ class EditProduct extends Component {
                 <div className="edit_products_modal">
                     <div>{e.name}</div>
                     <div>{e.description}</div>
-                    <div><img src={e.image_url} alt="product" width="300px"/></div>
+                    <div><img src={e.image_url} alt="product" width="250px"/></div>
                     <div>{e.price}</div>
                     <div>{e.sale ? <div>On Sale</div> : <div>Not on Sale</div>}</div>
                     <div>{e.category}</div>

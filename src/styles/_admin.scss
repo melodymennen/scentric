@@ -179,11 +179,13 @@
     div{
         border-left: 1px solid rgba(126, 126, 126, 0.568);
         padding: 10px 10px 0 10px;
+        cursor: pointer;
     }
     .name{
         width: 130px;
         text-transform: capitalize;
         font-size: 11pt;
+        
     }
     .price{
         width: 50px;
@@ -276,7 +278,7 @@
 .edit_products_modal_backdrop {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 70px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -289,7 +291,16 @@
 .edit_products_modal {
     background-color: #fefefe;
     margin: auto;
+    text-align: center;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 70%;
+    div:nth-child(1){
+        text-transform: capitalize;
+        font-size: 16pt;
+    }
+    div{
+        padding: 5px 90px;
+        background-color: hotpink;
+    }
 }
