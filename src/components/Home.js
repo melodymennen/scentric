@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getProducts, getUser } from '../ducks/reducer'
+import { Link } from 'react-router-dom'
 import functions from '../utilities/functions'
 import ProductModule from './ProductModule'
 import ChatBubble from './ChatBubble'
@@ -49,9 +50,13 @@ class Home extends Component {
                 <Header />
                 <div className="home_hero">
                     <Slider {...settings}>
-                        <div><img alt="mens cologne" className="home_pictures" src='https://s3-us-west-1.amazonaws.com/scentric/colognehero.png' /></div>
-                        <div><img alt="wemens perfume" className="home_pictures" src='https://s3-us-west-1.amazonaws.com/scentric/womensperfume.png' /></div>
+                        <div><img alt="mens cologne" className="home_pictures" src='https://s3-us-west-1.amazonaws.com/scentric/colognehero.png'/></div>
+                        <div><img alt="womens perfume" className="home_pictures" src='https://s3-us-west-1.amazonaws.com/scentric/womensperfume.png' /></div>
                     </Slider>
+                </div>
+                <div className="home_featured">
+                    <Link to="/NewArrivals"><div><img src="https://s3-us-west-1.amazonaws.com/scentric/newarrivals.png" alt="new arrivals" width="550px"/></div></Link>
+                    <Link to="/Sale"><div><img src="https://s3-us-west-1.amazonaws.com/scentric/sale.png" alt="sale" width="550px"/></div></Link>
                 </div>
                 <div className="home_featured_products">Featured Products</div>
                 <div className="home_flex">

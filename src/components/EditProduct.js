@@ -7,32 +7,47 @@ class EditProduct extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            product: []
+            product: [],
         }
     }
 
-    componentWillReceiveProps(props){
-        console.log(this.props.id)
-        this.getProduct(props.id)
+    // componentWillReceiveProps(props){
+    //     this.getProduct(props.id)
+    // }
+
+    componentDidMount(props) {
+        this.getProduct(this.props.id)
     }
+
 
     getProduct(id){
         axios.get(`/api/admin/${id}`).then(response => {
-            console.log(response.data)
             this.setState({product: response.data[0]})
+            console.log('resosone',response.data)
          })
     }
+
+    
+
     render() {
         const e = this.state.product
+        console.log('df', e)
         return (
-            <div>
-                <div>{e.name}</div>
-                <div>{e.description}</div>
-                <div><img src={e.image_url} alt="product" width="300px"/></div>
-                <div>{e.price}</div>
-                <div>{e.sale ? <div>On Sale</div> : <div>Not on Sale</div>}</div>
-                <div>{e.category}</div>
-                <div>{e.scent_family}</div>
+            <div className="edit_products_modal_backdrop">
+                <div className="edit_products_modal">
+                    <div>{e.name}</div>
+                    <div>Name</div>
+                    <div><input value={e.name}/></div>
+                    <div>Description</div>
+                    <div><textarea value={e.description}/></div>
+                    <div><img className="editproduct_image_modal" src={e.image_url} alt="product" width="200px"/></div>
+                    <div>{e.price}</div>
+                    <div>{e.sale ? <span>On Sale</span> : <span>Not on Sale</span>}</div>
+                    <div>{e.category}</div>
+                    <div>{e.scent_family}</div>
+                    <button onClick={this.props.closed}>Close</button>
+                    <button>Edit</button>
+                </div>
             </div>
         )
     }
