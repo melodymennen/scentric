@@ -13,6 +13,8 @@ const AWS = require('aws-sdk')
 require('dotenv').config()
 
 const app = express()
+
+const port = process.env.SERVER_PORT
 const messages = []
 
 app.use(bodyParser.json())
@@ -125,45 +127,42 @@ AWS.config.update({
 })
 
 // Sockets
-// const io = socket(app.listen(process.env.SERVER_PORT, () => console.log(`We be listnin on port ${process.env.SERVER_PORT} mon.`)))
+const io = socket(app.listen(process.env.SERVER_PORT, () => console.log(`Listening on port ${process.env.SERVER_PORT}.`)))
 
-// io.on('connection', onConnect)
+io.on('connection', onConnect)
 
-// function onConnect(socket){
-//     socket.join('chat room')
-//     console.log('A user joined the chatroom')
+function onConnect(socket){
+    socket.join('chat room')
+    console.log('A user joined the chatroom')
     
-//     // Everyone including the sender
+    // Everyone including the sender
     
-//     socket.on('sendMessage', message => {
-//       // console.log('new message ', message)
-//       messages.push(message)
-//       // console.log('new array of messages', messages)
-//       io.in('chat room').emit('getMessage', messages)
-//     })
+    socket.on('sendMessage', message => {
+      // console.log('new message ', message)
+      messages.push(message)
+      // console.log('new array of messages', messages)
+      io.in('chat room').emit('getMessage', messages)
+    })
     
-//     // Gets the messages on connection
+    // Gets the messages on connection
     
-//     socket.on('join', () => {
-//       socket.emit('getMessage', messages)
-//     })
+    socket.on('join', () => {
+      socket.emit('getMessage', messages)
+    })
     
-//     // Everyone but the sender
+    // Everyone but the sender
     
-//     socket.on('typing', name => {
-//       // console.log(name)
-//       socket.broadcast.emit('newTyper', name)
-//     })
+    socket.on('typing', name => {
+      // console.log(name)
+      socket.broadcast.emit('newTyper', name)
+    })
     
-//     socket.on('stopTyping', name => {
-//       // console.log(name + ' stopped typing')
-//       socket.broadcast.emit('oldTyper', name)
-//     })
+    socket.on('stopTyping', name => {
+      // console.log(name + ' stopped typing')
+      socket.broadcast.emit('oldTyper', name)
+    })
     
-//     socket.on('disconnect', () => {
-//       console.log('A user disconnected')
-//     })
-// }
-
-const port = process.env.SERVER_PORT
-app.listen(port, () => console.log('listening on port ' + port))
+    socket.on('disconnect', () => {
+      console.log('A user disconnected')
+    })
+}

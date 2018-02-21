@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getProducts, getUser } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import ProductModule from './ProductModule'
+import ChatBubble from './ChatBubble'
 import Slider from 'react-slick'
 import Header from './Header'
 import Footer from './Footer'
@@ -14,7 +15,9 @@ class Home extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {}
+        this.state = {
+            showChat: false
+        }
     }
 
 
@@ -23,6 +26,11 @@ class Home extends Component {
         this.props.getUser()
         functions.generateId()
         window.scrollTo(0,0)
+    }
+
+    showChat(){
+        this.setState({showChat: !this.state.showChat})
+        console.log(this.state)
     }
 
     render() {
@@ -61,6 +69,10 @@ class Home extends Component {
                         )
                     })}
                 </div>
+                <div className="chat-bubble" onClick={() => this.showChat()}>
+                    <i className="fas fa-comments"></i>
+                </div>
+                {this.state.showChat ? <ChatBubble/> : null}
                 <Footer />
             </div>
         )

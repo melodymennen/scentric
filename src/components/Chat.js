@@ -8,10 +8,7 @@ class Chat extends Component {
     super(props)
 
     this.state = {
-      name: '',
       body: '',
-      room: 1,
-      joined: false,
       messagesList: [],
       typers: []
     }
@@ -23,6 +20,7 @@ class Chat extends Component {
     this.isTyping = this.isTyping.bind(this)
     this.isNotTyping = this.isNotTyping.bind(this)
     this.updateTyping = this.updateTyping.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
   componentDidMount(){
@@ -60,9 +58,8 @@ class Chat extends Component {
   send(){
     // Everyone including the sender
     socket.emit('sendMessage', {
-      name: this.state.name,
-      body: this.state.body,
-      room: this.state.room
+      name: this.props.name,
+      body: this.state.body
     })
 
     this.setState({
@@ -70,20 +67,14 @@ class Chat extends Component {
     })
   }
 
-  changeRoom(num){
-    this.setState({
-      room: num
-    })
-  }
-
   isTyping(){
     this.typing = true
-    socket.emit('typing', this.state.name)
+    socket.emit('typing', this.props.name)
   }
 
   isNotTyping(){
     this.typing = false
-    socket.emit('stopTyping', this.state.name)
+    socket.emit('stopTyping', this.props.name)
   }
 
   updateTyping(){
@@ -100,49 +91,43 @@ class Chat extends Component {
     }, 500)
   }
 
+  handleKeyPress(target) {
+    if(target.charCode === 13){
+        this.send()
+    }
+}
+
 
   render() {
     const messageList = this.state.messagesList.map((e,i) => {
-      if(e.room == this.state.room){
         return(
           <div key={i} className="messageholder">
-            <h1 className="messagename">{e.name}</h1>
-            <h1 className="messagebody">{e.body}</h1>
+            <div className="messagename">{e.name}:</div>
+            <div className="messagebody">{e.body}</div>
           </div>
         )
-      } else {
-        return(
-          <span key={i}></span>
-        )
-      }
     })
 
     const typersList = this.state.typers.map((e, i) => {
       return(
-        <h5 className="typer" key={i}>{e} is typing...</h5>
+        <div className="typer" key={i}>{e} is typing...</div>
       )
     })
 
 
     return(
-      <div className="papa">
-        <div className="typersholder">
-          {typersList}
+        <div className="papa">
+            <div className="chatholder">
+                {messageList}
+            </div>
+            <div className="typersholder">
+                {typersList}
+             </div>
+             <div className="inputsholder" >
+                <input className="inputbody" placeholder="Message" onKeyUp={this.updateTyping} value={this.state.body} onChange={e => this.setState({body: e.target.value})} onKeyPress={this.handleKeyPress}/>
+                <button className="button" onClick={this.send}>SEND</button>
+            </div>
         </div>
-        <select onChange={e => this.changeRoom(e.target.value)} className="dropdown">
-          <option value={1} className="dropdownelem">Room 1</option>
-          <option value={2} className="dropdownelem">Room 2</option>
-          <option value={3} className="dropdownelem">Room 3</option>
-        </select>
-        <div className="chatholder">
-          {messageList}
-        </div>
-          <div className="inputsholder" >
-            <input className="inputname" placeholder="Name: " value={this.state.name} onChange={e => this.setState({name: e.target.value})}/>
-            <input className="inputbody" placeholder="Message: " onKeyUp={this.updateTyping} value={this.state.body} onChange={e => this.setState({body: e.target.value})}/>
-            <button className="button" onClick={this.send}>SEND</button>
-          </div>
-      </div>
     )
   }
 }
