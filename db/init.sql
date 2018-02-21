@@ -41,8 +41,8 @@ order_date TEXT
 
 CREATE TABLE order_items (
 id SERIAL PRIMARY KEY,
-order_id INTEGER references orders(id),
-product_id INTEGER references products(id),
+order_id INTEGER references orders(id) ON DELETE CASCADE,
+product_id INTEGER references products(id) ON DELETE CASCADE,
 price DECIMAL(10,2),
 qty INTEGER
 );
