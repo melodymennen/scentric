@@ -13,6 +13,7 @@ import Cart from './components/Cart'
 import FAQ from './components/FAQ'
 import EditProduct from './components/EditProduct'
 import NewArrivals from './components/NewArrivals'
+import Sale from './components/Sale'
 
 
 export default (
@@ -24,6 +25,7 @@ export default (
         <Route path="/products/:product_id" component = { ProductPage } />
         <Route path="/ContactUs" component = { ContactUs } />
         <Route path="/NewArrivals" component = { NewArrivals} />
+        <Route path="/Sale" component = { Sale } />
         <Route path="/Checkout" component = { Checkout } />
         <Route path="/Account" component = { Account } />
         <Route exact path="/Admin" component = { Admin } />

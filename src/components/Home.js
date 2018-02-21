@@ -56,7 +56,7 @@ class Home extends Component {
                 </div>
                 <div className="home_featured">
                     <Link to="/NewArrivals"><div><img src="https://s3-us-west-1.amazonaws.com/scentric/newarrivals.png" alt="new arrivals" width="550px"/></div></Link>
-                    <div><img src="https://s3-us-west-1.amazonaws.com/scentric/sale.png" alt="sale" width="550px"/></div>
+                    <Link to="/Sale"><div><img src="https://s3-us-west-1.amazonaws.com/scentric/sale.png" alt="sale" width="550px"/></div></Link>
                 </div>
                 <div className="home_featured_products">Featured Products</div>
                 <div className="home_flex">
