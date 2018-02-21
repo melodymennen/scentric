@@ -18,11 +18,13 @@ class ChatBubble extends Component {
     }
 
     startChat(){
-        this.setState({display: 'chat'})
+        if(this.state.name.length){
+            this.setState({display: 'chat'})
+        }
     }
 
     handleKeyPress(target) {
-        if(target.charCod === 13){
+        if(target.charCode === 13){
             this.startChat()    
         }
     }
@@ -30,9 +32,9 @@ class ChatBubble extends Component {
     render() {
         return (
             <div className="chat_body" >
+                <div className="chatbubble_title">Live Chat</div>
                 {this.state.display === 'nameinput' && 
                     <div className="chatbubble_input" >
-                        <div className="chatbubble_title">Live Chat</div>
                         <div className="chatbubble_how">How can we assist you today?</div>
                         <div>Enter your name to start. </div>
                         <input placeholder="Enter your name here" value={this.state.name} onChange={e => this.updateName(e.target.value)} onKeyPress={this.handleKeyPress}/>
