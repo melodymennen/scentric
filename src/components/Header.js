@@ -116,7 +116,7 @@ class Header extends Component {
                         <Link to="/cart"><span onMouseEnter={()=>{this.showMiniCart()}}>Cart<span className={this.props.cart.qty < 10 ? "qty" : "qty10"}>{this.props.cart.qty}</span></span></Link>
                         {this.state.show ? 
                     <div className="header-minicart" onMouseLeave={() => {this.hideMiniCart()}}>
-                        <MiniCart/>
+                        <div className="to_scroll"><MiniCart/></div>
                         <div style={buttonLayout}>
                         <Link to="/checkout"><button className="button">Checkout</button></Link>
                         <Link to="/cart"><button className="button">Go To Cart</button></Link>
