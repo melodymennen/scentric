@@ -130,6 +130,11 @@ li > ul > li a:hover {
     }
 }
 
+.to_scroll{
+    overflow: scroll;
+    max-height: 400px;
+}
+
 @keyframes header-minicart {
     0%   {opacity: 0;}
     100%   {opacity: 1;}

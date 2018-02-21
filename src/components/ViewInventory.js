@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { getProducts } from '../ducks/reducer'
 import EditProduct from './EditProduct'
 
@@ -20,6 +19,7 @@ class ViewInventory extends Component {
             editId: 0
         }
         this.showEdit = this.showEdit.bind(this)
+        this.closeModal = this.closeModal.bind(this)
     }
 
     componentDidMount() {
@@ -33,15 +33,21 @@ class ViewInventory extends Component {
         })
     }
 
+    closeModal = () => {
+        console.log('ismodalclosed?')
+        this.setState({show: false});
+      }
+
     
     render() {
         console.log(this.state.show)
             const p = this.props.products.map(e => {
                 return(
                     <div key={e.id}
+                        onClick={() => this.showEdit(e.id)}
                         className="viewinventory_flex_wrapper">
                         <div><img src={e.image_url} alt="product" width="60px"/></div>
-                        <div onClick={() => this.showEdit(e.id)} className="name">{e.name}</div>
+                        <div className="name">{e.name}</div>
                         <div className="price">${e.price}</div>
                         <div className="description">{e.description}</div>
                         <div className="category">{e.category}</div>
@@ -62,7 +68,7 @@ class ViewInventory extends Component {
                         </div>
                     <div className="admin_product_table">{p}</div>
                 </div>
-                {this.state.show ? <EditProduct id={this.state.editId}/> : null}
+                {this.state.show ? <EditProduct closed={this.closeModal} id={this.state.editId}/> : null}
             </div>
         )
     }

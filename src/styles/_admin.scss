@@ -179,11 +179,13 @@
     div{
         border-left: 1px solid rgba(126, 126, 126, 0.568);
         padding: 10px 10px 0 10px;
+        cursor: pointer;
     }
     .name{
         width: 130px;
         text-transform: capitalize;
         font-size: 11pt;
+        
     }
     .price{
         width: 50px;
@@ -273,3 +275,51 @@
 
 // edit product page
 
+.edit_products_modal_backdrop {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 70px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.edit_products_modal {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+    font-size: 14pt;
+    > div:nth-child(1){
+        text-transform: capitalize;
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+    div{
+        margin: 5px;
+        > input {
+            font-size: 12pt;
+            text-transform: capitalize;
+            color: rgb(68, 68, 68);
+            padding: 4px;
+            margin-bottom: 8px;
+            width: 400px;
+        }
+        > textarea{
+            font-size: 12pt;
+            width: 400px;
+            height: 150px;
+            color: rgb(68, 68, 68);
+        }
+    //    .editproduct_image_modal{
+
+    //    }
+    }
+}
