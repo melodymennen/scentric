@@ -291,16 +291,35 @@
 .edit_products_modal {
     background-color: #fefefe;
     margin: auto;
-    text-align: center;
     padding: 20px;
     border: 1px solid #888;
     width: 70%;
-    div:nth-child(1){
+    font-size: 14pt;
+    > div:nth-child(1){
         text-transform: capitalize;
-        font-size: 16pt;
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: left;
+        padding-bottom: 20px;
     }
     div{
-        padding: 5px 90px;
-        background-color: hotpink;
+        margin: 5px;
+        > input {
+            font-size: 12pt;
+            text-transform: capitalize;
+            color: rgb(68, 68, 68);
+            padding: 4px;
+            margin-bottom: 8px;
+            width: 400px;
+        }
+        > textarea{
+            font-size: 12pt;
+            width: 400px;
+            height: 150px;
+            color: rgb(68, 68, 68);
+        }
+       .editproduct_image_modal{
+        
+       }
     }
 }

@@ -36,13 +36,17 @@ class EditProduct extends Component {
             <div className="edit_products_modal_backdrop">
                 <div className="edit_products_modal">
                     <div>{e.name}</div>
-                    <div>{e.description}</div>
-                    <div><img src={e.image_url} alt="product" width="250px"/></div>
+                    <div>Name</div>
+                    <div><input value={e.name}/></div>
+                    <div>Description</div>
+                    <div><textarea value={e.description}/></div>
+                    <div><img className="editproduct_image_modal" src={e.image_url} alt="product" width="200px"/></div>
                     <div>{e.price}</div>
                     <div>{e.sale ? <span>On Sale</span> : <span>Not on Sale</span>}</div>
                     <div>{e.category}</div>
                     <div>{e.scent_family}</div>
                     <button onClick={this.props.closed}>Close</button>
+                    <button>Edit</button>
                 </div>
             </div>
         )
