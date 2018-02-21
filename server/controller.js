@@ -15,6 +15,14 @@ module.exports = {
             res.status(200).json(product)
         }).catch(error => console.log('get product error', error))
     },  
+    getProductAdmin: (req, res) => {
+        const db =  req.app.get('db')
+        const { id } = req.params
+        
+        db.get_product([id]).then(product => {
+            res.status(200).json(product)
+        }).catch(error => console.log('get product error', error))
+    },
     getAllProducts: (req, res) => {
         const db = req.app.get('db')
 

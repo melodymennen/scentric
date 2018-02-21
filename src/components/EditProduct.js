@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Admin from './Admin'
 
 
 class EditProduct extends Component {
@@ -10,11 +11,13 @@ class EditProduct extends Component {
         }
     }
 
-    componentDidMount() {
-        this.getProduct()
+    componentWillReceiveProps(props){
+        console.log(this.props.id)
+        this.getProduct(props.id)
     }
-    getProduct(){
-        axios.get(`/api/products/${this.props.match.params.id}`).then(response => {
+
+    getProduct(id){
+        axios.get(`/api/admin/${id}`).then(response => {
             console.log(response.data)
             this.setState({product: response.data[0]})
          })
@@ -23,7 +26,13 @@ class EditProduct extends Component {
         const e = this.state.product
         return (
             <div>
-                
+                <div>{e.name}</div>
+                <div>{e.description}</div>
+                <div><img src={e.image_url} alt="product" width="300px"/></div>
+                <div>{e.price}</div>
+                <div>{e.sale ? <div>On Sale</div> : <div>Not on Sale</div>}</div>
+                <div>{e.category}</div>
+                <div>{e.scent_family}</div>
             </div>
         )
     }
