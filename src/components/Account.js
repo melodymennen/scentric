@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getUser } from '../ducks/reducer'
 import functions from '../utilities/functions'
-import Favorites from './Favorites'
+import Favorites from './AccountFavorites'
+import AccountHistory from './AccountHistory'
+import AccountInfo from './AccountInfo'
+import AccountSettings from './AccountSettings'
 import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
@@ -12,16 +15,14 @@ class Account extends Component {
     constructor() {
         super()
         this.state = {
-            showInfo: true,
-            showFavorites: false,
-            showAccountSettings: false,
-            showHistory: false,
             menuShow: false,
+            route: 'accountinfo',
+            accountSettings: false,
+
             position: '',
             nameInput: '',
             emailInput: '',
             pictureInput: '',
-            accountSettings: false,
 
             inputAddress: '',
             inputCity: '',
@@ -29,7 +30,8 @@ class Account extends Component {
             inputZipCode: '',
 
             address: {},
-            history: []
+            history: [],
+
         }
     }
 
@@ -38,7 +40,12 @@ class Account extends Component {
         setTimeout(() => {
             this.setState({ menuShow: true })
         }, 500)
-        
+    }
+
+    componentDidMount() {
+        this.props.getUser()
+        window.scrollTo(0,0)
+
         if (this.props.user) {
             if (this.props.user.address) {
                 let parsedAddress = JSON.parse(this.props.user.address)
@@ -55,79 +62,6 @@ class Account extends Component {
                 pictureInput: this.props.user.picture_url
             })
         }
-    }
-
-    componentDidMount(){
-        this.props.getUser()
-        window.scrollTo(0,0)
-    }
-
-    openInfo = () => {
-        this.setState({
-            showInfo: true,
-            showFavorites: false,
-            showAccountSettings: false,
-            showHistory: false
-        })
-    }
-
-    openFavorites = () => {
-        this.setState({
-            showFavorites: true,
-            showInfo: false,
-            showAccountSettings: false,
-            showHistory: false
-        })
-    }
-
-    openAccountSettings = () => {
-        this.setState({
-            showAccountSettings: true,
-            showInfo: false,
-            showFavorites: false,
-            showHistory: false
-        })
-    }
-
-    openHistory = () => {
-        this.setState({
-            showHistory: true,
-            showInfo: false,
-            showFavorites: false,
-            showAccountSettings: false
-        })
-
-    }
-
-    changeBars = () => {
-        this.setState({ menuShow: !this.state.menuShow })
-        this.setState({ position: '' })
-        setTimeout(() => {
-            this.setState({ position: 'account_indexes-position' })
-        }, 500)
-    }
-
-    handleEmailChange = (value) => {
-        this.setState({ emailInput: value })
-    }
-
-    handleNameChange = (value) => {
-        this.setState({ nameInput: value })
-    }
-
-    handlePictureChange = (value) => {
-        this.setState({ pictureInput: value })
-    }
-
-    accountSettings = () => {
-        const { user } = this.props
-        this.setState({
-            accountSettings: !this.state.accountSettings,
-            nameInput: user.name,
-            emailInput: user.email,
-            pictureInput: user.picture_url,
-
-        })
     }
 
     updateUser = () => {
@@ -155,14 +89,49 @@ class Account extends Component {
         this.setState({ accountSettings: !this.state.accountSettings })
     }
 
-    address = () => {
-        if (this.props.user.address) {
-            return (<div className="account_address">Address: <div>{this.state.inputAddress} {this.state.inputCity}, {this.state.inputState}, {this.state.inputZipCode}</div></div>)
-        } else {
-            return (<div className="account_address">It looks like you don't have and address set up. Edit your account settings to add one!</div>)
-        }
+    accountSettings = () => {
+        const { user } = this.props
+        this.setState({
+            accountSettings: !this.state.accountSettings,
+            nameInput: user.name,
+            emailInput: user.email,
+            pictureInput: user.picture_url,
+
+        })
+    }
+    
+    changeBars = () => {    
+        this.setState({ menuShow: !this.state.menuShow })
+        this.setState({ position: '' })
+        setTimeout(() => {
+            this.setState({ position: 'account_indexes-position' })
+        }, 500)
     }
 
+    openInfo = () => {
+        this.setState({
+            route: 'accountinfo'
+        })
+    }
+
+    openFavorites = () => {
+        this.setState({
+            route: 'accountfavorites'
+        })
+    }
+
+    openAccountSettings = () => {
+        this.setState({
+            route: 'accountsettings'
+        })
+    }
+
+    openHistory = () => {
+        this.setState({
+            route: 'accounthistory'
+        })
+
+    }
 
     handleAddressChange = (value) => {
         this.setState({
@@ -187,6 +156,25 @@ class Account extends Component {
             inputZipCode: value
         })
     }
+    
+    handleEmailChange = (value) => {
+        this.setState({ emailInput: value })
+    }
+
+    handleNameChange = (value) => {
+        this.setState({ nameInput: value })
+    }
+
+    handlePictureChange = (value) => {
+        this.setState({ pictureInput: value })
+    }
+
+    logout = ()  => {
+        axios.put('/api/logout').then(() => {
+            this.props.history.push("/home")
+            window.location.reload()
+        })
+    }
 
 
     render() {
@@ -206,166 +194,53 @@ class Account extends Component {
 
                         <div className={`account_menu ${this.state.menuShow ? 'account_menuShow' : ''}`}>
                             <div className="account_sidebar">
-                                <button className="account_link"><Link to="/home">Home</Link></button>
+                            <Link to="/home"><button className="account_link">Home</button></Link>
                                 {user && <button className={`account_link ${this.state.showInfo ? 'account_link-open' : ''}`} onClick={this.openInfo}>Account Info</button>}
                                 {user && <button className={`account_link ${this.state.showFavorites ? 'account_link-open' : ''}`} onClick={this.openFavorites}>Favorites</button>}
                                 {user && <button className={`account_link ${this.state.showHistory ? 'account_link-open' : ''}`} onClick={this.openHistory}>Purchase History</button>}
                                 {user && <button className={`account_link ${this.state.showAccountSettings ? 'account_link-open' : ''}`} onClick={this.openAccountSettings}>Change Account Settings</button>}
-                                {/* {user && user.is_admin && <Link to="/admin" className='account_link account_link-open'>Admin Portal</Link>} */}
+                                {user && <button className="account_link2" onClick={this.logout}>Logout</button>}
                             </div>
                         </div>
 
                     </div>
                     <div className="account_width">
-                        <div className="account_base">
-                        </div>
+                        <div className="account_base"></div>
                         {user &&
                             <div className={`account_indexes ${this.state.menuShow ? '' : this.state.position}`}>
-
-
-                                {/* ////////////////////////////// account section //////////////////////////////// */}
-
-
-                                <div className={`account_container ${this.state.showInfo ? 'account_show-info' : ''}`}>
-                                    <div className="account_info-excerpt">
-                                        <div className="account_flex_profile">
-                                            <div className="account_greeting">
-                                                <img className="account_picture" alt="user" src={this.state.pictureInput} />
-                                                <div>Welcome {this.state.nameInput}!</div>
-                                            </div>
-                                        </div>
-                                        <div className="account_flex account_space">
-                                            <div className="account_flex_profile">
-                                                <div>Account Name: {this.state.nameInput}</div>
-                                            </div>
-                                            <div className="account_flex_profile">
-                                                <div>Email: {this.state.emailInput}</div>
-                                            </div>
-                                        </div>
-                                        <div className="account_space">
-                                            {this.address()}
-                                        </div>
-                                        <div className="account_date">
-                                            <div>You have been a user since 2018!</div>
-                                            <div>You have {this.props.cart.qty} items in your cart. Click <Link to="/Cart">Here</Link> to checkout.</div>
-                                            <div>If you wish to change your account settings click <a onClick={this.openAccountSettings}>Here</a>.</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                {/* ////////////////////////////// Favorites section //////////////////////////////// */}
-
-
-                                <div className={`account_container ${this.state.showFavorites ? 'account_show-favorites' : ''}`}>
-                                    <div className="account_favorites-excerpt">
-                                        <Favorites />
-                                    </div>
-                                </div>
-
-                                {/* ////////////////////////////// Account history section  //////////////////////////////// */}
-
-                                <div className={`account_container ${this.state.showHistory ? 'account_show-favorites' : ''}`}>
-                                    <div className="account_history-excerpt">
-                                        This is where account history goes
-                                    </div>
-                                </div>
-
-                                {/* ////////////////////////////// account settings section //////////////////////////////// */}
-
-
-                                <div className={`account_container ${this.state.showAccountSettings ? 'account_show-account-settings' : ''}`}>
-                                    <div className="account_shadow">
-                                        <div>
-                                            <button className="button" onClick={this.accountSettings}>Edit Account Settings</button>
-                                        </div>
-
-                                        <div className={`account_before-excerpt ${this.state.accountSettings ? "account_settings-excerpt-hide" : ""}`}>
-                                            <div>Name: <div>{this.state.nameInput}</div></div>
-                                            <div>Email: <div>{this.state.emailInput}</div></div>
-                                            <div>Profile Picture: <div>{this.state.pictureInput}</div></div>
-                                            {this.address()}
-                                        </div>
-                                        <div className={`account_settings-excerpt ${this.state.accountSettings ? "account_settings-excerpt-show" : ""}`}>
-                                            <div>Name: <input defaultValue={this.state.nameInput} onChange={event => this.handleNameChange(event.target.value)} /></div>
-                                            <div>Email: <input defaultValue={this.state.emailInput} onChange={event => this.handleEmailChange(event.target.value)} /></div>
-                                            <div>Profile Picture:  <input defaultValue={this.state.pictureInput} onChange={event => this.handlePictureChange(event.target.value)} /></div>
-
-
-                                            <div> Address:
-                                            <div className="account_selector">
-                                                    <input className="account_input_address" defaultValue={this.state.inputAddress}
-                                                        onChange={(e) => this.handleAddressChange(e.target.value)}
-                                                        placeholder="Street Address" />
-                                                    <input className="account_input_short"
-                                                        onChange={(e) => this.handleCityChange(e.target.value)}
-                                                        placeholder="City"
-                                                        defaultValue={this.state.inputCity} />
-                                                    <select className="account_input_short" value={this.state.inputState} onChange={(e) => this.handleStateChange(e.target.value)}>
-                                                        <option value="State">State</option>
-                                                        <option value="AL">Alabama</option>
-                                                        <option value="AK">Alaska</option>
-                                                        <option value="AZ">Arizona</option>
-                                                        <option value="AR">Arkansas</option>
-                                                        <option value="CA">California</option>
-                                                        <option value="CO">Colorado</option>
-                                                        <option value="CT">Connecticut</option>
-                                                        <option value="DE">Delaware</option>
-                                                        <option value="DC">District Of Columbia</option>
-                                                        <option value="FL">Florida</option>
-                                                        <option value="GA">Georgia</option>
-                                                        <option value="HI">Hawaii</option>
-                                                        <option value="ID">Idaho</option>
-                                                        <option value="IL">Illinois</option>
-                                                        <option value="IN">Indiana</option>
-                                                        <option value="IA">Iowa</option>
-                                                        <option value="KS">Kansas</option>
-                                                        <option value="KY">Kentucky</option>
-                                                        <option value="LA">Louisiana</option>
-                                                        <option value="ME">Maine</option>
-                                                        <option value="MD">Maryland</option>
-                                                        <option value="MA">Massachusetts</option>
-                                                        <option value="MI">Michigan</option>
-                                                        <option value="MN">Minnesota</option>
-                                                        <option value="MS">Mississippi</option>
-                                                        <option value="MO">Missouri</option>
-                                                        <option value="MT">Montana</option>
-                                                        <option value="NE">Nebraska</option>
-                                                        <option value="NV">Nevada</option>
-                                                        <option value="NH">New Hampshire</option>
-                                                        <option value="NJ">New Jersey</option>
-                                                        <option value="NM">New Mexico</option>
-                                                        <option value="NY">New York</option>
-                                                        <option value="NC">North Carolina</option>
-                                                        <option value="ND">North Dakota</option>
-                                                        <option value="OH">Ohio</option>
-                                                        <option value="OK">Oklahoma</option>
-                                                        <option value="OR">Oregon</option>
-                                                        <option value="PA">Pennsylvania</option>
-                                                        <option value="RI">Rhode Island</option>
-                                                        <option value="SC">South Carolina</option>
-                                                        <option value="SD">South Dakota</option>
-                                                        <option value="TN">Tennessee</option>
-                                                        <option value="TX">Texas</option>
-                                                        <option value="UT">Utah</option>
-                                                        <option value="VT">Vermont</option>
-                                                        <option value="VA">Virginia</option>
-                                                        <option value="WA">Washington</option>
-                                                        <option value="WV">West Virginia</option>
-                                                        <option value="WI">Wisconsin</option>
-                                                        <option value="WY">Wyoming</option>
-                                                    </select>
-                                                    <input className="account_input_short" defaultValue={this.state.inputZipCode}
-                                                        onChange={(e) => this.handleZipCodeChange(e.target.value)}
-                                                        placeholder="Zip Code" />
-                                                </div>
-                                            </div>
-                                            <div className="account_button">
-                                                <button className="button account_button" onClick={this.updateUser}>submit</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {this.state.route === 'accountinfo' ? 
+                                <AccountInfo 
+                                    nameInput={this.state.nameInput} 
+                                    emailInput={this.state.emailInput} 
+                                    pictureInput={this.state.pictureInput}  
+                                    inputAddress={this.state.inputAddress}
+                                    inputCity={this.state.inputCity}
+                                    inputState={this.state.inputState}
+                                    inputZipCode={this.state.inputZipCode}
+                                    openAccountSettings={this.openAccountSettings}
+                                /> : null}
+                                {this.state.route === 'accountfavorites' ? <Favorites /> : null}
+                                {this.state.route === 'accounthistory' ? <AccountHistory /> : null}
+                                {this.state.route === 'accountsettings' ? 
+                                <AccountSettings 
+                                    nameInput={this.state.nameInput} 
+                                    emailInput={this.state.emailInput} 
+                                    pictureInput={this.state.pictureInput}  
+                                    inputAddress={this.state.inputAddress}
+                                    inputCity={this.state.inputCity}
+                                    inputState={this.state.inputState}
+                                    inputZipCode={this.state.inputZipCode}
+                                    accountSettings={this.accountSettings}
+                                    accountSettingsState={this.state.accountSettings}
+                                    handleNameChange={this.handleNameChange}
+                                    handleEmailChange={this.handleEmailChange}
+                                    handlePictureChange={this.handlePictureChange}
+                                    handleAddressChange={this.handleAddressChange}
+                                    handleCityChange={this.handleCityChange}
+                                    handleStateChange={this.handleStateChange}
+                                    handleZipCodeChange={this.handleZipCodeChange}
+                                    updateUser={this.updateUser}
+                                /> : null} 
                             </div>}
                         {!user &&
                             <div className="account_no-user">Please login to see your account page. </div>

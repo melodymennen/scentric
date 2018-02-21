@@ -189,5 +189,10 @@ module.exports = {
         db.remove_favorite([user.id, product_id]).then(() => {
             res.status(200).send('success')
         }).catch(error => console.log('remove favorite error', error))
+    },
+    logout: (req, res) => {
+        const { user } = req.session
+        req.session.destroy()
+        res.status(200).send('success')
     }
 }
