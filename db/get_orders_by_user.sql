@@ -1,5 +1,8 @@
-SELECT * 
-FROM order_items oi
-JOIN orders  o on o.id = oi.order_id
-JOIN products p on p.id = oi.product_id
-WHERE user_id = $1;
+SELECT 
+    * 
+FROM 
+    orders 
+INNER JOIN 
+    users ON (orders.user_id = users.generated_user_id)
+WHERE 
+    orders.user_id = $1

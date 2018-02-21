@@ -146,7 +146,7 @@ module.exports = {
         const db =  req.app.get('db')
         const { generatedId } = req.session 
         
-        db.get_order([generatedId]).then(orders => {
+        db.get_orders_by_user([generatedId]).then(orders => {
             res.status(200).json(orders)
         }).catch(error => console.log('get order error', error))
     },
