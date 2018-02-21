@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 class AccountSettings extends Component {
+    componentDidMount() {
+        window.scrollTo(0,0)
+    }
+    
     address = () => {
         if (this.props.user.address) {
             return (<div className="account_address">Address: <div>{this.props.inputAddress} {this.props.inputCity}, {this.props.inputState}, {this.props.inputZipCode}</div></div>)

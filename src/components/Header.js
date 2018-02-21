@@ -91,7 +91,7 @@ class Header extends Component {
                                     <li><Link to=""><h3>Sale</h3></Link></li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul> 
 
                         <ul className="header_show">
                             <li><Link to="/display/cologne">Cologne</Link>
