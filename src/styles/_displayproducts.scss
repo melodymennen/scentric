@@ -4,9 +4,10 @@
 }
 
 .displayproducts_box-area {
-    padding: 100px 50px;
+    padding: 100px 0;
     display: flex;
     flex-wrap: wrap;
-    width: 90%;
+    width: 100%;
+    margin: auto;
     justify-content: center;
 }

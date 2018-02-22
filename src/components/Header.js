@@ -88,7 +88,7 @@ class Header extends Component {
                                     <li><Link to="/display/green">Green</Link></li>
                                     <li><Link to="/display/oceanic">Oceanic</Link></li>
                                     <li><Link to="/display/gourmand">Gourmand</Link></li>
-                                    <li><Link to=""><h3>Sale</h3></Link></li>
+                                    <li><Link to="/sale"><h3>Sale</h3></Link></li>
                                 </ul>
                             </li>
                         </ul> 
@@ -103,7 +103,7 @@ class Header extends Component {
                                     <li><Link to="/display/woody">Woody</Link></li>
                                     <li><Link to="/display/spicy">Spicy</Link></li>
                                     <li><Link to="/display/musk">Musk</Link></li>
-                                    <li><Link to=""><h3>Sale</h3></Link></li>
+                                    <li><Link to="/sale"><h3>Sale</h3></Link></li>
                                 </ul>
                             </li>
                         </ul>
