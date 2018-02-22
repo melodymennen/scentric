@@ -1,0 +1,39 @@
+.Ornament_body {
+    > div {
+        font-size: 2em;
+        text-align: center;
+    }
+    > section {
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+        margin: 0 auto;
+        figure {
+            color: white;
+            background-color: black;
+            flex: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);  
+            > div {
+                font-size: 1.5em;
+                >img {
+                    width: 100%;
+                }
+            }
+            > div:nth-child(1) {
+                margin: 5px;
+                flex: 1;
+            }
+            > div:nth-child(2) {
+                flex: 3;
+            }
+            > div:nth-child(3) {
+                font-size: .8em !important;
+                flex: 1;
+                margin: 5px;
+            }
+        }
+    }
+}

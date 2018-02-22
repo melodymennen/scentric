@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import functions from '../utilities/functions'
 import ProductModule from './ProductModule'
 import ChatBubble from './ChatBubble'
+import Ornament from './Ornament'
 import Slider from 'react-slick'
 import Header from './Header'
 import Footer from './Footer'
@@ -60,7 +61,7 @@ class Home extends Component {
                 </div>
                 <div className="home_featured_products">Featured Products</div>
                 <div className="home_flex">
-                    {this.props.products.map(e => {
+                    {this.props.products.slice(0,6).map(e => {
                         return (
                             <div key={e.id}>
                                 <ProductModule
@@ -78,6 +79,7 @@ class Home extends Component {
                     <i className="fas fa-comments"></i>
                 </div>
                 {this.state.showChat ? <ChatBubble/> : null}
+                <Ornament />
                 <Footer />
             </div>
         )
