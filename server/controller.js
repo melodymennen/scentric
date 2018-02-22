@@ -14,7 +14,24 @@ module.exports = {
         db.get_product([product_id]).then(product => {
             res.status(200).json(product)
         }).catch(error => console.log('get product error', error))
+    }, 
+    editProduct: (req, res) => {
+        const db =  req.app.get('db')
+        const { id } = req.params
+        const {name, price, description, category, scent_family, image_url, on_sale } = req.body
+        
+        db.edit_product([id, name, price, description, category, scent_family, image_url, on_sale]).then(product => {
+            res.status(200).json(product)
+        }).catch(error => console.log('get product error', error))
     },  
+    deleteProduct: (req, res) => {
+        const db = req.app.get('db')
+        const { id } = req.params
+
+        db.delete_product([id]).then( product => {
+            res.status(200).json(product)
+        }).catch(error => console.log('delete product error', error))
+    },
     getProductAdmin: (req, res) => {
         const db =  req.app.get('db')
         const { id } = req.params

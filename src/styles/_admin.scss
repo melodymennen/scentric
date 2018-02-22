@@ -278,7 +278,7 @@
 .edit_products_modal_backdrop {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 70px; /* Location of the box */
+    padding-top: 40px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -288,38 +288,93 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+.edit_product_flex{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+    align-items: stretch;
+    img{
+        margin-right: 20px;
+    }
+}
+
+
 .edit_products_modal {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
     width: 70%;
     font-size: 14pt;
-    > div:nth-child(1){
-        text-transform: capitalize;
-        font-size: 22pt;
-        font-weight: bold;
-        text-align: left;
-        padding-bottom: 20px;
+    box-sizing: border-box;
+    // text-align: center;
+    img{
+        padding: 10px;
     }
-    div{
-        margin: 5px;
-        > input {
-            font-size: 12pt;
-            text-transform: capitalize;
-            color: rgb(68, 68, 68);
-            padding: 4px;
-            margin-bottom: 8px;
+    .modal_title{
+        padding: 5px;
+        input{
             width: 400px;
-        }
-        > textarea{
             font-size: 12pt;
-            width: 400px;
-            height: 150px;
-            color: rgb(68, 68, 68);
+            padding: 5px;
         }
-    //    .editproduct_image_modal{
+        textarea{
+            width: 400px;
+            padding: 5px;
+            height: 80px;
+            font-size: 11pt;
+        }
+    }
+    button{
+        padding: 5px 20px;
+        font-size: 14pt;
+        margin-top: 30px;
+        margin-left: 10px;
+        transform: translateX(-140px);
+    }
+}
 
-    //    }
+.modal_sale{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: baseline;
+    align-items: stretch;
+    div{
+        margin: 10px;
     }
+}
+
+.modal_select{
+    select{
+        padding: 10px;
+        font-size: 12pt;
+        margin-right: 20px;
+    }
+}
+
+.edit_products_name{
+    text-transform: capitalize;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20pt;
+    border-bottom: 1px solid rgba(107, 107, 107, 0.699);
+    padding-bottom: 10px;
+}
+
+.edit_onSale{
+    font-size: 10pt;
+    border: 1px solid rgb(122, 122, 122);
+    border-radius: 34px;
+    padding: 4px 8px;
+    background-color: $blush;
+    cursor: pointer;
+}
+
+.edit_notOnSale{
+    font-size: 10pt;
+    border: 1px solid rgb(122, 122, 122);
+    border-radius: 34px;
+    padding: 4px 8px;
+    cursor: pointer;
 }
