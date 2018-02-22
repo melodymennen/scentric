@@ -24,7 +24,7 @@ class Orders extends Component {
     }
 
     render() {
-            const ordersArr = this.state.orders.map((e,i) => {
+            const ordersArr = this.state.orders.reverse().map((e,i) => {
                 return (
                     <div className="admin_orders_flex"key={i}>
                         <div>{e.name}</div>

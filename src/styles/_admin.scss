@@ -278,7 +278,7 @@
 .edit_products_modal_backdrop {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 50px; /* Location of the box */
+    padding-top: 40px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -288,35 +288,68 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+.edit_product_flex{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+    align-items: stretch;
+    img{
+        margin-right: 20px;
+    }
+}
+
 
 .edit_products_modal {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    width: 50%;
+    width: 70%;
     font-size: 14pt;
     box-sizing: border-box;
-    text-align: center;
+    // text-align: center;
     img{
         padding: 10px;
     }
     .modal_title{
         padding: 5px;
-        div{
-            text-align: left;
-            padding: 0 13vw;
-        }
         input{
-            width: 300px;
+            width: 400px;
             font-size: 12pt;
             padding: 5px;
         }
         textarea{
-            width: 300px;
+            width: 400px;
             padding: 5px;
             height: 80px;
             font-size: 11pt;
         }
+    }
+    button{
+        padding: 5px 20px;
+        font-size: 14pt;
+        margin-top: 30px;
+        margin-left: 10px;
+        transform: translateX(-30px);
+    }
+}
+
+.modal_sale{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: baseline;
+    align-items: stretch;
+    div{
+        padding: 10px;
+    }
+}
+
+.modal_select{
+    select{
+        padding: 10px;
+        font-size: 12pt;
+        margin-right: 20px;
     }
 }
 
