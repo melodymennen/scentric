@@ -8,7 +8,7 @@ class LineGraph extends Component {
         super(props)
         this.state = {
             // date: [],
-            data: {
+            data1: {
                 labels: [],
                 datasets: [
                   {
@@ -30,7 +30,7 @@ class LineGraph extends Component {
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
-                    data: [2, 5, 6]
+                    data: []
                   }
                 ]
               }
@@ -46,13 +46,27 @@ class LineGraph extends Component {
             console.log(response.data)
             var dateArray = []
             var uniqueArray = []
-            for(let i = 0; i < response.data.length; i++){
-                dateArray.push(response.data[i].order_date)
+            response.data.forEach( e => {
+                dateArray.push(e.order_date)
+                uniqueArray = _.uniq(dateArray)
+            })
+            var countingArray = []
+            uniqueArray.forEach( e => {
+                console.log('unique', uniqueArray)
+                var dupCount = 0
+                response.data.forEach ( i => {
+                    console.log('data',response.data)
+                if(i.order_date === e){
+                dupCount ++
                 }
+                })
+                console.log('counting array why you no work', countingArray.push(dupCount))
+                this.state.data1.datasets[0].data.push(dupCount)
+                })  
                 this.setState( prevState => ({
-                    data: {
-                        ...prevState.data,
-                        labels: _.uniq(dateArray)
+                    data1: {
+                        ...prevState.data1,
+                        labels: uniqueArray,
                     }
                 }))
             })
@@ -60,10 +74,10 @@ class LineGraph extends Component {
     
 
     render() {
-        console.log(this.state.data)
+        console.log(this.state.data1.datasets[0].data)
         return (
             <div>
-                 <Line data={this.state.data} />
+                 <Line data={this.state.data1} />
             </div>
         )
     }
