@@ -200,7 +200,8 @@ class Account extends Component {
                                 {user && <button className={`account_link ${this.state.showFavorites ? 'account_link-open' : ''}`} onClick={this.openFavorites}>Favorites</button>}
                                 {user && <button className={`account_link ${this.state.showHistory ? 'account_link-open' : ''}`} onClick={this.openHistory}>Purchase History</button>}
                                 {user && <button className={`account_link ${this.state.showAccountSettings ? 'account_link-open' : ''}`} onClick={this.openAccountSettings}>Change Account Settings</button>}
-                                {user && <button className="account_link2" onClick={this.logout}>Logout</button>}
+                                {user && user.is_admin && <Link to="/admin"><button className="account_link2 account_link">Admin</button></Link>}
+                                {user && <button className="account_link2 account_link" onClick={this.logout}>Logout</button>}
                             </div>
                         </div>
 
