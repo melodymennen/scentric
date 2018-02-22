@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import LandingPage from './components/LandingPage'
 import DisplayProducts from './components/DisplayProducts'
 import OrderConfirmation from './components/OrderConfirmation'
+import EditProduct from './components/EditProduct'
 import ProductPage from './components/ProductPage'
 import ContactUs from './components/ContactUs'
 import Checkout from './components/Checkout'
@@ -11,7 +12,6 @@ import Admin from './components/Admin'
 import Home from './components/Home'
 import Cart from './components/Cart'
 import FAQ from './components/FAQ'
-import EditProduct from './components/EditProduct'
 
 
 export default (

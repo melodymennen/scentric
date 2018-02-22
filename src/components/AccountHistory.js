@@ -5,7 +5,7 @@ export default class AccountHistory extends Component {
     constructor() {
         super()
         this.state = {
-            orders: {}
+            orders: []
         }
     }
     componentDidMount() {

@@ -8,7 +8,7 @@ class AccountInfo extends Component {
         if (this.props.user.address) {
             return (<div className="account_address">Address: <div>{this.props.inputAddress} {this.props.inputCity}, {this.props.inputState}, {this.props.inputZipCode}</div></div>)
         } else {
-            return (<div className="account_address">It looks like you don't have and address set up. Edit your account settings to add one!</div>)
+            return (<div className="account_address">It looks like you don't have an address set up. Edit your account settings to add one!</div>)
         }
     }
 
@@ -34,7 +34,7 @@ class AccountInfo extends Component {
                 </div>
                 <div className="account_date">
                     <div>You have been a user since 2018!</div>
-                    <div>You have {this.props.cart.qty} items in you cart. Click <Link to="/Cart">Here</Link> to checkout.</div>
+                    <div>You have {this.props.cart.qty} items in your cart. Click <Link to="/Cart">Here</Link> to checkout.</div>
                     <div>If you wish to change your account settings click <a onClick={this.props.openAccountSettings}>Here</a>.</div>
                 </div>
         </div>
