@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import LandingPage from './components/LandingPage'
 import DisplayProducts from './components/DisplayProducts'
 import OrderConfirmation from './components/OrderConfirmation'
 import EditProduct from './components/EditProduct'
@@ -18,7 +17,7 @@ import FAQ from './components/FAQ'
 
 export default (
     <Switch>
-        <Route exact path="/" component = { LandingPage } />
+        <Route exact path="/" component = { Home } />
         <Route path="/Home" component = { Home } />
         <Route path="/OrderConfirmation/:order_id" component = { OrderConfirmation } />
         <Route path="/display/:category" component = { DisplayProducts } />

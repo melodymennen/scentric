@@ -26,62 +26,16 @@ body {
 
 // home Page
 .home_hero{
-    // padding-top: 100px;
-    // padding-bottom: 50px;
-    padding: 70px 80px;
+    padding: 80px 50px;
     margin: 0 auto;
     text-align: center;
     width: 80%;
-    // background-image: url("https://s3-us-west-1.amazonaws.com/scentric/PerfumeHero.png");
 }
 
 .home_pictures {
   width: 100%;
   height: 100%;
 }
-
-
-// .home_gradientbox_women{
-//   width: 600px;
-//   background : -moz-linear-gradient(-4.56% -1.6% -38.42deg,rgba(255, 210, 225, 1) 0%,rgba(255, 180, 139, 1) 100%);
-//   background : -webkit-linear-gradient(-38.42deg, rgba(255, 210, 225, 1) 0%, rgba(255, 180, 139, 1) 100%);
-//   background : -webkit-gradient(linear,-4.56% -1.6% ,101.86% 99.04% ,color-stop(0,rgba(255, 210, 225, 1) ),color-stop(1,rgba(255, 180, 139, 1) ));
-//   background : -o-linear-gradient(-38.42deg, rgba(255, 210, 225, 1) 0%, rgba(255, 180, 139, 1) 100%);
-//   background : -ms-linear-gradient(-38.42deg, rgba(255, 210, 225, 1) 0%, rgba(255, 180, 139, 1) 100%);
-//   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD2E1', endColorstr='#FFB48B' ,GradientType=0)";
-//   background : linear-gradient(128.42deg, rgba(255, 210, 225, 1) 0%, rgba(255, 180, 139, 1) 100%);
-//   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD2E1',endColorstr='#FFB48B' , GradientType=1);
-// }
-
-// .home_womens{
-//   font-size: 75pt;
-//   font-family: Arial Black;
-//   transform: translate(40px, 50px);
-//   letter-spacing: -2pt;
-//   line-height: 80pt;
-//   color: $font_color_hero;
-//   position: absolute;
-//   top: 100px;
-//   left: 180px;
-//   z-index: 200;
-// }
-
-// .home_gradient_box{
-//   transform: translateY(60px);
-//   margin: 10px;
-//   padding: 80px 50px;
-//   border-style: Solid;
-//   border-color: #F9C2BB;
-//   border-width: 4px;
-//   z-index: .5;
-// }
-
-// .home_grey_box{
-//   transform: translate(-350px, 40px);
-//   padding: 200px 120px;
-//   color: #ebeef3;
-//   background-color: #EBEEF3;
-// }
 
 .home_flex{
   display: flex;
@@ -154,6 +108,9 @@ body {
       margin-bottom: 90px;
       cursor: pointer;
     }
+    img {
+      width: 100%;
+    }
 }
 
 p {
@@ -162,4 +119,18 @@ p {
 
 h3{
   margin: 8px 0px;
+}
+
+@media (max-width:700px){
+  .home_featured{
+    flex-direction: column;
+      div{
+        width: 80%;
+        margin: auto;
+        margin-bottom: 40px;
+      }
+  }
+  .home_featured_products{
+    font-size: 25pt;
+  }
 }
