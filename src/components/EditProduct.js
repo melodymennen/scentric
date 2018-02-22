@@ -11,7 +11,11 @@ class EditProduct extends Component {
             name: '',
             description: '',
             price: '',
-            category: ''
+            category: '',
+            scent_family: '',
+            image_url: '',
+            sale: '',
+            edit: false
         }
     }
 
@@ -26,12 +30,21 @@ class EditProduct extends Component {
 
     getProduct(id){
         axios.get(`/api/admin/${id}`).then(response => {
-            this.setState({product: response.data[0]})
-            console.log('resosone',response.data)
-         })
+            const e = response.data[0]
+                this.setState({
+                    name: e.name,
+                    description: e.description,
+                    price: e.price,
+                    category: e.category,
+                    scent_family: e.scent_family,
+                    image_url: e.image_url,
+                    sale: e.sale
+                })
+            })
     }
 
     handleNameChange(value){
+        console.log(value)
         this.setState({
             name: value
         })
@@ -55,51 +68,54 @@ class EditProduct extends Component {
         })
     }
 
+    handleScentFamilyChange(value){
+        this.setState({
+            scent_family: value
+        })
+    }
+
     render() {
-        const e = this.state.product
-        console.log('df', e)
         return (
             <div className="edit_products_modal_backdrop">
                 <div className="edit_products_modal">
-                        <div className="edit_products_name">{e.name}</div>
+                        <div className="edit_products_name">{this.state.name}</div>
                     <div>
                         <div className="edit_product_flex">
                                 <div>
-                                    <img src={e.image_url} alt="product" width="200px"/>
+                                    <img src={this.state.image_url} alt="product" width="200px"/>
                                 </div>
                                 <div>
                                     <div className="modal_title">
                                         <div>Name</div>
-                                        
-                                        <input onChange={(e)=> this.handleNameChange(e.target.value)} value={e.name}/>
+                                        <input onChange={(e)=> this.handleNameChange(e.target.value)} value={this.state.name}/>
                                     </div>
                                     <div className="modal_title">
                                         <div>Description</div>
-                                        <textarea onChange={(e) => {this.handleDescriptionChange(e.target.value)}}value={e.description} resize="none"/>
+                                        <textarea onChange={(e) => {this.handleDescriptionChange(e.target.value)}}value={this.state.description} resize="none"/>
                                     </div>
                                     <div className="modal_title">
                                         <div>Price</div>
-                                        <input onChange={(e) => this.handlePriceChange(e.target.value)} value={e.price}/>
+                                        <input onChange={(e) => this.handlePriceChange(e.target.value)} value={this.state.price}/>
                                     </div>
                                     <div className="modal_sale">
                                         <div>Sale:</div>
-                                        <div>{e.sale ? <span>On Sale</span> : <span>Not on Sale</span>}</div>
+                                        <div>{this.state.sale ? <span>On Sale</span> : <span>Not on Sale</span>}</div>
                                     </div>
                                     <div className="modal_select">
-                                        <select onChange={(e) => this.handleCategoryChange(e.target.value)} value={e.category}>
+                                        <select onChange={(e) => this.handleCategoryChange(e.target.value)} value={this.state.category}>
                                             <option value="perfume">Perfume</option>
                                             <option value="cologne">Cologne</option>
                                         </select>
-                                        {e.category === 'cologne'&& 
-                                        <select value={e.scent_family} >
+                                        {this.state.category === 'cologne'&& 
+                                        <select onChange={(e) => {this.handleScentFamilyChange(e.target.value)}}value={this.state.scent_family}>
                                             <option value="woody">Woody</option>
                                             <option value="spicy">Spicy</option>
                                             <option value="musk">Musk</option>
                                             <option value="fresh">Fresh</option>
                                             <option value="earthy">Earthy</option>
                                         </select> }
-                                        {e.category === 'perfume' && 
-                                        <select value={e.scent_family} >
+                                        {this.state.category === 'perfume' && 
+                                        <select onChange={(e) => {this.handleScentFamilyChange(e.target.value)}}  value={this.state.scent_family}>
                                             <option value="floral">Floral</option>
                                             <option value="oceanic">Oceanic</option>
                                             <option value="citrus">Citrus</option>
