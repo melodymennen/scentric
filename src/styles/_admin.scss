@@ -56,22 +56,23 @@
     display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	justify-content: flex-start;
+	justify-content: space-between;
     align-items: stretch;
     > div{
         background-color: rgba(241, 241, 241, 0.685);
         box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.418);
-        // padding: 15px 30px;
-        width: 20vw;
-        margin: 10px;
+        padding: 15px 30px;
+        // width: 10vw;
+        margin: 10px auto;
         text-align: center;
         > div{
-            font-size: 16pt;
-            padding-top: 15pt;
+            font-size: 14pt;
+            padding-top: 10pt;
         }
         > div:nth-child(2){
-            font-size: 20pt;
-            padding-bottom: 20px;
+            font-size: 16pt;
+            padding-top: 18px;
+            padding-bottom: 15px;
         }
     }
 }
