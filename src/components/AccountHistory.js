@@ -22,9 +22,9 @@ class AccountHistory extends Component {
             return (
                 <div key={index}>
                     <div className="account_history_chart">
-                        <div>{element.user_id}</div>
-                        <div>{element.order_date}</div>
                         <div>{element.id}</div>
+                        <div>{element.order_date}</div>
+                        <div>{element.user_id}</div>
                         <div>Complete</div>
                         <div>{element.order_subtotal}</div>
                     </div>
@@ -42,7 +42,7 @@ class AccountHistory extends Component {
                     <div className="account_history_chart-title">
                         <span>Order #</span> 
                         <span>Order Date</span> 
-                        <span>Purchase Id</span> 
+                        <span>User Id</span> 
                         <span>Status</span> 
                         <span>Total Price</span>
                     </div>
