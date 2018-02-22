@@ -40,7 +40,11 @@ class AccountHistory extends Component {
                 {this.state.orders &&
                 <div className="account_history-excerpt">
                     <div className="account_history_chart-title">
-                        <span>Order #</span> <span>Order Date</span> <span>Purchase Id</span> <span>Status</span> <span>Total Price</span>
+                        <span>Order #</span> 
+                        <span>Order Date</span> 
+                        <span>Purchase Id</span> 
+                        <span>Status</span> 
+                        <span>Total Price</span>
                     </div>
                     {this.orders()}
                 </div>}
