@@ -3,7 +3,7 @@
 <!-- ## For the live version, click [here](http://wtfsimte.com). -->
 
 <!-- ## Overview
-What the Fork Should I Make to Eat? is an online recipe organizer. You can add your own recipes, view them by category, mark your favorites, add a recipe photo and more.  -->
+Scentric is an online perfume/cologne retailer. You can shop, create an account and more.  -->
 
 ## Setup:
 
@@ -16,15 +16,16 @@ What the Fork Should I Make to Eat? is an online recipe organizer. You can add y
 * Start the web dev server with `yarn start`. In your browser, open `http://localhost:3000`.
 
 <!-- ## Current Features:
-- display all recipes on your account, recipes by category, and your favorites
-- edit recipes, add photos to recipes and even text yourself recipe ingredients
-- display a recipe at random -->
+- display products by: all, category, scent family
+- add items to your cart, edit cart items and checkout 
+- login/create account to keep track of past orders, favorites and account info
+- admin users can add/edit products and manage orders -->
 
 <!-- ## Upcoming Features:
-- connect to a third party API to help users find new recipes -->
+-  -->
 
 <!-- ## Tech:
-We used many technologies when making this project including but not limited to: React | Redux | JavaScript(ES6) | SCSS | Sass | NodeJS | ExpressJS | Massive | PostgreSQL  -->
+We used many technologies when making this project including but not limited to: React | Redux | JavaScript(ES6) | CSS | Sass | NodeJS | ExpressJS | Massive | PostgreSQL | Sockets | Auth0 -->
 
 <!-- ## Preview
 ![Landing Page](https://github.com/melodymennen/personal-project/blob/master/assets/landing%20page-wtfsimte.com.png)

@@ -12,6 +12,9 @@ export default class Footer extends Component {
                 <div>
                 © 2018 Scentric, LLC. All rights reserved.
                 </div>
+                <div className="disclaimer">
+                Scentric and its products are fictional. Orders placed will not be fulfilled. 
+                </div>
             </div>
         )
     }
