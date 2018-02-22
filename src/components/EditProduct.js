@@ -35,18 +35,44 @@ class EditProduct extends Component {
         return (
             <div className="edit_products_modal_backdrop">
                 <div className="edit_products_modal">
-                    <div>{e.name}</div>
-                    <div>Name</div>
-                    <div><input value={e.name}/></div>
-                    <div>Description</div>
-                    <div><textarea value={e.description}/></div>
-                    <div><img className="editproduct_image_modal" src={e.image_url} alt="product" width="200px"/></div>
-                    <div>{e.price}</div>
-                    <div>{e.sale ? <span>On Sale</span> : <span>Not on Sale</span>}</div>
-                    <div>{e.category}</div>
-                    <div>{e.scent_family}</div>
-                    <button onClick={this.props.closed}>Close</button>
-                    <button>Edit</button>
+                        <div className="edit_products_name">{e.name}</div>
+                    <div>
+                        <img src={e.image_url} alt="product" width="160px"/>
+                        <div className="modal_title">
+                            <div>Name</div>
+                            <input value={e.name}/>
+                        </div>
+                        <div className="modal_title">
+                            <div>Description</div>
+                            <textarea value={e.description} resize="none"/>
+                        </div>
+                        <div className="modal_title">
+                            <div>Price</div>
+                            <input value={e.price}/>
+                        </div>
+                    <div className="modal_title">Sale</div>
+                        <div>{e.sale ? <span>On Sale</span> : <span>Not on Sale</span>}</div>
+                        <select value={e.category}>
+                            <option value="perfume">Perfume</option>
+                            <option value="cologne">Cologne</option>
+                        </select>
+                        <select value={e.scent_family} >
+                            <option value="floral">Floral</option>
+                            <option value="oceanic">Oceanic</option>
+                            <option value="citrus">Citrus</option>
+                            <option value="green">Green</option>
+                            <option value="gourmand">Gourmand</option>
+                            <option value="woody">Woody</option>
+                            <option value="spicy">Spicy</option>
+                            <option value="musk">Musk</option>
+                            <option value="fresh">Fresh</option>
+                            <option value="earthy">Earthy</option>
+                        </select>
+                    <div>
+                        <button onClick={this.props.closed}>Close</button>
+                        <button>Edit</button>
+                    </div>
+                    </div>
                 </div>
             </div>
         )

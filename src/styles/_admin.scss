@@ -278,7 +278,7 @@
 .edit_products_modal_backdrop {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 70px; /* Location of the box */
+    padding-top: 50px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -288,38 +288,43 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+
 .edit_products_modal {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 70%;
+    width: 50%;
     font-size: 14pt;
-    > div:nth-child(1){
-        text-transform: capitalize;
-        font-size: 22pt;
-        font-weight: bold;
-        text-align: left;
-        padding-bottom: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    img{
+        padding: 10px;
     }
-    div{
-        margin: 5px;
-        > input {
-            font-size: 12pt;
-            text-transform: capitalize;
-            color: rgb(68, 68, 68);
-            padding: 4px;
-            margin-bottom: 8px;
-            width: 400px;
+    .modal_title{
+        padding: 5px;
+        div{
+            text-align: left;
+            padding: 0 13vw;
         }
-        > textarea{
+        input{
+            width: 300px;
             font-size: 12pt;
-            width: 400px;
-            height: 150px;
-            color: rgb(68, 68, 68);
+            padding: 5px;
         }
-    //    .editproduct_image_modal{
+        textarea{
+            width: 300px;
+            padding: 5px;
+            height: 80px;
+            font-size: 11pt;
+        }
+    }
+}
 
-    //    }
-    }
+.edit_products_name{
+    text-transform: capitalize;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20pt;
+    border-bottom: 1px solid rgba(107, 107, 107, 0.699);
+    padding-bottom: 10px;
 }
