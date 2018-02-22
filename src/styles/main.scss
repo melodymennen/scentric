@@ -27,7 +27,7 @@ body {
 .home_hero{
     // padding-top: 100px;
     // padding-bottom: 50px;
-    padding: 60px 80px;
+    padding: 70px 80px;
     margin: 0 auto;
     text-align: center;
     width: 80%;
@@ -148,8 +148,10 @@ body {
 	flex-wrap: nowrap;
 	justify-content: center;
   align-items: stretch;
+  width: 80%;
+  margin: auto;
     div{
-      margin: 0 30px;
+      margin: 0 20px;
       margin-bottom: 90px;
       cursor: pointer;
     }

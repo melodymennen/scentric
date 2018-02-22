@@ -14,13 +14,14 @@ nav {
     transition: all .3 ease-in-out;
     list-style-type: none;
     position: fixed;
+    height: 70px;
+    align-items: center;
     width: 100%;
     font-size: 20px;
     color: black;
     background-color: white;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     z-index: 10;
-
     a {
         color: black;        
     }
@@ -80,9 +81,9 @@ a {
 }
 
 .header_logo {
-    height: 30px;
-    width: 30px;
-    margin-top: 20px;
+    height: 35px;
+    width: 35px;
+    margin-top: 15px;
 }
 
 
@@ -94,7 +95,7 @@ li > ul > li a:hover {
 .header-left {
     display: flex;
     justify-content: space-between;
-    padding: 20px 20px 5px 20px;
+    padding: 10px 20px 5px 20px;
 
     > * {
         margin-left: 40px        
@@ -102,7 +103,7 @@ li > ul > li a:hover {
 }
 
 .header-right {
-    margin-top: 20px; 
+    margin-top: 10px; 
     
     > a {
         cursor: pointer;
@@ -170,7 +171,9 @@ li > ul > li a:hover {
 .qty{
     position: relative;
     color: white;
-    top: -10px;
+    // top: -10px;
+    top: -2px;
+    margin-left: 4px;
     font-size: 9pt;
     background-color: $blush;
     border-radius : 50%;
@@ -181,7 +184,9 @@ li > ul > li a:hover {
 .qty10{
     position: relative;
     color: white;
-    top: -10px;
+    // top: -10px;
+    top: -2px;
+    margin-left: 4px;
     font-size: 9pt;
     background-color: $blush;
     border-radius : 50%;
