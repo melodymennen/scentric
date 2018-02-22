@@ -1,8 +1,8 @@
 SELECT 
     * 
 FROM 
-    orders 
+    users 
 INNER JOIN 
-    users ON (orders.user_id = users.generated_user_id)
+    orders ON (users.generated_user_id = orders.user_id)
 WHERE 
-    orders.user_id = $1
+    users.generated_user_id = $1
