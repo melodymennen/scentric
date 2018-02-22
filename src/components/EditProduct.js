@@ -17,6 +17,7 @@ class EditProduct extends Component {
             sale: '',
             edit: false
         }
+        this.editProduct = this.editProduct.bind(this)
     }
 
     // componentWillReceiveProps(props){
@@ -38,10 +39,28 @@ class EditProduct extends Component {
                     category: e.category,
                     scent_family: e.scent_family,
                     image_url: e.image_url,
-                    sale: e.sale
+                    on_sale: e.sale
                 })
             })
     }
+
+    editProduct(){
+        console.log('button working?')
+        const body = {
+            name: this.state.name,
+            description: this.state.description,
+            image_url: this.state.image_url,
+            price: this.state.price,
+            category: this.state.category,
+            scent_family: this.state.scent_family,
+            // on_sale: this.state.on_sale
+        }
+        console.log(body)
+        axios.put(`/api/product/${this.props.id}`, body).then(() => {
+            this.props.closed()
+        }).catch(console.log)
+    }
+
 
     handleNameChange(value){
         console.log(value)
@@ -49,25 +68,21 @@ class EditProduct extends Component {
             name: value
         })
     }
-
     handleDescriptionChange(value){
         this.setState({
             description: value
         })
     }
-
     handleCategoryChange(value){
         this.setState({
             category: value
         })
     }
-
     handlePriceChange(value){
         this.setState({
             price: value
         })
     }
-
     handleScentFamilyChange(value){
         this.setState({
             scent_family: value
@@ -99,7 +114,7 @@ class EditProduct extends Component {
                                     </div>
                                     <div className="modal_sale">
                                         <div>Sale:</div>
-                                        <div>{this.state.sale ? <span>On Sale</span> : <span>Not on Sale</span>}</div>
+                                        <div>{this.state.on_sale ? <span>On Sale</span> : <span>Not on Sale</span>}</div>
                                     </div>
                                     <div className="modal_select">
                                         <select onChange={(e) => this.handleCategoryChange(e.target.value)} value={this.state.category}>
@@ -125,7 +140,7 @@ class EditProduct extends Component {
                                     }
                                 </div>
                                     <button onClick={this.props.closed}>Close</button>
-                                    <button>Edit</button>
+                                    <button onClick={this.editProduct}>Edit</button>
                             </div>
                         </div>
                     <div>
