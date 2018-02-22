@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Admin from './Admin'
+
 
 
 class EditProduct extends Component {
@@ -14,10 +14,12 @@ class EditProduct extends Component {
             category: '',
             scent_family: '',
             image_url: '',
-            sale: '',
-            edit: false
+            on_sale: false
         }
         this.editProduct = this.editProduct.bind(this)
+        this.onSale = this.onSale.bind(this)
+        this.notOnSale = this.notOnSale.bind(this)
+        this.deleteProduct = this.deleteProduct.bind(this)
     }
 
     // componentWillReceiveProps(props){
@@ -39,7 +41,7 @@ class EditProduct extends Component {
                     category: e.category,
                     scent_family: e.scent_family,
                     image_url: e.image_url,
-                    on_sale: e.sale
+                    on_sale: e.on_sale,
                 })
             })
     }
@@ -53,12 +55,29 @@ class EditProduct extends Component {
             price: this.state.price,
             category: this.state.category,
             scent_family: this.state.scent_family,
-            // on_sale: this.state.on_sale
+            on_sale: this.state.on_sale
         }
         console.log(body)
         axios.put(`/api/product/${this.props.id}`, body).then(() => {
             this.props.closed()
         }).catch(console.log)
+    }
+
+    deleteProduct(){
+        axios.delete(`/api/product/${this.props.id}`).then( () => {
+            this.props.closed()
+        })
+    }
+    onSale(){
+        this.setState({
+            on_sale: false
+        }, () => console.log(this.state.on_sale))
+    }
+
+    notOnSale(){
+        this.setState({
+            on_sale: true
+        }, () => console.log(this.state.on_sale))
     }
 
 
@@ -114,7 +133,7 @@ class EditProduct extends Component {
                                     </div>
                                     <div className="modal_sale">
                                         <div>Sale:</div>
-                                        <div>{this.state.on_sale ? <span>On Sale</span> : <span>Not on Sale</span>}</div>
+                                        {this.state.on_sale ? <div onClick={this.onSale} className="edit_onSale">On Sale</div> : <div onClick={this.notOnSale} className="edit_notOnSale">Not On Sale</div>}
                                     </div>
                                     <div className="modal_select">
                                         <select onChange={(e) => this.handleCategoryChange(e.target.value)} value={this.state.category}>
@@ -140,11 +159,12 @@ class EditProduct extends Component {
                                     }
                                 </div>
                                     <button onClick={this.props.closed}>Close</button>
-                                    <button onClick={this.editProduct}>Edit</button>
+                                    <button onClick={this.editProduct}>Edit Product</button>
+                                    <button onClick={this.deleteProduct}>Delete Product</button>
+                                </div>
                             </div>
+                            <div>
                         </div>
-                    <div>
-                    </div>
                     </div>
                 </div>
             </div>

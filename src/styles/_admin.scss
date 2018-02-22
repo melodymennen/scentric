@@ -330,7 +330,7 @@
         font-size: 14pt;
         margin-top: 30px;
         margin-left: 10px;
-        transform: translateX(-30px);
+        transform: translateX(-140px);
     }
 }
 
@@ -341,7 +341,7 @@
 	justify-content: baseline;
     align-items: stretch;
     div{
-        padding: 10px;
+        margin: 10px;
     }
 }
 
@@ -360,4 +360,21 @@
     font-size: 20pt;
     border-bottom: 1px solid rgba(107, 107, 107, 0.699);
     padding-bottom: 10px;
+}
+
+.edit_onSale{
+    font-size: 10pt;
+    border: 1px solid rgb(122, 122, 122);
+    border-radius: 34px;
+    padding: 4px 8px;
+    background-color: $blush;
+    cursor: pointer;
+}
+
+.edit_notOnSale{
+    font-size: 10pt;
+    border: 1px solid rgb(122, 122, 122);
+    border-radius: 34px;
+    padding: 4px 8px;
+    cursor: pointer;
 }
