@@ -27,7 +27,7 @@ class AccountInfo extends Component {
                 </div>
                 <div className="account_flex account_space">
                     <div className="account_flex_profile">
-                        <div>Account Name: {this.props.nameInput}</div>
+                        <div>Name: {this.props.nameInput}</div>
                     </div>
                     <div className="account_flex_profile">
                         <div>Email: {this.props.emailInput}</div>
