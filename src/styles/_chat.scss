@@ -90,3 +90,10 @@
     bottom: 30px;
     right: 30px;
 }
+
+@media (max-width:500px) {
+    .chat_body {
+        bottom: 100px;
+        right: 30px;
+    }
+}
