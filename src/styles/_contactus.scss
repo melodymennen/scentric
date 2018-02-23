@@ -68,3 +68,41 @@
     75% {opacity: 1;}
     100%   {opacity: 0;}
 }
+
+@media (max-width: 900px) {
+    .contact-us-body {
+        width: 90%;
+        padding: 100px 20px;
+    }
+}
+
+@media (max-width: 800px) {
+    .contact-us-body {
+        width: 100%;
+        padding: 100px 0;
+        div {
+            width: 60%;
+            flex-direction: column;
+        }
+        input {
+            margin: 10px 0;
+            width: 90%;
+        }
+        textarea {
+            width: 90%;
+        }
+        button {
+            margin: 10px 0;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .contact-us-body {
+        width: 100%;
+        padding: 100px 0;
+        div {
+            width: 90%;
+        }
+    }
+}
