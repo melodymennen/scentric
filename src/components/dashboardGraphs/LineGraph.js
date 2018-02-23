@@ -7,7 +7,6 @@ class LineGraph extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // date: [],
             data1: {
                 labels: [],
                 datasets: [
@@ -43,24 +42,19 @@ class LineGraph extends Component {
 
     getAllOrders(){
         axios.get('/api/ordersall').then( response => {
-            console.log(response.data)
             var dateArray = []
             var uniqueArray = []
             response.data.forEach( e => {
                 dateArray.push(e.order_date)
                 uniqueArray = _.uniq(dateArray)
             })
-            var countingArray = []
             uniqueArray.forEach( e => {
-                console.log('unique', uniqueArray)
                 var dupCount = 0
                 response.data.forEach ( i => {
-                    console.log('data',response.data)
                 if(i.order_date === e){
                 dupCount ++
                 }
                 })
-                console.log('counting array why you no work', countingArray.push(dupCount))
                 this.state.data1.datasets[0].data.push(dupCount)
                 })  
                 this.setState( prevState => ({
@@ -74,7 +68,6 @@ class LineGraph extends Component {
     
 
     render() {
-        console.log(this.state.data1.datasets[0].data)
         return (
             <div>
                  <Line data={this.state.data1} />
