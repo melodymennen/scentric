@@ -125,12 +125,20 @@ h3{
   .home_featured{
     flex-direction: column;
       div{
-        width: 80%;
+        width: 70%;
         margin: auto;
         margin-bottom: 40px;
       }
   }
   .home_featured_products{
     font-size: 25pt;
+  }
+}
+
+@media (max-width:500px){
+  .home_featured{
+      div{
+        width: 90%;
+      }
   }
 }
