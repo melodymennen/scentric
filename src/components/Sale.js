@@ -21,7 +21,7 @@ class Sale extends Component {
     }
 
     render() {
-       const sale = this.props.products.reverse().splice(0,5).map(e => {
+       const sale = this.props.products.map(e => {
             if( e.on_sale === true ){
                 return ( 
                     <div>
@@ -34,7 +34,7 @@ class Sale extends Component {
                             />
                     </div>
                 )
-            }
+            } else { return null}
         })
         return (
             <div>

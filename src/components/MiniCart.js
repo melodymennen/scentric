@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getCart } from '../ducks/reducer'
+import { Link } from 'react-router-dom'
 import functions from '../utilities/functions'
 
 
@@ -22,7 +23,7 @@ class MiniCart extends Component {
                 <div className="minicart_flex" key={e.id}>
                         <div><img src={e.image_url} alt="product" width="70px"/></div>
                     <div className="minicart_wrapper">
-                        <div style={name}>{e.name}</div>
+                        <div style={name}><Link to={`/products/${e.id}`}>{e.name}</Link></div>
                         <div>Qty: {e.qty}</div>
                     </div>
                         <div className="minicart_producttotal">${(e.price * e.qty).toFixed(2)}</div>

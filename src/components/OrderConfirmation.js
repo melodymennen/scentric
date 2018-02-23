@@ -38,7 +38,7 @@ class OrderConfirmation extends Component {
         const orderItems = this.state.order.map(item => {
             return (
                 <div key={item.id} className="orderconfirmation_line-item">
-                    <div><Link to={`/products/${item.id}`}><img src={item.image_url} alt={item.name} /> </Link></div>
+                    <div className="orderconfirmation_line-item-image"><Link to={`/products/${item.id}`}><img src={item.image_url} alt={item.name} /> </Link></div>
                     <div className="orderconfirmation_line-item-name" >
                         <Link to={`/products/${item.id}`}> {item.name} </Link>
                     </div>

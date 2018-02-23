@@ -6,6 +6,7 @@ import functions from '../utilities/functions'
 import StripeCheckout from './StripeCheckout'
 import MiniCart from './MiniCart'
 import Header from './Header'
+import Footer from './Footer'
 
 class Checkout extends Component {
     constructor(){
@@ -177,6 +178,7 @@ class Checkout extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         )
     }

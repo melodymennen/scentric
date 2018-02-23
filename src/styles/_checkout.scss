@@ -118,3 +118,12 @@
         width: 65%;
     }
 }
+
+@media (max-width:600px){
+    .checkout_body_form{
+        width: 100%;
+    }
+    .checkout_minicart{
+        width: 110%;
+    }
+}

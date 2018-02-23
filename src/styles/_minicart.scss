@@ -12,6 +12,15 @@
     // padding: 0 20px;
     padding-top: 14px;
     width: 200px;
+    a {
+        color: black;
+        &:visited {
+            color: black;
+        }
+        &:hover {
+            color: rgba(0,0,0,.5);
+        }
+    }
 }
 
 .minicart_wrapper > div{

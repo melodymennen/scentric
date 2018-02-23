@@ -73,13 +73,51 @@
         border-bottom: 1px solid rgba(0,0,0,.5);
         padding: 15px 0;
         display: inherit;
-        width: 20%;
         align-items: center;
         text-transform: capitalize;
         margin: 5px 0;
     }
+    &-image, &-name, &-price, &-qty, &-subtotal {
+        width: 20%;
+        justify-content: center;
+    }
     &-price, &-qty, &-subtotal {
         justify-content: center;
+    }
+}
+
+@media (max-width: 750px){
+    .orderconfirmation_body {
+        padding: 100px 20px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 550px){
+    .orderconfirmation_ {
+        &thank-you {
+            font-size: 1.25em;
+        }
+        &thank-you, &order-number {
+            margin: 10px;
+        }
+        &links {
+            width: 80%;
+            margin: 0;
+        }
+    }
+    .orderconfirmation_line-item {
+        img {
+            height: 80px;
+        }
+        &-name {
+            width: 40%;
+            justify-content: flex-start;
+        }
+        &-price {
+            visibility: hidden;
+            width: 0%;
+        }
     }
 }
 
