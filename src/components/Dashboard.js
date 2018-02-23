@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import LineGraph from './dashboardGraphs/LineGraph'
 import BarChartSalesPerWeek from './dashboardGraphs/BarChartSalesPerWeek';
+import CartGraph from './dashboardGraphs/CartGraph'
 
 
 class Dashboard extends Component {
@@ -17,6 +18,7 @@ class Dashboard extends Component {
             <div>
                 <LineGraph/>
                 <BarChartSalesPerWeek/>
+                <CartGraph/>
             </div>
         )
     }
