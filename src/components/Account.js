@@ -31,6 +31,7 @@ class Account extends Component {
 
             address: {},
             history: [],
+            display: '',
 
         }
     }
@@ -104,8 +105,12 @@ class Account extends Component {
     changeBars = () => {    
         this.setState({ menuShow: !this.state.menuShow })
         this.setState({ position: '' })
+        this.setState({ display: '' })
         setTimeout(() => {
             this.setState({ position: 'account_indexes-position' })
+            if(this.state.menuShow === false) {
+                this.setState({ display: 'account_display' })
+            }
         }, 500)
     }
 
@@ -185,7 +190,6 @@ class Account extends Component {
             <div>
                 <Header />
                 <div className="account_flex">
-                    <div>
                         <a className="bars" onClick={this.changeBars}>
                             <div className={`bar1 ${this.state.menuShow ? 'bar1x' : ''}`}></div>
                             <div className={`bar2 ${this.state.menuShow ? 'bar2x' : ''}`}></div>
@@ -193,6 +197,7 @@ class Account extends Component {
                         </a>
 
 
+                    <div className={` ${this.state.menuShow ? '': this.state.display}`}>
                         <div className={`account_menu ${this.state.menuShow ? 'account_menuShow' : ''}`}>
                             <div className="account_sidebar">
                             <Link to="/home"><button className="account_link">Home</button></Link>

@@ -26,7 +26,6 @@
 .account_no-user {
     margin-left: 30px;
     width: 100%;
-    position: absolute; 
     font-size: 1.7em;
     margin-top: 40px;
 }
@@ -37,6 +36,7 @@
     position: absolute;
     z-index: 1;
     padding-top: 100px;
+    display: initial !important;
 }
 .bar1, .bar2, .bar3 {
     width: 35px;
@@ -132,7 +132,7 @@
 }
 
 .account_indexes-position {
-    position: absolute;
+    position: static;
 }
 
 .account_settings-excerpt {
@@ -293,4 +293,8 @@
 
 .account_history-excerpt {
      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.09);
+}
+
+.account_display {
+    display: none;
 }
