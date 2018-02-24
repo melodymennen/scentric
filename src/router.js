@@ -8,6 +8,7 @@ import NewArrivals from './components/NewArrivals'
 import ContactUs from './components/ContactUs'
 import Checkout from './components/Checkout'
 import Account from './components/Account'
+import About from './components/About'
 import Admin from './components/Admin'
 import Sale from './components/Sale'
 import Home from './components/Home'
@@ -31,5 +32,6 @@ export default (
         <Route path="/Sale" component = { Sale } />
         <Route path="/Cart" component = { Cart } />
         <Route path="/FAQ" component = { FAQ } />
+        <Route path="/About" component = { About } />
     </Switch>
 )
