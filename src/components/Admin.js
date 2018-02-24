@@ -96,7 +96,7 @@ class Admin extends Component {
 }
 
 const margin = {
-    margin: '70px auto'
+    margin: '50px auto'
 }
 
 const mapStateToProps = state => {
