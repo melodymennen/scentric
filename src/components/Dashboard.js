@@ -18,7 +18,7 @@ class Dashboard extends Component {
             <div>
                 <div className="line_graph_body_main">
                     <div className="admin_overview">Orders By Date</div>
-                        <div className="line_graph_inner_wrapper">
+                    <div className="line_graph_inner_wrapper">
                             <LineGraph/>
                         </div>
                 </div>
