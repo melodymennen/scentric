@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import _ from 'lodash'
-import Dashboard from './Dashboard'
+import Dashboard from './dashboardGraphs/Dashboard'
 
 
 

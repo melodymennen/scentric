@@ -8,14 +8,14 @@ class CartGraph extends Component {
         super(props)
         this.state = {
             data2: {
-                labels: [ 'Sex Panther', 'b-nasty', 'eau de trevor' ],
+                labels: [],
                 datasets: [
                     {   label: [ 'product'],
-                        backgroundColor: ['rgba(75,192,192,0.4)', 'rgba(75,192,192,0.4)','rgba(75,192,192,0.4)','rgba(75,192,192,0.4)'],
+                        backgroundColor: 'rgba(75,192,192,0.4)',
                         borderWidth: 1,
-                        hoverBackgroundColor: ['rgba(75,192,192,0.4)'],
+                        hoverBackgroundColor: 'rgba(75,192,192,0.4)',
                         hoverBorderColor: 'rgba(255,99,132,1)',
-                        data: [ 2, 1, 1 ]
+                        data: []
                     },
                     
                 ],
@@ -30,7 +30,22 @@ class CartGraph extends Component {
 
     getCartAll(){
         axios.get('/api/cart/all').then(response => {
-              
+              console.log(response.data)
+              var arr= []
+                let products = new Set(response.data.map(e => e.name))
+                let pro = [...products].map( e => {
+                let qty = 0
+                response.data.forEach( el => {
+                    if(el.name === e ) {
+                    qty += el.qty
+                    }
+                })
+                this.state.data2.datasets[0].data.push({x: e, y: qty})
+                this.state.data2.labels = (this.state.data2.datasets[0].data.map(e => e.x))
+            })
+            this.setState({
+                data2: this.state.data2
+            })
             })
         }
 
