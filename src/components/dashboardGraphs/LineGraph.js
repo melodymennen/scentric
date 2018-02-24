@@ -11,7 +11,7 @@ class LineGraph extends Component {
                 labels: [],
                 datasets: [
                   {
-                    label: 'Orders Over Time',
+                    label: 'Orders',
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: 'rgba(75,192,192,0.4)',

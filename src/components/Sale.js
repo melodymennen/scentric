@@ -21,7 +21,7 @@ class Sale extends Component {
     }
 
     render() {
-       const sale = this.props.products.reverse().splice(0,5).map(e => {
+       const sale = this.props.products.reverse().splice(0,5).forEach(e => {
             if( e.on_sale === true ){
                 return ( 
                     <div>

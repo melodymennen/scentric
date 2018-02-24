@@ -16,7 +16,12 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                <LineGraph/>
+                <div className="line_graph_body_main">
+                    <div className="admin_overview">Orders By Date</div>
+                        <div className="line_graph_inner_wrapper">
+                            <LineGraph/>
+                        </div>
+                </div>
                 <BarChartSalesPerWeek/>
                 <CartGraph/>
             </div>
