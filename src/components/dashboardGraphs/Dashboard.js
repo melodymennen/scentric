@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import LineGraph from './LineGraph'
 import BarChartSalesPerWeek from './BarChartSalesPerWeek';
 import CartGraph from './CartGraph'
+import OrdersByDate from './OrdersByDate'
 
 
 class Dashboard extends Component {
@@ -19,8 +20,22 @@ class Dashboard extends Component {
                 <div className="line_graph_body_main">
                     <div className="admin_overview">Orders By Date</div>
                     <div className="line_graph_inner_wrapper">
-                            <LineGraph/>
+                        <div className="order_flex">
+                            <div>
+                                <LineGraph/>
+                                <OrdersByDate/>
+                            </div>
+                            <div className="admin_home_first_body">
+                                <div>Today's Orders</div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+                <div className="line_graph_body_main">
+                    <div className="admin_overview">Orders by Day of Week</div>
+                    <div className="line_graph_inner_wrapper">
+                        <OrdersByDate/>
+                    </div>
                 </div>
                 <div className="line_graph_body_main">
                     <div className="admin_overview">Sales by Day of Week</div>

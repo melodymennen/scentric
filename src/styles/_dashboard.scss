@@ -8,3 +8,11 @@
     padding: 10px;
     margin: auto;
 }
+
+.order_flex{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+}

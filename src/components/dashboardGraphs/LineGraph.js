@@ -70,7 +70,15 @@ class LineGraph extends Component {
     render() {
         return (
             <div>
-                 <Line data={this.state.data1} />
+                 <Line data={this.state.data1}
+                 width={650}
+                 height={300} 
+                 options={{
+                    title: {
+                        display: true,
+                        text: 'Orders By Date',
+                    }
+                }}/>
             </div>
         )
     }
