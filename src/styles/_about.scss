@@ -1,0 +1,66 @@
+.about_body {
+    min-height: 60vh;
+    padding: 100px 50px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: auto;
+}
+
+.about_title {
+    font-size: 2em;
+    text-align: center;
+}
+
+.about_about, .about_tech, .about_team {
+    margin: 25px 0; 
+}
+
+.about_heading {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.about_info {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.team-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.about_team-info {
+    font-size: 1.25em;
+    margin: 15px;
+    a {
+        color: $dark_blue;
+        &:visited {
+            color: $dark_blue;
+        }
+        &:hover {
+            color: $blush;
+        }
+    }
+}
+
+.fab, .fas {
+    font-size: 40px;
+    margin: 20px 15px;
+}
+
+@media (max-width:700px){
+    .about_body{
+        padding: 100px 20px;
+        width: 90%;
+    }
+}
+
+@media (max-width:500px){
+    .about_body{
+        width: 100%;
+    }
+}

@@ -70,6 +70,12 @@ module.exports = {
         db.get_cart([generatedId]).then(cart => res.status(200).send(cart))
         .catch( () => res.status(500).send())
     }, 
+    getCartAll: (req ,res) => {
+        const db = req.app.get('db')
+
+        db.get_cart_all([]).then(cart => res.status(200).send(cart))
+        .catch( () => res.status(500).send())
+    }, 
     removeFromCart: (req, res) => {
         const db = req.app.get('db')
         const { product_id } = req.params                

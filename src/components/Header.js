@@ -34,8 +34,8 @@ const Fade = ({ in: inProp, user:user, login:login}) => (
                 <div className="header_drop-left">
                     {!user && <div><a onClick={login}>Login</a></div>}
                     {user && <div><Link to="/Account">Account</Link></div>}
-                    <div><Link to="">About</Link></div>
-                    <div><Link to="/sale"><h3>Sale</h3></Link></div>
+                    <div><Link to="/about">About</Link></div>
+                    <div><Link to="/sale">Sale</Link></div>
                 </div>
                 <div>
                     <div><Link to="/display/perfume">Perfume</Link></div>
@@ -179,8 +179,7 @@ class Header extends Component {
                     </div>
                     <Link to="/home" ><img src="https://s3-us-west-1.amazonaws.com/scentric/favicon.ico" alt="logo" className="header_logo" /></Link>
                     <div className="header-right">
-                        <Link to="" className="header_about">About</Link>
-
+                        <Link to="/about" className="header_about">About</Link>
                         {!user && <a className="header_login" onClick={this.login}>Login</a>}
                         {user && <Link to="/Account" className="header_account">Account</Link>}
 
