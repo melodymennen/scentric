@@ -103,9 +103,9 @@ class Account extends Component {
     }
     
     changeBars = () => {    
-        this.setState({ menuShow: !this.state.menuShow })
-        this.setState({ position: '' })
         this.setState({ display: '' })
+        this.setState({ position: '' })
+        this.setState({ menuShow: !this.state.menuShow })
         setTimeout(() => {
             this.setState({ position: 'account_indexes-position' })
             if(this.state.menuShow === false) {

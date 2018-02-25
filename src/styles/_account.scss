@@ -54,7 +54,7 @@
 .bar3x {
     transform: rotate(45deg) translate(-8px, -8px) ;
 }
-  
+
 .account_menu {
     position: relative;
     padding-top: 100px;
@@ -73,7 +73,7 @@
 
     :first-child {
      border-top: 1px solid #333;  
-    }
+    }   
 }
 
 .account_link2 {
@@ -297,4 +297,14 @@
 
 .account_display {
     display: none;
+}
+
+
+@media(max-width: 700px) {
+    .account_show-info {
+        font-size: 10px;
+    }
+    .account_name {
+        display: none;
+    }
 }

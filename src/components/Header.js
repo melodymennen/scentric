@@ -180,9 +180,12 @@ class Header extends Component {
                     <Link to="/home" ><img src="https://s3-us-west-1.amazonaws.com/scentric/favicon.ico" alt="logo" className="header_logo" /></Link>
                     <div className="header-right">
                         <Link to="" className="header_about">About</Link>
+
                         {!user && <a className="header_login" onClick={this.login}>Login</a>}
                         {user && <Link to="/Account" className="header_account">Account</Link>}
+
                         <Link to="/cart"><span onMouseEnter={() => { this.showMiniCart() }}>Cart<span className={this.props.cart.qty < 10 ? "qty" : "qty10"}>{this.props.cart.qty}</span></span></Link>
+
                         {this.state.show ?
                             <div className="header-minicart" onMouseLeave={() => { this.hideMiniCart() }}>
                                 <div className="to_scroll"><MiniCart /></div>
@@ -190,7 +193,8 @@ class Header extends Component {
                                     <Link to="/checkout"><button className="button">Checkout</button></Link>
                                     <Link to="/cart"><button className="button">Go To Cart</button></Link>
                                 </div>
-                            </div> : null}
+                            </div> : null
+                        }
                     </div>
                 </nav>
                 <Fade in={!!this.state.menuShow} user={user} login={this.login}/>
