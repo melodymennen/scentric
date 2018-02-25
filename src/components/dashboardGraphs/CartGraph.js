@@ -30,8 +30,6 @@ class CartGraph extends Component {
 
     getCartAll(){
         axios.get('/api/cart/all').then(response => {
-              console.log(response.data)
-              var arr= []
                 let products = new Set(response.data.map(e => e.name))
                 let pro = [...products].map( e => {
                 let qty = 0
