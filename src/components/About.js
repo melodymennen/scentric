@@ -1,8 +1,26 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getCart, getUser } from '../ducks/reducer'
+import functions from '../utilities/functions'
 import Header from './Header'
 import Footer from './Footer'
 
 class About extends Component {
+
+    componentWillMount(){
+        functions.generateId()        
+    }
+
+    componentDidMount() {
+        this.getCart()
+        this.props.getUser()
+        window.scrollTo(0,0)
+    }
+
+    getCart(){
+        this.props.getCart()
+    }    
+
     render() {
         return (
             <div>
@@ -38,7 +56,7 @@ class About extends Component {
                                 <br/>                                
                                 <a href="https://www.linkedin.com/in/melodymennen/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
                                 <a href="https://github.com/melodymennen" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                                <a href="" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i></a>
+                                <a href="https://melodymennen.github.io/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i></a>
                             </div>
                             <div className="about_team-info">
                                 Matt Wearden
@@ -56,4 +74,16 @@ class About extends Component {
     }
 }
 
-export default About
+
+function mapStateToProps(state) {
+    return {
+        cart: state.cart
+    }
+}
+
+const mapDispatchToProps = {
+    getCart: getCart, 
+    getUser: getUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(About)
