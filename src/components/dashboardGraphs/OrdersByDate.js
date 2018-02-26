@@ -64,10 +64,10 @@ class OrdersByDate extends Component {
 
     render() {
         return (
-            <div>
+            <div className="graph_wrapper">
                 <Bar
                     data={this.state.data2}
-                    width={550}
+                    width={600}
                     height={300}
                     options={{
                         title: {

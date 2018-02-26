@@ -31,13 +31,14 @@ class CartGraph extends Component {
     getCartAll(){
         axios.get('/api/cart/all').then(response => {
                 let products = new Set(response.data.map(e => e.name))
-                let pro = [...products].map( e => {
-                let qty = 0
-                response.data.forEach( el => {
-                    if(el.name === e ) {
-                    qty += el.qty
-                    }
-                })
+                let pro = [...products]
+                    pro.forEach( e => {
+                    let qty = 0
+                        response.data.forEach( el => {
+                            if(el.name === e ) {
+                            qty += el.qty
+                            }
+                        })
                 this.state.data2.datasets[0].data.push({x: e, y: qty})
                 this.state.data2.labels = (this.state.data2.datasets[0].data.map(e => e.x))
             })
@@ -49,7 +50,7 @@ class CartGraph extends Component {
 
     render() {
         return (
-            <div>
+            <div className="graph_wrapper">
                 <Bar 
                     data={this.state.data2} 
                     options={{

@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
-import {Line} from 'react-chartjs-2'
-import _ from 'lodash'
 import axios from 'axios'
+import {Line} from 'react-chartjs-2'
 
-class LineGraph extends Component {
+
+class LineSalesByDay extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            final: [],
             data1: {
                 labels: [],
                 datasets: [
                   {
-                    label: 'Orders',
+                    label: 'Sales',
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: 'rgba(75,192,192,0.4)',
@@ -37,46 +38,43 @@ class LineGraph extends Component {
     }
 
     componentDidMount() {
-        this.getAllOrders()
+        this.getOrders()
     }
 
-    getAllOrders(){
+    getOrders(){
         axios.get('/api/ordersall').then( response => {
-            var dateArray = []
-            var uniqueArray = []
-            response.data.forEach( e => {
-                dateArray.push(e.order_date)
-                uniqueArray = _.uniq(dateArray)
-            })
-            uniqueArray.forEach( e => {
-                var dupCount = 0
-                response.data.forEach ( i => {
-                if(i.order_date === e){
-                dupCount ++
-                }
-                })
-                this.state.data1.datasets[0].data.push(dupCount)
-                })  
-                this.setState( prevState => ({
-                    data1: {
-                        ...prevState.data1,
-                        labels: uniqueArray,
+            for( let i=0; i< response.data.length; i++){
+                response.data[i].order_subtotal = +response.data[i].order_subtotal
+              }
+              let unique = [...new Set(response.data.map(date => date.order_date))]
+                let arr = [...unique].map( e => {
+                  let total = 0
+                  this.state.final = []
+                  response.data.forEach( p => {
+                    if(p.order_date === e){
+                      total += p.order_subtotal
                     }
-                }))
-            })
-        }
-    
+                  })
+                    this.state.data1.datasets[0].data.push({x: e, y: total.toFixed(2) })
+                    this.state.data1.labels = (this.state.data1.datasets[0].data.map(e => e.x))
+              })
+              this.setState({
+                  data1: this.state.data1
+              })
+        })
+    }
+
 
     render() {
         return (
-            <div className="graph_wrapper">
+            <div>
                  <Line data={this.state.data1}
                  width={650}
                  height={300} 
                  options={{
                     title: {
                         display: true,
-                        text: 'Orders By Date',
+                        text: 'Sales over Time',
                     }
                 }}/>
             </div>
@@ -86,4 +84,4 @@ class LineGraph extends Component {
 
 
 
-export default LineGraph
+export default LineSalesByDay
