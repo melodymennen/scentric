@@ -24,7 +24,7 @@ const transitionStyles = {
     entering: { height: 0 },
     entered: { height: '200px' },
 }
-const Fade = ({ in: inProp, user:user, login:login}) => (
+const Fade = ({ in: inProp, user, login}) => (
     <Transition in={inProp} user={user} login={login}timeout={duration}>
         {(state) => (
             <div style={{
