@@ -27,6 +27,7 @@ class ProductPage extends Component {
         this.getProduct()
         functions.generateId()
         this.props.getUser()
+        window.scrollTo(0,0)
     }
 
     getProduct(){
