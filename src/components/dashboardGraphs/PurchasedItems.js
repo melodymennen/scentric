@@ -31,22 +31,21 @@ class PurchasedItems extends Component {
         axios.get('/api/productssold').then( response => {
             let sold = new Set(response.data.splice(0,9).map(e => e.name))
             let newArr = [...sold]
-                newArr.map(i => {
+            let label = []
+            let finalObj = []
+            newArr.map(i => {
                     let amount = 0
-                    let finalObj = []
                     response.data.forEach( q => {
                         if(q.name === i){
                         amount += q.qty
                         }
                     })
-                    finalObj= {y:i, x: amount}
-                    this.state.data2.datasets[0].data.push(finalObj)
-                    this.state.data2.labels = (this.state.data2.datasets[0].data.map(e => e.y))
+                    finalObj.push({y:i, x: amount})
                 })
-                this.setState({
-                    data2: this.state.data2
+                        this.setState({
+                            ...this.state, data2: {...this.state.data2, labels: newArr, datasets: [{...this.state.data2.datasets[0], data: finalObj}]},
+                        })
                 })
-            })
     }
 
     render() {

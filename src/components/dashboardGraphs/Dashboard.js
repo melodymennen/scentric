@@ -97,7 +97,7 @@ class Dashboard extends Component {
                                     <LineSalesByDay/>
                                     <BarChartSalesPerWeek/>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <div>
                                         <div>Today's Orders</div>
                                         <div>{this.state.todayOrders}</div>
@@ -106,7 +106,7 @@ class Dashboard extends Component {
                                         <div>Orders This Week</div>
                                         <div>{this.state.ordersWeek}</div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     <div className="overview_main_body">
@@ -116,7 +116,7 @@ class Dashboard extends Component {
                                 <PurchasedItems/>
                                 <CartGraph/>
                             </div>
-                            <div>
+                            {/* <div>
                                 <div>
                                     <div>Today's Orders</div>
                                     <div>{this.state.todayOrders}</div>
@@ -125,7 +125,7 @@ class Dashboard extends Component {
                                     <div>Orders This Week</div>
                                     <div>{this.state.ordersWeek}</div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
             </div>
