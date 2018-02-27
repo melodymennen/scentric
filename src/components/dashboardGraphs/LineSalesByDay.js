@@ -57,9 +57,9 @@ class LineSalesByDay extends Component {
                   })
                     finalObj.push({x: e, y: total.toFixed(2) })
                 })
-                        this.setState({
-                            ...this.state, data1: {...this.state.data1, labels: arr, datasets: [{...this.state.data1.datasets[0], data: finalObj}]},
-                        })
+                    this.setState({
+                        ...this.state, data1: {...this.state.data1, labels: arr, datasets: [{...this.state.data1.datasets[0], data: finalObj}]},
+                    })
         })
     }
 
