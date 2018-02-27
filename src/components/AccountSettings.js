@@ -29,12 +29,13 @@ class AccountSettings extends Component {
                     {this.address()}
                 </div>
                 <div className={`account_settings-excerpt ${this.props.accountSettingsState ? "account_settings-excerpt-show" : ""}`}>
-                    <div>Name: <input defaultValue={this.props.nameInput} onChange={event => this.props.handleNameChange(event.target.value)} /></div>
-                    <div>Email: <input defaultValue={this.props.emailInput} onChange={event => this.props.handleEmailChange(event.target.value)} /></div>
+                    <div>Name: 
+                    <input defaultValue={this.props.nameInput} onChange={event => this.props.handleNameChange(event.target.value)} /></div>
+                    <div>Email:<input defaultValue={this.props.emailInput} onChange={event => this.props.handleEmailChange(event.target.value)} /></div>
                     <div>Profile Picture:  <input defaultValue={this.props.pictureInput} onChange={event => this.props.handlePictureChange(event.target.value)} /></div>
 
 
-                    <div> Address:
+                    <div> <div className="account_address_settings">Address: </div>
                     <div className="account_selector">
                             <input className="account_input_address" defaultValue={this.props.inputAddress}
                                 onChange={(e) => this.props.handleAddressChange(e.target.value)}

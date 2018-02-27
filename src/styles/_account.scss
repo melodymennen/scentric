@@ -307,6 +307,10 @@
     display: none;
 }
 
+.account_address_settings {
+    margin-right: 10px;
+}
+
 
 @media(max-width: 700px) {
     .account_show-info {
@@ -320,5 +324,20 @@
         display: block;
         margin: 10px;
         overflow: hidden; 
+    }
+
+    .account_menu {
+        width: 110px;
+    }
+
+    .account_space {
+        display: block;
+    }
+
+    .account_settings-excerpt-show > div > input{
+        margin: 10px;
+        padding: 10px;
+        display: block;
+        overflow: hidden;
     }
 }
