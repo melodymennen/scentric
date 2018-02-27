@@ -44,7 +44,14 @@ class Customers extends Component {
             })
         return (
             <div>
-               {cust}
+                <div>
+                    <div>
+                        <div>Name</div>
+                        <div>Email</div>
+                        <div>Location</div>
+                    </div>
+                    <div>{cust}</div>
+                </div>
             </div>
         )
     }
