@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getProducts} from '../ducks/reducer'
-import ProductModule from './ProductModule';
-import Header from './Header';
+import ProductModule from './ProductModule'
+import Header from './Header'
 
 
 class NewArrivals extends Component {

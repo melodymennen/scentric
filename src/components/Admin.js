@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link} from 'react-router-dom'
 import { getUser } from '../ducks/reducer'
+import { Link, Redirect } from 'react-router-dom'
+import AdminHomePortal from './AdminHomePortal'
 import ViewInventory from './ViewInventory'
 import AddInventory from './AddInventory'
 import Customers from './Customers'
 import Orders from './Orders'
-import AdminHomePortal from './AdminHomePortal'
 
 
 class Admin extends Component {
@@ -16,6 +16,7 @@ class Admin extends Component {
         this.state = {
             route: 'adminhome',
         }
+
         this.goBack = this.goBack.bind(this)
         this.showAddInventory = this.showAddInventory.bind(this)
         this.showViewInventory = this.showViewInventory.bind(this)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getCart, getUser } from '../ducks/reducer'
 import functions from '../utilities/functions'
 import Header from './Header'
