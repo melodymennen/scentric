@@ -14,6 +14,7 @@ class Sale extends Component {
 
     componentDidMount() {
         this.getProducts()
+        window.scrollTo(0,0)
     }
 
     getProducts(){
