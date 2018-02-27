@@ -1,17 +1,19 @@
-.Ornament_body {
+.ornament_body {
     > div {
         font-size: 2em;
         text-align: center;
     }
     > section {
         display: flex;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        justify-content: center;
         width: 80%;
         margin: 0 auto;
         figure {
+            width: 160px;
+            margin: 0 20px;
             color: white;
             background-color: black;
-            flex: 1;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -35,5 +37,40 @@
                 margin: 5px;
             }
         }
+    }
+}
+
+@media(max-width: 1050px) {
+    .ornament_body {
+        > section {
+            width: 90%;
+            figure {
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
+@media(max-width: 940px) {
+    .ornament_body {
+        > section {
+            width: 100%;
+        }
+    }
+}
+
+@media(max-width: 845px) {
+    .ornament_body {
+        > section {
+            figure {
+                width: 140px;
+            }
+        }
+    }
+}
+
+@media(max-width: 700px) {
+    .ornament_body {
+        display: none;
     }
 }
