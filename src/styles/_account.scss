@@ -280,6 +280,10 @@
     }
 }
 
+.account_history_chart > div{
+    margin: 10px;
+}
+
 .account_history_chart-title {
     display: flex;
     justify-content: space-around;
@@ -289,6 +293,10 @@
     > span {
         flex: 1;
     }
+}
+
+.account_history_chart-title > span{
+    margin: 0 10px 10px 10px;
 }
 
 .account_history-excerpt {
@@ -306,5 +314,11 @@
     }
     .account_name {
         display: none;
+    }
+
+    .account_before-excerpt > div {
+        display: block;
+        margin: 10px;
+        overflow: hidden; 
     }
 }
