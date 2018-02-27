@@ -5,6 +5,7 @@ import BarChartSalesPerWeek from './BarChartSalesPerWeek';
 import CartGraph from './CartGraph'
 import OrdersByDate from './OrdersByDate'
 import LineSalesByDay from './LineSalesByDay';
+import PurchasedItems from './PurchasedItems'
 
 
 class Dashboard extends Component {
@@ -69,37 +70,68 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div className="dashboard_main_body">
-                <div>Orders</div>
-                    <div className="order_flex">
-                        <div>
-                            <LineGraph/>
-                            <OrdersByDate/>
+            <div>
+                <div className="overview_main_body">
+                    <div className="dashboard_title">Orders</div>
+                        <div className="order_flex">
+                            <div>
+                                <LineGraph/>
+                                <OrdersByDate/>
+                            </div>
+                            <div>
+                                <div>
+                                    <div>Today's Orders</div>
+                                    <div>{this.state.todayOrders}</div>
+                                </div>
+                                <div>
+                                    <div>Orders This Week</div>
+                                    <div>{this.state.ordersWeek}</div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <div>Today's Orders</div>
-                            <div>{this.state.todayOrders}</div>
-                        </div>
-                            <div>Orders This Week</div>
-                            <div>{this.state.ordersWeek}</div>
                     </div>
-                    <div>
-                        <div>Sales by Day of Week</div>
-                        <div>
-                            <BarChartSalesPerWeek/>
-                            <LineSalesByDay/>
+                    <div className="overview_main_body">
+                        <div className="dashboard_title">Sales by Day of Week</div>
+                            <div className="order_flex">
+                                <div>
+                                    <LineSalesByDay/>
+                                    <BarChartSalesPerWeek/>
+                                </div>
+                                <div>
+                                    <div>
+                                        <div>Today's Orders</div>
+                                        <div>{this.state.todayOrders}</div>
+                                    </div>
+                                    <div>
+                                        <div>Orders This Week</div>
+                                        <div>{this.state.ordersWeek}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div className="overview_main_body">
+                        <div className="dashboard_title">Products</div>
+                        <div className="order_flex">
+                            <div>
+                                <PurchasedItems/>
+                                <CartGraph/>
+                            </div>
+                            <div>
+                                <div>
+                                    <div>Today's Orders</div>
+                                    <div>{this.state.todayOrders}</div>
+                                </div>
+                                <div>
+                                    <div>Orders This Week</div>
+                                    <div>{this.state.ordersWeek}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                <div>
-                    <div>Most Popular Products in Cart</div>
-                        <div>
-                            <CartGraph/>
-                        </div>
-                </div>
             </div>
-        )
-    }
-}
+            )
+        }
+        }
 
 
 

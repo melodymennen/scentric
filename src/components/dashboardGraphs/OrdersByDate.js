@@ -68,11 +68,20 @@ class OrdersByDate extends Component {
                 <Bar
                     data={this.state.data2}
                     width={600}
-                    height={300}
+                    height={280}
                     options={{
                         title: {
                             display: true,
                             text: 'Orders By Day of the Week',
+                        },
+                        scales:{
+                            yAxes:[{
+                                ticks:{
+                                    beginAtZero:true,
+                                    suggestedMin: 0,
+                                    suggestedMax: 10,
+                                },
+                            }]
                         }
                     }}/>
             </div>

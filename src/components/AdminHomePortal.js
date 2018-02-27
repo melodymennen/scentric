@@ -47,7 +47,7 @@ class AdminHomePortal extends Component {
             <div>
                 <div className="overview_main_body">
                     <div className="dashboard_title">Website Overview</div>
-                    <div>
+                    <div className="dashboard_overview_flex">
                         <div>
                             <div>Total Sales</div>
                             <div>$ {this.state.ordersSubtotal.toFixed(2)}</div>

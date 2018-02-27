@@ -65,7 +65,7 @@ class BarChartSalesPerWeek extends Component {
 
     render() {
         return (
-            <div>
+            <div className="graph_wrapper">
                 <Bar
                     data={this.state.data}
                     width={100}
@@ -78,6 +78,12 @@ class BarChartSalesPerWeek extends Component {
                                     return '$' + value;
                             }
                         }
+                        }],
+                        xAxes:[{
+                            ticks:{
+                                beginAtZero:true,
+                                suggestedMin: 0,
+                            },
                         }]
                     }
                 }}/>

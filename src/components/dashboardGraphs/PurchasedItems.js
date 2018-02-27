@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import {HorizontalBar} from 'react-chartjs-2'
+import axios from 'axios'
 
 
-class CartGraph extends Component {
+class PurchasedItems extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -21,32 +21,33 @@ class CartGraph extends Component {
                 ],
             },
         }
-
     }
 
     componentDidMount() {
-        this.getCartAll()
+        this.getProducts()
     }
 
-    getCartAll(){
-        axios.get('/api/cart/all').then(response => {
-                let products = new Set(response.data.map(e => e.name))
-                let pro = [...products]
-                    pro.forEach( e => {
-                    let qty = 0
-                        response.data.forEach( el => {
-                            if(el.name === e ) {
-                            qty += el.qty
-                            }
-                        })
-                this.state.data2.datasets[0].data.push({y: e, x: qty})
-                this.state.data2.labels = (this.state.data2.datasets[0].data.map(e => e.y))
+    getProducts(){
+        axios.get('/api/productssold').then( response => {
+            let sold = new Set(response.data.splice(0,9).map(e => e.name))
+            let newArr = [...sold]
+                newArr.map(i => {
+                    let amount = 0
+                    let finalObj = []
+                    response.data.forEach( q => {
+                        if(q.name === i){
+                        amount += q.qty
+                        }
+                    })
+                    finalObj= {y:i, x: amount}
+                    this.state.data2.datasets[0].data.push(finalObj)
+                    this.state.data2.labels = (this.state.data2.datasets[0].data.map(e => e.y))
+                })
+                this.setState({
+                    data2: this.state.data2
+                })
             })
-            this.setState({
-                data2: this.state.data2
-            })
-            })
-        }
+    }
 
     render() {
         return (
@@ -58,7 +59,7 @@ class CartGraph extends Component {
                     options={{
                         title: {
                             display: true,
-                            text: 'Most Popular Items in Cart',
+                            text: 'Best Sellers',
                             fontColor: 'black'
                         },
                          scales:{
@@ -77,5 +78,4 @@ class CartGraph extends Component {
 }
 
 
-
-export default CartGraph
+export default PurchasedItems

@@ -77,6 +77,22 @@ class LineGraph extends Component {
                     title: {
                         display: true,
                         text: 'Orders By Date',
+                    },
+                    legend: {
+                        labels: {
+                            boxWidth: 20,
+                            fontSize: 10,
+                            padding: 0
+                        }
+                    },
+                    scales:{
+                        yAxes:[{
+                            ticks:{
+                                beginAtZero:true,
+                                suggestedMin: 0,
+                                suggestedMax: 10,
+                            },
+                        }]
                     }
                 }}/>
             </div>

@@ -81,7 +81,7 @@ class Admin extends Component {
                             <div onClick={this.showOrders}>Orders</div>
                             <Link to="/home"><div>Store HomePage</div></Link>
                         </div>
-                        <div style={margin}>
+                        <div>
                             {this.state.route === 'adminhome' ? <AdminHomePortal/> : null}
                             {this.state.route === 'viewinventory' ? <ViewInventory/> : null}
                             {this.state.route === 'addinventory' ? <AddInventory/> : null}
@@ -95,9 +95,7 @@ class Admin extends Component {
     }
 }
 
-const margin = {
-    margin: '50px auto'
-}
+
 
 const mapStateToProps = state => {
     return {

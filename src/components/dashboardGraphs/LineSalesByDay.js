@@ -67,7 +67,7 @@ class LineSalesByDay extends Component {
 
     render() {
         return (
-            <div>
+            <div className="graph_wrapper">
                  <Line data={this.state.data1}
                  width={650}
                  height={300} 
@@ -75,7 +75,13 @@ class LineSalesByDay extends Component {
                     title: {
                         display: true,
                         text: 'Sales over Time',
-                    }
+                    },
+                    xAxes:[{
+                        ticks:{
+                            beginAtZero:true,
+                            suggestedMin: 0,
+                        },
+                    }]
                 }}/>
             </div>
         )
