@@ -1,6 +1,10 @@
 .admin_header_wrapper{
+    width: 100%;
     padding: 10px;
     box-shadow: 1px 5px 11px -2px rgba(0,0,0,0.28);
+    position: fixed;
+    background-color: #fefefe;
+    z-index: 1;
     .admin_header_logo{
         padding: 20px;
         font-size: 28pt;
@@ -11,7 +15,10 @@
 .admin_menu{
     padding: 30px 0;
     box-shadow: 1px 5px 11px -2px rgba(0,0,0,0.28);
+    background-color: #fefefe;
     display: inline-block;
+    position: fixed;
+    top: 40px;
     height: 100vh;
     width: 240px;
     div{
@@ -31,6 +38,7 @@
 }
 
 .admin_flex{
+    padding: 60px 0;
     display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -38,10 +46,18 @@
     align-items: stretch;
 }
 
+.admin_body {
+    width: 75%;
+    position: absolute;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+}
+
 // admin home portal
 
 .admin_wrapper_portal_overview{
-    box-shadow: 0px 1px 19px -1px rgba(0,0,0,0.24);
+    box-shadow: 0px 1px 19px -1px rgba(0,0,0,0.24);    
 }
 
 .admin_overview{

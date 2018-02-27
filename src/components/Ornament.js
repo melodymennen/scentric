@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Ornament extends Component {
     render() {
         return (
-            <section className="Ornament_body">
+            <section className="ornament_body">
                 <section>
                     <figure>
                         <div>Beautiful Smells</div>
@@ -28,7 +28,7 @@ class Ornament extends Component {
                 </section>
 
             </section>
-        );
+        )
     }
 }
 
