@@ -26,7 +26,6 @@
 .account_no-user {
     margin-left: 30px;
     width: 100%;
-    position: absolute; 
     font-size: 1.7em;
     margin-top: 40px;
 }
@@ -37,6 +36,7 @@
     position: absolute;
     z-index: 1;
     padding-top: 100px;
+    display: initial !important;
 }
 .bar1, .bar2, .bar3 {
     width: 35px;
@@ -54,7 +54,7 @@
 .bar3x {
     transform: rotate(45deg) translate(-8px, -8px) ;
 }
-  
+
 .account_menu {
     position: relative;
     padding-top: 100px;
@@ -73,7 +73,7 @@
 
     :first-child {
      border-top: 1px solid #333;  
-    }
+    }   
 }
 
 .account_link2 {
@@ -132,7 +132,7 @@
 }
 
 .account_indexes-position {
-    position: absolute;
+    position: static;
 }
 
 .account_settings-excerpt {
@@ -280,6 +280,10 @@
     }
 }
 
+.account_history_chart > div{
+    margin: 10px;
+}
+
 .account_history_chart-title {
     display: flex;
     justify-content: space-around;
@@ -291,6 +295,49 @@
     }
 }
 
+.account_history_chart-title > span{
+    margin: 0 10px 10px 10px;
+}
+
 .account_history-excerpt {
      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.09);
+}
+
+.account_display {
+    display: none;
+}
+
+.account_address_settings {
+    margin-right: 10px;
+}
+
+
+@media(max-width: 700px) {
+    .account_show-info {
+        font-size: 10px;
+    }
+    .account_name {
+        display: none;
+    }
+
+    .account_before-excerpt > div {
+        display: block;
+        margin: 10px;
+        overflow: hidden; 
+    }
+
+    .account_menu {
+        width: 110px;
+    }
+
+    .account_space {
+        display: block;
+    }
+
+    .account_settings-excerpt-show > div > input{
+        margin: 10px;
+        padding: 10px;
+        display: block;
+        overflow: hidden;
+    }
 }

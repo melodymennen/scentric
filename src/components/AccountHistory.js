@@ -51,7 +51,6 @@ class AccountHistory extends Component {
                 {this.state.orders.length === 0 && 
                     <div>There are no orders to display.</div>}
             </div>
-
         );
     }
 }
