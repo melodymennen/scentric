@@ -36,8 +36,8 @@ class OrdersByDate extends Component {
             var fri = 0
             var sat = 0
             var sun = 0
-            var counting = []
-        response.data.map(e => {
+            var finalObj = []
+            response.data.forEach(e => {
             if( e.order_date.split(' ')[0] === 'Mon'){
                     mon++
                 }if(e.order_date.split(' ')[0] === 'Tue'){
@@ -54,12 +54,11 @@ class OrdersByDate extends Component {
                     sun++
                 }
             })          
-            console.log([mon,tue,wed,thur,fri,sat,sun])
-            this.state.data2.datasets[0].data = [mon,tue,wed,thur,fri,sat,sun]
-        })
+            finalObj = [mon,tue,wed,thur,fri,sat,sun]
             this.setState({
-                data2: this.state.data2
+                ...this.state, data2: {...this.state.data2, datasets: [{...this.state.data2.datasets[0], data: finalObj}]},
             })
+        })
     }
 
     render() {

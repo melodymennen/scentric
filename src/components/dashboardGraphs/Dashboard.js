@@ -36,7 +36,7 @@ class Dashboard extends Component {
     getOrdersToday(){
             var count = 0
             var today = new Date().toDateString()
-            this.state.orders.map(e => {
+            this.state.orders.forEach(e => {
                 if(e.order_date === today){
                 count ++
                 }
@@ -47,7 +47,7 @@ class Dashboard extends Component {
     }
 
     getOrdersWeek(){
-        var curr = new Date
+        var curr = new Date()
         var first = curr.getDate() - curr.getDay()
         var one = new Date(curr.setDate(first - 1)).toDateString()
         var two = new Date(curr.setDate(first - 2)).toDateString()
@@ -57,7 +57,7 @@ class Dashboard extends Component {
         var six = new Date(curr.setDate(first - 6)).toDateString()
         var seven = new Date(curr.setDate(first)).toDateString()
         var countTo = 0
-            this.state.orders.map(e => {
+            this.state.orders.forEach(e => {
             if(e.order_date === one || two || three || four || five || six || seven){
             countTo ++
                 }

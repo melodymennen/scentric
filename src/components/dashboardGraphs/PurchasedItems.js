@@ -31,9 +31,8 @@ class PurchasedItems extends Component {
         axios.get('/api/productssold').then( response => {
             let sold = new Set(response.data.splice(0,9).map(e => e.name))
             let newArr = [...sold]
-            let label = []
             let finalObj = []
-            newArr.map(i => {
+            newArr.forEach(i => {
                     let amount = 0
                     response.data.forEach( q => {
                         if(q.name === i){

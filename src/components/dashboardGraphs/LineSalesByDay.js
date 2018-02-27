@@ -7,7 +7,6 @@ class LineSalesByDay extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            final: [],
             data1: {
                 labels: [],
                 datasets: [
@@ -47,20 +46,20 @@ class LineSalesByDay extends Component {
                 response.data[i].order_subtotal = +response.data[i].order_subtotal
               }
               let unique = [...new Set(response.data.map(date => date.order_date))]
-                let arr = [...unique].map( e => {
+              let finalObj = []
+                let arr = [...unique]
+                arr.forEach( e => {
                   let total = 0
-                  this.state.final = []
                   response.data.forEach( p => {
                     if(p.order_date === e){
                       total += p.order_subtotal
                     }
                   })
-                    this.state.data1.datasets[0].data.push({x: e, y: total.toFixed(2) })
-                    this.state.data1.labels = (this.state.data1.datasets[0].data.map(e => e.x))
-              })
-              this.setState({
-                  data1: this.state.data1
-              })
+                    finalObj.push({x: e, y: total.toFixed(2) })
+                })
+                        this.setState({
+                            ...this.state, data1: {...this.state.data1, labels: arr, datasets: [{...this.state.data1.datasets[0], data: finalObj}]},
+                        })
         })
     }
 
