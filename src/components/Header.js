@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Transition } from 'react-transition-group';
+import { Transition } from 'react-transition-group'
 import { Link } from 'react-router-dom'
 import { getCart } from '../ducks/reducer'
 import { login } from '../ducks/reducer'
@@ -86,14 +86,15 @@ class Header extends Component {
             }],
             auth: {
                 redirectUrl: 'http://localhost:3000/home',
+                // redirectUrl: 'http://sentric.store/home',
                 responseType: 'token',
             },
 
             allowAutocomplete: true,
-            // theme: {
-            //     logo: '',
-            //     primaryColor: '#2c3e50'
-            //   },
+            theme: {
+                logo: 'https://s3-us-west-1.amazonaws.com/scentric/favicon.ico',
+                primaryColor: '#53AAB2'
+              },
             languageDictionary: {
                 title: 'Scentric'
             }
