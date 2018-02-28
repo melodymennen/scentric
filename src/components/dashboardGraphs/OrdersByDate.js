@@ -67,7 +67,7 @@ class OrdersByDate extends Component {
                 <Bar
                     data={this.state.data2}
                     width={600}
-                    height={280}
+                    height={350}
                     options={{
                         title: {
                             display: true,

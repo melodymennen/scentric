@@ -148,22 +148,19 @@ class Dashboard extends Component {
                             </div>
                         </div>
                     <div className="overview_main_body">
-                        <div className="dashboard_title">Products</div>
+                        <div className="dashboard_title">Top Selling Products</div>
                         <div className="order_flex">
                             <div>
                                 <PurchasedItems/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="overview_main_body">
+                        <div className="dashboard_title">Most Popular Items in Cart</div>
+                        <div>
+                            <div>
                                 <CartGraph/>
                             </div>
-                            {/* <div>
-                                <div>
-                                    <div>Today's Orders</div>
-                                    <div>{this.state.todayOrders}</div>
-                                </div>
-                                <div>
-                                    <div>Orders This Week</div>
-                                    <div>{this.state.ordersWeek}</div>
-                                </div>
-                            </div> */}
                         </div>
                     </div>
             </div>

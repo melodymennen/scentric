@@ -72,7 +72,7 @@ class LineGraph extends Component {
             <div className="graph_wrapper">
                  <Line data={this.state.data1}
                  width={650}
-                 height={300} 
+                 height={370} 
                  options={{
                     title: {
                         display: true,

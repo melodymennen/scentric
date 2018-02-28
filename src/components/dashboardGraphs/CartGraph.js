@@ -50,7 +50,8 @@ class CartGraph extends Component {
 
     render() {
         return (
-            <div className="graph_wrapper">
+            <div>
+                <div className="graph_wrapper">
                 <HorizontalBar
                     data={this.state.data2} 
                     width={580}
@@ -71,6 +72,7 @@ class CartGraph extends Component {
                         }
                     }}
                     />
+                </div>
             </div>
         )
     }
