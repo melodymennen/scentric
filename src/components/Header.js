@@ -82,11 +82,11 @@ class Header extends Component {
         var options = {
             additionalSignUpFields: [{
                 name: "name",
-                placeholder: "Enter Your Full-name",
+                placeholder: "Enter Your Full Name",
             }],
             auth: {
-                redirectUrl: 'http://localhost:3000/home',
-                // redirectUrl: 'http://sentric.store/home',
+                // redirectUrl: 'http://localhost:3000/home',
+                redirectUrl: 'http://scentric.store/home',
                 responseType: 'token',
             },
 
