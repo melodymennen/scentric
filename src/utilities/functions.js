@@ -10,5 +10,12 @@ module.exports = {
             localStorage.setItem('generatedId', generatedId)
             axios.post('/api/generatedId', {generateId: localStorage.getItem("generatedId")})
         }
+    }, 
+    isEmail: (input) => {
+        if(input.includes('@') && input.includes('.')){
+            return 'valid email'
+        } else {
+            return 'invalid email'
+        }
     }
 }
