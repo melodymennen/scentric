@@ -37,20 +37,19 @@ class Customers extends Component {
                     <div key={e.id} className="admin_customers_flex">
                         <div>{e.name}</div>
                         <div className="email">{e.email}</div>
-                        <div>Orders</div>
-                        <div>Amount Spent</div>
+                        <div>Location</div>
                     </div>
                 )
             })
         return (
             <div>
-                <div>
-                    <div>
-                        <div>Name</div>
-                        <div>Email</div>
-                        <div>Location</div>
+                <div className="viewinventory_wrapper_body">
+                    <div className="viewinventory_flex_wrapper_title">
+                        <div className="customers_name">Name</div>
+                        <div className="customers_email">Email</div>
+                        <div className="customers_location">Location</div>
                     </div>
-                    <div>{cust}</div>
+                    <div className="customer_product_table">{cust}</div>
                 </div>
             </div>
         )
