@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import _ from 'lodash'
-import Dashboard from './Dashboard'
+import Dashboard from './dashboardGraphs/Dashboard'
 
 
 
@@ -45,9 +45,9 @@ class AdminHomePortal extends Component {
         console.log(this.state.ordersTotals)
         return (
             <div>
-                <div className="admin_wrapper_portal_overview">
-                    <div className="admin_overview">Website Overview</div>
-                    <div className="admin_home_first_body">
+                <div className="overview_main_body">
+                    <div className="dashboard_title">Website Overview</div>
+                    <div className="dashboard_overview_flex">
                         <div>
                             <div>Total Sales</div>
                             <div>$ {this.state.ordersSubtotal.toFixed(2)}</div>

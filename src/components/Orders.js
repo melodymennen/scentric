@@ -35,7 +35,14 @@ class Orders extends Component {
             })
         return (
             <div>
-                <div>{ordersArr}</div>
+            <div className="viewinventory_wrapper_body">
+                <div className="viewinventory_flex_wrapper_title">
+                    <div className="customers_name">Customer Name</div>
+                    <div className="customers_email">Cost of Sale</div>
+                    <div className="customers_location">Date</div>
+                </div>
+                <div className="customer_product_table">{ordersArr}</div>
+            </div>
             </div>
         )
     }

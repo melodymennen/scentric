@@ -69,8 +69,32 @@ class LineGraph extends Component {
 
     render() {
         return (
-            <div>
-                 <Line data={this.state.data1} />
+            <div className="graph_wrapper">
+                 <Line data={this.state.data1}
+                 width={650}
+                 height={370} 
+                 options={{
+                    title: {
+                        display: true,
+                        text: 'Orders By Date',
+                    },
+                    legend: {
+                        labels: {
+                            boxWidth: 20,
+                            fontSize: 10,
+                            padding: 0
+                        }
+                    },
+                    scales:{
+                        yAxes:[{
+                            ticks:{
+                                beginAtZero:true,
+                                suggestedMin: 0,
+                                suggestedMax: 10,
+                            },
+                        }]
+                    }
+                }}/>
             </div>
         )
     }

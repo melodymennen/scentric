@@ -102,7 +102,7 @@ class Inventory extends Component {
 
     render() {
         return (
-            <div>
+            <div className="admin_flex_two">
                 <div className="inventory_admin_panel_title">Add Inventory</div>
                     <div className="inventory_admin_panel">
                         <div>

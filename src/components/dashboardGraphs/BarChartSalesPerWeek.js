@@ -7,8 +7,9 @@ import _ from 'lodash'
 class BarChartSalesPerWeek extends Component {
     constructor(props) {
         super(props)
+        console.log('props', props)
         this.state = {
-            data: {
+            data3: {
                 labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
                 datasets: [
                   {
@@ -55,19 +56,20 @@ class BarChartSalesPerWeek extends Component {
                     sun.push(+e.order_subtotal)
                 }
             })
-                this.state.data.datasets[0].data = [_.sum(mon).toFixed(2), _.sum(tues).toFixed(2), _.sum(wed).toFixed(2), _.sum(thurs).toFixed(2), _.sum(fri).toFixed(2), _.sum(sat).toFixed(2), _.sum(sun).toFixed(2)]
-                console.log(this.state.data.datasets[0].data)
+            
+                var dataFinal = [_.sum(mon).toFixed(2), _.sum(tues).toFixed(2), _.sum(wed).toFixed(2), _.sum(thurs).toFixed(2), _.sum(fri).toFixed(2), _.sum(sat).toFixed(2), _.sum(sun).toFixed(2)]
+
                 this.setState({
-                    data: this.state.data
+                    ...this.state, data3: {...this.state.data3, datasets: [{...this.state.data3.datasets[0], data: dataFinal}]}
                 })
             }
         )}
 
     render() {
         return (
-            <div>
+            <div className="graph_wrapper">
                 <Bar
-                    data={this.state.data}
+                    data={this.state.data3}
                     width={100}
                     height={50}
                     options={{
@@ -78,9 +80,16 @@ class BarChartSalesPerWeek extends Component {
                                     return '$' + value;
                             }
                         }
+                        }],
+                        xAxes:[{
+                            ticks:{
+                                beginAtZero:true,
+                                suggestedMin: 0,
+                            },
                         }]
                     }
-                }}/>
+                }}
+                />
             </div>
         )
     }

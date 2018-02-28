@@ -43,7 +43,16 @@
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
-    align-items: stretch;
+	align-items: baseline;
+    align-content: stretch;
+    > div:nth-child(2){
+        margin-left: 20px;
+    }
+        
+}
+
+.admin_flex_two{
+    margin-left: 100px;
 }
 
 .admin_body {
@@ -68,31 +77,6 @@
     color: white;
 }
 
-.admin_home_first_body{
-    display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-    align-items: stretch;
-    margin: 10px;
-    > div{
-        background-color: rgba(241, 241, 241, 0.685);
-        box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.418);
-        padding: 15px 20px;
-        width: 14vw;
-        margin: 10px auto;
-        text-align: center;
-        > div{
-            font-size: 14pt;
-            padding-top: 8pt;
-        }
-        > div:nth-child(2){
-            font-size: 16pt;
-            padding-top: 18px;
-            padding-bottom: 15px;
-        }
-    }
-}
 
 //Add Inventory
 
@@ -176,14 +160,24 @@
 .inventory_admin_panel_title{
     text-align: center;
     font-size: 16pt;
-    color: $font_color;
-    padding-bottom: 20px;
+    color: white;
+    padding: 10px;
+    background-color: $dark_blue;
+}
+
+.inventory_admin_panel{
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.418);
+    padding: 10px;
 }
 
 // viewInventory 
 
 .admin_product_table{
     padding: 20px;
+}
+
+.customer_product_table{
+    margin: 20px;
 }
 
 .viewinventory_flex_wrapper{
@@ -194,6 +188,7 @@
     align-items: stretch;
     background-color: rgba(241, 241, 241, 0.685);
     box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.27);
+    margin: auto;
     div{
         border-left: 1px solid rgba(126, 126, 126, 0.568);
         padding: 10px 10px 0 10px;
