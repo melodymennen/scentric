@@ -31,10 +31,10 @@ massive(process.env.CONNECTION_STRING).then(db => {
 })
 
 app.use( express.static( `${__dirname}/../build` ) )
-const path = require('path')
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
-})
+// const path = require('path')
+// app.get('*', (req, res)=>{
+//   res.sendFile(path.join(__dirname, '../build/index.html'));
+// })
 
 app.get('/api/products', controller.getAllProducts)
 app.get('/api/display/:category', controller.getProductsByCategory)
