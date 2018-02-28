@@ -85,7 +85,7 @@ class Admin extends Component {
                             <div onClick={this.showOrders}>Orders</div>
                             <Link to="/home"><div>Store HomePage</div></Link>
                         </div>
-                        <div>
+                        <div className="admin_body" >
                             {this.state.route === 'adminhome' ? <AdminHomePortal/> : null}
                             {this.state.route === 'viewinventory' ? <ViewInventory/> : null}
                             {this.state.route === 'addinventory' ? <AddInventory/> : null}
