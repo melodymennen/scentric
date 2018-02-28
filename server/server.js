@@ -30,6 +30,12 @@ massive(process.env.CONNECTION_STRING).then(db => {
     console.log('error', error)
 })
 
+app.use( express.static( `${__dirname}/../build` ) )
+// const path = require('path')
+// app.get('*', (req, res)=>{
+//   res.sendFile(path.join(__dirname, '../build/index.html'));
+// })
+
 app.get('/api/products', controller.getAllProducts)
 app.get('/api/display/:category', controller.getProductsByCategory)
 app.get('/api/products/:product_id', controller.getProduct)
@@ -52,7 +58,7 @@ app.get('/api/favorites', controller.getFavorites)
 app.get('/api/ordersall', controller.getAllOrders)
 app.get('/api/allusers', controller.getAllUsers)
 app.delete('/api/favorites/:product_id', controller.removeFavorite)
-app.put('/api/logout' , controller.logout)
+app.put('/api/logout', controller.logout)
 app.get('/api/customers/admin', controller.getCustomers)
 app.get('/api/admin/:id', controller.getProductAdmin)
 

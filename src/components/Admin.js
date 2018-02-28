@@ -64,8 +64,11 @@ class Admin extends Component {
     
 
     render() {
+        const { user } = this.props
+        console.log(user)
         return (
             <div>
+                {user && user.is_admin && 
                 <div>
                     <div className="admin_header_wrapper">
                         <img src="https://s3-us-west-1.amazonaws.com/scentric/favicon.ico" alt="logo" width="28px"/>
@@ -90,7 +93,8 @@ class Admin extends Component {
                             {this.state.route === 'orders' ? <Orders/> : null}
                         </div>
                     </div>
-                </div>
+                </div>}
+                {!user || !user.is_admin ? <Redirect to="/"/> : null }
             </div>
         )
     }
