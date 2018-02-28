@@ -30,11 +30,7 @@ massive(process.env.CONNECTION_STRING).then(db => {
     console.log('error', error)
 })
 
-app.use( express.static( `${__dirname}/../build` ) )
-// const path = require('path')
-// app.get('*', (req, res)=>{
-//   res.sendFile(path.join(__dirname, '../build/index.html'));
-// })
+app.use( express.static( `${__dirname}/../build` ) );
 
 app.get('/api/products', controller.getAllProducts)
 app.get('/api/display/:category', controller.getProductsByCategory)
@@ -138,6 +134,7 @@ AWS.config.update({
   })
 })
 
+
 // Sockets
 const io = socket(app.listen(process.env.SERVER_PORT, () => console.log(`Listening on port ${process.env.SERVER_PORT}.`)))
 
@@ -178,3 +175,8 @@ function onConnect(socket){
       console.log('A user disconnected')
     })
 }
+
+const path = require('path')
+app.get('*', (req, res)=>{
+ res.sendFile(path.join(__dirname, '../build/index.html'));
+})
