@@ -85,9 +85,10 @@ module.exports = {
     }, 
     removeFromCart: (req, res) => {
         const db = req.app.get('db')
-        const { product_id } = req.params                
+        const { product_id } = req.params  
+        const { generatedId } = req.session               
 
-        db.remove_from_cart([product_id]).then(() => {
+        db.remove_from_cart([product_id, generatedId]).then(() => {
             res.status(200).send('success')
         }).catch(error => console.log('remove from cart error', error))        
     },
@@ -104,7 +105,7 @@ module.exports = {
         const db = req.app.get('db')
         const { user } = req.session
         const { newName, newEmail, newPicture, address } = req.body
-        console.log(user.id, newName, newEmail, newPicture, address)
+
         db.update_user([user.id, newName, newEmail, newPicture, address]).then((user) => {
             req.session.user = user[0]
             res.status(200).send('success')
@@ -182,11 +183,11 @@ module.exports = {
     },
     addProduct: (req,res) => {
         const db = req.app.get('db')
-        const {name, price, description, category, scent_family, image_url, on_sale} = req.body
+        const { name, price, description, category, scent_family, image_url, on_sale } = req.body
 
         db.add_product([name, price, description, category, scent_family, image_url, on_sale]).then(product => {
             res.status(200).json(product)
-        }).catch(error => console.log('add product', error))
+        }).catch(error => console.log('add product error', error))
     }, 
     addFavorite: (req, res) => {
         const db =  req.app.get('db')

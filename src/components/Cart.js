@@ -96,7 +96,7 @@ class Cart extends Component {
                             <div>Total</div>
                         </div>
                     </div>
-                    {this.props.cart.length === 0 && 
+                    {!this.props.cart.length && 
                         <div className="cart-no-items">There are no items in your cart.</div>
                     }
                     {this.props.cart && cart}
