@@ -1,6 +1,6 @@
 # Scentric
 
-<!-- ## For the live version, click [here](http://wtfsimte.com). -->
+## For the live version, click [here](http://http://scentric.store/).
 
 ## Overview
 Scentric is an online perfume/cologne retailer. You can shop, create an account and more. 

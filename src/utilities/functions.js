@@ -1,4 +1,5 @@
 const axios = require('axios')
+const _ = require('lodash')
 
 module.exports = {
     generateId: () => {
@@ -13,9 +14,26 @@ module.exports = {
     }, 
     isEmail: (input) => {
         if(input.includes('@') && input.includes('.')){
-            return 'valid email'
+            return true
         } else {
-            return 'invalid email'
+            return false
+        }
+    },
+    getCart: (response) => {
+        var prices = []
+        var qty = []
+        if(response.data) {
+            for(let i=0 ; i < response.data.length ; i++) {
+                prices.push(+(response.data[i].price*response.data[i].qty))
+            }
+            for( let i=0; i < response.data.length; i++){
+                qty.push(+(response.data[i].qty))
+            }
+            return {
+                cart: response.data, 
+                subtotal: _.sum(prices), 
+                qty: _.sum(qty)
+            }
         }
     }
 }

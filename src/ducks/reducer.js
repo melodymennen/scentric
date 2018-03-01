@@ -43,6 +43,9 @@ export const getUser = () => {
 
 export const getCart = () => {
     var request = axios.get('/api/cart').then( response => {
+        console.log(response)
+        console.log(response.data)
+
         if(response.data) {
             var prices = []
             var qty = []
