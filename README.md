@@ -25,7 +25,7 @@ Scentric is an online perfume/cologne retailer. You can shop, create an account 
 -  -->
 
 ## Tech:
-We used many technologies when making this project including but not limited to: React | Redux | JavaScript(ES6) | CSS | Sass | NodeJS | ExpressJS | Massive | PostgreSQL | Sockets | Auth0
+We used many technologies when making this project including but not limited to: React | Redux | JavaScript(ES6) | CSS | Sass | NodeJS | ExpressJS | Massive | PostgreSQL | Sockets | Auth0 | ChartJS
 
 ## Preview
 ![Home Page](https://github.com/melodymennen/scentric/blob/master/assets/scentric-home.png)

@@ -38,7 +38,7 @@ class About extends Component {
                         <div className="about_info">
                             We used many technologies when making this project including but not limited to: 
                             <br/> <br/>
-                            React | Redux | JavaScript(ES6) | CSS | Sass | NodeJS | ExpressJS | Massive | PostgreSQL | Sockets | Auth0
+                            React | Redux | JavaScript(ES6) | CSS | Sass | NodeJS | ExpressJS | Massive | PostgreSQL | Sockets | Auth0 | ChartJS
                         </div> 
                     </div>
                     <div className="about_team">
