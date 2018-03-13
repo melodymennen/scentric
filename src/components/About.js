@@ -49,7 +49,7 @@ class About extends Component {
                                 <br/>
                                 <a href="https://www.linkedin.com/in/lisaherzberg/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
                                 <a href="https://github.com/Lisamarie73187" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                                <a href="" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i></a>
+                                <a href="http://lisamarieherzberg.surge.sh/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i></a>
                             </div>
                             <div className="about_team-info">
                                 Melody Rosado
